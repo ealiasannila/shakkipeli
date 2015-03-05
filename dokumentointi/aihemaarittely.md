@@ -1,9 +1,10 @@
 #Aihemäärittely
 
-##Aihe: Shakkipeli. Toteutetaan kaksinpelinä pelattava shakki. 
+##Aihe: 
+Shakkipeli. Toteutetaan kaksinpelinä pelattava shakki. 
 
 ##Käyttäjät: 
-*Pelaaja 1 ja 2
+*Pelaajat 1 ja 2
 
 ##Toiminnot:
 
