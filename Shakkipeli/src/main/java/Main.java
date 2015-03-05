@@ -1,3 +1,4 @@
+import logiikka.nappulat.Maa;
 import logiikka.pelilauta.Pelilauta;
 
 /*
@@ -12,25 +13,25 @@ import logiikka.pelilauta.Pelilauta;
 public class Main {
 
     public static void main(String args[]) {
+
         Pelilauta lauta = new Pelilauta();
         lauta.tulosta();
+        System.out.println(lauta.getMustaKunkku().onShakissa() + "musta");
+        System.out.println(lauta.getValkonenKunkku().onShakissa() + "valkoinen");
+
         lauta.setAktiivinen(lauta.haeNappula(0, 0));
         lauta.teeSiirto(0, 7);
+        System.out.println(lauta.getMustaKunkku().onShakissa() + "musta");
+        System.out.println(lauta.getValkonenKunkku().onShakissa() + "valkoinen");
         lauta.tulosta();
-        lauta.teeSiirto(7, 7);
+        System.out.println(lauta.getMustaKunkku().myosYmparoivatRuudutUhattuna());
+
+        lauta.setAktiivinen(lauta.haeNappula(7, 0));
+        lauta.teeSiirto(7, 6);
         lauta.tulosta();
-        lauta.teeSiirto(2, 3);
-        lauta.tulosta();
-        lauta.teeSiirto(7, 10);
-        lauta.tulosta();
-        lauta.teeSiirto(-1, 7);
-        lauta.tulosta();
-        lauta.teeSiirto(7, 0);
-        lauta.tulosta();
-        lauta.teeSiirto(7, 1);
-        lauta.tulosta();
-        lauta.teeSiirto(7, 7);
-        lauta.tulosta();
+        System.out.println(lauta.getMustaKunkku().myosYmparoivatRuudutUhattuna());
+
+        
     }
 
 }

@@ -18,8 +18,6 @@ public class Torni extends Nappula {
         super(maa, x, y, pelilauta);
     }
 
-
-
     public String toString() {
         if (this.getMaa() == VALKOINEN) {
             return "[t]";
@@ -31,33 +29,33 @@ public class Torni extends Nappula {
     @Override
     public boolean tarkistaReitti(int x, int y) {
         if (this.getX() != x && this.getY() != y) { //Ei sallittu tapa liikkua
-            System.out.println("TORNI EI LIIKU NÄIN");
+//            System.out.println("TORNI EI LIIKU NÄIN");
             return false;
         } else if (this.getX() < x) { //Tarkastetaan onko reitillä muita nappuloita
             for (int i = this.getX() + 1; i < x; i++) {
                 if (!tarkistaOnkoKohdeVapaa(i, y)) {
-                    System.out.println("EI VAPAA REITILLÄ +X" + i);
+ //                   System.out.println("EI VAPAA REITILLÄ +X" + i);
                     return false;
                 }
             }
         } else if (this.getX() > x) {
             for (int i = this.getX() - 1; i > x; i--) {
                 if (!tarkistaOnkoKohdeVapaa(i, y)) {
-                    System.out.println("EI VAPAA REITILLÄ -X" + i);
+//                    System.out.println("EI VAPAA REITILLÄ -X" + i);
                     return false;
                 }
             }
         } else if (this.getY() < y) {
             for (int i = this.getY() + 1; i < y; i++) {
-                if (!tarkistaOnkoKohdeVapaa(i, x)) {
-                    System.out.println("EI VAPAA REITILLÄ +Y" + i);
+                if (!tarkistaOnkoKohdeVapaa(x, i)) {
+//                    System.out.println("EI VAPAA REITILLÄ +Y" + i);
                     return false;
                 }
             }
         } else if (this.getY() > y) {
             for (int i = this.getY() - 1; i > y; i--) {
-                if (!tarkistaOnkoKohdeVapaa(i, y)) {
-                    System.out.println("EI VAPAA REITILLÄ -Y" + i);
+                if (!tarkistaOnkoKohdeVapaa(x, i)) {
+ //                   System.out.println("EI VAPAA REITILLÄ -Y" + i);
                     return false;
                 }
             }

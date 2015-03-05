@@ -26,7 +26,7 @@ public abstract class Nappula {
 
     public boolean tarkistaSiirto(int x, int y) {
 
-        if (x < 0 || y < 0 || x > 8 || y > 8) {
+        if (x < 0 || y < 0 || x > this.getLauta().getSize() || y > this.getLauta().getSize()) {
             System.out.println("SIIRTO LAUDAN ULKOPUOLELLE");
             return false;
         } else if (this.getX() == x && this.getY() == y) {
@@ -68,7 +68,7 @@ public abstract class Nappula {
         return this.getLauta().haeNappula(x, y) == null;
 
     }
-
+    
     public Maa getMaa() {
         return maa;
     }
