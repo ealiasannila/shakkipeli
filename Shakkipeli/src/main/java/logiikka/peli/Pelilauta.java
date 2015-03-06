@@ -33,22 +33,31 @@ public class Pelilauta {
         }
     }
 
-
     public Nappula haeNappula(int x, int y) {
+        if (x > lauta.length - 1 || y > lauta.length - 1 || x < 0 || y < 0) {
+            return null;
+        }
         return this.lauta[x][y];
     }
 
     public boolean teeSiirto(int x, int y, Nappula aktiivinen) {
-        
-        if (!aktiivinen.tarkistaSiirto(x, y)) {
+
+        if (!aktiivinen.onSallittuSiirto(x, y)) {
             System.out.println("EI SALLITTU SIIRTO");
             return false;
         }
 
         this.asetaNappula(null, aktiivinen.getX(), aktiivinen.getY());
         this.asetaNappula(aktiivinen, x, y);
-        
+
         return true;
+
+    }
+
+    public void teeTestiSiirto(int x, int y, Nappula aktiivinen) {
+
+        this.asetaNappula(null, aktiivinen.getX(), aktiivinen.getY());
+        this.asetaNappula(aktiivinen, x, y);
 
     }
 
@@ -65,17 +74,5 @@ public class Pelilauta {
         }
         System.out.println("    -    -    - -  ");
     }
-
-    public boolean onkoUhattuna(int x, int y, ArrayList<Nappula> vastustajanNappulat) {
-        for (Nappula nappula : vastustajanNappulat) {
-            if (nappula.tarkistaReitti(x, y)) {
-                return true;
-            }
-        }
-
-        return false;
-
-    }
-
 
 }

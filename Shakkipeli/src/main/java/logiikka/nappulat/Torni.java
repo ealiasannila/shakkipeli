@@ -5,8 +5,10 @@
  */
 package logiikka.nappulat;
 
+import java.util.ArrayList;
 import static logiikka.nappulat.Maa.VALKOINEN;
 import logiikka.peli.Pelilauta;
+import logiikka.peli.Ruutu;
 
 /**
  *
@@ -28,13 +30,17 @@ public class Torni extends Nappula {
 
     @Override
     public boolean tarkistaReitti(int x, int y) {
+        if (this.getX() == x && this.getY() == y) {
+            //System.out.println("PITÄÄ LIIKKUA");
+            return false;
+        }
         if (this.getX() != x && this.getY() != y) { //Ei sallittu tapa liikkua
 //            System.out.println("TORNI EI LIIKU NÄIN");
             return false;
         } else if (this.getX() < x) { //Tarkastetaan onko reitillä muita nappuloita
             for (int i = this.getX() + 1; i < x; i++) {
                 if (!tarkistaOnkoKohdeVapaa(i, y)) {
- //                   System.out.println("EI VAPAA REITILLÄ +X" + i);
+                    //                   System.out.println("EI VAPAA REITILLÄ +X" + i);
                     return false;
                 }
             }
@@ -55,12 +61,39 @@ public class Torni extends Nappula {
         } else if (this.getY() > y) {
             for (int i = this.getY() - 1; i > y; i--) {
                 if (!tarkistaOnkoKohdeVapaa(x, i)) {
- //                   System.out.println("EI VAPAA REITILLÄ -Y" + i);
+                    //                   System.out.println("EI VAPAA REITILLÄ -Y" + i);
                     return false;
                 }
             }
         }
         return true;
+    }
+
+    @Override
+    public ArrayList<Ruutu> uhkausLinja(int x, int y) {
+        if (!this.tarkistaReitti(x, y)) {
+            System.out.println("Ei uhkaa, mutta kysytään linjaa");
+            return null;
+        }
+        ArrayList<Ruutu> uhatutRuudut = new ArrayList<Ruutu>();
+        if (x < this.getX()) {
+            for (int i = x + 1; i < this.getX(); i++) {
+                uhatutRuudut.add(new Ruutu(i, y));
+            }
+        } else if (x > this.getX()) {
+            for (int i = this.getX() + 1; i < x; i++) {
+                uhatutRuudut.add(new Ruutu(i, y));
+            }
+        } else if (y < this.getY()) {
+            for (int i = this.getY() - 1; i > y; i++) {
+                uhatutRuudut.add(new Ruutu(x, i));
+            }
+        } else if (y > this.getY()) {
+            for (int i = this.getY() + 1; i < y; i++) {
+                uhatutRuudut.add(new Ruutu(x, i));
+            }
+        }
+        return uhatutRuudut;
     }
 
 }

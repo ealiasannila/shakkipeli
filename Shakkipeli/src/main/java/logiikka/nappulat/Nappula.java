@@ -5,7 +5,9 @@
  */
 package logiikka.nappulat;
 
+import java.util.ArrayList;
 import logiikka.peli.Pelilauta;
+import logiikka.peli.Ruutu;
 
 /**
  *
@@ -24,7 +26,7 @@ public abstract class Nappula {
         this.getLauta().asetaNappula(this, x, y);
     }
 
-    public boolean tarkistaSiirto(int x, int y) {
+    public boolean onSallittuSiirto(int x, int y) {
 
         if (x < 0 || y < 0 || x > this.getLauta().getSize() || y > this.getLauta().getSize()) {
             System.out.println("SIIRTO LAUDAN ULKOPUOLELLE");
@@ -45,6 +47,7 @@ public abstract class Nappula {
     }
 
     public abstract boolean tarkistaReitti(int x, int y);
+    public abstract ArrayList<Ruutu> uhkausLinja(int x, int y);
 
     public boolean tarkistaOnkoKohdeOma(int x, int y) {
         if (!this.tarkistaOnkoKohdeVapaa(x, y)) {
