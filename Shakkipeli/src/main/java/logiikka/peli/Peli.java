@@ -224,14 +224,14 @@ public class Peli {
         this.vuorossa = this.valkoinen;
     }
 
-    public void siirto(int x, int y) {
+    public boolean siirto(int x, int y) {
         if (this.aktiivinen == null) {
             System.out.println("valitse nappula");
-            return;
+            return false;
         }
 
         if (!this.lauta.teeSiirto(x, y, this.aktiivinen)) {
-            return;
+            return false;
         }
 
         if (this.vuorossa == this.valkoinen) {
@@ -241,7 +241,12 @@ public class Peli {
         }
         this.paivitaPelaajienNappulat();
         this.aktiivinen = null;
+        return true;
+        
+    }
 
+    public Pelaaja getVuorossa() {
+        return vuorossa;
     }
 
     public void asetaAktiivinen(int x, int y) {

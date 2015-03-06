@@ -38,6 +38,7 @@ public abstract class Nappula {
             System.out.println("KOHDE OMA");
             return false;
         } else if (!this.tarkistaReitti(x, y)) { //Siirto ei sallittu
+            System.out.println("Jotain reitillä?");
             return false;
 
         }
