@@ -77,19 +77,19 @@ public class Torni extends Nappula {
         }
         ArrayList<Ruutu> uhatutRuudut = new ArrayList<Ruutu>();
         if (x < this.getX()) {
-            for (int i = x + 1; i < this.getX(); i++) {
+            for (int i = x; i < this.getX(); i++) {
                 uhatutRuudut.add(new Ruutu(i, y));
             }
         } else if (x > this.getX()) {
-            for (int i = this.getX() + 1; i < x; i++) {
+            for (int i = this.getX() + 1; i <= x; i++) {
                 uhatutRuudut.add(new Ruutu(i, y));
             }
         } else if (y < this.getY()) {
-            for (int i = this.getY() - 1; i > y; i++) {
+            for (int i = y; i > this.getY(); i++) {
                 uhatutRuudut.add(new Ruutu(x, i));
             }
         } else if (y > this.getY()) {
-            for (int i = this.getY() + 1; i < y; i++) {
+            for (int i = this.getY() + 1; i <= y; i++) {
                 uhatutRuudut.add(new Ruutu(x, i));
             }
         }

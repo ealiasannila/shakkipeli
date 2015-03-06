@@ -10,6 +10,7 @@ package logiikka.peli;
  * @author elias
  */
 public class Ruutu {
+
     private int x;
     private int y;
 
@@ -33,8 +34,33 @@ public class Ruutu {
     public void setY(int y) {
         this.y = y;
     }
-    
-    
-    
-    
+
+    public String toString(){
+        return "["+this.x +","+this.y+"]";
+    }
+ 
+
+    @Override
+    public int hashCode() {
+        return this.x*10+this.y;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Ruutu other = (Ruutu) obj;
+        if (this.x != other.x) {
+            return false;
+        }
+        if (this.y != other.y) {
+            return false;
+        }
+        return true;
+    }
+
 }

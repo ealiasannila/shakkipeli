@@ -28,7 +28,7 @@ public abstract class Nappula {
 
     public boolean onSallittuSiirto(int x, int y) {
 
-        if (x < 0 || y < 0 || x > this.getLauta().getSize() || y > this.getLauta().getSize()) {
+        if (x < 0 || y < 0 || x > this.getLauta().getSize()-1 || y > this.getLauta().getSize()-1) {
             System.out.println("SIIRTO LAUDAN ULKOPUOLELLE");
             return false;
         } else if (this.getX() == x && this.getY() == y) {

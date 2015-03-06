@@ -40,7 +40,7 @@ public class Pelilauta {
         return this.lauta[x][y];
     }
 
-    public boolean teeSiirto(int x, int y, Nappula aktiivinen) {
+    public boolean teeSiirto(int x, int y, Nappula aktiivinen) { //Tarvitaanko enää kun kunkku ei itse testaa onko ruutu uhattu? 
 
         if (!aktiivinen.onSallittuSiirto(x, y)) {
             System.out.println("EI SALLITTU SIIRTO");

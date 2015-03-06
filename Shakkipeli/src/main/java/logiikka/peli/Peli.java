@@ -222,6 +222,10 @@ public class Peli {
         this.vuorossa = this.valkoinen;
     }
 
+    public Pelilauta getLauta() {
+        return lauta;
+    }
+
     public boolean siirto(int x, int y) {
         if (this.aktiivinen == null) {
             System.out.println("valitse nappula");
