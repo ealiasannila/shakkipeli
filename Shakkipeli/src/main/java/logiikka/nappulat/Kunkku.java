@@ -17,12 +17,10 @@ import logiikka.peli.Ruutu;
  */
 public class Kunkku extends Nappula {
 
-    private Peli peli; //kunkku tarvitsee peliä, koska ei saa liikkua uhattuun ruutuun
-
-    public Kunkku(Maa maa, int x, int y, Pelilauta pelilauta, Peli peli) {
+ 
+    public Kunkku(Maa maa, int x, int y, Pelilauta pelilauta) {
         super(maa, x, y, pelilauta);
-        this.peli = peli;
-
+ 
     }
 
     public String toString() {
@@ -31,32 +29,6 @@ public class Kunkku extends Nappula {
         } else {
             return "[K]";
         }
-    }
-
-    @Override
-    public boolean onSallittuSiirto(int x, int y) {
-
-        if(this.peli.onkoUhattuna(x, y)){
-            //System.out.println("on uhattuna ja olen kunkku");
-            return false;
-        }
-        
-        if (x < 0 || y < 0 || x > this.getLauta().getSize() || y > this.getLauta().getSize()) {
-            System.out.println("SIIRTO LAUDAN ULKOPUOLELLE");
-            return false;
-        } else if (this.getX() == x && this.getY() == y) {
-            System.out.println("PITÄÄ LIIKKUA");
-            return false;
-        } else if (this.tarkistaOnkoKohdeOma(x, y)) { //Kohde ruudussa oma nappula
-            System.out.println("KOHDE OMA");
-            return false;
-        } else if (!this.tarkistaReitti(x, y)) { //Siirto ei sallittu
-            return false;
-
-        }
-
-        return true;
-
     }
 
     @Override

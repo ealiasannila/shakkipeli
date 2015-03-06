@@ -34,10 +34,10 @@ public class Peli {
         //valkoiset:
         new Torni(VALKOINEN, 0, 0, this.lauta);
         new Torni(VALKOINEN, 7, 0, this.lauta);
-        this.valkoinen.setKunkku(new Kunkku(VALKOINEN, 3, 0, this.lauta, this));
+        this.valkoinen.setKunkku(new Kunkku(VALKOINEN, 3, 0, this.lauta));
 
         //mustat:
-        this.musta.setKunkku(new Kunkku(MUSTA, 3, 7, this.lauta, this));
+        this.musta.setKunkku(new Kunkku(MUSTA, 3, 7, this.lauta));
         new Torni(MUSTA, 7, 7, this.lauta);
         new Torni(MUSTA, 0, 7, this.lauta);
     }
@@ -119,7 +119,7 @@ public class Peli {
 //                System.out.println("x: " + x + " y: " + y);
 
                 if (this.vuorossa.getKunkku().onSallittuSiirto(x, y)) { //jos kunkku voi liikkua tarkistetaan onko kunkku uhattuna liikkuimsen jälkeen (ettei pääse "itsensä taakse suojaan"
-                    if (kokeileSiirtoa(x, y)) {
+                    if (kokeileSiirtoa(x, y, this.vuorossa.getKunkku())) {
                         return false;
                     }
                 }
@@ -129,31 +129,29 @@ public class Peli {
         return true;
     }
 
-    public boolean kokeileSiirtoa(int x, int y) {
+    public boolean kokeileSiirtoa(int x, int y, Nappula nappula) {
         //   System.out.println("koikeilen siirtoa");
-        int vanhaX = this.vuorossa.getKunkku().getX();
-        int vanhaY = this.vuorossa.getKunkku().getY();
+        int vanhaX = nappula.getX();
+        int vanhaY = nappula.getY();
         Nappula vastustajaTalteen = this.lauta.haeNappula(x, y);
 
-        boolean teeSiirto = this.lauta.teeSiirto(x, y, this.vuorossa.getKunkku());
+        boolean teeSiirto = this.lauta.teeSiirto(x, y, nappula); //tee siirto
         if (teeSiirto) {
             this.paivitaPelaajienNappulat();
             if (this.onkoUhattuna(this.vuorossa.getKunkku().getX(), this.vuorossa.getKunkku().getY())) { //jos on edelleen uhattuna, palautetaan tilanne
-                this.lauta.teeTestiSiirto(vanhaX, vanhaY, this.vuorossa.getKunkku());
-                this.lauta.asetaNappula(vastustajaTalteen, x, y);
-
-                this.paivitaPelaajienNappulat();
+                teeSiirto = false;
 
             } else {
-                this.lauta.teeTestiSiirto(vanhaX, vanhaY, this.vuorossa.getKunkku());
-                this.lauta.asetaNappula(vastustajaTalteen, x, y);
+                teeSiirto = true;
 
-                this.paivitaPelaajienNappulat();
-
-                return true;
             }
+            this.lauta.teeTestiSiirto(vanhaX, vanhaY, nappula); //palauta tilanne
+            this.lauta.asetaNappula(vastustajaTalteen, x, y);
+
+            this.paivitaPelaajienNappulat();
+
         }
-        return false;
+        return teeSiirto;
 
     }
 
@@ -230,8 +228,10 @@ public class Peli {
             return false;
         }
 
-        if (!this.lauta.teeSiirto(x, y, this.aktiivinen)) {
+        if (!this.kokeileSiirtoa(x, y, this.aktiivinen)) {
             return false;
+        } else {
+            this.lauta.teeSiirto(x, y, aktiivinen);
         }
 
         if (this.vuorossa == this.valkoinen) {
@@ -242,7 +242,7 @@ public class Peli {
         this.paivitaPelaajienNappulat();
         this.aktiivinen = null;
         return true;
-        
+
     }
 
     public Pelaaja getVuorossa() {
