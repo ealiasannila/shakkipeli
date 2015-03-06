@@ -6,7 +6,7 @@
 package logiikka.nappulat;
 
 import static logiikka.nappulat.Maa.VALKOINEN;
-import logiikka.pelilauta.Pelilauta;
+import logiikka.peli.Pelilauta;
 
 /**
  *

@@ -5,7 +5,7 @@
  */
 package logiikka.nappulat;
 
-import logiikka.pelilauta.Pelilauta;
+import logiikka.peli.Pelilauta;
 
 /**
  *

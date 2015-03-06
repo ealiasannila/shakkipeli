@@ -1,5 +1,6 @@
 import logiikka.nappulat.Maa;
-import logiikka.pelilauta.Pelilauta;
+import logiikka.peli.Peli;
+import logiikka.peli.Pelilauta;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,24 +14,29 @@ import logiikka.pelilauta.Pelilauta;
 public class Main {
 
     public static void main(String args[]) {
-
-        Pelilauta lauta = new Pelilauta();
-        lauta.tulosta();
-        System.out.println(lauta.getMustaKunkku().onShakissa() + "musta");
-        System.out.println(lauta.getValkonenKunkku().onShakissa() + "valkoinen");
-
-        lauta.setAktiivinen(lauta.haeNappula(0, 0));
-        lauta.teeSiirto(0, 7);
-        System.out.println(lauta.getMustaKunkku().onShakissa() + "musta");
-        System.out.println(lauta.getValkonenKunkku().onShakissa() + "valkoinen");
-        lauta.tulosta();
-        System.out.println(lauta.getMustaKunkku().myosYmparoivatRuudutUhattuna());
-
-        lauta.setAktiivinen(lauta.haeNappula(7, 0));
-        lauta.teeSiirto(7, 6);
-        lauta.tulosta();
-        System.out.println(lauta.getMustaKunkku().myosYmparoivatRuudutUhattuna());
-
+        Peli peli = new Peli();
+        peli.tulosta();
+        System.out.println(peli.onShakissa());
+        System.out.println("-----------");
+        
+        peli.asetaAktiivinen(0,0);
+        peli.siirto(0, 7);
+        peli.tulosta();
+        System.out.println(peli.onShakissa());
+        System.out.println("-----------");
+        
+        peli.asetaAktiivinen(3,7);
+        peli.siirto(3, 6);
+        peli.tulosta();
+        System.out.println(peli.onShakissa());
+        
+        System.out.println("-----------");
+        peli.asetaAktiivinen(0,7);
+        peli.siirto(0, 6);
+        peli.tulosta();
+        System.out.println(peli.onShakissa());
+        
+        
         
     }
 
