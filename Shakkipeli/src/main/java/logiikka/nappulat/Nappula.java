@@ -26,28 +26,28 @@ public abstract class Nappula {
         this.getLauta().asetaNappula(this, x, y);
     }
 
-    public boolean onSallittuSiirto(int x, int y) {
+    public boolean kohdeLaudanUlkopuolella(int x, int y) {
+        return x < 0 || y < 0 || x > this.getLauta().getSize() - 1 || y > this.getLauta().getSize() - 1;
+    }
 
-        if (x < 0 || y < 0 || x > this.getLauta().getSize()-1 || y > this.getLauta().getSize()-1) {
-            System.out.println("SIIRTO LAUDAN ULKOPUOLELLE");
-            return false;
-        } else if (this.getX() == x && this.getY() == y) {
-            System.out.println("PITÄÄ LIIKKUA");
+    public boolean kohdeSamaKuinOmaSijainti(int x, int y) {     
+        return this.getX() == x && this.getY() == y;
+    }
+
+    public boolean onSallittuSiirto(int x, int y) {
+        if (this.kohdeLaudanUlkopuolella(x, y)) {
             return false;
         } else if (this.tarkistaOnkoKohdeOma(x, y)) { //Kohde ruudussa oma nappula
-            System.out.println("KOHDE OMA");
             return false;
         } else if (!this.tarkistaReitti(x, y)) { //Siirto ei sallittu
-            System.out.println("Jotain reitillä?");
             return false;
-
         }
-
         return true;
 
     }
 
     public abstract boolean tarkistaReitti(int x, int y);
+
     public abstract ArrayList<Ruutu> uhkausLinja(int x, int y);
 
     public boolean tarkistaOnkoKohdeOma(int x, int y) {
@@ -72,7 +72,7 @@ public abstract class Nappula {
         return this.getLauta().haeNappula(x, y) == null;
 
     }
-    
+
     public Maa getMaa() {
         return maa;
     }

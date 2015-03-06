@@ -28,40 +28,32 @@ public class Torni extends Nappula {
         }
     }
 
-    @Override
-    public boolean tarkistaReitti(int x, int y) {
-        if (this.getX() == x && this.getY() == y) {
-            //System.out.println("PITÄÄ LIIKKUA");
-            return false;
-        }
-        if (this.getX() != x && this.getY() != y) { //Ei sallittu tapa liikkua
-//            System.out.println("TORNI EI LIIKU NÄIN");
-            return false;
-        } else if (this.getX() < x) { //Tarkastetaan onko reitillä muita nappuloita
+    private boolean sallittuLiikkumisTapa(int x, int y) {
+        return !(this.getX() != x && this.getY() != y);
+    }
+
+    private boolean reitillaEiMuitaNappuloita(int x, int y) {
+        if (this.getX() < x) { //Tarkastetaan onko reitillä muita nappuloita
             for (int i = this.getX() + 1; i < x; i++) {
                 if (!tarkistaOnkoKohdeVapaa(i, y)) {
-                    //                   System.out.println("EI VAPAA REITILLÄ +X" + i);
                     return false;
                 }
             }
         } else if (this.getX() > x) {
             for (int i = this.getX() - 1; i > x; i--) {
                 if (!tarkistaOnkoKohdeVapaa(i, y)) {
-//                    System.out.println("EI VAPAA REITILLÄ -X" + i);
                     return false;
                 }
             }
         } else if (this.getY() < y) {
             for (int i = this.getY() + 1; i < y; i++) {
                 if (!tarkistaOnkoKohdeVapaa(x, i)) {
-//                    System.out.println("EI VAPAA REITILLÄ +Y" + i);
                     return false;
                 }
             }
         } else if (this.getY() > y) {
             for (int i = this.getY() - 1; i > y; i--) {
                 if (!tarkistaOnkoKohdeVapaa(x, i)) {
-                    //                   System.out.println("EI VAPAA REITILLÄ -Y" + i);
                     return false;
                 }
             }
@@ -70,12 +62,16 @@ public class Torni extends Nappula {
     }
 
     @Override
-    public ArrayList<Ruutu> uhkausLinja(int x, int y) {
-        if (!this.tarkistaReitti(x, y)) {
-            System.out.println("Ei uhkaa, mutta kysytään linjaa");
+    public boolean tarkistaReitti(int x, int y) {
+        return !(this.kohdeSamaKuinOmaSijainti(x, y) || !sallittuLiikkumisTapa(x, y) || !this.reitillaEiMuitaNappuloita(x, y));
+    }
+
+    @Override
+    public ArrayList<Ruutu> uhkausLinja(int x, int y) { //palauttaa ne ruudut joista uhkauksen voi blokata
+        if (!this.tarkistaReitti(x, y)) {//jos ei voi ylipäätänsä uhata ruutua ei silloin linjalla ole ruutuja
             return null;
         }
-        ArrayList<Ruutu> uhatutRuudut = new ArrayList<Ruutu>();
+        ArrayList<Ruutu> uhatutRuudut = new ArrayList<>();
         if (x < this.getX()) {
             for (int i = x; i < this.getX(); i++) {
                 uhatutRuudut.add(new Ruutu(i, y));

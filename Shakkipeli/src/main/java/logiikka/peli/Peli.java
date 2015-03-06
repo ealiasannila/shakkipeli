@@ -69,19 +69,14 @@ public class Peli {
     public Nappula uhkaavaNappula(int x, int y) {
         if (this.vuorossa.getMaa() == MUSTA) {
             return this.haeUhkaava(x, y, this.valkoinen.getNappulat());
-
         } else {
-
             return this.haeUhkaava(x, y, this.musta.getNappulat());
-
         }
     }
 
     public Nappula haeUhkaava(int x, int y, ArrayList<Nappula> vastustajanNappulat) {
         for (Nappula nappula : vastustajanNappulat) {
-
             if (nappula.tarkistaReitti(x, y)) {
-                //           System.out.println("returnaan: " + nappula.getX() + nappula.getY());
                 return nappula;
             }
         }
@@ -116,8 +111,6 @@ public class Peli {
     public boolean kunkkuEiVoiLiikkua() {  //MITEN TARKISTETAAN VOIKO MENNÄ VÄLIIN/SYÖDÄ? EHKÄ REITTIÄ KUKA UHKAA-mitkä ruudut välillä, voiko joku oma nappi mennä väliin?
         for (int y = Math.max(0, this.vuorossa.getKunkku().getY() - 1); y <= Math.min(lauta.getSize() - 1, this.vuorossa.getKunkku().getY() + 1); y++) {
             for (int x = Math.max(0, this.vuorossa.getKunkku().getX() - 1); x <= Math.min(lauta.getSize() - 1, this.vuorossa.getKunkku().getX() + 1); x++) {
-//                System.out.println("x: " + x + " y: " + y);
-
                 if (this.vuorossa.getKunkku().onSallittuSiirto(x, y)) { //jos kunkku voi liikkua tarkistetaan onko kunkku uhattuna liikkuimsen jälkeen (ettei pääse "itsensä taakse suojaan"
                     if (kokeileSiirtoa(x, y, this.vuorossa.getKunkku())) {
                         return false;
@@ -130,7 +123,6 @@ public class Peli {
     }
 
     public boolean kokeileSiirtoa(int x, int y, Nappula nappula) {
-        //   System.out.println("koikeilen siirtoa");
         int vanhaX = nappula.getX();
         int vanhaY = nappula.getY();
         Nappula vastustajaTalteen = this.lauta.haeNappula(x, y);
@@ -140,16 +132,12 @@ public class Peli {
             this.paivitaPelaajienNappulat();
             if (this.onkoUhattuna(this.vuorossa.getKunkku().getX(), this.vuorossa.getKunkku().getY())) { //jos on edelleen uhattuna, palautetaan tilanne
                 teeSiirto = false;
-
             } else {
                 teeSiirto = true;
-
             }
             this.lauta.teeTestiSiirto(vanhaX, vanhaY, nappula); //palauta tilanne
             this.lauta.asetaNappula(vastustajaTalteen, x, y);
-
             this.paivitaPelaajienNappulat();
-
         }
         return teeSiirto;
 
@@ -161,25 +149,20 @@ public class Peli {
 
     public boolean onMatissa() {
         if (!this.onShakissa()) {
-            //         System.out.println("Ei ole shakissa");
             return false;
         }
-        //    System.out.println("on shakissa");
         if (!this.kunkkuEiVoiLiikkua()) {
-            //         System.out.println("kunkku voi liikkua");
             return false;
         }
-        //    System.out.println("ei voi liikkua");
         if (this.uhkaakoUseampi(this.vuorossa.getKunkku().getX(), this.vuorossa.getKunkku().getY())) { //Onko tästä metodista mitään iloa kellekkään??
-            //        System.out.println("useampi uhkaa");
             return true;
         }
-
+        if (voiSyodaNappulan(this.uhkaavaNappula(this.vuorossa.getKunkku().getX(), this.vuorossa.getKunkku().getY()))) {
+            return false;
+        }
         if (this.voiBlokata()) {
             return false;
         }
-        //    System.out.println("ei voi blokata");
-
         return true;
     }
 
@@ -194,11 +177,8 @@ public class Peli {
 
     public boolean voiBlokata() {
         Nappula uhkaava = this.uhkaavaNappula(this.vuorossa.getKunkku().getX(), this.vuorossa.getKunkku().getY());
-        if (voiSyodaNappulan(uhkaava)) {
-            return true;
-        }
-        //Toteuta hevonen ja toteuta hevosta ei voi blokata
 
+        //Toteuta hevonen ja toteuta hevosta ei voi blokata
         ArrayList<Ruutu> uhatutRuudut = uhkaava.uhkausLinja(this.vuorossa.getKunkku().getX(), this.vuorossa.getKunkku().getY());
 
         for (Nappula oma : vuorossa.getNappulat()) {
@@ -212,7 +192,6 @@ public class Peli {
             }
         }
         return false;
-
     }
 
     public void uusiPeli() {
@@ -226,25 +205,28 @@ public class Peli {
         return lauta;
     }
 
-    public boolean siirto(int x, int y) {
-        if (this.aktiivinen == null) {
-            System.out.println("valitse nappula");
-            return false;
-        }
-
-        if (!this.kokeileSiirtoa(x, y, this.aktiivinen)) {
-            return false;
-        } else {
-            this.lauta.teeSiirto(x, y, aktiivinen);
-        }
-
+    public void vaihdaVuoroa() {
         if (this.vuorossa == this.valkoinen) {
             this.vuorossa = this.musta;
         } else {
             this.vuorossa = this.valkoinen;
         }
-        this.paivitaPelaajienNappulat();
         this.aktiivinen = null;
+    }
+
+    public boolean siirto(int x, int y) {
+        if (this.aktiivinen == null) {//pitää olla nappula valittuna
+            return false;
+        }
+
+        if (!this.kokeileSiirtoa(x, y, this.aktiivinen)) {//Jos siirto jättää kunkun uhatuksi ei sitä voi tehdä
+            return false;
+        }
+        this.lauta.teeSiirto(x, y, aktiivinen);
+        this.paivitaPelaajienNappulat();
+
+        this.vaihdaVuoroa();
+
         return true;
 
     }

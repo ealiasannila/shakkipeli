@@ -1,3 +1,5 @@
+import javax.swing.SwingUtilities;
+import kayttoliittyma.Kayttoliittyma;
 import kayttoliittyma.testiKayttis;
 import logiikka.nappulat.Maa;
 import logiikka.peli.Peli;
@@ -15,7 +17,7 @@ import logiikka.peli.Pelilauta;
 public class Main {
 
     public static void main(String args[]) {
-        new testiKayttis().pelaa();
+        SwingUtilities.invokeLater(new Kayttoliittyma());
         
     }
 

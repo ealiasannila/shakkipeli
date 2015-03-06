@@ -42,14 +42,11 @@ public class Pelilauta {
 
     public boolean teeSiirto(int x, int y, Nappula aktiivinen) { //Tarvitaanko enää kun kunkku ei itse testaa onko ruutu uhattu? 
 
-        if (!aktiivinen.onSallittuSiirto(x, y)) {
-            System.out.println("EI SALLITTU SIIRTO");
+        if (!aktiivinen.onSallittuSiirto(x, y)) {//tarkistetaan onko siirto sallittu
             return false;
         }
-
         this.asetaNappula(null, aktiivinen.getX(), aktiivinen.getY());
         this.asetaNappula(aktiivinen, x, y);
-
         return true;
 
     }
