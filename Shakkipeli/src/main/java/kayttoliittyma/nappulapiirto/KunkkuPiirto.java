@@ -24,10 +24,10 @@ public class KunkkuPiirto extends NappulaPiirto {
         BufferedImage kunkkuKuva = null;
         File kuva = null;
         if (maa == MUSTA) {
-            kuva = new File("src/main/java/kayttoliittyma/nappuloidenPiirto/nappuloidenKuvat/musta/kunkku.png");
+            kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/kunkku.png");
 
         } else {
-            kuva = new File("src/main/java/kayttoliittyma/nappuloidenPiirto/nappuloidenKuvat/valkoinen/kunkku.png");
+            kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/kunkku.png");
 
         }
 

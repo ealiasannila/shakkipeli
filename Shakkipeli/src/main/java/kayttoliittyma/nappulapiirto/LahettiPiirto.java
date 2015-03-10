@@ -25,10 +25,10 @@ public class LahettiPiirto extends NappulaPiirto {
         BufferedImage lahettiKuva = null;
         File kuva = null;
         if (maa == MUSTA) {
-            kuva = new File("src/main/java/kayttoliittyma/nappuloidenPiirto/nappuloidenKuvat/musta/lahetti.png");
+            kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/lahetti.png");
 
         } else {
-            kuva = new File("src/main/java/kayttoliittyma/nappuloidenPiirto/nappuloidenKuvat/valkoinen/lahetti.png");
+            kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/lahetti.png");
 
         }
 

@@ -24,10 +24,10 @@ public class RatsuPiirto extends NappulaPiirto {
         BufferedImage ratsuKuva = null;
         File kuva = null;
         if (maa == MUSTA) {
-            kuva = new File("src/main/java/kayttoliittyma/nappuloidenPiirto/nappuloidenKuvat/musta/ratsu.png");
+            kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/ratsu.png");
 
         } else {
-            kuva = new File("src/main/java/kayttoliittyma/nappuloidenPiirto/nappuloidenKuvat/valkoinen/ratsu.png");
+            kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/ratsu.png");
 
         }
 

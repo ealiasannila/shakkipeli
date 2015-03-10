@@ -24,10 +24,10 @@ public class SotilasPiirto extends NappulaPiirto {
         BufferedImage kuningatarKuva = null;
         File kuva = null;
         if (maa == MUSTA) {
-            kuva = new File("src/main/java/kayttoliittyma/nappuloidenPiirto/nappuloidenKuvat/musta/sotilas.png");
+            kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/sotilas.png");
 
         } else {
-            kuva = new File("src/main/java/kayttoliittyma/nappuloidenPiirto/nappuloidenKuvat/valkoinen/sotilas.png");
+            kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/sotilas.png");
 
         }
 

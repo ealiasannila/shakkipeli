@@ -11,12 +11,9 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import logiikka.nappulat.Kuningatar;
 import logiikka.nappulat.Kunkku;
 import logiikka.nappulat.Lahetti;
-import logiikka.nappulat.Maa;
 import static logiikka.nappulat.Maa.MUSTA;
 import static logiikka.nappulat.Maa.VALKOINEN;
 import logiikka.nappulat.Nappula;
@@ -116,13 +113,11 @@ public class Peli {
         return false;
     }
 
-    public boolean kunkkuEiVoiLiikkua() {  //MITEN TARKISTETAAN VOIKO MENNÄ VÄLIIN/SYÖDÄ? EHKÄ REITTIÄ KUKA UHKAA-mitkä ruudut välillä, voiko joku oma nappi mennä väliin?
+    public boolean kunkkuEiVoiLiikkua() {
         for (int y = Math.max(0, this.vuorossa.getKunkku().getY() - 1); y <= Math.min(lauta.getSize() - 1, this.vuorossa.getKunkku().getY() + 1); y++) {
             for (int x = Math.max(0, this.vuorossa.getKunkku().getX() - 1); x <= Math.min(lauta.getSize() - 1, this.vuorossa.getKunkku().getX() + 1); x++) {
-                if (this.vuorossa.getKunkku().onSallittuSiirto(x, y)) { //jos kunkku voi liikkua tarkistetaan onko kunkku uhattuna liikkuimsen jälkeen (ettei pääse "itsensä taakse suojaan"
-                    if (kokeileSiirtoa(x, y, this.vuorossa.getKunkku())) {//täytyykö erikseen kokeilla kun nyt joka siirto kokeilee?
-                        return false;
-                    }
+                if (kokeileSiirtoa(x, y, this.vuorossa.getKunkku())) {
+                    return false;
                 }
 
             }

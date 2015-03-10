@@ -29,10 +29,10 @@ public class TorniPiirto extends NappulaPiirto {
         BufferedImage torniKuva = null;
         File kuva = null;
         if (maa == MUSTA) {
-            kuva = new File("src/main/java/kayttoliittyma/nappuloidenPiirto/nappuloidenKuvat/musta/torni.png");
+            kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/torni.png");
 
         } else {
-            kuva = new File("src/main/java/kayttoliittyma/nappuloidenPiirto/nappuloidenKuvat/valkoinen/torni.png");
+            kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/torni.png");
 
         }
 
