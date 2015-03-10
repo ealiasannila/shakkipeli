@@ -6,7 +6,8 @@
 package logiikka.nappulat;
 
 import java.util.ArrayList;
-import kayttoliittyma.nappuloidenPiirto.KuningatarPiirto;
+import kayttoliittyma.nappulapiirto.KuningatarPiirto;
+import static logiikka.nappulat.Maa.VALKOINEN;
 import logiikka.peli.Pelilauta;
 import logiikka.peli.Ruutu;
 
@@ -23,9 +24,9 @@ public class Kuningatar extends Nappula {
 
     @Override
     protected boolean sallittuLiikkumisTapa(int x, int y) {
-        if(!(this.getX() != x && this.getY() != y)){
+        if (!(this.getX() != x && this.getY() != y)) {
             return true;
-        }else{
+        } else {
             return Math.abs(this.getX() - x) == Math.abs(this.getY() - y);
         }
     }
@@ -93,8 +94,6 @@ public class Kuningatar extends Nappula {
 
     }
 
-
-
     @Override
     public ArrayList<Ruutu> uhkausLinja(int x, int y) {
         if (!this.tarkistaReitti(x, y)) {//jos ei voi ylipäätänsä uhata ruutua ei silloin linjalla ole ruutuja
@@ -117,8 +116,7 @@ public class Kuningatar extends Nappula {
             for (int i = this.getY() + 1; i <= y; i++) {
                 uhatutRuudut.add(new Ruutu(x, i));
             }
-        }
-        else if (this.getX() < x && this.getY() < y) { //kohde yläoikealle
+        } else if (this.getX() < x && this.getY() < y) { //kohde yläoikealle
             int j = this.getY() + 1;
             for (int i = this.getX() + 1; i < x; i++) {
                 if (!tarkistaOnkoKohdeVapaa(i, j)) {
@@ -155,6 +153,14 @@ public class Kuningatar extends Nappula {
             }
         }
         return uhatutRuudut;
+    }
+
+    public String toString() {
+        if (this.getMaa() == VALKOINEN) {
+            return "q";
+        } else {
+            return "Q";
+        }
     }
 
 }

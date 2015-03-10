@@ -6,7 +6,7 @@
 package logiikka.nappulat;
 
 import java.util.ArrayList;
-import kayttoliittyma.nappuloidenPiirto.NappulaPiirto;
+import kayttoliittyma.nappulapiirto.NappulaPiirto;
 import logiikka.peli.Pelilauta;
 import logiikka.peli.Ruutu;
 
@@ -71,6 +71,7 @@ public abstract class Nappula {
     public void setEnsimmainenSiirto(boolean ensimmainenSiirto) {
         this.ensimmainenSiirto = ensimmainenSiirto;
     }
+
     public abstract ArrayList<Ruutu> uhkausLinja(int x, int y);
 
     public boolean tarkistaOnkoKohdeOma(int x, int y) {

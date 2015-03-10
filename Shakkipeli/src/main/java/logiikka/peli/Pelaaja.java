@@ -10,12 +10,12 @@ import logiikka.nappulat.Kunkku;
 import logiikka.nappulat.Maa;
 import logiikka.nappulat.Nappula;
 
-
 /**
  *
  * @author elias
  */
 public class Pelaaja {
+
     private Kunkku kunkku;
     private Maa maa;
 
@@ -23,8 +23,6 @@ public class Pelaaja {
         this.maa = maa;
         this.nappulat = new ArrayList<Nappula>();
     }
-    
-    
 
     public Maa getMaa() {
         return maa;
@@ -50,8 +48,8 @@ public class Pelaaja {
         this.nappulat = nappulat;
     }
     private ArrayList<Nappula> nappulat;
-    
-    public String toString(){
+
+    public String toString() {
         return this.getMaa().toString();
     }
 }

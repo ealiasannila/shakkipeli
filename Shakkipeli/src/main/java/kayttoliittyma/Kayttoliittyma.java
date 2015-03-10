@@ -10,8 +10,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
-import kayttoliittyma.kuuntelijat.NappiKuuntelija;
-import kayttoliittyma.nappuloidenPiirto.TorniPiirto;
+import kayttoliittyma.kuuntelijat.LataaPeliKuuntelija;
+import kayttoliittyma.kuuntelijat.TallennaPeliKuuntelija;
+import kayttoliittyma.kuuntelijat.UusiPeliKuuntelija;
+import kayttoliittyma.nappulapiirto.TorniPiirto;
 import logiikka.peli.Peli;
 
 public class Kayttoliittyma implements Runnable {
@@ -25,14 +27,14 @@ public class Kayttoliittyma implements Runnable {
         this.peli = new Peli();
         this.peliPiirto = new PeliPiirto(60, this.peli);
         this.hiiriKuuntelija = new LautaKuuntelija(this.peli, this.peliPiirto);
- 
+
     }
 
     @Override
     public void run() {
 
         frame = new JFrame("Shakkipeli");
-        frame.setPreferredSize(new Dimension(this.peliPiirto.getSivunPituus()*8+10, this.peliPiirto.getSivunPituus()*8+55));
+        frame.setPreferredSize(new Dimension(this.peliPiirto.getSivunPituus() * 8 + 10, this.peliPiirto.getSivunPituus() * 8 + 55));
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,11 +57,19 @@ public class Kayttoliittyma implements Runnable {
 
     private JPanel luoValikkoNapit() {
         JPanel panel = new JPanel(new GridLayout(1, 3));
+
         JButton uusiPeli = new JButton("Uusi peli!");
-        uusiPeli.addActionListener(new NappiKuuntelija(this.peli, this.peliPiirto));
+        uusiPeli.addActionListener(new UusiPeliKuuntelija(this.peli, this.peliPiirto));
         panel.add(uusiPeli);
-        panel.add(new JButton("Joku muu nappula"));
-        panel.add(new JButton("Lisää kivoja nappei"));
+
+        JButton lataaPeli = new JButton("Lataa peli!");
+        lataaPeli.addActionListener(new LataaPeliKuuntelija(this.peli, this.peliPiirto));
+        panel.add(lataaPeli);
+
+        JButton tallennaPeli = new JButton("Tallenna peli!");
+        tallennaPeli.addActionListener(new TallennaPeliKuuntelija(this.peli, this.peliPiirto));
+        panel.add(tallennaPeli);
+
         return panel;
     }
 

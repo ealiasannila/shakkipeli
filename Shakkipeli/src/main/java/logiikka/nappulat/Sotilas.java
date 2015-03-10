@@ -6,7 +6,7 @@
 package logiikka.nappulat;
 
 import java.util.ArrayList;
-import kayttoliittyma.nappuloidenPiirto.SotilasPiirto;
+import kayttoliittyma.nappulapiirto.SotilasPiirto;
 import static logiikka.nappulat.Maa.MUSTA;
 import static logiikka.nappulat.Maa.VALKOINEN;
 import logiikka.peli.Pelilauta;
@@ -91,6 +91,14 @@ public class Sotilas extends Nappula {
         ArrayList<Ruutu> uhatutRuudut = new ArrayList<Ruutu>();
         uhatutRuudut.add(new Ruutu(x, y));
         return uhatutRuudut;
+    }
+
+    public String toString() {
+        if (this.getMaa() == VALKOINEN) {
+            return "s";
+        } else {
+            return "S";
+        }
     }
 
 }

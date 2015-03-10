@@ -10,5 +10,6 @@ package logiikka.nappulat;
  * @author elias
  */
 public enum Maa {
+
     VALKOINEN, MUSTA
 }

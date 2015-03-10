@@ -5,4 +5,4 @@
 
 6.3 9h ohjelmointia, testien aloittaminen
 
-10.3 6h käyttöliittymän tekoa, loput nappulat, tallennus
+10.3 9h käyttöliittymän tekoa, loput nappulat, tallennus

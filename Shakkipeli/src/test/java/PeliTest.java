@@ -89,7 +89,7 @@ public class PeliTest {
         this.peli.siirto(4, 0);
         this.peli.asetaAktiivinen(0, 7);
         this.peli.siirto(1, 7);
-        
+
         this.peli.asetaAktiivinen(0, 0);
         this.peli.siirto(3, 0);
         this.peli.asetaAktiivinen(3, 7);
@@ -106,310 +106,310 @@ public class PeliTest {
     }
 
     @Test
-    public void KertooOikeinUhataankoRuutuaKunUhataan(){
+    public void KertooOikeinUhataankoRuutuaKunUhataan() {
         assertEquals(true, this.peli.onkoUhattuna(0, 0));
-        
+
     }
-    
+
     @Test
-    public void KertooOikeinUhataankoRuutuaKunEiUhata(){
+    public void KertooOikeinUhataankoRuutuaKunEiUhata() {
         assertEquals(false, this.peli.onkoUhattuna(3, 0));
-        
+
     }
-    
+
     @Test
-    public void KertooOikeinKukaUhkaaKunUhataan(){
+    public void KertooOikeinKukaUhkaaKunUhataan() {
         assertEquals(peli.getLauta().haeNappula(0, 7), peli.uhkaavaNappula(0, 0));
     }
-    
+
     @Test
-    public void KertooOikeinKukaUhkaaKunEiUhata(){
+    public void KertooOikeinKukaUhkaaKunEiUhata() {
         assertEquals(null, peli.uhkaavaNappula(3, 3));
     }
+
     @Test
-    
-    public void KertooOikeinUhkaakoUseampiKunKukaanEiUhkaa(){
+
+    public void KertooOikeinUhkaakoUseampiKunKukaanEiUhkaa() {
         assertEquals(false, peli.uhkaakoUseampi(3, 3));
     }
-    
+
     @Test
-    public void KertooOikeinUhkaakoUseampiKunYksiUhkaa(){
+    public void KertooOikeinUhkaakoUseampiKunYksiUhkaa() {
         assertEquals(false, peli.uhkaakoUseampi(0, 0));
     }
-    
+
     @Test
-    public void KertooOikeinUhkaakoUseampiKunKaksiUhkaa(){
+    public void KertooOikeinUhkaakoUseampiKunKaksiUhkaa() {
         peli.asetaAktiivinen(0, 0);
         peli.siirto(0, 3);
-        
+
         peli.asetaAktiivinen(7, 7);
         peli.siirto(7, 3);
-        
+
         assertEquals(true, peli.uhkaakoUseampi(0, 3));
     }
-    
+
     @Test
-    public void KunkkuVoiLiikkua(){
+    public void KunkkuVoiLiikkua() {
         assertEquals(false, peli.kunkkuEiVoiLiikkua());
     }
-    
+
     @Test
-    public void KunkkuEiVoiLiikkua(){
+    public void KunkkuEiVoiLiikkua() {
         peli.asetaAktiivinen(0, 0);
         peli.siirto(2, 0);
-        
+
         peli.asetaAktiivinen(7, 7);
         peli.siirto(7, 1);
-        
+
         peli.asetaAktiivinen(7, 0);
         peli.siirto(4, 0);
-        
+
         peli.asetaAktiivinen(7, 1);
         peli.siirto(7, 7);
-        
+
         peli.asetaAktiivinen(3, 0);
         peli.siirto(3, 1);
-        
+
         peli.asetaAktiivinen(7, 7);
         peli.siirto(7, 1);
-        
+
         peli.asetaAktiivinen(3, 1);
         peli.siirto(3, 2);
-        
-         peli.asetaAktiivinen(7, 1);
+
+        peli.asetaAktiivinen(7, 1);
         peli.siirto(7, 7);
-        
+
         peli.asetaAktiivinen(3, 2);
         peli.siirto(3, 3);
-        
+
         peli.asetaAktiivinen(7, 7);
         peli.siirto(7, 1);
-        
+
         peli.asetaAktiivinen(3, 3);
         peli.siirto(3, 4);
-         peli.asetaAktiivinen(7, 1);
+        peli.asetaAktiivinen(7, 1);
         peli.siirto(7, 7);
-        
+
         peli.asetaAktiivinen(3, 4);
         peli.siirto(3, 5);
-        
+
         assertEquals(true, peli.kunkkuEiVoiLiikkua());
-        
+
         peli.asetaAktiivinen(7, 7);
         peli.siirto(7, 1);
-        
+
         assertEquals(false, peli.kunkkuEiVoiLiikkua());
-        
+
     }
-    
-    
+
     @Test
-    public void KunMattiNiinMatti(){
+    public void KunMattiNiinMatti() {
         peli.asetaAktiivinen(0, 0);
         peli.siirto(2, 0);
-        
+
         peli.asetaAktiivinen(7, 7);
         peli.siirto(7, 1);
-        
+
         peli.asetaAktiivinen(7, 0);
         peli.siirto(5, 0);
-        
+
         peli.asetaAktiivinen(7, 1);
         peli.siirto(7, 7);
-        
+
         peli.asetaAktiivinen(3, 0);
         peli.siirto(3, 1);
-        
+
         peli.asetaAktiivinen(7, 7);
         peli.siirto(7, 1);
-        
+
         peli.asetaAktiivinen(3, 1);
         peli.siirto(3, 2);
-        
-         peli.asetaAktiivinen(7, 1);
+
+        peli.asetaAktiivinen(7, 1);
         peli.siirto(7, 7);
-        
+
         peli.asetaAktiivinen(3, 2);
         peli.siirto(3, 3);
-        
+
         peli.asetaAktiivinen(7, 7);
         peli.siirto(7, 1);
-        
+
         peli.asetaAktiivinen(3, 3);
         peli.siirto(3, 4);
-         peli.asetaAktiivinen(7, 1);
+        peli.asetaAktiivinen(7, 1);
         peli.siirto(7, 7);
-        
+
         peli.asetaAktiivinen(3, 4);
         peli.siirto(3, 5);
-                
+
         peli.asetaAktiivinen(7, 7);
         peli.siirto(7, 1);
-        
+
         peli.asetaAktiivinen(5, 0);
         peli.siirto(5, 7);
-        
-        peli.tulosta();
+
+//        peli.tulosta();
         assertEquals(true, peli.onMatissa());
-        
+
     }
-    
+
     @Test
-    public void KunEiMattiNiinEiMatti(){
+    public void KunEiMattiNiinEiMatti() {
         peli.asetaAktiivinen(0, 0);
         peli.siirto(2, 0);
-        
+
         peli.asetaAktiivinen(7, 7);
         peli.siirto(7, 1);
-        
+
         peli.asetaAktiivinen(7, 0);
         peli.siirto(4, 0);
-        
+
         peli.asetaAktiivinen(7, 1);
         peli.siirto(7, 7);
-        
+
         peli.asetaAktiivinen(3, 0);
         peli.siirto(3, 1);
-        
+
         peli.asetaAktiivinen(7, 7);
         peli.siirto(7, 1);
-        
+
         peli.asetaAktiivinen(3, 1);
         peli.siirto(3, 2);
-        
-         peli.asetaAktiivinen(7, 1);
+
+        peli.asetaAktiivinen(7, 1);
         peli.siirto(7, 7);
-        
+
         peli.asetaAktiivinen(3, 2);
         peli.siirto(3, 3);
-        
+
         peli.asetaAktiivinen(7, 7);
         peli.siirto(7, 1);
-        
+
         peli.asetaAktiivinen(3, 3);
         peli.siirto(3, 4);
-         peli.asetaAktiivinen(7, 1);
+        peli.asetaAktiivinen(7, 1);
         peli.siirto(7, 7);
-        
+
         peli.asetaAktiivinen(3, 4);
         peli.siirto(3, 5);
-                
+
         peli.asetaAktiivinen(7, 7);
         peli.siirto(7, 1);
-        
+
         peli.asetaAktiivinen(4, 0);
         peli.siirto(4, 7);
-        
+
         //peli.tulosta();
         assertEquals(false, peli.onMatissa());
-        
+
     }
-    
+
     @Test
-    public void KunVoiBlokatNiinEiMatti(){
+    public void KunVoiBlokatNiinEiMatti() {
         peli.asetaAktiivinen(0, 0);
         peli.siirto(2, 0);
-        
+
         peli.asetaAktiivinen(7, 7);
         peli.siirto(7, 1);
-        
+
         peli.asetaAktiivinen(7, 0);
         peli.siirto(5, 0);
-        
+
         peli.asetaAktiivinen(7, 1);
         peli.siirto(7, 7);
-        
+
         peli.asetaAktiivinen(3, 0);
         peli.siirto(3, 1);
-        
+
         peli.asetaAktiivinen(7, 7);
         peli.siirto(7, 1);
-        
+
         peli.asetaAktiivinen(3, 1);
         peli.siirto(3, 2);
-        
-         peli.asetaAktiivinen(7, 1);
+
+        peli.asetaAktiivinen(7, 1);
         peli.siirto(7, 7);
-        
+
         peli.asetaAktiivinen(3, 2);
         peli.siirto(3, 3);
-        
+
         peli.asetaAktiivinen(7, 7);
         peli.siirto(7, 1);
-        
+
         peli.asetaAktiivinen(3, 3);
         peli.siirto(3, 4);
-         peli.asetaAktiivinen(7, 1);
+        peli.asetaAktiivinen(7, 1);
         peli.siirto(4, 1);
-        
+
         peli.asetaAktiivinen(3, 4);
         peli.siirto(3, 5);
-                
+
         peli.asetaAktiivinen(0, 7);
         peli.siirto(0, 1);
-        
+
         peli.asetaAktiivinen(5, 0);
         peli.siirto(5, 7);
-        
-      //  peli.tulosta();
+
+        //  peli.tulosta();
         assertEquals(true, peli.voiBlokata());
         assertEquals(false, peli.onMatissa());
-        
+
     }
-    
-     @Test
-    public void KunVoiSyodaNiinEiMatti(){
+
+    @Test
+    public void KunVoiSyodaNiinEiMatti() {
         peli.asetaAktiivinen(0, 0);
         peli.siirto(2, 0);
-        
+
         peli.asetaAktiivinen(7, 7);
         peli.siirto(7, 1);
-        
+
         peli.asetaAktiivinen(7, 0);
         peli.siirto(5, 0);
-        
+
         peli.asetaAktiivinen(7, 1);
         peli.siirto(7, 7);
-        
+
         peli.asetaAktiivinen(3, 0);
         peli.siirto(3, 1);
-        
+
         peli.asetaAktiivinen(7, 7);
         peli.siirto(7, 1);
-        
+
         peli.asetaAktiivinen(3, 1);
         peli.siirto(3, 2);
-        
-         peli.asetaAktiivinen(7, 1);
+
+        peli.asetaAktiivinen(7, 1);
         peli.siirto(7, 7);
-        
+
         peli.asetaAktiivinen(3, 2);
         peli.siirto(3, 3);
-        
+
         peli.asetaAktiivinen(7, 7);
         peli.siirto(7, 1);
-        
+
         peli.asetaAktiivinen(3, 3);
         peli.siirto(3, 4);
 
         peli.asetaAktiivinen(7, 1);
         peli.siirto(7, 7);
-        
+
         peli.asetaAktiivinen(3, 4);
         peli.siirto(3, 5);
-                
+
         peli.asetaAktiivinen(0, 7);
         peli.siirto(0, 1);
-        
+
         peli.asetaAktiivinen(5, 0);
         peli.siirto(5, 7);
-        
-        peli.tulosta();
+
+//        peli.tulosta();
         assertEquals(true, peli.voiSyodaNappulan(peli.uhkaavaNappula(3, 7)));
         assertEquals(false, peli.onMatissa());
-        
+
     }
-    
+
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //

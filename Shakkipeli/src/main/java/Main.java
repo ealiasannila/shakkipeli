@@ -1,6 +1,6 @@
 import javax.swing.SwingUtilities;
 import kayttoliittyma.Kayttoliittyma;
-import kayttoliittyma.testiKayttis;
+import kayttoliittyma.TestiKayttis;
 import logiikka.nappulat.Maa;
 import logiikka.peli.Peli;
 import logiikka.peli.Pelilauta;

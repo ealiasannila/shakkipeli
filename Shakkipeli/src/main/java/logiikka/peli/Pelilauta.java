@@ -51,25 +51,26 @@ public class Pelilauta {
 
     }
 
-    public void teeTestiSiirto(int x, int y, Nappula aktiivinen) {
+    public void teeSiirtoIlmanTarkistusta(int x, int y, Nappula aktiivinen) {
 
         this.asetaNappula(null, aktiivinen.getX(), aktiivinen.getY());
         this.asetaNappula(aktiivinen, x, y);
 
     }
 
-    public void tulosta() {
+    public String toString() {
+        StringBuilder tuloste = new StringBuilder();
         for (int y = this.getSize() - 1; y >= 0; y--) {
             for (int x = 0; x < this.getSize(); x++) {
                 if (this.haeNappula(x, y) == null) {
-                    System.out.print("[ ]");
+                    tuloste.append("o");
                 } else {
-                    System.out.print(this.haeNappula(x, y));
+                    tuloste.append(this.haeNappula(x, y));
                 }
             }
-            System.out.println("");
+            tuloste.append("\n");
         }
-        System.out.println("    -    -    - -  ");
+        return tuloste.toString();
     }
 
 }

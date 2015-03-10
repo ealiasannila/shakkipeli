@@ -6,7 +6,8 @@
 package logiikka.nappulat;
 
 import java.util.ArrayList;
-import kayttoliittyma.nappuloidenPiirto.RatsuPiirto;
+import kayttoliittyma.nappulapiirto.RatsuPiirto;
+import static logiikka.nappulat.Maa.VALKOINEN;
 import logiikka.peli.Pelilauta;
 import logiikka.peli.Ruutu;
 
@@ -52,4 +53,11 @@ public class Ratsu extends Nappula {
         return true; //ratsu loikkii
     }
 
+    public String toString() {
+        if (this.getMaa() == VALKOINEN) {
+            return "r";
+        } else {
+            return "R";
+        }
+    }
 }

@@ -6,8 +6,8 @@
 package logiikka.nappulat;
 
 import java.util.ArrayList;
-import kayttoliittyma.nappuloidenPiirto.KunkkuPiirto;
-import kayttoliittyma.nappuloidenPiirto.TorniPiirto;
+import kayttoliittyma.nappulapiirto.KunkkuPiirto;
+import kayttoliittyma.nappulapiirto.TorniPiirto;
 import static logiikka.nappulat.Maa.VALKOINEN;
 import logiikka.peli.Peli;
 import logiikka.peli.Pelilauta;
@@ -23,14 +23,6 @@ public class Kunkku extends Nappula {
         super(maa, x, y, pelilauta);
         this.piirto = new KunkkuPiirto();
 
-    }
-
-    public String toString() {
-        if (this.getMaa() == VALKOINEN) {
-            return "[k]";
-        } else {
-            return "[K]";
-        }
     }
 
     @Override
@@ -56,7 +48,7 @@ public class Kunkku extends Nappula {
             //    System.out.println("LIIAN KAUKANA");
             return false;
         }
-    return true;
+        return true;
     }
 
     @Override
@@ -64,4 +56,11 @@ public class Kunkku extends Nappula {
         return true; //kunkku liikkuu vain yhden
     }
 
+    public String toString() {
+        if (this.getMaa() == VALKOINEN) {
+            return "k";
+        } else {
+            return "K";
+        }
+    }
 }

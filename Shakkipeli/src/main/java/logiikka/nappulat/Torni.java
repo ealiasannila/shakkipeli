@@ -6,7 +6,7 @@
 package logiikka.nappulat;
 
 import java.util.ArrayList;
-import kayttoliittyma.nappuloidenPiirto.TorniPiirto;
+import kayttoliittyma.nappulapiirto.TorniPiirto;
 import static logiikka.nappulat.Maa.VALKOINEN;
 import logiikka.peli.Pelilauta;
 import logiikka.peli.Ruutu;
@@ -24,9 +24,9 @@ public class Torni extends Nappula {
 
     public String toString() {
         if (this.getMaa() == VALKOINEN) {
-            return "[t]";
+            return "t";
         } else {
-            return "[T]";
+            return "T";
         }
     }
 
@@ -62,7 +62,6 @@ public class Torni extends Nappula {
         }
         return true;
     }
-
 
     @Override
     public ArrayList<Ruutu> uhkausLinja(int x, int y) { //palauttaa ne ruudut joista uhkauksen voi blokata

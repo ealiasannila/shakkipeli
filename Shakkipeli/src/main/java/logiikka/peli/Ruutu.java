@@ -35,14 +35,13 @@ public class Ruutu {
         this.y = y;
     }
 
-    public String toString(){
-        return "["+this.x +","+this.y+"]";
+    public String toString() {
+        return "[" + this.x + "," + this.y + "]";
     }
- 
 
     @Override
     public int hashCode() {
-        return this.x*10+this.y;
+        return this.x * 10 + this.y;
     }
 
     @Override

@@ -6,7 +6,8 @@
 package logiikka.nappulat;
 
 import java.util.ArrayList;
-import kayttoliittyma.nappuloidenPiirto.LahettiPiirto;
+import kayttoliittyma.nappulapiirto.LahettiPiirto;
+import static logiikka.nappulat.Maa.VALKOINEN;
 import logiikka.peli.Pelilauta;
 import logiikka.peli.Ruutu;
 
@@ -66,8 +67,6 @@ public class Lahetti extends Nappula {
 
     }
 
-
-
     @Override
     public ArrayList<Ruutu> uhkausLinja(int x, int y) {
         if (!this.tarkistaReitti(x, y)) {//jos ei voi ylipäätänsä uhata ruutua ei silloin linjalla ole ruutuja
@@ -112,6 +111,14 @@ public class Lahetti extends Nappula {
             }
         }
         return uhatutRuudut;
+    }
+
+    public String toString() {
+        if (this.getMaa() == VALKOINEN) {
+            return "l";
+        } else {
+            return "L";
+        }
     }
 
 }

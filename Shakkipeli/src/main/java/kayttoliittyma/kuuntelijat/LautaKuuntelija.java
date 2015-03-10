@@ -23,12 +23,10 @@ public class LautaKuuntelija extends Kuuntelija implements MouseListener {
         super(peli, peliPiirto);
     }
 
-
-
     @Override
     public void mouseClicked(MouseEvent me) {
         int x = me.getX() / this.peliPiirto.getSivunPituus();
-        int y = 7-(me.getY() / this.peliPiirto.getSivunPituus());
+        int y = 7 - (me.getY() / this.peliPiirto.getSivunPituus());
 
         if (x < 0 || x > 7 || y < 0 || y > 7) {
             System.out.println("Laudan ulkopuolelta");
@@ -42,7 +40,6 @@ public class LautaKuuntelija extends Kuuntelija implements MouseListener {
         }
         this.peli.siirto(x, y);
         this.peliPiirto.repaint();
-        
 
     }
 
