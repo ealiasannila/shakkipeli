@@ -6,10 +6,14 @@
 package logiikka.peli;
 
 import java.util.ArrayList;
+import logiikka.nappulat.Kuningatar;
 import logiikka.nappulat.Kunkku;
+import logiikka.nappulat.Lahetti;
 import static logiikka.nappulat.Maa.MUSTA;
 import static logiikka.nappulat.Maa.VALKOINEN;
 import logiikka.nappulat.Nappula;
+import logiikka.nappulat.Ratsu;
+import logiikka.nappulat.Sotilas;
 import logiikka.nappulat.Torni;
 
 /**
@@ -37,18 +41,39 @@ public class Peli {
     public Pelaaja getValkoinen() {
         return valkoinen;
     }
-    
 
     private void alkuAsetelma() {
         //valkoiset:
         new Torni(VALKOINEN, 0, 0, this.lauta);
         new Torni(VALKOINEN, 7, 0, this.lauta);
+        new Ratsu(VALKOINEN, 6, 0, this.lauta);
+        new Ratsu(VALKOINEN, 1, 0, this.lauta);
+        new Lahetti(VALKOINEN, 2, 0, this.lauta);
+        new Lahetti(VALKOINEN, 5, 0, this.lauta);
+        new Kuningatar(VALKOINEN, 4, 0, this.lauta);
+
         this.valkoinen.setKunkku(new Kunkku(VALKOINEN, 3, 0, this.lauta));
+        
+        for (int i = 0; i < 8; i++) {
+            new Sotilas(VALKOINEN, i, 1, this.lauta);
+        }
 
         //mustat:
-        this.musta.setKunkku(new Kunkku(MUSTA, 3, 7, this.lauta));
+        //new Kuningatar(MUSTA, 4, 7, this.lauta);
+        new Lahetti(MUSTA, 2, 7, this.lauta);
+        new Lahetti(MUSTA, 5, 7, this.lauta);
+        new Ratsu(MUSTA, 6, 7, this.lauta);
+        new Ratsu(MUSTA, 1, 7, this.lauta);
         new Torni(MUSTA, 7, 7, this.lauta);
         new Torni(MUSTA, 0, 7, this.lauta);
+
+        this.musta.setKunkku(new Kunkku(MUSTA, 3, 7, this.lauta));
+        
+        
+        for (int i = 0; i < 8; i++) {
+            new Sotilas(MUSTA, i, 6, this.lauta);
+        }
+
     }
 
     public void paivitaPelaajienNappulat() {
@@ -178,6 +203,11 @@ public class Peli {
     public boolean voiSyodaNappulan(Nappula nappula) {
         for (Nappula oma : vuorossa.getNappulat()) {
             if (oma.onSallittuSiirto(nappula.getX(), nappula.getY())) {
+                if(oma.equals(vuorossa.getKunkku())){
+                    if(this.onkoUhattuna(nappula.getX(), nappula.getY())){
+                        continue;
+                    }
+                }
                 return true;
             }
         }
@@ -232,10 +262,13 @@ public class Peli {
             return false;
         }
         this.lauta.teeSiirto(x, y, aktiivinen);
+        
+        this.aktiivinen.setEnsimmainenSiirto(false);
         this.paivitaPelaajienNappulat();
 
         this.vaihdaVuoroa();
-
+        
+        
         return true;
 
     }

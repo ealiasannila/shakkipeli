@@ -16,6 +16,8 @@ import logiikka.peli.Ruutu;
  */
 public abstract class Nappula {
 
+    private boolean ensimmainenSiirto;
+
     protected NappulaPiirto piirto;
     private Maa maa;
     private Pelilauta lauta;
@@ -26,18 +28,27 @@ public abstract class Nappula {
         this.maa = maa;
         this.lauta = lauta;
         this.getLauta().asetaNappula(this, x, y);
-        
+        this.ensimmainenSiirto = true;
+
+    }
+
+    public boolean onEnsimmainenSiirto() {
+        return ensimmainenSiirto;
     }
 
     public NappulaPiirto getPiirto() {
         return piirto;
     }
 
+    protected abstract boolean sallittuLiikkumisTapa(int x, int y);
+
+    protected abstract boolean reitillaEiMuitaNappuloita(int x, int y);
+
     public boolean kohdeLaudanUlkopuolella(int x, int y) {
         return x < 0 || y < 0 || x > this.getLauta().getSize() - 1 || y > this.getLauta().getSize() - 1;
     }
 
-    public boolean kohdeSamaKuinOmaSijainti(int x, int y) {     
+    public boolean kohdeSamaKuinOmaSijainti(int x, int y) {
         return this.getX() == x && this.getY() == y;
     }
 
@@ -53,8 +64,13 @@ public abstract class Nappula {
 
     }
 
-    public abstract boolean tarkistaReitti(int x, int y);
+    public boolean tarkistaReitti(int x, int y) {
+        return !(this.kohdeSamaKuinOmaSijainti(x, y) || !sallittuLiikkumisTapa(x, y) || !this.reitillaEiMuitaNappuloita(x, y));
+    }
 
+    public void setEnsimmainenSiirto(boolean ensimmainenSiirto) {
+        this.ensimmainenSiirto = ensimmainenSiirto;
+    }
     public abstract ArrayList<Ruutu> uhkausLinja(int x, int y);
 
     public boolean tarkistaOnkoKohdeOma(int x, int y) {

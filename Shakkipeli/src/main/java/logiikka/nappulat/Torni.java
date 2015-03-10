@@ -30,11 +30,11 @@ public class Torni extends Nappula {
         }
     }
 
-    private boolean sallittuLiikkumisTapa(int x, int y) {
+    protected boolean sallittuLiikkumisTapa(int x, int y) {
         return !(this.getX() != x && this.getY() != y);
     }
 
-    private boolean reitillaEiMuitaNappuloita(int x, int y) {
+    protected boolean reitillaEiMuitaNappuloita(int x, int y) {
         if (this.getX() < x) { //Tarkastetaan onko reitillä muita nappuloita
             for (int i = this.getX() + 1; i < x; i++) {
                 if (!tarkistaOnkoKohdeVapaa(i, y)) {
@@ -63,10 +63,6 @@ public class Torni extends Nappula {
         return true;
     }
 
-    @Override
-    public boolean tarkistaReitti(int x, int y) {
-        return !(this.kohdeSamaKuinOmaSijainti(x, y) || !sallittuLiikkumisTapa(x, y) || !this.reitillaEiMuitaNappuloita(x, y));
-    }
 
     @Override
     public ArrayList<Ruutu> uhkausLinja(int x, int y) { //palauttaa ne ruudut joista uhkauksen voi blokata

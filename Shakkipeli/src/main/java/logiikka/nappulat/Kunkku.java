@@ -19,11 +19,10 @@ import logiikka.peli.Ruutu;
  */
 public class Kunkku extends Nappula {
 
- 
     public Kunkku(Maa maa, int x, int y, Pelilauta pelilauta) {
         super(maa, x, y, pelilauta);
         this.piirto = new KunkkuPiirto();
- 
+
     }
 
     public String toString() {
@@ -37,12 +36,7 @@ public class Kunkku extends Nappula {
     @Override
     public boolean tarkistaReitti(int x, int y) {
 
-        if (Math.abs(this.getX() - x) > 1 || Math.abs(this.getY() - y) > 1) {
-            //    System.out.println("LIIAN KAUKANA");
-            return false;
-        }
-
-        return true;
+        return this.sallittuLiikkumisTapa(x, y);
     }
 
     @Override
@@ -54,6 +48,20 @@ public class Kunkku extends Nappula {
         ArrayList<Ruutu> uhatutRuudut = new ArrayList<Ruutu>();
         uhatutRuudut.add(new Ruutu(x, y));
         return uhatutRuudut;
+    }
+
+    @Override
+    protected boolean sallittuLiikkumisTapa(int x, int y) {
+        if (Math.abs(this.getX() - x) > 1 || Math.abs(this.getY() - y) > 1) {
+            //    System.out.println("LIIAN KAUKANA");
+            return false;
+        }
+    return true;
+    }
+
+    @Override
+    protected boolean reitillaEiMuitaNappuloita(int x, int y) {
+        return true; //kunkku liikkuu vain yhden
     }
 
 }

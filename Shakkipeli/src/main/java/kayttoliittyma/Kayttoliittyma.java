@@ -1,5 +1,6 @@
 package kayttoliittyma;
 
+import kayttoliittyma.kuuntelijat.LautaKuuntelija;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -9,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+import kayttoliittyma.kuuntelijat.NappiKuuntelija;
 import kayttoliittyma.nappuloidenPiirto.TorniPiirto;
 import logiikka.peli.Peli;
 
@@ -30,7 +32,7 @@ public class Kayttoliittyma implements Runnable {
     public void run() {
 
         frame = new JFrame("Shakkipeli");
-        frame.setPreferredSize(new Dimension(600, 600));
+        frame.setPreferredSize(new Dimension(this.peliPiirto.getSivunPituus()*8+10, this.peliPiirto.getSivunPituus()*8+55));
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,7 +55,9 @@ public class Kayttoliittyma implements Runnable {
 
     private JPanel luoValikkoNapit() {
         JPanel panel = new JPanel(new GridLayout(1, 3));
-        panel.add(new JButton("Aloita peli!"));
+        JButton uusiPeli = new JButton("Uusi peli!");
+        uusiPeli.addActionListener(new NappiKuuntelija(this.peli, this.peliPiirto));
+        panel.add(uusiPeli);
         panel.add(new JButton("Joku muu nappula"));
         panel.add(new JButton("Lisää kivoja nappei"));
         return panel;

@@ -1,1 +1,8 @@
 1. Muuta tulosta() toStringiksi, voi hyödyntää testauksessa tarkistamaan onko laudan tilanne muuttunut
+2. Tee loput nappulat
+3. Tornitus
+4. Pelin tallennus (tarvii tostringin);
+5. Pelin lataus
+6. nappulakuvat
+7. skaalautuva lauta
+

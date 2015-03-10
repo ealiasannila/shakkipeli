@@ -17,27 +17,28 @@ import static logiikka.nappulat.Maa.MUSTA;
  *
  * @author elias
  */
-public class KunkkuPiirto extends NappulaPiirto {
+public class SotilasPiirto extends NappulaPiirto{
 
-    @Override
-    public Image haeKuva(Maa maa) {
-        BufferedImage kunkkuKuva = null;
+ @Override
+ public Image haeKuva(Maa maa) {
+        BufferedImage kuningatarKuva = null;
         File kuva = null;
         if (maa == MUSTA) {
-            kuva = new File("src/main/java/kayttoliittyma/nappuloidenPiirto/nappuloidenKuvat/musta/kunkku.png");
+            kuva = new File("src/main/java/kayttoliittyma/nappuloidenPiirto/nappuloidenKuvat/musta/sotilas.png");
 
         } else {
-            kuva = new File("src/main/java/kayttoliittyma/nappuloidenPiirto/nappuloidenKuvat/valkoinen/kunkku.png");
+            kuva = new File("src/main/java/kayttoliittyma/nappuloidenPiirto/nappuloidenKuvat/valkoinen/sotilas.png");
 
         }
 
         try {
-            kunkkuKuva = ImageIO.read(kuva);
+            kuningatarKuva = ImageIO.read(kuva);
         } catch (IOException e) {
-            System.out.println("EI LÖYDY KUNKKUA");
+            System.out.println("EI LÖYDY KUNINGATARTA");
         }
 
-        return kunkkuKuva;
-
+        return kuningatarKuva;
     }
+
+    
 }

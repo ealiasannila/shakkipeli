@@ -3,27 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package kayttoliittyma;
+package kayttoliittyma.kuuntelijat;
 
 import java.awt.Component;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import kayttoliittyma.PeliPiirto;
+import kayttoliittyma.PeliPiirto;
 import logiikka.peli.Peli;
 
 /**
  *
  * @author elias
  */
-public class LautaKuuntelija implements MouseListener {
-
-    private Peli peli;
-    private PeliPiirto peliPiirto;
+public class LautaKuuntelija extends Kuuntelija implements MouseListener {
 
     public LautaKuuntelija(Peli peli, PeliPiirto peliPiirto) {
-        this.peli = peli;
-        this.peliPiirto = peliPiirto;
+        super(peli, peliPiirto);
     }
+
+
 
     @Override
     public void mouseClicked(MouseEvent me) {
