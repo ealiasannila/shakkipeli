@@ -10,31 +10,45 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import kayttoliittyma.nappuloidenPiirto.TorniPiirto;
+import logiikka.peli.Peli;
 
 public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
+    private LautaKuuntelija hiiriKuuntelija;
+    private Peli peli;
+    private PeliPiirto peliPiirto;
 
     public Kayttoliittyma() {
+        this.peli = new Peli();
+        this.peliPiirto = new PeliPiirto(60, this.peli);
+        this.hiiriKuuntelija = new LautaKuuntelija(this.peli, this.peliPiirto);
+ 
     }
 
     @Override
     public void run() {
+
         frame = new JFrame("Shakkipeli");
         frame.setPreferredSize(new Dimension(600, 600));
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        luoKomponentit(frame.getContentPane());
+        luoPiirtoKomponentit(frame.getContentPane());
 
         frame.pack();
+
         frame.setVisible(true);
     }
 
-    private void luoKomponentit(Container container) {
+    private void luoPiirtoKomponentit(Container container) {
         container.add(luoValikkoNapit(), BorderLayout.NORTH);
-        
-        container.add(new PeliPiirto());
+        PeliPiirto peliPiirto = this.peliPiirto;
+
+        peliPiirto.addMouseListener(hiiriKuuntelija);
+
+        container.add(peliPiirto, BorderLayout.CENTER);
+
     }
 
     private JPanel luoValikkoNapit() {

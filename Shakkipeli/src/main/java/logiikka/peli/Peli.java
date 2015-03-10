@@ -30,6 +30,15 @@ public class Peli {
         this.uusiPeli();
     }
 
+    public Pelaaja getMusta() {
+        return musta;
+    }
+
+    public Pelaaja getValkoinen() {
+        return valkoinen;
+    }
+    
+
     private void alkuAsetelma() {
         //valkoiset:
         new Torni(VALKOINEN, 0, 0, this.lauta);

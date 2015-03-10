@@ -7,7 +7,9 @@ package kayttoliittyma;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import kayttoliittyma.nappuloidenPiirto.NappulaPiirto;
 import kayttoliittyma.nappuloidenPiirto.TorniPiirto;
@@ -19,24 +21,26 @@ import logiikka.peli.Peli;
  * @author elias
  */
 public class PeliPiirto extends JPanel {
-
+    
     private int sivunPituus;
     private int nappulanKoko;
     private Peli peli;
-
-    public PeliPiirto() {
+    
+    public PeliPiirto(int sp, Peli peli) {
         super.setBackground(Color.RED);
-        this.sivunPituus = 60;
+        
+        this.sivunPituus = sp;
         this.nappulanKoko = (int) (this.sivunPituus * 0.7);
-        this.peli = new Peli();
+        this.peli = peli;
     }
-
+    
     public int getSivunPituus() {
         return sivunPituus;
+        
     }
-
+    
     private void piirraRuudut(Graphics graphics) {
-
+        
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if ((j + i) % 2 == 0) {
@@ -48,29 +52,38 @@ public class PeliPiirto extends JPanel {
             }
         }
     }
-
+    
+    public void peliLoppu(Graphics graphics) {
+        if (this.peli.onMatissa()) {
+            graphics.setFont(new Font("TimesRoman", Font.PLAIN, this.sivunPituus)); 
+            graphics.drawString("HÄVISIT " + this.peli.getVuorossa().getMaa(), this.sivunPituus, this.sivunPituus*3);
+        }
+    }
+    
     private void piirraNappulat(Graphics graphics) {
-        for (Nappula nappula : this.peli.getVuorossa().getNappulat()) {
+        for (Nappula nappula : this.peli.getMusta().getNappulat()) {
+            this.piirraNappula(graphics, nappula);
+        }
+        
+        for (Nappula nappula : this.peli.getValkoinen().getNappulat()) {
             this.piirraNappula(graphics, nappula);
         }
     }
-
+    
     private void piirraNappula(Graphics graphics, Nappula nappula) {
         graphics.setColor(Color.GREEN);
-        graphics.drawImage(nappula.getPiirto().haeKuva(), 
-                nappula.getPiirto().piirtoX(nappula.getX(), this, nappulanKoko), 
+        graphics.drawImage(nappula.getPiirto().haeKuva(nappula.getMaa()),
+                nappula.getPiirto().piirtoX(nappula.getX(), this, nappulanKoko),
                 nappula.getPiirto().piirtoY(nappula.getY(), this, nappulanKoko),
-                nappulanKoko,nappulanKoko, null);
-
-//graphics.fillOval(nappula.getPiirto().piirtoX(nappula.getX(), this, this.nappulanKoko), nappula.getPiirto().piirtoY(nappula.getY(), this, this.nappulanKoko), this.nappulanKoko,this.nappulanKoko );
+                nappulanKoko, nappulanKoko, null);
         
     }
-
-
+    
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         this.piirraRuudut(graphics);
-        this.piirraNappulat(graphics);;
+        this.piirraNappulat(graphics);
+        this.peliLoppu(graphics);
     }
 }

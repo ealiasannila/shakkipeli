@@ -5,8 +5,6 @@
  */
 package kayttoliittyma.nappuloidenPiirto;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -19,10 +17,7 @@ import static logiikka.nappulat.Maa.MUSTA;
  *
  * @author elias
  */
-public class TorniPiirto extends NappulaPiirto {
-
-    public TorniPiirto() {
-    }
+public class KunkkuPiirto extends NappulaPiirto {
 
     @Override
     public Image haeKuva(Maa maa) {
@@ -31,7 +26,7 @@ public class TorniPiirto extends NappulaPiirto {
         if (maa == MUSTA) {
             kuva = new File("src/main/java/kayttoliittyma/nappuloidenPiirto/nappuloidenKuvat/musta/torni.png");
 
-        }else{
+        } else {
             kuva = new File("src/main/java/kayttoliittyma/nappuloidenPiirto/nappuloidenKuvat/valkoinen/torni.png");
 
         }
@@ -39,11 +34,10 @@ public class TorniPiirto extends NappulaPiirto {
         try {
             torniKuva = ImageIO.read(kuva);
         } catch (IOException e) {
-            System.out.println("EI LÖYDY TORNIA");
+            System.out.println("EI LÖYDY KUNKKUA");
         }
 
         return torniKuva;
 
     }
-
 }

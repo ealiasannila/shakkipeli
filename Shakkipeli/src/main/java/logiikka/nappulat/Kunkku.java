@@ -6,6 +6,7 @@
 package logiikka.nappulat;
 
 import java.util.ArrayList;
+import kayttoliittyma.nappuloidenPiirto.KunkkuPiirto;
 import kayttoliittyma.nappuloidenPiirto.TorniPiirto;
 import static logiikka.nappulat.Maa.VALKOINEN;
 import logiikka.peli.Peli;
@@ -21,7 +22,7 @@ public class Kunkku extends Nappula {
  
     public Kunkku(Maa maa, int x, int y, Pelilauta pelilauta) {
         super(maa, x, y, pelilauta);
-        this.piirto = new TorniPiirto();//toteuta kunkkupiirto
+        this.piirto = new KunkkuPiirto();
  
     }
 
