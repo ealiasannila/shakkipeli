@@ -6,6 +6,7 @@
 package logiikka.nappulat;
 
 import java.util.ArrayList;
+import kayttoliittyma.nappuloidenPiirto.NappulaPiirto;
 import logiikka.peli.Pelilauta;
 import logiikka.peli.Ruutu;
 
@@ -15,6 +16,7 @@ import logiikka.peli.Ruutu;
  */
 public abstract class Nappula {
 
+    protected NappulaPiirto piirto;
     private Maa maa;
     private Pelilauta lauta;
     private int x;
@@ -24,6 +26,11 @@ public abstract class Nappula {
         this.maa = maa;
         this.lauta = lauta;
         this.getLauta().asetaNappula(this, x, y);
+        
+    }
+
+    public NappulaPiirto getPiirto() {
+        return piirto;
     }
 
     public boolean kohdeLaudanUlkopuolella(int x, int y) {

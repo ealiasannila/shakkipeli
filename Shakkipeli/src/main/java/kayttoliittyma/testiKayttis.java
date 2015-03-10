@@ -47,7 +47,7 @@ public class testiKayttis {
         }
         
         this.peli.tulosta();
-        System.out.println("HÄVISIT " + peli.getVuorossa() + "!");
+        System.out.println("HAH HÄVISIT " + peli.getVuorossa() + "!");
         
     }
 

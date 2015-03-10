@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+import kayttoliittyma.nappuloidenPiirto.TorniPiirto;
 
 public class Kayttoliittyma implements Runnable {
 
@@ -32,7 +33,8 @@ public class Kayttoliittyma implements Runnable {
 
     private void luoKomponentit(Container container) {
         container.add(luoValikkoNapit(), BorderLayout.NORTH);
-        container.add(new PeliAlusta());
+        
+        container.add(new PeliPiirto());
     }
 
     private JPanel luoValikkoNapit() {

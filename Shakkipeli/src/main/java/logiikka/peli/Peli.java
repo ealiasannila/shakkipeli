@@ -112,7 +112,7 @@ public class Peli {
         for (int y = Math.max(0, this.vuorossa.getKunkku().getY() - 1); y <= Math.min(lauta.getSize() - 1, this.vuorossa.getKunkku().getY() + 1); y++) {
             for (int x = Math.max(0, this.vuorossa.getKunkku().getX() - 1); x <= Math.min(lauta.getSize() - 1, this.vuorossa.getKunkku().getX() + 1); x++) {
                 if (this.vuorossa.getKunkku().onSallittuSiirto(x, y)) { //jos kunkku voi liikkua tarkistetaan onko kunkku uhattuna liikkuimsen jälkeen (ettei pääse "itsensä taakse suojaan"
-                    if (kokeileSiirtoa(x, y, this.vuorossa.getKunkku())) {
+                    if (kokeileSiirtoa(x, y, this.vuorossa.getKunkku())) {//täytyykö erikseen kokeilla kun nyt joka siirto kokeilee?
                         return false;
                     }
                 }
