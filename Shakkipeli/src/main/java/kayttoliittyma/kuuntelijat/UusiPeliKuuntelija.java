@@ -7,8 +7,10 @@ package kayttoliittyma.kuuntelijat;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import kayttoliittyma.Kayttoliittyma;
 import kayttoliittyma.PeliPiirto;
 import logiikka.peli.Peli;
+import logiikka.peli.PeliHallinta;
 
 /**
  *
@@ -16,14 +18,18 @@ import logiikka.peli.Peli;
  */
 public class UusiPeliKuuntelija extends Kuuntelija implements ActionListener {
 
-    public UusiPeliKuuntelija(Peli peli, PeliPiirto peliPiirto) {
-        super(peli, peliPiirto);
+    public UusiPeliKuuntelija(Kayttoliittyma kayttoliittyma) {
+        super(kayttoliittyma);
     }
+
+
+
+
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        this.peli.uusiPeli();
-        this.peliPiirto.repaint();
+        this.kayttoliittyma.getPeliHallinta().uusiPeli();
+        this.kayttoliittyma.getPeliPiirto().repaint();
     }
 
 }

@@ -1,19 +1,24 @@
 #Aihemäärittely
 
-##Aihe: Shakkipeli. Toteutetaan kaksinpelinä pelattava shakki. 
+##Aihe: 
+Shakkipeli. Toteutetaan kaksinpelinä pelattava shakki. 
 
 ##Käyttäjät: 
-*Pelaaja 1 ja 2
+*Pelaajat 1 ja 2
 
 ##Toiminnot:
 
 *Uuden pelin luonti
+*Pelitilanteen tallentaminen
+*Pelin lataaminen
 *Siirron tekeminen
 *Toisen nappulan syönti
 *Shakki (pakko liikuttaa kuningasta/tai blokata)
-*Shakkimatti (pelin loppuminen)
+*Matti (pelin loppuminen)
+*Patti
+*Erikoissiirrot (tornitus, sotilaan liikkuminen ekalla vuorolla 2, ohestalyönti)
 
 ##Mahdolliset lisätoiminnallisuudet
 *Shakkikello
-*Loki pelin kulusta
+*Loki pelin kulusta, ja tietyn asetelman palauttaminen
 

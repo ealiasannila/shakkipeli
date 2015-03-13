@@ -15,41 +15,48 @@ import kayttoliittyma.kuuntelijat.TallennaPeliKuuntelija;
 import kayttoliittyma.kuuntelijat.UusiPeliKuuntelija;
 import kayttoliittyma.nappulapiirto.TorniPiirto;
 import logiikka.peli.Peli;
+import logiikka.peli.PeliHallinta;
 
 public class Kayttoliittyma implements Runnable {
 
-    private JFrame frame;
-    private LautaKuuntelija hiiriKuuntelija;
-    private Peli peli;
+    private JFrame ruutu;
+    private PeliHallinta peliHallinta;
+
+    public PeliHallinta getPeliHallinta() {
+        return peliHallinta;
+    }
+
+    public PeliPiirto getPeliPiirto() {
+        return peliPiirto;
+    }
     private PeliPiirto peliPiirto;
 
     public Kayttoliittyma() {
-        this.peli = new Peli();
-        this.peliPiirto = new PeliPiirto(60, this.peli);
-        this.hiiriKuuntelija = new LautaKuuntelija(this.peli, this.peliPiirto);
-
+        this.peliHallinta = new PeliHallinta();
+        this.peliPiirto = new PeliPiirto(60, this);
+        
     }
 
     @Override
     public void run() {
 
-        frame = new JFrame("Shakkipeli");
-        frame.setPreferredSize(new Dimension(this.peliPiirto.getSivunPituus() * 8 + 10, this.peliPiirto.getSivunPituus() * 8 + 55));
+        ruutu = new JFrame("Shakkipeli");
+        ruutu.setPreferredSize(new Dimension(this.peliPiirto.getSivunPituus() * 8 + 10, this.peliPiirto.getSivunPituus() * 8 + 55));
 
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        ruutu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        luoPiirtoKomponentit(frame.getContentPane());
+        luoPiirtoKomponentit(ruutu.getContentPane());
 
-        frame.pack();
+        ruutu.pack();
 
-        frame.setVisible(true);
+        ruutu.setVisible(true);
     }
 
     private void luoPiirtoKomponentit(Container container) {
         container.add(luoValikkoNapit(), BorderLayout.NORTH);
         PeliPiirto peliPiirto = this.peliPiirto;
 
-        peliPiirto.addMouseListener(hiiriKuuntelija);
+        peliPiirto.addMouseListener(new LautaKuuntelija(this));
 
         container.add(peliPiirto, BorderLayout.CENTER);
 
@@ -59,21 +66,21 @@ public class Kayttoliittyma implements Runnable {
         JPanel panel = new JPanel(new GridLayout(1, 3));
 
         JButton uusiPeli = new JButton("Uusi peli!");
-        uusiPeli.addActionListener(new UusiPeliKuuntelija(this.peli, this.peliPiirto));
+        uusiPeli.addActionListener(new UusiPeliKuuntelija(this));
         panel.add(uusiPeli);
 
         JButton lataaPeli = new JButton("Lataa peli!");
-        lataaPeli.addActionListener(new LataaPeliKuuntelija(this.peli, this.peliPiirto));
+        lataaPeli.addActionListener(new LataaPeliKuuntelija(this));
         panel.add(lataaPeli);
 
         JButton tallennaPeli = new JButton("Tallenna peli!");
-        tallennaPeli.addActionListener(new TallennaPeliKuuntelija(this.peli, this.peliPiirto));
+        tallennaPeli.addActionListener(new TallennaPeliKuuntelija(this));
         panel.add(tallennaPeli);
 
         return panel;
     }
 
     public JFrame getFrame() {
-        return frame;
+        return ruutu;
     }
 }

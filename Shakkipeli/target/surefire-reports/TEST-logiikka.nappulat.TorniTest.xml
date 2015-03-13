@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.009" errors="0" skipped="0" tests="32" name="logiikka.nappulat.TorniTest">
+<testsuite failures="0" time="0.021" errors="0" skipped="0" tests="32" name="logiikka.nappulat.TorniTest">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64"/>
@@ -42,7 +42,7 @@
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/usr/lib/jvm/java-7-openjdk-amd64/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/home/elias/tmcbeans/java/maven-nblib/netbeans-eventspy.jar clean install"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/home/elias/tmcbeans/java/maven-nblib/netbeans-eventspy.jar test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -61,7 +61,7 @@
     <property name="sun.cpu.isalist" value=""/>
   </properties>
   <testcase time="0" classname="logiikka.nappulat.TorniTest" name="lautaTuleeKonstruktorissaOikein"/>
-  <testcase time="0" classname="logiikka.nappulat.TorniTest" name="eiSalliLaudanOikealleLiikkumista"/>
+  <testcase time="0.001" classname="logiikka.nappulat.TorniTest" name="eiSalliLaudanOikealleLiikkumista"/>
   <testcase time="0" classname="logiikka.nappulat.TorniTest" name="eiSalliiVastustajanLapiLiikkumista"/>
   <testcase time="0" classname="logiikka.nappulat.TorniTest" name="eiSalliLaudanVasemmallePuolelleLiikkumista"/>
   <testcase time="0" classname="logiikka.nappulat.TorniTest" name="xTuleeKonstruktorissaOikein"/>
@@ -69,9 +69,9 @@
   <testcase time="0" classname="logiikka.nappulat.TorniTest" name="LiikuVinottainEtuVasen"/>
   <testcase time="0" classname="logiikka.nappulat.TorniTest" name="TunnistaOnkoKohdeVapaKohdeOnOma"/>
   <testcase time="0" classname="logiikka.nappulat.TorniTest" name="yTuleeKonstruktorissaOikein"/>
-  <testcase time="0" classname="logiikka.nappulat.TorniTest" name="UhkaaOikeitaRuutujaVastustajanNappula"/>
+  <testcase time="0.001" classname="logiikka.nappulat.TorniTest" name="UhkaaOikeitaRuutujaVastustajanNappula"/>
   <testcase time="0" classname="logiikka.nappulat.TorniTest" name="TunnistaVastustajanKohdeEiOleOma"/>
-  <testcase time="0" classname="logiikka.nappulat.TorniTest" name="salliiLaudanOikeaanReunaanLiikkumisen"/>
+  <testcase time="0.001" classname="logiikka.nappulat.TorniTest" name="salliiLaudanOikeaanReunaanLiikkumisen"/>
   <testcase time="0" classname="logiikka.nappulat.TorniTest" name="eiSalliiOmanLapiLiikkumista"/>
   <testcase time="0" classname="logiikka.nappulat.TorniTest" name="eiSalliLaudanYlapuolelleLiikkumista"/>
   <testcase time="0" classname="logiikka.nappulat.TorniTest" name="TunnistaOnkoKohdeVapaKohdeOnVastustajanKohteenViereen"/>
@@ -79,7 +79,7 @@
   <testcase time="0" classname="logiikka.nappulat.TorniTest" name="TunnistaVastustajanKohdeOnOma"/>
   <testcase time="0" classname="logiikka.nappulat.TorniTest" name="salliiLaudanVasempaanReunaanLiikkumisen"/>
   <testcase time="0" classname="logiikka.nappulat.TorniTest" name="SalliiVastustajanPaalleLiikkumisen"/>
-  <testcase time="0.001" classname="logiikka.nappulat.TorniTest" name="salliiLaudanAlareunaanLiikkumisen"/>
+  <testcase time="0" classname="logiikka.nappulat.TorniTest" name="salliiLaudanAlareunaanLiikkumisen"/>
   <testcase time="0" classname="logiikka.nappulat.TorniTest" name="eiSalliiOmanPaalleLiikkumista"/>
   <testcase time="0" classname="logiikka.nappulat.TorniTest" name="TunnistaOmaKohdeEiOleOma"/>
   <testcase time="0" classname="logiikka.nappulat.TorniTest" name="eiSalliPaikallaanPysymista"/>
@@ -87,9 +87,9 @@
   <testcase time="0" classname="logiikka.nappulat.TorniTest" name="maaTuleeKonstruktorissaOikein"/>
   <testcase time="0" classname="logiikka.nappulat.TorniTest" name="eiSalliLaudanAlapuolelleLiikkumista"/>
   <testcase time="0" classname="logiikka.nappulat.TorniTest" name="TunnistaOnkoKohdeVapaKohdeOnVastustajan"/>
-  <testcase time="0" classname="logiikka.nappulat.TorniTest" name="UhkaaOikeitaRuutujaTyhjaRuutu"/>
+  <testcase time="0.001" classname="logiikka.nappulat.TorniTest" name="UhkaaOikeitaRuutujaTyhjaRuutu"/>
   <testcase time="0.001" classname="logiikka.nappulat.TorniTest" name="salliiLaudanYlareunaanLiikkumisen"/>
   <testcase time="0" classname="logiikka.nappulat.TorniTest" name="LiikuVinottainTakaOikee"/>
-  <testcase time="0" classname="logiikka.nappulat.TorniTest" name="LiikuVinottainTakaVasen"/>
+  <testcase time="0.001" classname="logiikka.nappulat.TorniTest" name="LiikuVinottainTakaVasen"/>
   <testcase time="0" classname="logiikka.nappulat.TorniTest" name="TunnistaOnkoKohdeVapaKohdeOnVapaa"/>
 </testsuite>

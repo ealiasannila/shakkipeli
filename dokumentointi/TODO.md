@@ -1,8 +1,4 @@
-Ennen vaellusta:
-1. Piirrä luokkakaavio
-2. Generoi PitRaportti
-3. Korjaa testit/bugit NYT 11TESTIÄ EI MENE LÄPI JA TULEE NULLPOINTTEREXCEPT
-3. Siisti Koodia (Kuningatar käyttää aika saman näköstä koodia ku torni ja lähetti, Tornitukset pelissä, Jaa Peli kahteen osaan: yhden pelin tapahtumat ja pelin latailu ja tallennus jne)
+3. Siisti Koodia (Kuningatar käyttää aika saman näköstä koodia ku torni ja lähetti, Tornitukset pelissä)
 
 1. toteuta tasapeli
 2. HaamuSotilas(voi syödä alussa 2 liikkuneen sotilaan)

@@ -24,14 +24,14 @@ public class PeliPiirto extends JPanel {
 
     private int sivunPituus;
     private int nappulanKoko;
-    private Peli peli;
+    private Kayttoliittyma kayttoliittyma;
 
-    public PeliPiirto(int sp, Peli peli) {
+    public PeliPiirto(int sp, Kayttoliittyma kayttoliittyma) {
         super.setBackground(Color.RED);
 
         this.sivunPituus = sp;
         this.nappulanKoko = (int) (this.sivunPituus * 0.7);
-        this.peli = peli;
+        this.kayttoliittyma = kayttoliittyma;
     }
 
     public int getSivunPituus() {
@@ -54,18 +54,18 @@ public class PeliPiirto extends JPanel {
     }
 
     public void peliLoppu(Graphics graphics) {
-        if (this.peli.onMatissa()) {
+        if (this.kayttoliittyma.getPeliHallinta().getPeli().onMatissa()) {
             graphics.setFont(new Font("TimesRoman", Font.PLAIN, this.sivunPituus));
-            graphics.drawString("HÄVISIT " + this.peli.getVuorossa().getMaa(), this.sivunPituus, this.sivunPituus * 3);
+            graphics.drawString("HÄVISIT " + this.kayttoliittyma.getPeliHallinta().getPeli().getVuorossa().getMaa(), this.sivunPituus, this.sivunPituus * 3);
         }
     }
 
     private void piirraNappulat(Graphics graphics) {
-        for (Nappula nappula : this.peli.getMusta().getNappulat()) {
+        for (Nappula nappula : this.kayttoliittyma.getPeliHallinta().getPeli().getMusta().getNappulat()) {
             this.piirraNappula(graphics, nappula);
         }
 
-        for (Nappula nappula : this.peli.getValkoinen().getNappulat()) {
+        for (Nappula nappula : this.kayttoliittyma.getPeliHallinta().getPeli().getValkoinen().getNappulat()) {
             this.piirraNappula(graphics, nappula);
         }
     }

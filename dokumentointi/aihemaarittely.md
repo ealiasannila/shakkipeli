@@ -9,12 +9,16 @@ Shakkipeli. Toteutetaan kaksinpelinä pelattava shakki.
 ##Toiminnot:
 
 *Uuden pelin luonti
+*Pelitilanteen tallentaminen
+*Pelin lataaminen
 *Siirron tekeminen
 *Toisen nappulan syönti
 *Shakki (pakko liikuttaa kuningasta/tai blokata)
-*Shakkimatti (pelin loppuminen)
+*Matti (pelin loppuminen)
+*Patti
+*Erikoissiirrot (tornitus, sotilaan liikkuminen ekalla vuorolla 2, ohestalyönti)
 
 ##Mahdolliset lisätoiminnallisuudet
 *Shakkikello
-*Loki pelin kulusta, ja tietyn asetelman palauttaminen
+*Loki pelin kulusta, ja tietyn asetelman palauttaminen (undo)
 

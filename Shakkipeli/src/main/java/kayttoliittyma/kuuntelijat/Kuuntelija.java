@@ -5,20 +5,21 @@
  */
 package kayttoliittyma.kuuntelijat;
 
+import kayttoliittyma.Kayttoliittyma;
 import kayttoliittyma.PeliPiirto;
 import logiikka.peli.Peli;
+import logiikka.peli.PeliHallinta;
 
 /**
  *
  * @author elias
  */
-public class Kuuntelija {
+public abstract class Kuuntelija {
 
-    protected Peli peli;
-    protected PeliPiirto peliPiirto;
+    protected Kayttoliittyma kayttoliittyma;
+    //protected PeliPiirto peliPiirto;
 
-    public Kuuntelija(Peli peli, PeliPiirto peliPiirto) {
-        this.peli = peli;
-        this.peliPiirto = peliPiirto;
+    public Kuuntelija(Kayttoliittyma kayttoliittyma) {
+        this.kayttoliittyma = kayttoliittyma;
     }
 }

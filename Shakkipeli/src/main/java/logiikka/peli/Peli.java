@@ -36,32 +36,7 @@ public class Peli {
     public Peli() {
         this.valkoinen = new Pelaaja(VALKOINEN);
         this.musta = new Pelaaja(MUSTA);
-        this.uusiPeli();
-    }
-
-    public Pelaaja getMusta() {
-        return musta;
-    }
-
-    public Pelaaja getValkoinen() {
-        return valkoinen;
-    }
-
-    public void paivitaPelaajienNappulat() {
-
-        this.musta.getNappulat().clear();
-        this.valkoinen.getNappulat().clear();
-        for (int y = 0; y < this.lauta.getSize(); y++) {
-            for (int x = 0; x < this.lauta.getSize(); x++) {
-                if (this.lauta.haeNappula(x, y) != null) {
-                    if (this.lauta.haeNappula(x, y).getMaa() == MUSTA) {
-                        this.musta.getNappulat().add(this.lauta.haeNappula(x, y));
-                    } else {
-                        this.valkoinen.getNappulat().add(this.lauta.haeNappula(x, y));
-                    }
-                }
-            }
-        }
+        this.lauta = new Pelilauta();
     }
 
     public boolean onkoUhattuna(int x, int y) {
@@ -185,10 +160,7 @@ public class Peli {
 
     public boolean voiBlokata() {
         Nappula uhkaava = this.uhkaavaNappula(this.vuorossa.getKunkku().getX(), this.vuorossa.getKunkku().getY());
-
-        //Toteuta hevonen ja toteuta hevosta ei voi blokata
         ArrayList<Ruutu> uhatutRuudut = uhkaava.uhkausLinja(this.vuorossa.getKunkku().getX(), this.vuorossa.getKunkku().getY());
-
         for (Nappula oma : vuorossa.getNappulat()) {
             if (oma.equals(vuorossa.getKunkku())) {
                 continue;
@@ -202,53 +174,185 @@ public class Peli {
         return false;
     }
 
-    public void uusiPeli() {
-
-        this.lataaPeli(
-                "VALKOINEN\n"
-                + "TRLQKLRT\n"
-                + "SSSSSSSS\n"
-                + "oooooooo\n"
-                + "oooooooo\n"
-                + "oooooooo\n"
-                + "oooooooo\n"
-                + "ssssssss\n"
-                + "trlqklrt");
+    public void paivitaPelaajienNappulat() {
+        this.musta.getNappulat().clear();
+        this.valkoinen.getNappulat().clear();
+        for (int y = 0; y < this.lauta.getSize(); y++) {
+            for (int x = 0; x < this.lauta.getSize(); x++) {
+                if (this.lauta.haeNappula(x, y) != null) {
+                    if (this.lauta.haeNappula(x, y).getMaa() == MUSTA) {
+                        this.musta.getNappulat().add(this.lauta.haeNappula(x, y));
+                    } else {
+                        this.valkoinen.getNappulat().add(this.lauta.haeNappula(x, y));
+                    }
+                }
+            }
+        }
     }
 
-    public void lataaPeli() {
-        File peli = new File("peli.txt");
-        Scanner lukija;
-        try {
-            lukija = new Scanner(peli);
-        } catch (FileNotFoundException ex) {
-            //tee jotain muutakin
-            this.uusiPeli();
-            return;
-        }
-        StringBuilder peliString = new StringBuilder();
-        while (lukija.hasNext()) {
-            peliString.append(lukija.nextLine());
-            peliString.append("\n");
-        }
-
-        this.lataaPeli(peliString.toString());
-
-    }
-
-    public void lataaPeli(String peli) {
-        Scanner lukija = new Scanner(peli);
-
-        this.lauta = new Pelilauta();
-
-        if (this.musta.getMaa().toString().equals(lukija.nextLine())) {
+    public void vaihdaVuoroa() {
+        if (this.vuorossa == this.valkoinen) {
             this.vuorossa = this.musta;
         } else {
             this.vuorossa = this.valkoinen;
         }
+        this.aktiivinen = null;
+    }
 
+    public boolean siirto(int x, int y) {
+        if (this.aktiivinen == null) {//pitää olla nappula valittuna
+            return false;
+        }
+        if (!this.tornitus(x, y)) {        //TORNITUS kokeile tehdä tornitus, jos ei onnistu yritä muuta siirtoa
+            if (!this.kokeileSiirtoa(x, y, this.aktiivinen)) {//Jos siirto jättää kunkun uhatuksi ei sitä voi tehdä
+                return false;
+            }
+            this.lauta.teeSiirto(x, y, aktiivinen);
+        }
+        this.aktiivinen.setEnsimmainenSiirto(false);
+        this.paivitaPelaajienNappulat();
+        this.vaihdaVuoroa();
+        return true;
+    }
+
+    public void asetaAktiivinen(int x, int y) {
+
+        if (this.lauta.haeNappula(x, y) != null) {
+            if (this.lauta.haeNappula(x, y).getMaa() == this.vuorossa.getMaa()) {
+                this.aktiivinen = this.lauta.haeNappula(x, y);
+            } else {
+                System.out.println("et voi siirtää vastustajan nappulaa");
+            }
+        }
+    }
+
+    private boolean tornitus(int x, int y) {
+        if (this.aktiivinen.equals(this.getVuorossa().getKunkku())) {
+            if (this.voiTehdaLyhyenTornituksen(x, y) || this.voiTehdaPitkanTornituksen(x, y)) {
+                this.teeTornitus(x, y);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void teeTornitus(int x, int y) {
+        this.lauta.teeSiirtoIlmanTarkistusta(x, y, aktiivinen);
+        if (x == 6) {//lyhyt tornitus
+            this.lauta.teeSiirtoIlmanTarkistusta(5, y, this.lauta.haeNappula(7, y));
+        } else {//pitkä tornitus
+            this.lauta.teeSiirtoIlmanTarkistusta(3, y, this.lauta.haeNappula(0, y));
+        }
+    }
+
+    private boolean voiTehdaLyhyenTornituksen(int x, int y) {
+        if (x != 6) {
+            return false;
+        }
+        if (this.vuorossa.getMaa() == VALKOINEN) {
+            if (y != 0) {
+                return false;
+            }
+            return this.valkoinenVoiTehdaLyhyenTornituksen();
+        } else {
+            if (y != 7) {
+                return false;
+            }
+            return this.mustaVoiTehdaLyhyenTornituksen();
+        }
+    }
+
+    private boolean valkoinenVoiTehdaLyhyenTornituksen() {
+        if (!this.getVuorossa().getKunkku().tarkistaOnkoKohdeOma(7, 0)) {
+            return false;
+        }
+        if (!(this.getVuorossa().getKunkku().onEnsimmainenSiirto() && this.getLauta().haeNappula(7, 0).onEnsimmainenSiirto())) {
+            return false;
+        }
+        if (!(this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(5, 0) && this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(6, 0))) {
+            return false;
+        }
+        if (this.onkoUhattuna(5, 0) || this.onkoUhattuna(6, 0) || this.onkoUhattuna(4, 0)) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean mustaVoiTehdaLyhyenTornituksen() {
+        if (!this.getVuorossa().getKunkku().tarkistaOnkoKohdeOma(7, 7)) {
+            return false;
+        }
+        if (!(this.getVuorossa().getKunkku().onEnsimmainenSiirto() && this.getLauta().haeNappula(7, 7).onEnsimmainenSiirto())) {
+            return false;
+        }
+        if (!(this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(5, 7) && this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(6, 7))) {
+            return false;
+        }
+        if (this.onkoUhattuna(5, 7) || this.onkoUhattuna(6, 7) || this.onkoUhattuna(4, 7)) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean voiTehdaPitkanTornituksen(int x, int y) {
+        if (x != 2) { //pitkässä tornituksessa kohteen x:n pitää olla 2
+            return false;
+        }
+        if (this.vuorossa.getMaa() == VALKOINEN) {
+            if (y != 0) {
+                return false;
+            }
+            return this.valkoinenVoiTehdaPitkanTornituksen();
+        } else {
+            if (y != 7) {
+                return false;
+            }
+            return this.mustaVoiTehdaPitkanTornituksen();
+        }
+    }
+
+    private boolean valkoinenVoiTehdaPitkanTornituksen() {
+        if (!this.getVuorossa().getKunkku().tarkistaOnkoKohdeOma(0, 0)) {
+            return false;
+        }
+        if (!(this.getVuorossa().getKunkku().onEnsimmainenSiirto() && this.getLauta().haeNappula(0, 0).onEnsimmainenSiirto())) {
+            return false;
+        }
+        if (!(this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(1, 0) && this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(2, 0) && this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(3, 0))) {
+            return false;
+        }
+        if (this.onkoUhattuna(2, 0) || this.onkoUhattuna(3, 0) || this.onkoUhattuna(4, 0)) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean mustaVoiTehdaPitkanTornituksen() {
+        if (!this.getVuorossa().getKunkku().tarkistaOnkoKohdeOma(0, 7)) {
+            return false;
+        }
+        if (!(this.getVuorossa().getKunkku().onEnsimmainenSiirto() && this.getLauta().haeNappula(0, 7).onEnsimmainenSiirto())) {
+            return false;
+        }
+        if (!(this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(1, 7) && this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(2, 7) && this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(3, 7))) {
+            return false;
+        }
+        if (this.onkoUhattuna(2, 7) || this.onkoUhattuna(3, 7) || this.onkoUhattuna(4, 7)) {
+            return false;
+        }
+        return true;
+    }
+
+    private void lataaVuoro(String maa) {
+        if (this.musta.getMaa().toString().equals(maa)) {
+            this.vuorossa = this.musta;
+        } else {
+            this.vuorossa = this.valkoinen;
+        }
+    }
+
+    private void lataaNappulat(Scanner lukija) {
         int riviNro = 7;
-
         while (riviNro >= 0) {
             String rivi = lukija.nextLine();
             for (int i = 0; i < rivi.length(); i++) {
@@ -290,211 +394,38 @@ public class Peli {
                     case 's':
                         new Sotilas(VALKOINEN, i, riviNro, this.lauta);
                         break;
-
                 }
             }
             riviNro--;
         }
-
         this.paivitaPelaajienNappulat();
-
     }
 
-    public void tallennaPeli() {
-        PrintWriter writer;
-        try {
-            writer = new PrintWriter("peli.txt", "UTF-8");
-        } catch (FileNotFoundException ex) {
-            return;
-        } catch (UnsupportedEncodingException ex) {
-            return;
-        }
-        writer.print(this.toString());
-
-        writer.close();
+    public void lataaPeli(File peli) throws FileNotFoundException {
+        Scanner lukija = new Scanner(peli);
+        this.lauta = new Pelilauta();
+        this.lataaVuoro(lukija.nextLine());
+        this.lataaNappulat(lukija);
     }
 
-    public Pelilauta getLauta() {
-        return lauta;
+    public Pelaaja getMusta() {
+        return musta;
     }
 
-    public void vaihdaVuoroa() {
-        if (this.vuorossa == this.valkoinen) {
-            this.vuorossa = this.musta;
-        } else {
-            this.vuorossa = this.valkoinen;
-        }
-        this.aktiivinen = null;
-    }
-
-    private boolean tornitus(int x, int y) {
-        if (this.aktiivinen.equals(this.getVuorossa().getKunkku())) {
-            if (this.voiTehdaLyhyenTornituksen(x, y) || this.voiTehdaPitkanTornituksen(x, y)) {
-                this.teeTornitus(x, y);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private void teeTornitus(int x, int y) {
-        this.lauta.teeSiirtoIlmanTarkistusta(x, y, aktiivinen);
-        if (x == 6) {//lyhyt tornitus
-            this.lauta.teeSiirtoIlmanTarkistusta(5, y, this.lauta.haeNappula(7, y));
-        } else {//pitkä tornitus
-            this.lauta.teeSiirtoIlmanTarkistusta(3, y, this.lauta.haeNappula(0, y));
-        }
-    }
-
-    public boolean siirto(int x, int y) {
-        if (this.aktiivinen == null) {//pitää olla nappula valittuna
-            return false;
-        }
-        //TORNITUS kokeile tehdä tornitus, jos ei onnistu yritä muuta siirtoa
-        if (!this.tornitus(x, y)) {
-            if (!this.kokeileSiirtoa(x, y, this.aktiivinen)) {//Jos siirto jättää kunkun uhatuksi ei sitä voi tehdä
-                return false;
-            }
-            this.lauta.teeSiirto(x, y, aktiivinen);
-
-        }
-
-        this.aktiivinen.setEnsimmainenSiirto(false);
-        this.paivitaPelaajienNappulat();
-
-        this.vaihdaVuoroa();
-
-        return true;
-
+    public Pelaaja getValkoinen() {
+        return valkoinen;
     }
 
     public Pelaaja getVuorossa() {
         return vuorossa;
     }
 
-    public void asetaAktiivinen(int x, int y) {
-
-        if (this.lauta.haeNappula(x, y) != null) {
-            if (this.lauta.haeNappula(x, y).getMaa() == this.vuorossa.getMaa()) {
-                this.aktiivinen = this.lauta.haeNappula(x, y);
-            } else {
-                System.out.println("et voi siirtää vastustajan nappulaa");
-            }
-        }
-    }
-
     public Nappula getAktiivinen() {
         return aktiivinen;
     }
 
-    private boolean voiTehdaLyhyenTornituksen(int x, int y) {
-        if (x != 6) {
-            return false;
-        }
-
-        if (this.vuorossa.getMaa() == VALKOINEN) {
-            if (y != 0) {
-                return false;
-            }
-            return this.valkoinenVoiTehdaLyhyenTornituksen();
-        } else {
-            if (y != 7) {
-                return false;
-            }
-            return this.mustaVoiTehdaLyhyenTornituksen();
-        }
-
-    }
-
-    private boolean valkoinenVoiTehdaLyhyenTornituksen() {
-        if (!this.getVuorossa().getKunkku().tarkistaOnkoKohdeOma(7, 0)) {
-            return false;
-        }
-        if (!(this.getVuorossa().getKunkku().onEnsimmainenSiirto() && this.getLauta().haeNappula(7, 0).onEnsimmainenSiirto())) {
-            return false;
-        }
-        if (!(this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(5, 0) && this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(6, 0))) {
-            return false;
-        }
-        if (this.onkoUhattuna(5, 0) || this.onkoUhattuna(6, 0) || this.onkoUhattuna(4, 0)) {
-            return false;
-        }
-
-        return true;
-
-    }
-
-    private boolean mustaVoiTehdaLyhyenTornituksen() {
-        if (!this.getVuorossa().getKunkku().tarkistaOnkoKohdeOma(7, 7)) {
-            return false;
-        }
-        if (!(this.getVuorossa().getKunkku().onEnsimmainenSiirto() && this.getLauta().haeNappula(7, 7).onEnsimmainenSiirto())) {
-            return false;
-        }
-        if (!(this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(5, 7) && this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(6, 7))) {
-            return false;
-        }
-        if (this.onkoUhattuna(5, 7) || this.onkoUhattuna(6, 7) || this.onkoUhattuna(4, 7)) {
-            return false;
-        }
-
-        return true;
-
-    }
-
-    private boolean voiTehdaPitkanTornituksen(int x, int y) {
-        if (x != 2) {
-            return false;
-        }
-
-        if (this.vuorossa.getMaa() == VALKOINEN) {
-            if (y != 0) {
-                return false;
-            }
-            return this.valkoinenVoiTehdaPitkanTornituksen();
-        } else {
-            if (y != 7) {
-                return false;
-            }
-            return this.mustaVoiTehdaPitkanTornituksen();
-        }
-
-    }
-
-    private boolean valkoinenVoiTehdaPitkanTornituksen() {
-        if (!this.getVuorossa().getKunkku().tarkistaOnkoKohdeOma(0, 0)) {
-            return false;
-        }
-        if (!(this.getVuorossa().getKunkku().onEnsimmainenSiirto() && this.getLauta().haeNappula(0, 0).onEnsimmainenSiirto())) {
-            return false;
-        }
-        if (!(this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(1, 0) && this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(2, 0) && this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(3, 0))) {
-            return false;
-        }
-        if (this.onkoUhattuna(2, 0) || this.onkoUhattuna(3, 0) || this.onkoUhattuna(4, 0)) {
-            return false;
-        }
-
-        return true;
-
-    }
-
-    private boolean mustaVoiTehdaPitkanTornituksen() {
-        if (!this.getVuorossa().getKunkku().tarkistaOnkoKohdeOma(0, 7)) {
-            return false;
-        }
-        if (!(this.getVuorossa().getKunkku().onEnsimmainenSiirto() && this.getLauta().haeNappula(0, 7).onEnsimmainenSiirto())) {
-            return false;
-        }
-        if (!(this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(1, 7) && this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(2, 7) && this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(3, 7))) {
-            return false;
-        }
-        if (this.onkoUhattuna(2, 7) || this.onkoUhattuna(3, 7) || this.onkoUhattuna(4, 7)) {
-            return false;
-        }
-
-        return true;
-
+    public Pelilauta getLauta() {
+        return lauta;
     }
 
     public String toString() {
