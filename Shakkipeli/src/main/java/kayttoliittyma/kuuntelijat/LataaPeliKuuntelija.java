@@ -7,8 +7,11 @@ package kayttoliittyma.kuuntelijat;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.SwingUtilities;
 import kayttoliittyma.Kayttoliittyma;
 import kayttoliittyma.PeliPiirto;
+import kayttoliittyma.TiedostoValitsinLataus;
+import kayttoliittyma.TiedostoValitsinTallennus;
 import logiikka.peli.Peli;
 import logiikka.peli.PeliHallinta;
 
@@ -22,13 +25,13 @@ public class LataaPeliKuuntelija extends Kuuntelija implements ActionListener {
         super(kayttoliittyma);
     }
 
-
-
-
     @Override
     public void actionPerformed(ActionEvent ae) {
-        this.kayttoliittyma.getPeliHallinta().lataaPeli();
-        this.kayttoliittyma.getPeliPiirto().repaint();
+
+        SwingUtilities.invokeLater(new TiedostoValitsinLataus(this.kayttoliittyma));
+        this.kayttoliittyma.getFrame().repaint();
+
+        
     }
 
 }

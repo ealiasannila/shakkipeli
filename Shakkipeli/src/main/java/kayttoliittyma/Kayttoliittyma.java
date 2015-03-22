@@ -21,6 +21,17 @@ public class Kayttoliittyma implements Runnable {
 
     private JFrame ruutu;
     private PeliHallinta peliHallinta;
+    private int ikkunanKoko;
+
+    public Kayttoliittyma() {
+        this.peliHallinta = new PeliHallinta();
+        this.peliPiirto = new PeliPiirto(this);
+
+    }
+
+    public JFrame getRuutu() {
+        return ruutu;
+    }
 
     public PeliHallinta getPeliHallinta() {
         return peliHallinta;
@@ -31,24 +42,17 @@ public class Kayttoliittyma implements Runnable {
     }
     private PeliPiirto peliPiirto;
 
-    public Kayttoliittyma() {
-        this.peliHallinta = new PeliHallinta();
-        this.peliPiirto = new PeliPiirto(60, this);
-        
-    }
-
     @Override
     public void run() {
 
         ruutu = new JFrame("Shakkipeli");
-        ruutu.setPreferredSize(new Dimension(this.peliPiirto.getSivunPituus() * 8 + 10, this.peliPiirto.getSivunPituus() * 8 + 55));
+        ruutu.setPreferredSize(new Dimension(650,700));
 
         ruutu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         luoPiirtoKomponentit(ruutu.getContentPane());
 
         ruutu.pack();
-
         ruutu.setVisible(true);
     }
 

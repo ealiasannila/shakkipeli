@@ -18,11 +18,11 @@ import logiikka.nappulat.Maa;
 public abstract class NappulaPiirto {
 
     public int piirtoX(int xRuutu, PeliPiirto alusta, int nappulanKoko) {
-        return xRuutu * (alusta.getSivunPituus()) + alusta.getSivunPituus() / 2 - nappulanKoko / 2;
+        return (xRuutu * (alusta.getSivunPituus()) + alusta.getSivunPituus() / 2 - nappulanKoko / 2);
     }
 
     public int piirtoY(int yRuutu, PeliPiirto alusta, int nappulanKoko) {
-        return (7 - yRuutu) * (alusta.getSivunPituus()) + alusta.getSivunPituus() / 2 - nappulanKoko / 2;
+        return ((7 - yRuutu) * (alusta.getSivunPituus()) + alusta.getSivunPituus() / 2 - nappulanKoko / 2);
 
     }
 

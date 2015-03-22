@@ -44,11 +44,15 @@ public class PeliHallinta {
         
         
     }
+    
+    public void tallennaPeli(){
+        this.tallennaPeli("tallennetutPelit/peli.txt");
+    }
 
-    public void tallennaPeli() {
+    public void tallennaPeli(String tiedostonNimi) {
         PrintWriter writer;
         try {
-            writer = new PrintWriter("tallennetutPelit/peli.txt", "UTF-8");
+            writer = new PrintWriter(tiedostonNimi, "UTF-8");
         } catch (FileNotFoundException ex) {
             return;
         } catch (UnsupportedEncodingException ex) {

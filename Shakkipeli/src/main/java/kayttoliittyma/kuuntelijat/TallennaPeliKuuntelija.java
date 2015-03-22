@@ -7,8 +7,11 @@ package kayttoliittyma.kuuntelijat;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import kayttoliittyma.Kayttoliittyma;
 import kayttoliittyma.PeliPiirto;
+import kayttoliittyma.TiedostoValitsinTallennus;
 import logiikka.peli.Peli;
 import logiikka.peli.PeliHallinta;
 
@@ -18,6 +21,7 @@ import logiikka.peli.PeliHallinta;
  */
 public class TallennaPeliKuuntelija extends Kuuntelija implements ActionListener {
 
+    
     public TallennaPeliKuuntelija(Kayttoliittyma kayttoliittyma) {
         super(kayttoliittyma);
     }
@@ -27,8 +31,9 @@ public class TallennaPeliKuuntelija extends Kuuntelija implements ActionListener
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        this.kayttoliittyma.getPeliHallinta().tallennaPeli();
-        this.kayttoliittyma.getPeliPiirto().repaint();
+        SwingUtilities.invokeLater(new TiedostoValitsinTallennus(this.kayttoliittyma));
+        
+        this.kayttoliittyma.getFrame().repaint();
     }
 
 }
