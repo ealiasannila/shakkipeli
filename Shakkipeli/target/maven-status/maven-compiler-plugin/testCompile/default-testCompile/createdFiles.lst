@@ -1,4 +1,7 @@
 logiikka/peli/PelilautaTest.class
-logiikka/nappulat/KunkkuTest.class
 logiikka/nappulat/TorniTest.class
-PeliTest.class
+logiikka/nappulat/LahettiTest.class
+logiikka/nappulat/RatsuTest.class
+logiikka/nappulat/KunkkuTest.class
+logiikka/nappulat/KuningatarTest.class
+logiikka/nappulat/SotilasTest.class

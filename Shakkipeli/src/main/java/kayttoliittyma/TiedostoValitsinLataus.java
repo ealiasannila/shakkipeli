@@ -47,7 +47,7 @@ public class TiedostoValitsinLataus implements Runnable {
         File kansio = new File("tallennetutPelit/omat");
         File[] tiedostot = kansio.listFiles();
 
-        DefaultListModel<String> lista = new DefaultListModel<String>();
+        DefaultListModel<String> lista = new DefaultListModel<>();
 
         for (int i = 0; i < tiedostot.length; i++) {
             lista.addElement(tiedostot[i].getName());

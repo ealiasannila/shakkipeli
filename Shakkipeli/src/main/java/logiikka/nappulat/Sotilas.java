@@ -84,13 +84,7 @@ public class Sotilas extends Nappula {
 
     @Override
     public ArrayList<Ruutu> uhkausLinja(int x, int y) {
-        if (!this.tarkistaReitti(x, y)) {
-            System.out.println("Ei uhkaa, mutta kysytään linjaa");
-            return null;
-        }
-        ArrayList<Ruutu> uhatutRuudut = new ArrayList<Ruutu>();
-        uhatutRuudut.add(new Ruutu(x, y));
-        return uhatutRuudut;
+        return new ArrayList<Ruutu>();
     }
 
     public String toString() {

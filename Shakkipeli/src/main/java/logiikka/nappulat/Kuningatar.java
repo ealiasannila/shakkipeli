@@ -118,37 +118,29 @@ public class Kuningatar extends Nappula {
             }
         } else if (this.getX() < x && this.getY() < y) { //kohde yläoikealle
             int j = this.getY() + 1;
-            for (int i = this.getX() + 1; i < x; i++) {
-                if (!tarkistaOnkoKohdeVapaa(i, j)) {
-                    uhatutRuudut.add(new Ruutu(i, j));
-                }
+            for (int i = this.getX() + 1; i <= x; i++) {
+                uhatutRuudut.add(new Ruutu(i, j));
                 j++;
             }
         } else if (this.getX() > x && this.getY() > y) {//kohde alavasemmalle
             int j = this.getY() - 1;
-            for (int i = this.getX() - 1; i > x; i--) {
-                if (!tarkistaOnkoKohdeVapaa(i, j)) {
+            for (int i = this.getX() - 1; i >= x; i--) {
 
-                    uhatutRuudut.add(new Ruutu(i, j));
-                }
+                uhatutRuudut.add(new Ruutu(i, j));
                 j--;
             }
         } else if (this.getY() < y && this.getX() > x) {//kohde ylävasemmalle
             int j = this.getX() - 1;
-            for (int i = this.getY() + 1; i < y; i++) {
-                if (!tarkistaOnkoKohdeVapaa(j, i)) {
+            for (int i = this.getY() + 1; i <= y; i++) {
 
-                    uhatutRuudut.add(new Ruutu(j, i));
-                }
+                uhatutRuudut.add(new Ruutu(j, i));
                 j--;
             }
         } else if (this.getY() > y && this.getX() < x) {//kohde alaoikealle
             int j = this.getX() + 1;
-            for (int i = this.getY() - 1; i > y; i--) {
-                if (!tarkistaOnkoKohdeVapaa(j, i)) {
+            for (int i = this.getY() - 1; i >= y; i--) {
 
-                    uhatutRuudut.add(new Ruutu(j, i));
-                }
+                uhatutRuudut.add(new Ruutu(j, i));
                 j++;
             }
         }

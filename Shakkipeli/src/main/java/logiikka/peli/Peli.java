@@ -34,8 +34,10 @@ public class Peli {
     private Nappula aktiivinen;
 
     public Peli() {
+
         this.valkoinen = new Pelaaja(VALKOINEN);
         this.musta = new Pelaaja(MUSTA);
+
         this.lauta = new Pelilauta();
     }
 

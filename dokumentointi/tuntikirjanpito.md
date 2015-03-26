@@ -6,3 +6,4 @@
 10.3 9h käyttöliittymän tekoa, loput nappulat, tallennus
 13.3 2h testien päivittämistä, pelihallinnan luonti koodin siistimistä, luokkakaavion piirto
 22.3 5h piirsin nappulat, lisäisin useampien pelien lataus/tallennus mahdollisuuden ja skaalautuvan laudan
+26.3 3h kirjoitin lisää testejä

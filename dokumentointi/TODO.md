@@ -5,4 +5,4 @@
 3. SotilaanKorotus
 4. fiksaa lataus/tallenus bugi
 8. päivitä testejä
-
+yleiset nappulaan liittyvät testit nappulaTest:iin torniTestin sijaan.
