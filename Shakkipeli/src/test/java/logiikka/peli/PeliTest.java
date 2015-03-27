@@ -240,6 +240,78 @@ public class PeliTest {
 
     }
 
+    @Test
+    public void voiTehdaOhestaLyonnin() {
+        this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/ohestaLyonti.txt");
+        this.peli.asetaAktiivinen(1, 1);
+        this.peli.siirto(1, 3);
+        assert (this.peli.toString().equals("MUSTA\n"
+                + "ooooKooo\n"
+                + "oooooooo\n"
+                + "oooooooo\n"
+                + "oooQoooo\n"
+                + "osoooooo\n"
+                + "ohoooooo\n"
+                + "sossssss\n"
+                + "toookoot\n"));
+        this.peli.asetaAktiivinen(3, 4);
+        this.peli.siirto(1, 2);
+        assert (this.peli.toString().equals("VALKOINEN\n"
+                + "ooooKooo\n"
+                + "oooooooo\n"
+                + "oooooooo\n"
+                + "oooooooo\n"
+                + "oooooooo\n"
+                + "oQoooooo\n"
+                + "sossssss\n"
+                + "toookoot\n"));
+    }
+    
+    @Test
+    public void pattiTestEiVoiLiikkua(){
+        this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/pattiEiVoiLiikkua.txt");
+        assert(this.peli.onPatissa());
+        
+    }
+    
+    @Test
+    public void pattiTestVainKunkut(){
+        this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/pattiVainKunkut.txt");
+        assert(this.peli.onPatissa());
+        
+    }
+    
+    
+    @Test
+    public void pattiTestVainKunkkuJaRatsu(){
+        this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/pattiKunkkuJaRatsu.txt");
+        assert(this.peli.onPatissa());
+        
+    }
+    
+    @Test
+    public void pattiTestVainKunkkuJaLahettejaSamallaVarilla(){
+        this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/pattiKunkkuJaLahettejaSamallaVarilla.txt");
+        assert(this.peli.onPatissa());
+        
+    }
+    
+    
+    @Test
+    public void pattiTestVainKunkkuJaLahettejaEriVarilla(){
+        this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/pattiKunkkuJaLahettejaEriVarilla.txt");
+        assert(!this.peli.onPatissa());
+        
+    }
+
+    
+    
+    @Test
+    public void pattiTestVainKunkkuJa2Ratsua(){
+        this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/pattiKunkkuJa2Ratsua.txt");
+        assert(!this.peli.onPatissa());
+        
+    }
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //

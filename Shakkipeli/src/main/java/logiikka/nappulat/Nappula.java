@@ -39,6 +39,8 @@ public abstract class Nappula {
     public NappulaPiirto getPiirto() {
         return piirto;
     }
+    
+    public abstract ArrayList<Ruutu> mahdollisetRuudut();
 
     protected abstract boolean sallittuLiikkumisTapa(int x, int y);
 
@@ -96,6 +98,8 @@ public abstract class Nappula {
         return this.getLauta().haeNappula(x, y) == null;
 
     }
+    
+    
 
     public Maa getMaa() {
         return maa;

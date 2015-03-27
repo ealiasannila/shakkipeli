@@ -53,6 +53,21 @@ public class Ratsu extends Nappula {
         return true; //ratsu loikkii
     }
 
+    @Override
+    public ArrayList<Ruutu> mahdollisetRuudut() {
+        ArrayList<Ruutu> ruudut = new ArrayList<Ruutu>();
+        ruudut.add(new Ruutu(this.getX() + 2, this.getY() + 1));
+        ruudut.add(new Ruutu(this.getX() - 2, this.getY() + 1));
+        ruudut.add(new Ruutu(this.getX() + 1, this.getY() + 2));
+        ruudut.add(new Ruutu(this.getX() - 1, this.getY() + 2));
+        ruudut.add(new Ruutu(this.getX() + 2, this.getY() - 1));
+        ruudut.add(new Ruutu(this.getX() - 2, this.getY() - 1));
+        ruudut.add(new Ruutu(this.getX() + 1, this.getY() - 2));
+        ruudut.add(new Ruutu(this.getX() - 1, this.getY() - 2));
+
+        return ruudut;
+    }
+
     public String toString() {
         if (this.getMaa() == VALKOINEN) {
             return "r";

@@ -89,4 +89,14 @@ public class Torni extends Nappula {
         return uhatutRuudut;
     }
 
+    public ArrayList<Ruutu> mahdollisetRuudut() {
+        ArrayList<Ruutu> ruudut = new ArrayList<Ruutu>();
+        for (int i = 0; i < 8; i++) {
+            ruudut.add(new Ruutu(this.getX(), i));
+            ruudut.add(new Ruutu(i, this.getY()));
+            
+        }
+        return ruudut;
+    }
+
 }

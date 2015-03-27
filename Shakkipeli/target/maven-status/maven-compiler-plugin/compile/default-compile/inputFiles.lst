@@ -9,6 +9,7 @@
 /home/elias/shakkipeli/Shakkipeli/src/main/java/kayttoliittyma/nappulapiirto/LahettiPiirto.java
 /home/elias/shakkipeli/Shakkipeli/src/main/java/kayttoliittyma/nappulapiirto/TorniPiirto.java
 /home/elias/shakkipeli/Shakkipeli/src/main/java/kayttoliittyma/TiedostoValitsinTallennus.java
+/home/elias/shakkipeli/Shakkipeli/src/main/java/kayttoliittyma/nappulapiirto/HaamuSotilasPiirto.java
 /home/elias/shakkipeli/Shakkipeli/src/main/java/logiikka/nappulat/Torni.java
 /home/elias/shakkipeli/Shakkipeli/src/main/java/logiikka/nappulat/Maa.java
 /home/elias/shakkipeli/Shakkipeli/src/main/java/kayttoliittyma/kuuntelijat/LautaKuuntelija.java
@@ -27,6 +28,7 @@
 /home/elias/shakkipeli/Shakkipeli/src/main/java/logiikka/nappulat/Lahetti.java
 /home/elias/shakkipeli/Shakkipeli/src/main/java/kayttoliittyma/kuuntelijat/TiedostoListaValitsinLatus.java
 /home/elias/shakkipeli/Shakkipeli/src/main/java/logiikka/peli/Ruutu.java
+/home/elias/shakkipeli/Shakkipeli/src/main/java/logiikka/nappulat/HaamuSotilas.java
 /home/elias/shakkipeli/Shakkipeli/src/main/java/kayttoliittyma/kuuntelijat/Kuuntelija.java
 /home/elias/shakkipeli/Shakkipeli/src/main/java/kayttoliittyma/PeliPiirto.java
 /home/elias/shakkipeli/Shakkipeli/src/main/java/kayttoliittyma/nappulapiirto/KuningatarPiirto.java

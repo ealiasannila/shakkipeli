@@ -11,5 +11,5 @@ package logiikka.nappulat;
  */
 public enum Maa {
 
-    VALKOINEN, MUSTA
+    VALKOINEN, MUSTA, HAAMU
 }

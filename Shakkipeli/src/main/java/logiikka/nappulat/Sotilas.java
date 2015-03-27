@@ -95,4 +95,21 @@ public class Sotilas extends Nappula {
         }
     }
 
+    @Override
+    public ArrayList<Ruutu> mahdollisetRuudut() {
+        ArrayList<Ruutu> ruudut = new ArrayList<Ruutu>();
+        if (this.getMaa() == VALKOINEN) {
+            ruudut.add(new Ruutu(this.getX(), this.getY() + 1));
+            ruudut.add(new Ruutu(this.getX() - 1, this.getY() + 1));
+            ruudut.add(new Ruutu(this.getX() + 1, this.getY() + 1));
+
+        } else {
+
+            ruudut.add(new Ruutu(this.getX(), this.getY() - 1));
+            ruudut.add(new Ruutu(this.getX() - 1, this.getY() - 1));
+            ruudut.add(new Ruutu(this.getX() + 1, this.getY() - 1));
+        }
+        return ruudut;
+    }
+
 }

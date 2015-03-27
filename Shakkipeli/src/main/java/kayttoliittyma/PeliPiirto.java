@@ -47,6 +47,13 @@ public class PeliPiirto extends JPanel {
     public void peliLoppu(Graphics graphics) {
         graphics.setColor(Color.GRAY);
         
+        
+        if (this.kayttoliittyma.getPeliHallinta().getPeli().onPatissa()) {
+            graphics.setFont(new Font("TimesRoman", Font.PLAIN, this.getSivunPituus()));
+            graphics.drawString("PATTITILANNE " , this.getSivunPituus(), this.getSivunPituus() * 3);
+            
+        }
+        
         if (this.kayttoliittyma.getPeliHallinta().getPeli().onMatissa()) {
             graphics.setFont(new Font("TimesRoman", Font.PLAIN, this.getSivunPituus()));
             graphics.drawString("HÄVISIT " , this.getSivunPituus(), this.getSivunPituus() * 3);

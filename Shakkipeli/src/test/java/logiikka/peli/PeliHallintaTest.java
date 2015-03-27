@@ -73,7 +73,7 @@ public class PeliHallintaTest {
                 + "ssssssss\n"
                 + "trlqklrt\n"));
         this.peliHallinta.getPeli().asetaAktiivinen(0, 1);
-        this.peliHallinta.getPeli().siirto(0, 2);
+        this.peliHallinta.getPeli().siirto(0, 3);
         this.peliHallinta.tallennaPeli("tallennetutPelit/testiTilanteet/tallennusTesti.txt");
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/tallennusTesti.txt");
         assert (this.peliHallinta.getPeli().toString().equals(
@@ -82,8 +82,8 @@ public class PeliHallintaTest {
                 + "SSSSSSSS\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
-                + "oooooooo\n"
                 + "sooooooo\n"
+                + "hooooooo\n"
                 + "osssssss\n"
                 + "trlqklrt\n"));
     }

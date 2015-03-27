@@ -147,6 +147,41 @@ public class Kuningatar extends Nappula {
         return uhatutRuudut;
     }
 
+    public ArrayList<Ruutu> mahdollisetRuudut() {
+        ArrayList<Ruutu> ruudut = new ArrayList<Ruutu>();
+        int j = this.getY();
+        for (int i = this.getX(); i < 8 && j < 8; i++) {
+            j++;
+            ruudut.add(new Ruutu(i, j));
+        }
+
+        j = this.getY();
+        for (int i = this.getX();  i >= 0 && j >= 0; i--) {
+            j--;
+            ruudut.add(new Ruutu(i, j));
+        }
+
+        j = this.getY();
+        for (int i = this.getX(); i < 8 && j >= 0; i++) {
+            j--;
+            ruudut.add(new Ruutu(i, j));
+        }
+
+        j = this.getY();
+        for (int i = this.getX(); i >= 0 && j < 8; i--) {
+            j++;
+            ruudut.add(new Ruutu(i, j));
+        }
+
+        for (int i = 0; i < 8; i++) {
+            ruudut.add(new Ruutu(this.getX(), i));
+            ruudut.add(new Ruutu(i, this.getY()));
+
+        }
+
+        return ruudut;
+    }
+
     public String toString() {
         if (this.getMaa() == VALKOINEN) {
             return "q";

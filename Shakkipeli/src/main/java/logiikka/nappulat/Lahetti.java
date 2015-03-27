@@ -102,6 +102,34 @@ public class Lahetti extends Nappula {
         return uhatutRuudut;
     }
 
+    public ArrayList<Ruutu> mahdollisetRuudut() {
+        ArrayList<Ruutu> ruudut = new ArrayList<Ruutu>();
+        int j = this.getY();
+        for (int i = this.getX(); i < 8 && j < 8; i++) {
+            j++;
+            ruudut.add(new Ruutu(i, j));
+        }
+
+        j = this.getY();
+        for (int i = this.getX(); i >= 0 && j >= 0; i--) {
+            j--;
+            ruudut.add(new Ruutu(i, j));
+        }
+
+        j = this.getY();
+        for (int i = this.getX(); i < 8 && j >= 0; i++) {
+            j--;
+            ruudut.add(new Ruutu(i, j));
+        }
+
+        j = this.getY();
+        for (int i = this.getX(); i >= 0 && j < 8; i--) {
+            j++;
+            ruudut.add(new Ruutu(i, j));
+        }
+        return ruudut;
+    }
+
     public String toString() {
         if (this.getMaa() == VALKOINEN) {
             return "l";

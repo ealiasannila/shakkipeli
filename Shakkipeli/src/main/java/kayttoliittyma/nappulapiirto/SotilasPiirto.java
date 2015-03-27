@@ -21,7 +21,7 @@ public class SotilasPiirto extends NappulaPiirto {
 
     @Override
     public Image haeKuva(Maa maa) {
-        BufferedImage kuningatarKuva = null;
+        BufferedImage sotilaskuva = null;
         File kuva = null;
         if (maa == MUSTA) {
             kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/sotilas.png");
@@ -32,12 +32,12 @@ public class SotilasPiirto extends NappulaPiirto {
         }
 
         try {
-            kuningatarKuva = ImageIO.read(kuva);
+            sotilaskuva = ImageIO.read(kuva);
         } catch (IOException e) {
             System.out.println("EI LÖYDY KUNINGATARTA");
         }
 
-        return kuningatarKuva;
+        return sotilaskuva;
     }
 
 }

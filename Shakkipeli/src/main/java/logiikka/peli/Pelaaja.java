@@ -8,6 +8,7 @@ package logiikka.peli;
 import java.util.ArrayList;
 import logiikka.nappulat.Kunkku;
 import logiikka.nappulat.Maa;
+import static logiikka.nappulat.Maa.VALKOINEN;
 import logiikka.nappulat.Nappula;
 
 /**
@@ -17,11 +18,38 @@ import logiikka.nappulat.Nappula;
 public class Pelaaja {
 
     private Kunkku kunkku;
+    private int ohestaLyontiX;
+    private int ohestaLyontiY;
+    private int lyotyY;
     private Maa maa;
 
     public Pelaaja(Maa maa) {
         this.maa = maa;
         this.nappulat = new ArrayList<Nappula>();
+        this.ohestaLyontiX = -1;
+        if (maa == VALKOINEN) {
+            this.ohestaLyontiY = 2;
+            this.lyotyY = 3;
+        } else {
+            this.ohestaLyontiY = 5;
+            this.lyotyY = 4;
+        }
+    }
+
+    public int getLyotyY() {
+        return lyotyY;
+    }
+
+    public int getOhestaLyontiY() {
+        return ohestaLyontiY;
+    }
+
+    public int getOhestaLyontiX() {
+        return ohestaLyontiX;
+    }
+
+    public void setOhestaLyontiX(int ohestaLyonti) {
+        this.ohestaLyontiX = ohestaLyonti;
     }
 
     public Maa getMaa() {

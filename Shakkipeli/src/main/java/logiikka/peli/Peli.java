@@ -11,9 +11,11 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import logiikka.nappulat.HaamuSotilas;
 import logiikka.nappulat.Kuningatar;
 import logiikka.nappulat.Kunkku;
 import logiikka.nappulat.Lahetti;
+import static logiikka.nappulat.Maa.HAAMU;
 import static logiikka.nappulat.Maa.MUSTA;
 import static logiikka.nappulat.Maa.VALKOINEN;
 import logiikka.nappulat.Nappula;
@@ -146,6 +148,93 @@ public class Peli {
         return true;
     }
 
+    public boolean onPatissa() {
+
+        if (this.eiVoiTehdaMattia()) {
+            return true;
+        }
+        if (this.onShakissa()) {
+            return false;
+        }
+
+        if (this.eiVoiLiikkuaMillaanNappulalla()) {
+            return true;
+        }
+
+        return false;
+
+    }
+
+    public boolean eiVoiLiikkuaMillaanNappulalla() {
+        for (Nappula nappula : this.vuorossa.getNappulat()) {
+            for (Ruutu ruutu : nappula.mahdollisetRuudut()) {
+                if (this.kokeileSiirtoa(ruutu.getX(), ruutu.getY(), nappula)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+
+    }
+
+    public boolean eiVoiTehdaMattia() {
+        return this.eiVoiTehdaMattia(this.getMusta()) && this.eiVoiTehdaMattia(this.getValkoinen());
+    }
+
+    public boolean eiVoiTehdaMattia(Pelaaja pelaaja) {
+        if (this.vainKunkku(pelaaja)) {
+            return true;
+        }
+        if (this.vainKunkkuJaRatsu(pelaaja)) {
+            return true;
+        }
+        if (this.vainKunkkuJaYhdellaVarillaLahetteja(pelaaja)) {
+            return true;
+        }
+        return false;
+
+    }
+
+    public boolean vainKunkku(Pelaaja pelaaja) {
+        return pelaaja.getNappulat().size() == 1;
+    }
+
+    public boolean vainKunkkuJaRatsu(Pelaaja pelaaja) {
+        if (pelaaja.getNappulat().size() != 2) {
+            return false;
+        }
+        for (Nappula nappula : pelaaja.getNappulat()) {
+            if (nappula.getClass() != Kunkku.class && nappula.getClass() != Ratsu.class) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean vainKunkkuJaYhdellaVarillaLahetteja(Pelaaja pelaaja) {
+        boolean onMustaLahetti = false;
+        boolean onVaaleaLahetti = false;
+
+        for (int i = 0; i < pelaaja.getNappulat().size(); i++) {
+            Nappula nappula = pelaaja.getNappulat().get(i);
+            if (nappula.equals(pelaaja.getKunkku())) {
+                continue;
+            } else if (nappula.getClass() == Lahetti.class) {
+                if ((nappula.getX() + nappula.getY()) % 2 == 0) {
+                    onVaaleaLahetti = true;
+                } else {
+                    onMustaLahetti = true;
+                }
+            } else {
+                return false;
+            }
+
+        }
+
+        return !(onVaaleaLahetti && onMustaLahetti);
+
+    }
+
     public boolean voiSyodaNappulan(Nappula nappula) {
         for (Nappula oma : vuorossa.getNappulat()) {
             if (oma.onSallittuSiirto(nappula.getX(), nappula.getY())) {
@@ -199,20 +288,58 @@ public class Peli {
             this.vuorossa = this.valkoinen;
         }
         this.aktiivinen = null;
+        this.ohestaLyonti();
+        this.paivitaPelaajienNappulat();
+
+    }
+
+    public
+            void ohestaLyonti() {
+
+        if (this.getVuorossa().getOhestaLyontiX() != -1) {
+
+            if (this.lauta.haeNappula(this.vuorossa.getOhestaLyontiX(), this.vuorossa.getOhestaLyontiY()).getClass() != HaamuSotilas.class) {
+
+                this.lauta.asetaNappula(
+                        null, this.vuorossa.getOhestaLyontiX(), this.vuorossa.getLyotyY());
+            } else {
+                this.lauta.asetaNappula(null, this.vuorossa.getOhestaLyontiX(), this.vuorossa.getOhestaLyontiY());
+            }
+            this.vuorossa.setOhestaLyontiX(-1);
+        }
+    }
+
+    public
+            void sotilasLiikkuiEkalla2(int x, int y) {
+        if (this.aktiivinen.getClass().equals(Sotilas.class
+        )) {
+            if (this.aktiivinen.onEnsimmainenSiirto()) {
+                if (y == 3) {
+                    this.valkoinen.setOhestaLyontiX(x);
+                    new HaamuSotilas(HAAMU, x, y - 1, this.lauta);
+                } else if (y == 4) {
+                    this.musta.setOhestaLyontiX(x);
+                    new HaamuSotilas(HAAMU, x, y + 1, this.lauta);
+                }
+            }
+        }
     }
 
     public boolean siirto(int x, int y) {
         if (this.aktiivinen == null) {//pitää olla nappula valittuna
             return false;
         }
+
         if (!this.tornitus(x, y)) {        //TORNITUS kokeile tehdä tornitus, jos ei onnistu yritä muuta siirtoa
             if (!this.kokeileSiirtoa(x, y, this.aktiivinen)) {//Jos siirto jättää kunkun uhatuksi ei sitä voi tehdä
                 return false;
             }
             this.lauta.teeSiirto(x, y, aktiivinen);
         }
+        this.sotilasLiikkuiEkalla2(x, y); //jos liikutettiin sotilasta alussa 2 asetetaan näkymätön "haamusotilas" ohestalyöntiä varten
+
         this.aktiivinen.setEnsimmainenSiirto(false);
-        this.paivitaPelaajienNappulat();
+
         this.vaihdaVuoroa();
         return true;
     }
@@ -395,6 +522,9 @@ public class Peli {
                         break;
                     case 's':
                         new Sotilas(VALKOINEN, i, riviNro, this.lauta);
+                        break;
+                    case 'h':
+                        new HaamuSotilas(HAAMU, i, riviNro, this.lauta);
                         break;
                 }
             }

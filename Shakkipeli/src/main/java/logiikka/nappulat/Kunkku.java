@@ -56,6 +56,22 @@ public class Kunkku extends Nappula {
         return true; //kunkku liikkuu vain yhden
     }
 
+    @Override
+    public ArrayList<Ruutu> mahdollisetRuudut() {
+        ArrayList<Ruutu> ruudut = new ArrayList<Ruutu>();
+        ruudut.add(new Ruutu(this.getX() + 1, this.getY() + 1));
+        ruudut.add(new Ruutu(this.getX() - 1, this.getY() + 1));
+        ruudut.add(new Ruutu(this.getX() + 1, this.getY() - 1));
+        ruudut.add(new Ruutu(this.getX() - 1, this.getY() - 1));
+
+        ruudut.add(new Ruutu(this.getX(), this.getY() - 1));
+        ruudut.add(new Ruutu(this.getX(), this.getY() + 1));
+        ruudut.add(new Ruutu(this.getX() + 1, this.getY()));
+        ruudut.add(new Ruutu(this.getX() - 1, this.getY()));
+
+        return ruudut;
+    }
+
     public String toString() {
         if (this.getMaa() == VALKOINEN) {
             return "k";
