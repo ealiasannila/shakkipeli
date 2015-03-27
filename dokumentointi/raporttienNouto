@@ -1,0 +1,7 @@
+rm -r ./cobertura
+cp -r ../Shakkipeli/target/site/cobertura/ .
+
+rm -r ./pit-reports
+cp -r ../Shakkipeli/target/pit-reports/ .
+rm -r ../Shakkipeli/target/pit-reports/
+
