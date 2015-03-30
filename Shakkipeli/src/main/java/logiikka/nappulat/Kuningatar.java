@@ -13,7 +13,7 @@ import logiikka.peli.Pelilauta;
 import logiikka.peli.Ruutu;
 
 /**
- *
+ *Liikkuu kuin torni tai lähetti, käyttää samoja apumetodeja NappulaApumetodeja luokasta
  * @author elias
  */
 public class Kuningatar extends Nappula {

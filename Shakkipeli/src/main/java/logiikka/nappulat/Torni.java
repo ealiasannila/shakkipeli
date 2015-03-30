@@ -13,7 +13,7 @@ import logiikka.peli.Pelilauta;
 import logiikka.peli.Ruutu;
 
 /**
- *
+ *Torni liikkuu pysty tai vaakariveillä
  * @author elias
  */
 public class Torni extends Nappula {

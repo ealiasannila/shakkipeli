@@ -5,6 +5,8 @@
  */
 package logiikka.nappulat;
 
+import java.util.ArrayList;
+import static logiikka.peli.Maa.MUSTA;
 import static logiikka.peli.Maa.VALKOINEN;
 import logiikka.peli.Pelilauta;
 import static org.junit.Assert.*;
@@ -76,8 +78,45 @@ public class RatsuTest {
         assert (!this.ratsu.onSallittuSiirto(2, 4));
 
     }
+
     @Test
-    public void uhkausLinjaTyhja(){
-        assert(this.ratsu.uhkausLinja(2, 3).isEmpty());
+    public void sallittuLiikkumisTapa() {
+        for (int i = 0; i < 8; i++) {
+            assert (!this.ratsu.sallittuLiikkumisTapa(i, 4));
+        }
+        for (int i = 0; i < 8; i++) {
+            assert (!this.ratsu.sallittuLiikkumisTapa(4, i));
+        }
+        for (int i = 0; i < 8; i++) {
+            assert(!this.ratsu.sallittuLiikkumisTapa(i, i));
+        }
     }
- }
+
+    @Test
+    public void reitillaEiMuitaNappuloitaTest() {
+        assert (this.ratsu.reitillaEiMuitaNappuloita(2, 3));
+    }
+
+    @Test
+    public void uhkausLinjaTyhjaTest() {
+        assert (this.ratsu.uhkausLinja(4, 3) != null);
+        assert (this.ratsu.uhkausLinja(2, 3).isEmpty());
+        assert (this.ratsu.uhkausLinja(4, 5).isEmpty());
+        assert (this.ratsu.uhkausLinja(4, 5).getClass() == ArrayList.class);
+    }
+
+    @Test
+    public void toStringTest() {
+        assert this.ratsu.toString().equals("r");
+        Ratsu musta = new Ratsu(MUSTA, 1, 1, this.testiLauta);
+        assert musta.toString().equals("R");
+
+    }
+
+    @Test
+    public void mahdollisetRuudutTest() {
+        System.out.println(this.ratsu.mahdollisetRuudut().toString());
+        assert (this.ratsu.mahdollisetRuudut().toString().equals("[[6,5], [2,5], [5,6], [3,6], [6,3], [2,3], [5,2], [3,2]]"));
+    }
+
+}

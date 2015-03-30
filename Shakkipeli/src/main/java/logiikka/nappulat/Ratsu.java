@@ -13,21 +13,22 @@ import logiikka.peli.Pelilauta;
 import logiikka.peli.Ruutu;
 
 /**
- *
- * @author elias
+ *Ratsu liikkuu +/- 1 pystyrivillä ja +/- 2 vaakarivillä tai +/- 2 pystyrivillä ja +/-1 vaakarivillä. Ratsu voi liikkua muiden nappuloiden ylitse
  */
 public class Ratsu extends Nappula {
 
     public Ratsu(Maa maa, int x, int y, Pelilauta lauta) {
         super(maa, x, y, lauta);
         this.piirto = new RatsuPiirto();
+        
     }
 
-    @Override
-    public boolean tarkistaReitti(int x, int y) {
-        return this.sallittuLiikkumisTapa(x, y);
-    }
-
+    /**
+     * Ratsu palauttaa aina tyhjän uhkauslinjan sillä ratsun aiheuttamaa shakkia ei voi blokata
+     * @param x
+     * @param y
+     * @return 
+     */
     @Override
     public ArrayList<Ruutu> uhkausLinja(int x, int y) {
         return new ArrayList<Ruutu>(); //Ratsua ei voi blokata
@@ -65,10 +66,11 @@ public class Ratsu extends Nappula {
         ruudut.add(new Ruutu(this.getX() - 2, this.getY() - 1));
         ruudut.add(new Ruutu(this.getX() + 1, this.getY() - 2));
         ruudut.add(new Ruutu(this.getX() - 1, this.getY() - 2));
-
+        
         return ruudut;
     }
 
+    @Override
     public String toString() {
         if (this.getMaa() == VALKOINEN) {
             return "r";

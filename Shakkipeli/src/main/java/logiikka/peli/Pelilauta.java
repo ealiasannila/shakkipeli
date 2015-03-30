@@ -10,8 +10,9 @@ import static logiikka.peli.Maa.*;
 import logiikka.nappulat.*;
 
 /**
+ * Pelilauta on 8x8 taulukko nappuloita. Tämä luokka toteuttaa siirrot kun muut
+ * ovat testanneet niiden sallittavuuden
  *
- * @author elias
  */
 public class Pelilauta {
 
@@ -21,10 +22,23 @@ public class Pelilauta {
         this.lauta = new Nappula[8][8];
     }
 
+    /**
+     * palauttaa pelilaudan koon (=8)
+     *
+     * @return
+     */
     public int getSize() {
         return this.lauta.length;
     }
 
+    /**
+     * asettaa nappulan johonkin pelilaudan ruutuun, jos nappula ei ole null
+     * pyydetään nappulaa ottamaan omat koordinaattinsa talteen
+     *
+     * @param nappula
+     * @param x
+     * @param y
+     */
     public void asetaNappula(Nappula nappula, int x, int y) {
         this.lauta[x][y] = nappula;
         if (nappula != null) {
@@ -33,6 +47,13 @@ public class Pelilauta {
         }
     }
 
+    /**
+     * palauttaa tietyssä ruudussa olevan nappulan
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     public Nappula haeNappula(int x, int y) {
         if (x > lauta.length - 1 || y > lauta.length - 1 || x < 0 || y < 0) {
             return null;
@@ -40,8 +61,15 @@ public class Pelilauta {
         return this.lauta[x][y];
     }
 
-    public boolean teeSiirto(int x, int y, Nappula aktiivinen) { //Tarvitaanko enää kun kunkku ei itse testaa onko ruutu uhattu? 
-
+    /**
+     * Kysyy nappulalta onko siirto sallittu ja sen jälkeen toteuttaa siirron
+     *
+     * @param x
+     * @param y
+     * @param aktiivinen
+     * @return
+     */
+    public boolean teeSiirto(int x, int y, Nappula aktiivinen) {
         if (!aktiivinen.onSallittuSiirto(x, y)) {//tarkistetaan onko siirto sallittu
             return false;
         }
@@ -51,6 +79,15 @@ public class Pelilauta {
 
     }
 
+    /**
+     * tekee siirron ilman että tarkistetaan onko siirto sallittu. Käytetään
+     * tilanteen palauttamiseen jos peli luokka toteaa siirron kokeilun jälkeen
+     * kuninkaan olevan uhattuna
+     *
+     * @param x
+     * @param y
+     * @param aktiivinen
+     */
     public void teeSiirtoIlmanTarkistusta(int x, int y, Nappula aktiivinen) {
 
         this.asetaNappula(null, aktiivinen.getX(), aktiivinen.getY());
@@ -58,6 +95,12 @@ public class Pelilauta {
 
     }
 
+    /**
+     * tulostaa ascii laudan. Käytetään pelin tallennuksessa ja latauksessa sekä
+     * testauksessa
+     *
+     * @return
+     */
     public String toString() {
         StringBuilder tuloste = new StringBuilder();
         for (int y = this.getSize() - 1; y >= 0; y--) {

@@ -14,8 +14,9 @@ import logiikka.peli.Pelilauta;
 import logiikka.peli.Ruutu;
 
 /**
+ * Sotilas liikkuu yhden eteenpäin tai syö etuviistoon. Sotilas saa alussa
+ * liikkua kaksi askelta.
  *
- * @author elias
  */
 public class Sotilas extends Nappula {
 
@@ -24,6 +25,14 @@ public class Sotilas extends Nappula {
         this.piirto = new SotilasPiirto();
     }
 
+    /**
+     * tarkistaa onko siirto sallittu mustalle sotilaalle Musta ja valkoinen
+     * tarkistetaan erikseen koska ne liikkuvat laudalla eri suuntiin
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     private boolean mustanSallittuLiikkumistapa(int x, int y) {
         if (y == this.getY() - 1 && this.getX() == x) {
             return true;
@@ -35,7 +44,9 @@ public class Sotilas extends Nappula {
         }
         if (this.onEnsimmainenSiirto()) {
             if (y == this.getY() - 2 && this.getX() == x) {
-                return true;
+                if (this.tarkistaOnkoKohdeVapaa(x, y)) {
+                    return true;
+                }
             }
         }
         return false;
@@ -53,10 +64,12 @@ public class Sotilas extends Nappula {
         }
         if (this.onEnsimmainenSiirto()) {
             if (y == this.getY() + 2 && this.getX() == x) {
-                return true;
+                if (this.tarkistaOnkoKohdeVapaa(x, y)) {
+                    return true;
+                }
+
             }
         }
-
         return false;
 
     }
@@ -70,9 +83,17 @@ public class Sotilas extends Nappula {
         }
     }
 
+    /**
+     * tarkistaa onko sotilaan edessä seuraavassa ruudussa nappulaa. 
+     *Olennainen vain jos liikutaan 2 ensimmäisellä siirrolla. Jos sotilas liikkuu vain yhden ei reittia ole ja päätepiste tarkistetaan erikseen.
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     @Override
     protected boolean reitillaEiMuitaNappuloita(int x, int y) {
-        if (x == this.getX()) {//jos liikkuu vinottain liikkuu vain yhden, eikä reittiä ole. Jos yrittää liikkua liian pitkälle palauttaa onSallittuLiikkumistapa jokatapauksessa false
+        if (x == this.getX()) {
             if (this.getMaa() == VALKOINEN) {
                 return this.tarkistaOnkoKohdeVapaa(x, this.getY() + 1);
             } else {
@@ -83,6 +104,14 @@ public class Sotilas extends Nappula {
         return true;
     }
 
+    /**
+     * sotilas palauttaa tyhjän uhkauslinjan koska se uhkaa vain yhden päähän
+     * eikä sitä näinollen voi blokata
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     @Override
     public ArrayList<Ruutu> uhkausLinja(int x, int y) {
         return new ArrayList<Ruutu>();

@@ -12,42 +12,46 @@ import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 /**
+ * Logiikan ylin elementti. Vastaa uuden pelin käynnistämisestä, sekä
+ * tallennuksesta ja latauksesta
  *
- * @author elias
  */
 public class PeliHallinta {
 
     private Peli peli;
 
     public PeliHallinta() {
-    this.peli = new Peli();
-    this.uusiPeli();
+        this.peli = new Peli();
+        this.uusiPeli();
     }
-    
-    
 
+    /**
+     * lataa tiedostoon tallennetun uuden pelin pohjan
+     */
     public void uusiPeli() {
         this.lataaPeli("tallennetutPelit/uusi.txt");
     }
 
-    public void lataaPeli(){
-        this.lataaPeli("tallennetutPelit/peli.txt");
-    }
-
+    /**
+     * lataa annetun nimisessä tiedostossa olevan pelin
+     *
+     * @param tiedostonNimi
+     */
     public void lataaPeli(String tiedostonNimi) {
         File peli = new File(tiedostonNimi);
-        try{
-        this.peli.lataaPeli(peli);
-        }catch(FileNotFoundException ex){
+        try {
+            this.peli.lataaPeli(peli);
+        } catch (FileNotFoundException ex) {
             System.out.println("Tiedostoa ei löytynyt: " + tiedostonNimi);
         }
-        
-        
+
     }
-    
-    public void tallennaPeli(){
-        this.tallennaPeli("tallennetutPelit/peli.txt");
-    }
+
+    /**
+     * Tallentaa pelin annetun nimiseen tiedostoon
+     * peli esitetään ascii lautana
+     * @param tiedostonNimi 
+     */
 
     public void tallennaPeli(String tiedostonNimi) {
         PrintWriter writer;

@@ -101,7 +101,7 @@ public class SotilasTest {
     
     @Test 
     public void eiVoiLiikkua2TokallaSiirrolla(){
-        this.testiPeli.lataaPeli();
+        this.testiPeli.uusiPeli();
         this.testiPeli.getPeli().siirto(4, 2);
         assert (!this.valkoinenSotilas.onSallittuSiirto(4, 4));
         

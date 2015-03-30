@@ -15,8 +15,9 @@ import logiikka.peli.Pelilauta;
 import logiikka.peli.Ruutu;
 
 /**
+ * Kunkku liikkuu yhden joka suuntaan. Ei voi liikkua uhattuun ruutuun, mutta
+ * tämän tarkistus on toteutettu peli luokassa.
  *
- * @author elias
  */
 public class Kunkku extends Nappula {
 
@@ -32,21 +33,22 @@ public class Kunkku extends Nappula {
         return this.sallittuLiikkumisTapa(x, y);
     }
 
+    /**
+     * kunkku uhkaa vain yhden päähän joten uhattuja ruutuja joista voisi
+     * blokata ei ole.
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     @Override
-    public ArrayList<Ruutu> uhkausLinja(int x, int y) {//kunkku ei voi uhata toista kunkkua, toteuta jos käytät uhkauslinjaa muuhun.
-        if (!this.tarkistaReitti(x, y)) {
-            System.out.println("Ei uhkaa, mutta kysytään linjaa");
-            return null;
-        }
-        ArrayList<Ruutu> uhatutRuudut = new ArrayList<Ruutu>();
-        uhatutRuudut.add(new Ruutu(x, y));
-        return uhatutRuudut;
+    public ArrayList<Ruutu> uhkausLinja(int x, int y) {
+        return new ArrayList<Ruutu>();
     }
 
     @Override
     protected boolean sallittuLiikkumisTapa(int x, int y) {
         if (Math.abs(this.getX() - x) > 1 || Math.abs(this.getY() - y) > 1) {
-            //    System.out.println("LIIAN KAUKANA");
             return false;
         }
         return true;
@@ -54,7 +56,7 @@ public class Kunkku extends Nappula {
 
     @Override
     protected boolean reitillaEiMuitaNappuloita(int x, int y) {
-        return true; //kunkku liikkuu vain yhden
+        return true;
     }
 
     @Override

@@ -27,7 +27,7 @@ public class PeliHallintaTest {
 
     @Test
     public void uusiPeliTest() {
-        this.peliHallinta.lataaPeli();
+        this.peliHallinta.uusiPeli();
         assert (this.peliHallinta.getPeli().toString().equals(
                 "VALKOINEN\n"
                 + "TRLQKLRT\n"

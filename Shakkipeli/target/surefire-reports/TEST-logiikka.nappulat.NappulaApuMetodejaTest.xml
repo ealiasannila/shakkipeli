@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.07" errors="0" skipped="0" tests="25" name="nappulaTest">
+<testsuite failures="0" time="0.049" errors="0" skipped="0" tests="14" name="logiikka.nappulat.NappulaApuMetodejaTest">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64"/>
@@ -60,29 +60,18 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.003" classname="nappulaTest" name="lautaTuleeKonstruktorissaOikein"/>
-  <testcase time="0" classname="nappulaTest" name="eiSalliLaudanOikealleLiikkumista"/>
-  <testcase time="0" classname="nappulaTest" name="eiSalliiVastustajanLapiLiikkumista"/>
-  <testcase time="0" classname="nappulaTest" name="eiSalliLaudanVasemmallePuolelleLiikkumista"/>
-  <testcase time="0" classname="nappulaTest" name="xTuleeKonstruktorissaOikein"/>
-  <testcase time="0" classname="nappulaTest" name="TunnistaOnkoKohdeVapaKohdeOnOma"/>
-  <testcase time="0" classname="nappulaTest" name="yTuleeKonstruktorissaOikein"/>
-  <testcase time="0" classname="nappulaTest" name="TunnistaVastustajanKohdeEiOleOma"/>
-  <testcase time="0" classname="nappulaTest" name="salliiLaudanOikeaanReunaanLiikkumisen"/>
-  <testcase time="0" classname="nappulaTest" name="eiSalliiOmanLapiLiikkumista"/>
-  <testcase time="0" classname="nappulaTest" name="eiSalliLaudanYlapuolelleLiikkumista"/>
-  <testcase time="0" classname="nappulaTest" name="TunnistaOnkoKohdeVapaKohdeOnVastustajanKohteenViereen"/>
-  <testcase time="0" classname="nappulaTest" name="TunnistaVastustajanKohdeOnOma"/>
-  <testcase time="0.001" classname="nappulaTest" name="salliiLaudanVasempaanReunaanLiikkumisen"/>
-  <testcase time="0" classname="nappulaTest" name="SalliiVastustajanPaalleLiikkumisen"/>
-  <testcase time="0.001" classname="nappulaTest" name="salliiLaudanAlareunaanLiikkumisen"/>
-  <testcase time="0" classname="nappulaTest" name="eiSalliiOmanPaalleLiikkumista"/>
-  <testcase time="0.001" classname="nappulaTest" name="TunnistaOmaKohdeEiOleOma"/>
-  <testcase time="0" classname="nappulaTest" name="eiSalliPaikallaanPysymista"/>
-  <testcase time="0.001" classname="nappulaTest" name="TunnistaOmaKohdeOnOma"/>
-  <testcase time="0" classname="nappulaTest" name="maaTuleeKonstruktorissaOikein"/>
-  <testcase time="0.001" classname="nappulaTest" name="eiSalliLaudanAlapuolelleLiikkumista"/>
-  <testcase time="0" classname="nappulaTest" name="TunnistaOnkoKohdeVapaKohdeOnVastustajan"/>
-  <testcase time="0" classname="nappulaTest" name="salliiLaudanYlareunaanLiikkumisen"/>
-  <testcase time="0" classname="nappulaTest" name="TunnistaOnkoKohdeVapaKohdeOnVapaa"/>
+  <testcase time="0.027" classname="logiikka.nappulat.NappulaApuMetodejaTest" name="eiOleSamallaVinorivilla"/>
+  <testcase time="0.002" classname="logiikka.nappulat.NappulaApuMetodejaTest" name="reitllaMuitaNappuloitaPystyTaiVaakaTest"/>
+  <testcase time="0.001" classname="logiikka.nappulat.NappulaApuMetodejaTest" name="onSamallaVaakaRivillaTest"/>
+  <testcase time="0.001" classname="logiikka.nappulat.NappulaApuMetodejaTest" name="onSamallaPystyRivillaTest"/>
+  <testcase time="0.001" classname="logiikka.nappulat.NappulaApuMetodejaTest" name="eiOleSamallaPystyTaiVaakaRivillaTest"/>
+  <testcase time="0.001" classname="logiikka.nappulat.NappulaApuMetodejaTest" name="reitllaEiMuitaNappuloitaPystyTaiVaakaTest"/>
+  <testcase time="0.001" classname="logiikka.nappulat.NappulaApuMetodejaTest" name="reitllaEiMuitaNappuloitaVinoTest"/>
+  <testcase time="0" classname="logiikka.nappulat.NappulaApuMetodejaTest" name="reitllaMuitaNappuloitaVinoTest"/>
+  <testcase time="0" classname="logiikka.nappulat.NappulaApuMetodejaTest" name="MahdollisetVinoRuudut"/>
+  <testcase time="0" classname="logiikka.nappulat.NappulaApuMetodejaTest" name="onSamallaVinorivilla"/>
+  <testcase time="0" classname="logiikka.nappulat.NappulaApuMetodejaTest" name="MahdollisetPystyTaiVaakaRuudut"/>
+  <testcase time="0" classname="logiikka.nappulat.NappulaApuMetodejaTest" name="uhkausLinjaTyha"/>
+  <testcase time="0" classname="logiikka.nappulat.NappulaApuMetodejaTest" name="uhkausLinjaVino"/>
+  <testcase time="0.001" classname="logiikka.nappulat.NappulaApuMetodejaTest" name="uhkausLinjaPystyTaiVaaka"/>
 </testsuite>

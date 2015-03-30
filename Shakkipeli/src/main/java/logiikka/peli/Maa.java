@@ -6,10 +6,10 @@
 package logiikka.peli;
 
 /**
+ *Maan määritelmät. 
  *
- * @author elias
  */
 public enum Maa {
 
-    VALKOINEN, MUSTA, HAAMU
+    VALKOINEN, MUSTA
 }

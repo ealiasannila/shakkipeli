@@ -11,28 +11,27 @@ import static logiikka.peli.Maa.VALKOINEN;
 import logiikka.nappulat.Nappula;
 
 /**
+ * Pitää tallessa tietoa pelaajan nappuloihin liittyvästä erikoisinformaatiosta.
+ * Esim. mikä nappula on pelaajan kuningas
  *
- * @author elias
  */
 public class Pelaaja {
 
+    private ArrayList<Nappula> nappulat;
     private Kunkku kunkku;
     private int ohestaLyontiX;
     private int ohestaLyontiY;
     private int lyotyY;
     private Maa maa;
     private Nappula korotettava;
-    int perusRivi;
-    int sotilasRivi;
+    private int perusRivi;
+    private int sotilasRivi;
 
-    public Nappula getKorotettava() {
-        return korotettava;
-    }
-
-    public void setKorotettava(Nappula korotettava) {
-        this.korotettava = korotettava;
-    }
-
+    /**
+     * asettaa pelaajan tiedot riippuen maasta.
+     *
+     * @param maa
+     */
     public Pelaaja(Maa maa) {
         this.maa = maa;
         this.nappulat = new ArrayList<Nappula>();
@@ -50,22 +49,69 @@ public class Pelaaja {
         }
     }
 
+    /**
+     * palauttaa pelaajan korotettavana olevan sotilaan
+     *
+     * @return
+     */
+    public Nappula getKorotettava() {
+        return korotettava;
+    }
+
+    /**
+     * asettaa pelaajan sotilaan korotettavaksi odottamaan pelaajan valintaa,
+     * miksi korotetaan
+     *
+     * @param korotettava
+     */
+    public void setKorotettava(Nappula korotettava) {
+        this.korotettava = korotettava;
+    }
+
+    /**
+     * rivi jolla on pelaajan upseerit alussa
+     *
+     * @return
+     */
     public int getPerusRivi() {
         return perusRivi;
     }
 
+    /**
+     * rivi jolla pelaajan sotilaat ovat alussa
+     *
+     * @return
+     */
     public int getSotilasRivi() {
         return sotilasRivi;
     }
 
+    /**
+     * kertoo miltä riviltä löytyy ohestalyönnillä syötävät nappulat
+     *
+     * @return
+     */
     public int getLyotyY() {
         return lyotyY;
     }
 
+    /**
+     * kertoo miltä riviltä ohestälyötävät nappulat voidaan syödä (sotilasrivi
+     * +/- 1)
+     *
+     * @return
+     */
     public int getOhestaLyontiY() {
         return ohestaLyontiY;
     }
 
+    /**
+     * kertoo mistä x koordinaatista ohestalyötävä nappula (sotilas joka on
+     * juuri liikkunut 2) löytyy jos mikään sotilas ei ole juuri liikkunut kahta
+     * palauttaa -1;
+     *
+     * @return
+     */
     public int getOhestaLyontiX() {
         return ohestaLyontiX;
     }
@@ -90,6 +136,11 @@ public class Pelaaja {
         this.kunkku = kunkku;
     }
 
+    /**
+     * palauttaa listan pelaajan nappuloista
+     *
+     * @return
+     */
     public ArrayList<Nappula> getNappulat() {
         return nappulat;
     }
@@ -97,7 +148,6 @@ public class Pelaaja {
     public void setNappulat(ArrayList<Nappula> nappulat) {
         this.nappulat = nappulat;
     }
-    private ArrayList<Nappula> nappulat;
 
     public String toString() {
         return this.getMaa().toString();

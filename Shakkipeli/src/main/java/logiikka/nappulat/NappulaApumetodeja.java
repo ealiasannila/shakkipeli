@@ -9,20 +9,44 @@ import java.util.ArrayList;
 import logiikka.peli.Ruutu;
 
 /**
- *
- * @author elias
+ *Tässä luokassa on tornin ja kuningattaren sekä lähetin ja kuningattaren jakamia metodeja
+ * 
  */
 public class NappulaApumetodeja {
 
+    
+    /**
+     * Kertoo onko kohde ja oma sijainti samalla pysty tai vaakarivillä
+     * @param x
+     * @param y
+     * @param omaX
+     * @param omaY
+     * @return 
+     */
     public static boolean onSamallaPystyTaiVaakaRivilla(int x, int y, int omaX, int omaY) {
         return !(omaX != x && omaY != y);
     }
 
+    /**
+     * kertoo onko kohde ja oma sijainti samalla vinorivillä
+     * @param x
+     * @param y
+     * @param omaX
+     * @param omaY
+     * @return 
+     */
     public static boolean onSamallaVinoRivilla(int x, int y, int omaX, int omaY) {
         return Math.abs(omaX - x) == Math.abs(omaY - y);
 
     }
 
+    /**
+     * palauttaa vinottaisella uhkauslinjalla olevat ruudut
+     * @param x
+     * @param y
+     * @param nappula
+     * @return 
+     */
     public static ArrayList<Ruutu> uhkausLinjaVino(int x, int y, Nappula nappula) {
         if (!nappula.tarkistaReitti(x, y)) {
             return new ArrayList<Ruutu>();
@@ -62,9 +86,17 @@ public class NappulaApumetodeja {
 
     }
 
+    /**
+     * palauttaa pysty tai vaakasuuntaisella uhkauslinjalla olevat ruudut 
+     * @param x
+     * @param y
+     * @param nappula
+     * @return 
+     */
     public static ArrayList<Ruutu> uhkausLinjaPystyTaiVaaka(int x, int y, Nappula nappula) {
         if (!nappula.tarkistaReitti(x, y)) {
             return new ArrayList<Ruutu>();
+
         }
 
         if (!onSamallaPystyTaiVaakaRivilla(x, y, nappula.getX(), nappula.getY())) {//jos ei voi ylipäätänsä uhata ruutua ei silloin linjalla ole ruutuja
@@ -80,7 +112,7 @@ public class NappulaApumetodeja {
                 uhatutRuudut.add(new Ruutu(i, y));
             }
         } else if (y < nappula.getY()) {
-            for (int i = y; i > nappula.getY(); i++) {
+            for (int i = y; i < nappula.getY(); i++) {
                 uhatutRuudut.add(new Ruutu(x, i));
             }
         } else if (y > nappula.getY()) {
@@ -91,6 +123,14 @@ public class NappulaApumetodeja {
         return uhatutRuudut;
     }
 
+    /**
+     * kertoo onko nappulan ja annetun vinosuuntaisen kohteen välillä muita nappuloita
+     * @param x
+     * @param y
+     * @param nappula
+     * @return 
+     */
+    
     public static boolean reitillaEiMuitaNappuloitaVino(int x, int y, Nappula nappula) {
 
         if (nappula.getX() < x && nappula.getY() < y) { //kohde yläoikealle
@@ -130,6 +170,13 @@ public class NappulaApumetodeja {
 
     }
 
+    /**
+     * kertoo onko nappulan ja annetun pysty tai vaakasuuntaisen kohteen välillä muita nappuloita
+     * @param x
+     * @param y
+     * @param nappula
+     * @return 
+     */
     public static boolean reitillaEiMuitaNappuloitaPystyTaiVaaka(int x, int y, Nappula nappula) {
         if (nappula.getX() < x) { //Tarkastetaan onko reitillä muita nappuloita
             for (int i = nappula.getX() + 1; i < x; i++) {
@@ -159,6 +206,12 @@ public class NappulaApumetodeja {
         return true;
     }
 
+    /**
+     * palauttaa listan ruuduista joiden x tai y koordinaatti on sama kuin parametrina annettu
+     * @param x
+     * @param y
+     * @return 
+     */
     public static ArrayList<Ruutu> mahdollisetPystyTaiVaakaRuudut(int x, int y) {
         ArrayList<Ruutu> ruudut = new ArrayList<Ruutu>();
         for (int i = 0; i < 8; i++) {
@@ -169,30 +222,40 @@ public class NappulaApumetodeja {
         return ruudut;
     }
 
+    
+    /**
+     * palauttaa listan ruuduista jotka ovat vinottain samalla linjalla annetun ruudun kanssa
+     * @param x
+     * @param y
+     * @return 
+     */
     public static ArrayList<Ruutu> mahdollisetVinoRuudut(int x, int y) {
         ArrayList<Ruutu> ruudut = new ArrayList<Ruutu>();
         int j = y;
         for (int i = x; i < 8 && j < 8; i++) {
-            j++;
             ruudut.add(new Ruutu(i, j));
+
+            j++;
         }
 
         j = y;
         for (int i = x; i >= 0 && j >= 0; i--) {
-            j--;
             ruudut.add(new Ruutu(i, j));
+
+            j--;
         }
 
         j = y;
         for (int i = x; i < 8 && j >= 0; i++) {
-            j--;
             ruudut.add(new Ruutu(i, j));
+
+            j--;
         }
 
         j = y;
         for (int i = x; i >= 0 && j < 8; i--) {
-            j++;
             ruudut.add(new Ruutu(i, j));
+            j++;
         }
         return ruudut;
     }

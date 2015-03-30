@@ -135,36 +135,8 @@ public class PeliTest {
         assertEquals(null, peli.uhkaavaNappula(3, 3));
     }
 
-    @Test
-
-    public void KertooOikeinUhkaakoUseampiKunKukaanEiUhkaa() {
-        assertEquals(false, peli.uhkaakoUseampi(3, 3));
-    }
-
-    @Test
-    public void KertooOikeinUhkaakoUseampiKunYksiUhkaa() {
-        assertEquals(false, peli.uhkaakoUseampi(0, 0));
-    }
-
-    @Test
-    public void KertooOikeinUhkaakoUseampiKunKaksiUhkaa() {
-        this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/useampiUhkaa.txt");
-        assertEquals(true, peli.uhkaakoUseampi(0, 7));
-    }
-
-    @Test
-    public void KunkkuVoiLiikkua() {
-        assertEquals(false, peli.kunkkuEiVoiLiikkua());
-    }
-
-    @Test
-    public void KunkkuEiVoiLiikkua() {
-        this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/kunkkuEiVoiLiikkua.txt");
-
-        assertEquals(true, peli.kunkkuEiVoiLiikkua());
-
-    }
-
+  
+   
     @Test
     public void KunMattiNiinMatti() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/kunkkuMatissa.txt");
@@ -185,7 +157,6 @@ public class PeliTest {
     public void KunVoiBlokatNiinEiMatti() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/kunkkuUhattunaVoiBlokata.txt");
 
-        assertEquals(true, peli.voiBlokata());
         assertEquals(false, peli.onMatissa());
 
     }
@@ -194,7 +165,6 @@ public class PeliTest {
     public void KunVoiSyodaNiinEiMatti() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/kunkkuUhattunaVoiSyoda.txt");
 
-        assertEquals(true, peli.voiSyodaNappulan(peli.uhkaavaNappula(0, 7)));
         assertEquals(false, peli.onMatissa());
 
     }

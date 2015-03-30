@@ -37,18 +37,9 @@ public class KunkkuTest {
     }
 
     @Test
-    public void kunkkuUhkaaOikeaaRuutuaKunEiUhkaa() {
-        ArrayList<Ruutu> uhatutRuudut = kunkku.uhkausLinja(1, 5);
-        assertEquals(null, uhatutRuudut);
-    }
-    
-    @Test
     public void kunkkuUhkaaOikeaaRuutua() {
-        ArrayList<Ruutu> uhatutRuudut = kunkku.uhkausLinja(0, 0);
-        assertEquals(1, uhatutRuudut.size());
-        assertEquals(0, uhatutRuudut.get(0).getX());
-        
-        assertEquals(0, uhatutRuudut.get(0).getY());
+        ArrayList<Ruutu> uhatutRuudut = kunkku.uhkausLinja(1, 5);
+        assert(uhatutRuudut.isEmpty());
     }
     
     @Test
