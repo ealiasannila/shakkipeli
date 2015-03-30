@@ -31,6 +31,9 @@ public class TallennaPeliKuuntelija extends Kuuntelija implements ActionListener
 
     @Override
     public void actionPerformed(ActionEvent ae) {
+          if (this.kayttoliittyma.getPeliPiirto().sotilaanKorotusOnKesken()) {
+            return;
+        }
         SwingUtilities.invokeLater(new TiedostoValitsinTallennus(this.kayttoliittyma));
         
         this.kayttoliittyma.getFrame().repaint();

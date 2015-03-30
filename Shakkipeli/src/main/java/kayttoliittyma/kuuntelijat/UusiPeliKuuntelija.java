@@ -28,6 +28,9 @@ public class UusiPeliKuuntelija extends Kuuntelija implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
+          if (this.kayttoliittyma.getPeliPiirto().sotilaanKorotusOnKesken()) {
+            return;
+        }
         this.kayttoliittyma.getPeliHallinta().uusiPeli();
         this.kayttoliittyma.getPeliPiirto().repaint();
     }

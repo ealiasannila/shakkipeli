@@ -27,11 +27,13 @@ public class LataaPeliKuuntelija extends Kuuntelija implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
+        if (this.kayttoliittyma.getPeliPiirto().sotilaanKorotusOnKesken()) {
+            return;
+        }
 
         SwingUtilities.invokeLater(new TiedostoValitsinLataus(this.kayttoliittyma));
         this.kayttoliittyma.getFrame().repaint();
 
-        
     }
 
 }

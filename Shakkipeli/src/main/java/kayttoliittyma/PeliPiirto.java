@@ -8,6 +8,8 @@ package kayttoliittyma;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import logiikka.nappulat.Nappula;
@@ -20,12 +22,16 @@ public class PeliPiirto extends JPanel {
 
     private Kayttoliittyma kayttoliittyma;
     private boolean sotilaanKorotusKesken;
+    private int vaaraSiirtoY;
+    private int vaaraSiirtoX;
 
     public PeliPiirto(Kayttoliittyma kayttoliittyma) {
         super.setBackground(Color.lightGray);
 
         this.kayttoliittyma = kayttoliittyma;
         this.sotilaanKorotusKesken = false;
+        this.vaaraSiirtoX = -1;
+        this.vaaraSiirtoY = -1;
     }
 
     public int getSivunPituus() {
@@ -37,10 +43,15 @@ public class PeliPiirto extends JPanel {
 
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                if ((j + i) % 2 == 0) {
-                    graphics.setColor(Color.WHITE);
+
+                if (this.kayttoliittyma.getPeliHallinta().getPeli().getAktiivinen() != null && this.kayttoliittyma.getPeliHallinta().getPeli().getAktiivinen().getX() == j && this.kayttoliittyma.getPeliHallinta().getPeli().getAktiivinen().getY() == 7 - i) {
+                    graphics.setColor(Color.orange);
                 } else {
-                    graphics.setColor(Color.BLACK);
+                    if ((j + i) % 2 == 0) {
+                        graphics.setColor(Color.WHITE);
+                    } else {
+                        graphics.setColor(Color.BLACK);
+                    }
                 }
                 graphics.fillRect(j * this.getSivunPituus(), i * this.getSivunPituus(), this.getSivunPituus(), this.getSivunPituus());
             }
@@ -107,14 +118,42 @@ public class PeliPiirto extends JPanel {
         this.sotilaanKorotusKesken = sotilaanKorotusKesken;
     }
 
+    public void asetaVaaraSiirto(int x, int y) {
+        this.vaaraSiirtoX = x;
+        this.vaaraSiirtoY = y;
+    }
+
+    private void vaaraSiirtoFlash(Graphics graphics) {
+        if (this.vaaraSiirtoX != -1) {
+            graphics.setColor(Color.RED);
+            graphics.fillRect((this.vaaraSiirtoX) * this.getSivunPituus(), (7 - this.vaaraSiirtoY) * this.getSivunPituus(), this.getSivunPituus(), this.getSivunPituus());
+            if (this.kayttoliittyma.getPeliHallinta().getPeli().onShakissa()) {
+                graphics.fillRect((this.kayttoliittyma.getPeliHallinta().getPeli().getVuorossa().getKunkku().getX()) * this.getSivunPituus(), (7 - this.kayttoliittyma.getPeliHallinta().getPeli().getVuorossa().getKunkku().getY()) * this.getSivunPituus(), this.getSivunPituus(), this.getSivunPituus());
+
+            }
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(PeliPiirto.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.vaaraSiirtoX = -1;
+            this.vaaraSiirtoY = -1;
+            this.repaint();
+        }
+
+    }
+
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         this.kysyMiksiKorotetaan();
-
         this.piirraRuudut(graphics);
+        this.vaaraSiirtoFlash(graphics);
+
         this.piirraNappulat(graphics);
+
         this.peliLoppu(graphics);
 
     }
+
 }

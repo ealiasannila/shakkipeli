@@ -40,10 +40,14 @@ public class LautaKuuntelija extends Kuuntelija implements MouseListener {
         if (this.kayttoliittyma.getPeliHallinta().getPeli().getLauta().haeNappula(x, y) != null) {
             if (this.kayttoliittyma.getPeliHallinta().getPeli().getLauta().haeNappula(x, y).getMaa() == this.kayttoliittyma.getPeliHallinta().getPeli().getVuorossa().getMaa()) {
                 this.kayttoliittyma.getPeliHallinta().getPeli().asetaAktiivinen(x, y);
+                this.kayttoliittyma.getPeliPiirto().repaint();
                 return;
             }
         }
-        this.kayttoliittyma.getPeliHallinta().getPeli().siirto(x, y);
+        if (!this.kayttoliittyma.getPeliHallinta().getPeli().siirto(x, y)) {
+            this.kayttoliittyma.getPeliPiirto().asetaVaaraSiirto(x, y);
+        }
+
         this.kayttoliittyma.getPeliPiirto().repaint();
 
     }

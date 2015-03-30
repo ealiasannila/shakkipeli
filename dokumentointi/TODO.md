@@ -4,4 +4,5 @@
 * fiksaa lataus/tallenus bugi? jostain syystä tuntuu toimivan taas...
 * kirjoita vitusti lisää testejä... rivikattavuus >90%
 * varaudu lataustiedostojen puuttumiseen.
+* kirjoita javadocsit
 

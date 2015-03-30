@@ -5,15 +5,18 @@
  */
 package kayttoliittyma;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 import kayttoliittyma.kuuntelijat.KorotusKuuntelija;
 import kayttoliittyma.kuuntelijat.LataaNappiKuuntelija;
+import static logiikka.nappulat.Maa.MUSTA;
 import logiikka.nappulat.Nappula;
 import logiikka.peli.Pelaaja;
 
@@ -21,8 +24,8 @@ import logiikka.peli.Pelaaja;
  *
  * @author elias
  */
-public class KorotusValikko implements Runnable{
-    
+public class KorotusValikko implements Runnable {
+
     private Kayttoliittyma kayttoliittyma;
     private JFrame ruutu;
     private Pelaaja korotettavaPelaaja;
@@ -31,14 +34,14 @@ public class KorotusValikko implements Runnable{
         this.kayttoliittyma = kayttoliittyma;
         this.korotettavaPelaaja = korotettava;
     }
-    
-    
-    
- @Override
+
+    @Override
     public void run() {
         ruutu = new JFrame("Miksi korotat?");
-        ruutu.setPreferredSize(new Dimension(700, 400));
-
+        ruutu.setBounds(this.kayttoliittyma.getFrame().getBounds());
+        
+        ruutu.setAlwaysOnTop(true);
+        ruutu.setUndecorated(true);
         ruutu.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
         luoKomponentit(ruutu.getContentPane());
@@ -46,30 +49,35 @@ public class KorotusValikko implements Runnable{
         ruutu.pack();
         ruutu.setVisible(true);
     }
-    
-     private void luoKomponentit(Container container) {
+
+    private void luoKomponentit(Container container) {
 
         GridLayout layout = new GridLayout(1, 4);
         container.setLayout(layout);
 
-        JButton kuningatarNappi = new JButton("Kuningatar");
+        String polku;
+        if (this.korotettavaPelaaja.getMaa() == MUSTA) {
+            polku = "src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/";
+        } else {
+            polku = "src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/";
+
+        }
+
+        JButton kuningatarNappi = new JButton(new ImageIcon(polku + "kuningatar.png"));
         kuningatarNappi.addActionListener(new KorotusKuuntelija(this.kayttoliittyma, this.korotettavaPelaaja, this, 'q'));
         container.add(kuningatarNappi);
-        
-        JButton torniNappi = new JButton("Torni");
-        torniNappi.addActionListener(new KorotusKuuntelija(this.kayttoliittyma, this.korotettavaPelaaja, this,'t'));
+
+        JButton torniNappi = new JButton(new ImageIcon(polku + "torni.png"));
+        torniNappi.addActionListener(new KorotusKuuntelija(this.kayttoliittyma, this.korotettavaPelaaja, this, 't'));
         container.add(torniNappi);
-        
-        JButton lahettiNappi = new JButton("Lahetti");
-        lahettiNappi.addActionListener(new KorotusKuuntelija(this.kayttoliittyma, this.korotettavaPelaaja, this,'l'));
+
+        JButton lahettiNappi = new JButton( new ImageIcon(polku + "lahetti.png"));
+        lahettiNappi.addActionListener(new KorotusKuuntelija(this.kayttoliittyma, this.korotettavaPelaaja, this, 'l'));
         container.add(lahettiNappi);
-        
-        JButton ratsuNappi = new JButton("Ratsu");
-        ratsuNappi.addActionListener(new KorotusKuuntelija(this.kayttoliittyma, this.korotettavaPelaaja, this,'r'));
+
+        JButton ratsuNappi = new JButton(new ImageIcon(polku + "ratsu.png"));
+        ratsuNappi.addActionListener(new KorotusKuuntelija(this.kayttoliittyma, this.korotettavaPelaaja, this, 'r'));
         container.add(ratsuNappi);
-        
-        
-        
 
     }
 
@@ -77,5 +85,4 @@ public class KorotusValikko implements Runnable{
         return ruutu;
     }
 
-    
 }
