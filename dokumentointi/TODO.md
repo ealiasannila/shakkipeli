@@ -4,4 +4,4 @@
 * kirjoita vitusti lisää testejä... rivikattavuus >90%
 * varaudu lataustiedostojen puuttumiseen.
 * kirjoita javadocsit
-
+* fiksaa haamusotilas ei blokkaa reittiä
