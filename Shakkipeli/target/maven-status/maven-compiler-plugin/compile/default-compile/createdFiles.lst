@@ -1,5 +1,4 @@
 kayttoliittyma/PeliPiirto.class
-kayttoliittyma/TestiKayttis.class
 kayttoliittyma/nappulapiirto/KuningatarPiirto.class
 Main.class
 kayttoliittyma/TiedostoValitsinTallennus.class
@@ -20,12 +19,9 @@ kayttoliittyma/Kayttoliittyma.class
 kayttoliittyma/kuuntelijat/UusiPeliKuuntelija.class
 kayttoliittyma/TiedostoValitsinLataus.class
 kayttoliittyma/kuuntelijat/TallennaNappiKuuntelija.class
-logiikka/nappulat/Maa.class
 logiikka/peli/Peli.class
 kayttoliittyma/nappulapiirto/NappulaPiirto.class
-kayttoliittyma/kuuntelijat/TiedostoListaValitsinLatus.class
 kayttoliittyma/kuuntelijat/LautaKuuntelija.class
-kayttoliittyma/kuuntelijat/TiedostoListaValitsinTallennus.class
 kayttoliittyma/nappulapiirto/SotilasPiirto.class
 kayttoliittyma/kuuntelijat/LataaNappiKuuntelija.class
 logiikka/nappulat/Torni.class

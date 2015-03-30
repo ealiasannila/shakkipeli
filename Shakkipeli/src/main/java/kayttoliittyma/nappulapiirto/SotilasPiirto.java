@@ -10,8 +10,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import logiikka.nappulat.Maa;
-import static logiikka.nappulat.Maa.MUSTA;
+import logiikka.peli.Maa;
+import static logiikka.peli.Maa.MUSTA;
 
 /**
  *

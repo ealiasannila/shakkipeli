@@ -5,11 +5,12 @@
  */
 package logiikka.nappulat;
 
+import logiikka.peli.Maa;
 import java.util.ArrayList;
 import kayttoliittyma.nappulapiirto.HaamuSotilasPiirto;
-import static logiikka.nappulat.Maa.HAAMU;
-import static logiikka.nappulat.Maa.MUSTA;
-import static logiikka.nappulat.Maa.VALKOINEN;
+import static logiikka.peli.Maa.HAAMU;
+import static logiikka.peli.Maa.MUSTA;
+import static logiikka.peli.Maa.VALKOINEN;
 import logiikka.peli.Pelilauta;
 import logiikka.peli.Ruutu;
 

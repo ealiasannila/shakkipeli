@@ -5,9 +5,10 @@
  */
 package logiikka.nappulat;
 
+import logiikka.peli.Maa;
 import java.util.ArrayList;
 import kayttoliittyma.nappulapiirto.RatsuPiirto;
-import static logiikka.nappulat.Maa.VALKOINEN;
+import static logiikka.peli.Maa.VALKOINEN;
 import logiikka.peli.Pelilauta;
 import logiikka.peli.Ruutu;
 

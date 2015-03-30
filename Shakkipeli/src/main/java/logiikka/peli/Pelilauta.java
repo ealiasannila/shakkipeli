@@ -6,7 +6,7 @@
 package logiikka.peli;
 
 import java.util.ArrayList;
-import static logiikka.nappulat.Maa.*;
+import static logiikka.peli.Maa.*;
 import logiikka.nappulat.*;
 
 /**

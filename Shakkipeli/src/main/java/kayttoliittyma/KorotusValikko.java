@@ -16,7 +16,7 @@ import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 import kayttoliittyma.kuuntelijat.KorotusKuuntelija;
 import kayttoliittyma.kuuntelijat.LataaNappiKuuntelija;
-import static logiikka.nappulat.Maa.MUSTA;
+import static logiikka.peli.Maa.MUSTA;
 import logiikka.nappulat.Nappula;
 import logiikka.peli.Pelaaja;
 
@@ -41,7 +41,6 @@ public class KorotusValikko implements Runnable {
         ruutu.setBounds(this.kayttoliittyma.getFrame().getBounds());
         
         ruutu.setAlwaysOnTop(true);
-        ruutu.setUndecorated(true);
         ruutu.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
         luoKomponentit(ruutu.getContentPane());

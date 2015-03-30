@@ -5,9 +5,10 @@
  */
 package logiikka.nappulat;
 
+import logiikka.peli.Maa;
 import java.util.ArrayList;
 import kayttoliittyma.nappulapiirto.KuningatarPiirto;
-import static logiikka.nappulat.Maa.VALKOINEN;
+import static logiikka.peli.Maa.VALKOINEN;
 import logiikka.peli.Pelilauta;
 import logiikka.peli.Ruutu;
 
@@ -24,74 +25,16 @@ public class Kuningatar extends Nappula {
 
     @Override
     protected boolean sallittuLiikkumisTapa(int x, int y) {
-        if (!(this.getX() != x && this.getY() != y)) {
-            return true;
-        } else {
-            return Math.abs(this.getX() - x) == Math.abs(this.getY() - y);
-        }
+        return NappulaApumetodeja.onSamallaPystyTaiVaakaRivilla(x, y, this.getX(), this.getY()) || NappulaApumetodeja.onSamallaVinoRivilla(x, y, this.getX(), this.getY());
     }
 
     @Override
     protected boolean reitillaEiMuitaNappuloita(int x, int y) {
-        if (this.getX() < x && this.getY() == y) { //liikkuu kuin torni
-            for (int i = this.getX() + 1; i < x; i++) {
-                if (!tarkistaOnkoKohdeVapaa(i, y)) {
-                    return false;
-                }
-            }
-        } else if (this.getX() > x && this.getY() == y) {
-            for (int i = this.getX() - 1; i > x; i--) {
-                if (!tarkistaOnkoKohdeVapaa(i, y)) {
-                    return false;
-                }
-            }
-        } else if (this.getY() < y && this.getX() == x) {
-            for (int i = this.getY() + 1; i < y; i++) {
-                if (!tarkistaOnkoKohdeVapaa(x, i)) {
-                    return false;
-                }
-            }
-        } else if (this.getY() > y && this.getX() == x) {
-            for (int i = this.getY() - 1; i > y; i--) {
-                if (!tarkistaOnkoKohdeVapaa(x, i)) {
-                    return false;
-                }
-            }
-        } else if (this.getX() < x && this.getY() < y) { //kohde yläoikealle
-            int j = this.getY() + 1;
-            for (int i = this.getX() + 1; i < x; i++) {
-                if (!tarkistaOnkoKohdeVapaa(i, j)) {
-                    return false;
-                }
-                j++;
-            }
-        } else if (this.getX() > x && this.getY() > y) {//kohde alavasemmalle
-            int j = this.getY() - 1;
-            for (int i = this.getX() - 1; i > x; i--) {
-                if (!tarkistaOnkoKohdeVapaa(i, j)) {
-                    return false;
-                }
-                j--;
-            }
-        } else if (this.getY() < y && this.getX() > x) {//kohde ylävasemmalle
-            int j = this.getX() - 1;
-            for (int i = this.getY() + 1; i < y; i++) {
-                if (!tarkistaOnkoKohdeVapaa(j, i)) {
-                    return false;
-                }
-                j--;
-            }
-        } else if (this.getY() > y && this.getX() < x) {//kohde alaoikealle
-            int j = this.getX() + 1;
-            for (int i = this.getY() - 1; i > y; i--) {
-                if (!tarkistaOnkoKohdeVapaa(j, i)) {
-                    return false;
-                }
-                j++;
-            }
+        if (NappulaApumetodeja.onSamallaVinoRivilla(x, y, this.getX(), this.getY())) {
+            return NappulaApumetodeja.reitillaEiMuitaNappuloitaVino(x, y, this);
+        } else {
+            return NappulaApumetodeja.reitillaEiMuitaNappuloitaPystyTaiVaaka(x, y, this);
         }
-        return true;
-
     }
 
     @Override
@@ -100,88 +43,20 @@ public class Kuningatar extends Nappula {
             return null;
         }
         ArrayList<Ruutu> uhatutRuudut = new ArrayList<>();
-        if (x < this.getX() && y == this.getY()) {
-            for (int i = x; i < this.getX(); i++) {
-                uhatutRuudut.add(new Ruutu(i, y));
-            }
-        } else if (x > this.getX() && y == this.getY()) {
-            for (int i = this.getX() + 1; i <= x; i++) {
-                uhatutRuudut.add(new Ruutu(i, y));
-            }
-        } else if (y < this.getY() && x == this.getX()) {
-            for (int i = y; i > this.getY(); i++) {
-                uhatutRuudut.add(new Ruutu(x, i));
-            }
-        } else if (y > this.getY() && x == this.getX()) {
-            for (int i = this.getY() + 1; i <= y; i++) {
-                uhatutRuudut.add(new Ruutu(x, i));
-            }
-        } else if (this.getX() < x && this.getY() < y) { //kohde yläoikealle
-            int j = this.getY() + 1;
-            for (int i = this.getX() + 1; i <= x; i++) {
-                uhatutRuudut.add(new Ruutu(i, j));
-                j++;
-            }
-        } else if (this.getX() > x && this.getY() > y) {//kohde alavasemmalle
-            int j = this.getY() - 1;
-            for (int i = this.getX() - 1; i >= x; i--) {
-
-                uhatutRuudut.add(new Ruutu(i, j));
-                j--;
-            }
-        } else if (this.getY() < y && this.getX() > x) {//kohde ylävasemmalle
-            int j = this.getX() - 1;
-            for (int i = this.getY() + 1; i <= y; i++) {
-
-                uhatutRuudut.add(new Ruutu(j, i));
-                j--;
-            }
-        } else if (this.getY() > y && this.getX() < x) {//kohde alaoikealle
-            int j = this.getX() + 1;
-            for (int i = this.getY() - 1; i >= y; i--) {
-
-                uhatutRuudut.add(new Ruutu(j, i));
-                j++;
-            }
-        }
+        uhatutRuudut.addAll(NappulaApumetodeja.uhkausLinjaPystyTaiVaaka(x, y, this));
+        uhatutRuudut.addAll(NappulaApumetodeja.uhkausLinjaVino(x, y, this));
         return uhatutRuudut;
     }
 
+    @Override
     public ArrayList<Ruutu> mahdollisetRuudut() {
         ArrayList<Ruutu> ruudut = new ArrayList<Ruutu>();
-        int j = this.getY();
-        for (int i = this.getX(); i < 8 && j < 8; i++) {
-            j++;
-            ruudut.add(new Ruutu(i, j));
-        }
-
-        j = this.getY();
-        for (int i = this.getX();  i >= 0 && j >= 0; i--) {
-            j--;
-            ruudut.add(new Ruutu(i, j));
-        }
-
-        j = this.getY();
-        for (int i = this.getX(); i < 8 && j >= 0; i++) {
-            j--;
-            ruudut.add(new Ruutu(i, j));
-        }
-
-        j = this.getY();
-        for (int i = this.getX(); i >= 0 && j < 8; i--) {
-            j++;
-            ruudut.add(new Ruutu(i, j));
-        }
-
-        for (int i = 0; i < 8; i++) {
-            ruudut.add(new Ruutu(this.getX(), i));
-            ruudut.add(new Ruutu(i, this.getY()));
-
-        }
-
+        ruudut.addAll(NappulaApumetodeja.mahdollisetPystyTaiVaakaRuudut(this.getX(), this.getY()));
+        ruudut.addAll(NappulaApumetodeja.mahdollisetVinoRuudut(this.getX(), this.getY()));
         return ruudut;
     }
 
+    @Override
     public String toString() {
         if (this.getMaa() == VALKOINEN) {
             return "q";

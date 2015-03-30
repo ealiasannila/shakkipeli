@@ -16,9 +16,9 @@ import logiikka.nappulat.HaamuSotilas;
 import logiikka.nappulat.Kuningatar;
 import logiikka.nappulat.Kunkku;
 import logiikka.nappulat.Lahetti;
-import static logiikka.nappulat.Maa.HAAMU;
-import static logiikka.nappulat.Maa.MUSTA;
-import static logiikka.nappulat.Maa.VALKOINEN;
+import static logiikka.peli.Maa.HAAMU;
+import static logiikka.peli.Maa.MUSTA;
+import static logiikka.peli.Maa.VALKOINEN;
 import logiikka.nappulat.Nappula;
 import logiikka.nappulat.Ratsu;
 import logiikka.nappulat.Sotilas;
@@ -418,99 +418,44 @@ public class Peli {
         if (x != 6) {
             return false;
         }
-        if (this.vuorossa.getMaa() == VALKOINEN) {
-            if (y != 0) {
-                return false;
-            }
-            return this.valkoinenVoiTehdaLyhyenTornituksen();
-        } else {
-            if (y != 7) {
-                return false;
-            }
-            return this.mustaVoiTehdaLyhyenTornituksen();
+        if (y != this.getVuorossa().getPerusRivi()) {
+            return false;
         }
-    }
+        if (!this.getVuorossa().getKunkku().tarkistaOnkoKohdeOma(7, this.vuorossa.getPerusRivi())) {
+            return false;
+        }
+        if (!(this.getVuorossa().getKunkku().onEnsimmainenSiirto() && this.getLauta().haeNappula(7, this.vuorossa.getPerusRivi()).onEnsimmainenSiirto())) {
+            return false;
+        }
+        if (!(this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(5, this.getVuorossa().getPerusRivi()) && this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(6, this.vuorossa.getPerusRivi()))) {
+            return false;
+        }
 
-    private boolean valkoinenVoiTehdaLyhyenTornituksen() {
-        if (!this.getVuorossa().getKunkku().tarkistaOnkoKohdeOma(7, 0)) {
-            return false;
-        }
-        if (!(this.getVuorossa().getKunkku().onEnsimmainenSiirto() && this.getLauta().haeNappula(7, 0).onEnsimmainenSiirto())) {
-            return false;
-        }
-        if (!(this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(5, 0) && this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(6, 0))) {
-            return false;
-        }
-        if (this.onkoUhattuna(5, 0) || this.onkoUhattuna(6, 0) || this.onkoUhattuna(4, 0)) {
-            return false;
-        }
-        return true;
-    }
-
-    private boolean mustaVoiTehdaLyhyenTornituksen() {
-        if (!this.getVuorossa().getKunkku().tarkistaOnkoKohdeOma(7, 7)) {
-            return false;
-        }
-        if (!(this.getVuorossa().getKunkku().onEnsimmainenSiirto() && this.getLauta().haeNappula(7, 7).onEnsimmainenSiirto())) {
-            return false;
-        }
-        if (!(this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(5, 7) && this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(6, 7))) {
-            return false;
-        }
-        if (this.onkoUhattuna(5, 7) || this.onkoUhattuna(6, 7) || this.onkoUhattuna(4, 7)) {
+        if (this.onkoUhattuna(5, this.getVuorossa().getPerusRivi()) || this.onkoUhattuna(6, this.getVuorossa().getPerusRivi()) || this.onkoUhattuna(4, this.getVuorossa().getPerusRivi())) {
             return false;
         }
         return true;
     }
 
     private boolean voiTehdaPitkanTornituksen(int x, int y) {
-        if (x != 2) { //pitkässä tornituksessa kohteen x:n pitää olla 2
+        if (x != 2 || y != this.vuorossa.getPerusRivi()) { //pitkässä tornituksessa kohteen x:n pitää olla 2
             return false;
         }
-        if (this.vuorossa.getMaa() == VALKOINEN) {
-            if (y != 0) {
-                return false;
-            }
-            return this.valkoinenVoiTehdaPitkanTornituksen();
-        } else {
-            if (y != 7) {
-                return false;
-            }
-            return this.mustaVoiTehdaPitkanTornituksen();
-        }
-    }
-
-    private boolean valkoinenVoiTehdaPitkanTornituksen() {
-        if (!this.getVuorossa().getKunkku().tarkistaOnkoKohdeOma(0, 0)) {
+        if (!this.getVuorossa().getKunkku().tarkistaOnkoKohdeOma(0, this.vuorossa.getPerusRivi())) {
             return false;
         }
-        if (!(this.getVuorossa().getKunkku().onEnsimmainenSiirto() && this.getLauta().haeNappula(0, 0).onEnsimmainenSiirto())) {
+        if (!(this.getVuorossa().getKunkku().onEnsimmainenSiirto() && this.getLauta().haeNappula(0, this.vuorossa.getPerusRivi()).onEnsimmainenSiirto())) {
             return false;
         }
-        if (!(this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(1, 0) && this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(2, 0) && this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(3, 0))) {
+        if (!(this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(1, this.vuorossa.getPerusRivi()) && this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(2, this.vuorossa.getPerusRivi()) && this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(3, this.vuorossa.getPerusRivi()))) {
             return false;
         }
-        if (this.onkoUhattuna(2, 0) || this.onkoUhattuna(3, 0) || this.onkoUhattuna(4, 0)) {
+        if (this.onkoUhattuna(2, this.vuorossa.getPerusRivi()) || this.onkoUhattuna(3, this.vuorossa.getPerusRivi()) || this.onkoUhattuna(4, this.vuorossa.getPerusRivi())) {
             return false;
         }
         return true;
     }
 
-    private boolean mustaVoiTehdaPitkanTornituksen() {
-        if (!this.getVuorossa().getKunkku().tarkistaOnkoKohdeOma(0, 7)) {
-            return false;
-        }
-        if (!(this.getVuorossa().getKunkku().onEnsimmainenSiirto() && this.getLauta().haeNappula(0, 7).onEnsimmainenSiirto())) {
-            return false;
-        }
-        if (!(this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(1, 7) && this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(2, 7) && this.getVuorossa().getKunkku().tarkistaOnkoKohdeVapaa(3, 7))) {
-            return false;
-        }
-        if (this.onkoUhattuna(2, 7) || this.onkoUhattuna(3, 7) || this.onkoUhattuna(4, 7)) {
-            return false;
-        }
-        return true;
-    }
 
     private void lataaVuoro(String maa) {
         if (this.musta.getMaa().toString().equals(maa)) {

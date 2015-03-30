@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.JPanel;
 import kayttoliittyma.PeliPiirto;
-import logiikka.nappulat.Maa;
+import logiikka.peli.Maa;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

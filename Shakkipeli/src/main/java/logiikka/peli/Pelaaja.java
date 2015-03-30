@@ -7,8 +7,7 @@ package logiikka.peli;
 
 import java.util.ArrayList;
 import logiikka.nappulat.Kunkku;
-import logiikka.nappulat.Maa;
-import static logiikka.nappulat.Maa.VALKOINEN;
+import static logiikka.peli.Maa.VALKOINEN;
 import logiikka.nappulat.Nappula;
 
 /**
@@ -23,6 +22,8 @@ public class Pelaaja {
     private int lyotyY;
     private Maa maa;
     private Nappula korotettava;
+    int perusRivi;
+    int sotilasRivi;
 
     public Nappula getKorotettava() {
         return korotettava;
@@ -39,10 +40,22 @@ public class Pelaaja {
         if (maa == VALKOINEN) {
             this.ohestaLyontiY = 2;
             this.lyotyY = 3;
+            this.perusRivi = 0;
+            this.sotilasRivi = 1;
         } else {
             this.ohestaLyontiY = 5;
             this.lyotyY = 4;
+            this.perusRivi = 7;
+            this.sotilasRivi = 6;
         }
+    }
+
+    public int getPerusRivi() {
+        return perusRivi;
+    }
+
+    public int getSotilasRivi() {
+        return sotilasRivi;
     }
 
     public int getLyotyY() {

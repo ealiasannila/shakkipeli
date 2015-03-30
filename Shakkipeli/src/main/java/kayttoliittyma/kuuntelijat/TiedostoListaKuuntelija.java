@@ -8,26 +8,27 @@ package kayttoliittyma.kuuntelijat;
 import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import kayttoliittyma.TiedostoValitsin;
 import kayttoliittyma.TiedostoValitsinTallennus;
 
 /**
  *
  * @author elias
  */
-public class TiedostoListaValitsinTallennus implements ListSelectionListener {
+public class TiedostoListaKuuntelija implements ListSelectionListener {
 
-    private TiedostoValitsinTallennus tiedostoValitsinTallennus;
+    private TiedostoValitsin tiedostoValitsin;
     
-    public TiedostoListaValitsinTallennus(TiedostoValitsinTallennus tiedostoValitsinTallennus) {
-        this.tiedostoValitsinTallennus = tiedostoValitsinTallennus;
+    public TiedostoListaKuuntelija(TiedostoValitsin tiedostoValitsin) {
+        this.tiedostoValitsin = tiedostoValitsin;
     }
 
     
     @Override
     public void valueChanged(ListSelectionEvent lse) {
-      String valittu = (String) this.tiedostoValitsinTallennus.getTiedostoLista().getSelectedValue();
+      String valittu = (String) this.tiedostoValitsin.getTiedostoLista().getSelectedValue();
     
-      this.tiedostoValitsinTallennus.getTiedostonNimi().setText(valittu);
+      this.tiedostoValitsin.getTiedostonNimi().setText(valittu);
       
     }
     

@@ -6,7 +6,7 @@ package logiikka.nappulat;
  * and open the template in the editor.
  */
 import java.util.ArrayList;
-import static logiikka.nappulat.Maa.*;
+import static logiikka.peli.Maa.*;
 import logiikka.peli.Pelilauta;
 import logiikka.peli.Ruutu;
 import org.junit.After;
@@ -25,7 +25,6 @@ public class TorniTest {
     private Pelilauta testiLauta;
     Nappula torni;
 
-   
     @Before
     public void setUp() {
         testiLauta = new Pelilauta();
@@ -34,7 +33,6 @@ public class TorniTest {
 
     }
 
-   
     @Test
     public void LiikuVinottainEtuVasen() {
         assertEquals(false, torni.onSallittuSiirto(0, 1));
@@ -61,7 +59,6 @@ public class TorniTest {
     @Test
     public void UhkaaOikeitaRuutujaTyhjaRuutu() {
         ArrayList<Ruutu> uhatutRuudut = torni.uhkausLinja(1, 5);
-        System.out.println(uhatutRuudut);
         assert (uhatutRuudut.contains(new Ruutu(1, 5)));
         assert (uhatutRuudut.contains(new Ruutu(1, 4)));
         assert (uhatutRuudut.contains(new Ruutu(1, 3)));
@@ -69,12 +66,12 @@ public class TorniTest {
         assert (uhatutRuudut.contains(new Ruutu(1, 1)));
         assertEquals(5, uhatutRuudut.size());
     }
-    
+
     @Test
     public void UhkaaOikeitaRuutujaVastustajanNappula() {
         Nappula vastustajanTorni = new Torni(MUSTA, 1, 5, this.testiLauta);
         ArrayList<Ruutu> uhatutRuudut = torni.uhkausLinja(1, 5);
-       // assert (uhatutRuudut.contains(new Ruutu(1, 5)));
+        // assert (uhatutRuudut.contains(new Ruutu(1, 5)));
         assert (uhatutRuudut.contains(new Ruutu(1, 4)));
         assert (uhatutRuudut.contains(new Ruutu(1, 3)));
         assert (uhatutRuudut.contains(new Ruutu(1, 2)));
@@ -93,8 +90,6 @@ public class TorniTest {
         assert (uhatutRuudut.contains(new Ruutu(1, 1)));
         assertEquals(5, uhatutRuudut.size());
     }
-
-    
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:

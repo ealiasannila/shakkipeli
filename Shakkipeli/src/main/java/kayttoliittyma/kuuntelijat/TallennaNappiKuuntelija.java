@@ -8,6 +8,7 @@ package kayttoliittyma.kuuntelijat;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import kayttoliittyma.Kayttoliittyma;
 import kayttoliittyma.TiedostoValitsinTallennus;
 
@@ -17,10 +18,10 @@ import kayttoliittyma.TiedostoValitsinTallennus;
  */
 public class TallennaNappiKuuntelija extends Kuuntelija implements ActionListener {
 
-    private JTextArea tekstiKentta;
+    private JTextField tekstiKentta;
     TiedostoValitsinTallennus tiedostoValitsin;
 
-    public TallennaNappiKuuntelija(Kayttoliittyma kayttoliittyma, JTextArea tekstiKentta, TiedostoValitsinTallennus tiedostoValitsin) {
+    public TallennaNappiKuuntelija(Kayttoliittyma kayttoliittyma, JTextField tekstiKentta, TiedostoValitsinTallennus tiedostoValitsin) {
         super(kayttoliittyma);
         this.tekstiKentta = tekstiKentta;
         this.tiedostoValitsin = tiedostoValitsin; 

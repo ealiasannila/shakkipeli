@@ -6,7 +6,7 @@
 package logiikka.nappulat;
 
 import java.util.ArrayList;
-import static logiikka.nappulat.Maa.VALKOINEN;
+import static logiikka.peli.Maa.VALKOINEN;
 import logiikka.peli.Pelilauta;
 import logiikka.peli.Ruutu;
 import org.junit.After;

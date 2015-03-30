@@ -5,6 +5,7 @@
  */
 package logiikka.nappulat;
 
+import logiikka.peli.Maa;
 import java.util.ArrayList;
 import kayttoliittyma.nappulapiirto.NappulaPiirto;
 import logiikka.peli.Pelilauta;

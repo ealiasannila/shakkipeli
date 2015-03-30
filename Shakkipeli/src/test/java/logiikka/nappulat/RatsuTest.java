@@ -5,7 +5,7 @@
  */
 package logiikka.nappulat;
 
-import static logiikka.nappulat.Maa.VALKOINEN;
+import static logiikka.peli.Maa.VALKOINEN;
 import logiikka.peli.Pelilauta;
 import static org.junit.Assert.*;
 import org.junit.Before;

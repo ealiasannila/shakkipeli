@@ -6,8 +6,8 @@ package logiikka.nappulat;
  * and open the template in the editor.
  */
 import java.util.ArrayList;
-import static logiikka.nappulat.Maa.MUSTA;
-import static logiikka.nappulat.Maa.VALKOINEN;
+import static logiikka.peli.Maa.MUSTA;
+import static logiikka.peli.Maa.VALKOINEN;
 import logiikka.nappulat.Nappula;
 import logiikka.nappulat.Torni;
 import logiikka.peli.Pelilauta;

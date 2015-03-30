@@ -5,8 +5,8 @@
  */
 package logiikka.peli;
 
-import static logiikka.nappulat.Maa.MUSTA;
-import static logiikka.nappulat.Maa.VALKOINEN;
+import static logiikka.peli.Maa.MUSTA;
+import static logiikka.peli.Maa.VALKOINEN;
 import logiikka.nappulat.Nappula;
 import logiikka.nappulat.Torni;
 import org.junit.After;

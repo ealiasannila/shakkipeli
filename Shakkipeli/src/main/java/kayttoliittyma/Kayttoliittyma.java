@@ -69,15 +69,15 @@ public class Kayttoliittyma implements Runnable {
     private JPanel luoValikkoNapit() {
         JPanel panel = new JPanel(new GridLayout(1, 3));
 
-        JButton uusiPeli = new JButton("Uusi peli!");
+        JButton uusiPeli = new JButton("Uusi peli");
         uusiPeli.addActionListener(new UusiPeliKuuntelija(this));
         panel.add(uusiPeli);
 
-        JButton lataaPeli = new JButton("Lataa peli!");
+        JButton lataaPeli = new JButton("Lataa peli");
         lataaPeli.addActionListener(new LataaPeliKuuntelija(this));
         panel.add(lataaPeli);
 
-        JButton tallennaPeli = new JButton("Tallenna peli!");
+        JButton tallennaPeli = new JButton("Tallenna peli");
         tallennaPeli.addActionListener(new TallennaPeliKuuntelija(this));
         panel.add(tallennaPeli);
 
