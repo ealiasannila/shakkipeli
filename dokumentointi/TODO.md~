@@ -1,7 +1,7 @@
-3. Siisti Koodia (Kuningatar käyttää aika saman näköstä koodia ku torni ja lähetti, Tornitukset pelissä)
-2. piirrä luokkakaavio (osa kayttoliittyman luokista puuttuu)
-1. toteuta tasapeli
-3. SotilaanKorotus
-4. fiksaa lataus/tallenus bugi
-8. päivitä testejä
+* Siisti Koodia (Kuningatar käyttää aika saman näköstä koodia ku torni ja lähetti, Tornitukset pelissä)
+* piirrä luokkakaavio (osa kayttoliittyman luokista puuttuu)
+* piirrä sekvenssikaavioita(esim. pelin lataus, nappulan syönti, ei sallittu siirto, matti)
+* fiksaa lataus/tallenus bugi
+* kirjoita vitusti lisää testejä... rivikattavuus >90%
+* varaudu lataustiedostojen puuttumiseen.
 

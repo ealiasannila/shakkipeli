@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import kayttoliittyma.Kayttoliittyma;
 import logiikka.nappulat.HaamuSotilas;
 import logiikka.nappulat.Kuningatar;
 import logiikka.nappulat.Kunkku;
@@ -293,8 +294,48 @@ public class Peli {
 
     }
 
-    public
-            void ohestaLyonti() {
+    public void sotilaanKorotus() {
+        for (Nappula nappula : this.vuorossa.getNappulat()) {
+            if (nappula.getClass() == Sotilas.class) {
+                if (this.vuorossa.getMaa() == VALKOINEN) {
+                    if (nappula.getY() == 7) {
+                        this.asetaKorotettavaksi(nappula);
+                    }
+                } else {
+                    if (nappula.getY() == 0) {
+                        this.asetaKorotettavaksi(nappula);
+                    }
+                }
+            }
+        }
+    }
+
+    public void korotaSotilas(Pelaaja korotettava, char miksiKorotetaan) {
+        switch (miksiKorotetaan) {
+            case 'q':
+                new Kuningatar(korotettava.getMaa(), korotettava.getKorotettava().getX(), korotettava.getKorotettava().getY(), this.getLauta());
+                break;
+            case 't':
+                new Torni(korotettava.getMaa(), korotettava.getKorotettava().getX(), korotettava.getKorotettava().getY(), this.getLauta());
+                break;
+            case 'l':
+                new Lahetti(korotettava.getMaa(), korotettava.getKorotettava().getX(), korotettava.getKorotettava().getY(), this.getLauta());
+                break;
+            case 'r':
+                new Ratsu(korotettava.getMaa(), korotettava.getKorotettava().getX(), korotettava.getKorotettava().getY(), this.getLauta());
+                break;
+
+        }
+        this.paivitaPelaajienNappulat();
+        korotettava.setKorotettava(null);
+    }
+
+    private void asetaKorotettavaksi(Nappula sotilas) {
+        this.vuorossa.setKorotettava(sotilas);
+
+    }
+
+    public void ohestaLyonti() {
 
         if (this.getVuorossa().getOhestaLyontiX() != -1) {
 
@@ -309,10 +350,8 @@ public class Peli {
         }
     }
 
-    public
-            void sotilasLiikkuiEkalla2(int x, int y) {
-        if (this.aktiivinen.getClass().equals(Sotilas.class
-        )) {
+    public void sotilasLiikkuiEkalla2(int x, int y) {
+        if (this.aktiivinen.getClass().equals(Sotilas.class)) {
             if (this.aktiivinen.onEnsimmainenSiirto()) {
                 if (y == 3) {
                     this.valkoinen.setOhestaLyontiX(x);
@@ -339,6 +378,7 @@ public class Peli {
         this.sotilasLiikkuiEkalla2(x, y); //jos liikutettiin sotilasta alussa 2 asetetaan näkymätön "haamusotilas" ohestalyöntiä varten
 
         this.aktiivinen.setEnsimmainenSiirto(false);
+        this.sotilaanKorotus();
 
         this.vaihdaVuoroa();
         return true;

@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import logiikka.nappulat.Nappula;
 
 /**
@@ -18,11 +19,13 @@ import logiikka.nappulat.Nappula;
 public class PeliPiirto extends JPanel {
 
     private Kayttoliittyma kayttoliittyma;
+    private boolean sotilaanKorotusKesken;
 
     public PeliPiirto(Kayttoliittyma kayttoliittyma) {
         super.setBackground(Color.lightGray);
 
         this.kayttoliittyma = kayttoliittyma;
+        this.sotilaanKorotusKesken = false;
     }
 
     public int getSivunPituus() {
@@ -46,18 +49,17 @@ public class PeliPiirto extends JPanel {
 
     public void peliLoppu(Graphics graphics) {
         graphics.setColor(Color.GRAY);
-        
-        
+
         if (this.kayttoliittyma.getPeliHallinta().getPeli().onPatissa()) {
             graphics.setFont(new Font("TimesRoman", Font.PLAIN, this.getSivunPituus()));
-            graphics.drawString("PATTITILANNE " , this.getSivunPituus(), this.getSivunPituus() * 3);
-            
+            graphics.drawString("PATTITILANNE ", this.getSivunPituus(), this.getSivunPituus() * 3);
+
         }
-        
+
         if (this.kayttoliittyma.getPeliHallinta().getPeli().onMatissa()) {
             graphics.setFont(new Font("TimesRoman", Font.PLAIN, this.getSivunPituus()));
-            graphics.drawString("HÄVISIT " , this.getSivunPituus(), this.getSivunPituus() * 3);
-            graphics.drawString(""+this.kayttoliittyma.getPeliHallinta().getPeli().getVuorossa().getMaa(), this.getSivunPituus(),(int) (this.getSivunPituus() * 4.5));
+            graphics.drawString("HÄVISIT ", this.getSivunPituus(), this.getSivunPituus() * 3);
+            graphics.drawString("" + this.kayttoliittyma.getPeliHallinta().getPeli().getVuorossa().getMaa(), this.getSivunPituus(), (int) (this.getSivunPituus() * 4.5));
 
         }
     }
@@ -75,7 +77,6 @@ public class PeliPiirto extends JPanel {
     private void piirraNappula(Graphics graphics, Nappula nappula) {
         int nappulanKoko = (int) (this.getSivunPituus() * 0.7);
 
-        graphics.setColor(Color.GREEN);
         graphics.drawImage(nappula.getPiirto().haeKuva(nappula.getMaa()),
                 nappula.getPiirto().piirtoX(nappula.getX(), this, nappulanKoko),
                 nappula.getPiirto().piirtoY(nappula.getY(), this, nappulanKoko),
@@ -83,11 +84,37 @@ public class PeliPiirto extends JPanel {
 
     }
 
+    private void kysyMiksiKorotetaan() {
+
+        if (this.kayttoliittyma.getPeliHallinta().getPeli().getValkoinen().getKorotettava() != null) {
+            this.sotilaanKorotusKesken = true;
+            SwingUtilities.invokeLater(new KorotusValikko(this.kayttoliittyma, this.kayttoliittyma.getPeliHallinta().getPeli().getValkoinen()));
+
+        }
+        if (this.kayttoliittyma.getPeliHallinta().getPeli().getMusta().getKorotettava() != null) {
+            this.sotilaanKorotusKesken = true;
+            SwingUtilities.invokeLater(new KorotusValikko(this.kayttoliittyma, this.kayttoliittyma.getPeliHallinta().getPeli().getMusta()));
+
+        }
+
+    }
+
+    public boolean sotilaanKorotusOnKesken() {
+        return sotilaanKorotusKesken;
+    }
+
+    public void setSotilaanKorotusKesken(boolean sotilaanKorotusKesken) {
+        this.sotilaanKorotusKesken = sotilaanKorotusKesken;
+    }
+
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
+        this.kysyMiksiKorotetaan();
+
         this.piirraRuudut(graphics);
         this.piirraNappulat(graphics);
         this.peliLoppu(graphics);
+
     }
 }

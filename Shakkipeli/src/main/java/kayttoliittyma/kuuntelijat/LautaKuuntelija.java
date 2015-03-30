@@ -25,11 +25,11 @@ public class LautaKuuntelija extends Kuuntelija implements MouseListener {
         super(kayttoliittyma);
     }
 
-
-
-
     @Override
     public void mouseClicked(MouseEvent me) {
+        if (this.kayttoliittyma.getPeliPiirto().sotilaanKorotusOnKesken()) {
+            return;
+        }
         int x = me.getX() / this.kayttoliittyma.getPeliPiirto().getSivunPituus();
         int y = 7 - (me.getY() / this.kayttoliittyma.getPeliPiirto().getSivunPituus());
 

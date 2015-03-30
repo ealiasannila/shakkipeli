@@ -22,6 +22,15 @@ public class Pelaaja {
     private int ohestaLyontiY;
     private int lyotyY;
     private Maa maa;
+    private Nappula korotettava;
+
+    public Nappula getKorotettava() {
+        return korotettava;
+    }
+
+    public void setKorotettava(Nappula korotettava) {
+        this.korotettava = korotettava;
+    }
 
     public Pelaaja(Maa maa) {
         this.maa = maa;
