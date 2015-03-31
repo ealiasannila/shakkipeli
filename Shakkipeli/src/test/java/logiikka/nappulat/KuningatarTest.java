@@ -31,56 +31,56 @@ public class KuningatarTest {
 
     @Test
     public void liikuuVinottainEtuOikea() {
-        assert(this.kuningatar.onSallittuSiirto(6, 6));
+        assertTrue(this.kuningatar.onSallittuSiirto(6, 6));
     }
     
     
     @Test
     public void liikuuVinottainTakaVasen() {
-        assert(this.kuningatar.onSallittuSiirto(2, 2));
+        assertTrue(this.kuningatar.onSallittuSiirto(2, 2));
     }
     
     
     @Test
     public void liikuuVinottainTakaOikea() {
-        assert(this.kuningatar.onSallittuSiirto(6, 2));
+        assertTrue(this.kuningatar.onSallittuSiirto(6, 2));
     }
     
     
     @Test
     public void liikuuVinottainEtuVasen() {
-        assert(this.kuningatar.onSallittuSiirto(2, 6));
+        assertTrue(this.kuningatar.onSallittuSiirto(2, 6));
     }
 
     
     @Test
     public void liikuuEteen() {
-        assert(this.kuningatar.onSallittuSiirto(4, 7));
+        assertTrue(this.kuningatar.onSallittuSiirto(4, 7));
     }
     @Test
     public void liikuuTaakse() {
-        assert(this.kuningatar.onSallittuSiirto(4, 0));
+        assertTrue(this.kuningatar.onSallittuSiirto(4, 0));
     }
     @Test
     public void liikuuVasemmalle() {
-        assert(this.kuningatar.onSallittuSiirto(2, 4));
+        assertTrue(this.kuningatar.onSallittuSiirto(2, 4));
     }
     @Test
     public void liikuuOikealle() {
-        assert(this.kuningatar.onSallittuSiirto(7, 4));
+        assertTrue(this.kuningatar.onSallittuSiirto(7, 4));
     }
     
     
     
     @Test
     public void eiLiikuVaariin() {
-        assert(!this.kuningatar.onSallittuSiirto(1, 2));
-        assert(!this.kuningatar.onSallittuSiirto(2, 1));
-        assert(!this.kuningatar.onSallittuSiirto(1, 5));
-        assert(!this.kuningatar.onSallittuSiirto(0, 2));
-        assert(!this.kuningatar.onSallittuSiirto(2, 1));
-        assert(!this.kuningatar.onSallittuSiirto(4, 4));
-        assert(!this.kuningatar.onSallittuSiirto(5, 0));
+        assertFalse(this.kuningatar.onSallittuSiirto(1, 2));
+        assertFalse(this.kuningatar.onSallittuSiirto(2, 1));
+        assertFalse(this.kuningatar.onSallittuSiirto(1, 5));
+        assertFalse(this.kuningatar.onSallittuSiirto(0, 2));
+        assertFalse(this.kuningatar.onSallittuSiirto(2, 1));
+        assertFalse(this.kuningatar.onSallittuSiirto(4, 4));
+        assertFalse(this.kuningatar.onSallittuSiirto(5, 0));
     }
     
     @Test

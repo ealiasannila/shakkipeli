@@ -28,7 +28,7 @@ public class PeliHallintaTest {
     @Test
     public void uusiPeliTest() {
         this.peliHallinta.uusiPeli();
-        assert (this.peliHallinta.getPeli().toString().equals(
+        assertEquals (this.peliHallinta.getPeli().toString(),(
                 "VALKOINEN\n"
                 + "TRLQKLRT\n"
                 + "SSSSSSSS\n"
@@ -44,7 +44,7 @@ public class PeliHallintaTest {
     @Test
     public void lataaPeliTest() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/mustaTornitus.txt");
-        assert (this.peliHallinta.getPeli().toString().equals(
+        assertEquals (this.peliHallinta.getPeli().toString(),(
                 "MUSTA\n"
                 + "ToooKooT\n"
                 + "SSSSSSSS\n"
@@ -62,7 +62,7 @@ public class PeliHallintaTest {
 
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/uusi.txt");
         this.peliHallinta.tallennaPeli("tallennetutPelit/testiTilanteet/tallennusTesti.txt");
-        assert (this.peliHallinta.getPeli().toString().equals(
+        assertEquals (this.peliHallinta.getPeli().toString(),(
                 "VALKOINEN\n"
                 + "TRLQKLRT\n"
                 + "SSSSSSSS\n"
@@ -76,7 +76,7 @@ public class PeliHallintaTest {
         this.peliHallinta.getPeli().siirto(0, 3);
         this.peliHallinta.tallennaPeli("tallennetutPelit/testiTilanteet/tallennusTesti.txt");
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/tallennusTesti.txt");
-        assert (this.peliHallinta.getPeli().toString().equals(
+        assertEquals (this.peliHallinta.getPeli().toString(),(
                 "MUSTA\n"
                 + "TRLQKLRT\n"
                 + "SSSSSSSS\n"

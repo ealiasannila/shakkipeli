@@ -39,30 +39,34 @@ public class KunkkuTest {
     @Test
     public void kunkkuUhkaaOikeaaRuutua() {
         ArrayList<Ruutu> uhatutRuudut = kunkku.uhkausLinja(1, 5);
-        assert(uhatutRuudut.isEmpty());
+        assertTrue (uhatutRuudut.isEmpty());
     }
-    
+
     @Test
-    public void kunkkuLiikkuuYhdenVinottain(){
+    public void kunkkuLiikkuuYhdenVinottain() {
         assertEquals(true, kunkku.onSallittuSiirto(0, 1));
     }
-    
+
     @Test
-    public void kunkkuLiikkuuYhdenSuoraan(){
+    public void kunkkuLiikkuuYhdenSuoraan() {
         assertEquals(true, kunkku.onSallittuSiirto(2, 0));
     }
-    
+
     @Test
-    public void kunkkuEiLiikkuKahtaSuoraan(){
+    public void kunkkuEiLiikkuKahtaSuoraan() {
         assertEquals(false, kunkku.onSallittuSiirto(3, 0));
     }
+
     @Test
-    public void kunkkuEiLiikkuKahtaVinoon(){
+    public void kunkkuEiLiikkuKahtaVinoon() {
         assertEquals(false, kunkku.onSallittuSiirto(3, 2));
     }
-    
-    
-    
+
+    @Test
+    public void mahdollisetRuudutOikein() {
+
+        assertEquals("[[2,1], [0,1], [2,-1], [0,-1], [1,-1], [1,1], [2,0], [0,0]]", this.kunkku.mahdollisetRuudut().toString());
+    }
 
 }
     // TODO add test methods here.

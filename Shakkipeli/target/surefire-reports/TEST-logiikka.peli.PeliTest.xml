@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.068" errors="0" skipped="0" tests="28" name="logiikka.peli.PeliTest">
+<testsuite failures="0" time="0.092" errors="0" skipped="0" tests="41" name="logiikka.peli.PeliTest">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64"/>
@@ -60,32 +60,45 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="epaOnnistuneenSiirronJalkeenVuorossaOlevaEiVaihtuu"/>
+  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="eiOlePattiToinenVoiTehdaMatinKaksiLahettiaSamallaVarilla"/>
+  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="kunVoiSyodaNiinEiMatti"/>
   <testcase time="0.002" classname="logiikka.peli.PeliTest" name="voiTehdaOhestaLyonnin"/>
-  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="onnistunutSiirtoPalauttaaTrue"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="mustaVoiTehdaPitkanTornituksen"/>
-  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="KertooOikeinKukaUhkaaKunUhataan"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="KunVoiSyodaNiinEiMatti"/>
-  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="pattiTestVainKunkkuJaLahettejaSamallaVarilla"/>
+  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="josEiAktiivinenEpaonnistunutSiirtoPalauttaaFalse"/>
+  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="epaonnistunutSiirtoPalauttaaFalse"/>
+  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="eiOlePattiToinenVoiTehdaMatinKaksiRatsua"/>
+  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="onnistunutSiirtoPalauttaaTrue"/>
+  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="onnistuneenSiirronJalkeenAktiivinenOnNull"/>
+  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="korottaaLahetiksi"/>
+  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="voiTehdaPitkanTornituksenValkoinen"/>
+  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="kuninkaanUhatuksiJattaminenEiTeeSiirtoa"/>
+  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="voiTehdaPitkanTornituksenMusta"/>
+  <testcase time="0.006" classname="logiikka.peli.PeliTest" name="kuninkaanUhatuksiSiirtaminenPalauttaaFalse"/>
+  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="kunEiVoiBlokatNiinMatti"/>
+  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="kaksiUhkaaMattiMusta"/>
+  <testcase time="0.003" classname="logiikka.peli.PeliTest" name="kunVoiBlokatNiinEiMatti"/>
+  <testcase time="0.003" classname="logiikka.peli.PeliTest" name="kaksiUhkaaEiMatti"/>
+  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="kunkkuEiVoiSyodaSuojattua"/>
+  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="pattiTestVainKunkkuJaLahettejaSamallaVarilla"/>
   <testcase time="0.001" classname="logiikka.peli.PeliTest" name="siirronJalkeenVuorossaOlevaVaihtuu"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="valkoinenVoiTehdaPitkanTornituksen"/>
-  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="EpaonnistunutSiirtoPalauttaaFalse"/>
-  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="syonninJalkeenSyotyNappulaEiPelaajanNappuloissa"/>
-  <testcase time="0.003" classname="logiikka.peli.PeliTest" name="KertooOikeinUhataankoRuutuaKunEiUhata"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="OnnistuneenSiirronJalkeenAktiivinenOnNull"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="KunMattiNiinMatti"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="pattiTestVainKunkkuJa2Ratsua"/>
-  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="KuninkaanUhatuksiJattaminenPalauttaaSiirroltaFalse"/>
+  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="korottaaTorniksi"/>
+  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="voiTehdaLyhyenTornituksenMusta"/>
+  <testcase time="0.003" classname="logiikka.peli.PeliTest" name="poistaaHaamuSotilaan"/>
+  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="syonninJalkeenSyotyNappulaEiPelaajanNappuloissa"/>
+  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="kunKunkkuVoiLiikkuaEiMatti"/>
+  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="kuninkaanUhatuksiPaljastaminenEiTeeSiirtoa"/>
+  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="epaOnnistuneenSiirronJalkeenVuorossaOlevaEiVaihdu"/>
+  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="kunEiMattiNiinEiMatti"/>
+  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="korottaaKuningattareksi"/>
+  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="pattiTestVainKunkkuJa2Ratsua"/>
+  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="korottaaRatsuksi"/>
+  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="onShakissaTest"/>
+  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="kunMattiNiinMatti"/>
   <testcase time="0.001" classname="logiikka.peli.PeliTest" name="pattiTestEiVoiLiikkua"/>
+  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="voiTehdaLyhyenTornituksenValkoinen"/>
   <testcase time="0.001" classname="logiikka.peli.PeliTest" name="pattiTestVainKunkkuJaRatsu"/>
-  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="KertooOikeinUhataankoRuutuaKunUhataan"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="JosEiAktiivinenEpaonnistunutSiirtoPalauttaaFalse"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="pattiTestVainKunkut"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="mustaVoiTehdaLyhyenTornituksen"/>
-  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="KertooOikeinKukaUhkaaKunEiUhata"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="KunVoiBlokatNiinEiMatti"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="pattiTestVainKunkkuJaLahettejaEriVarilla"/>
-  <testcase time="0.003" classname="logiikka.peli.PeliTest" name="KunEiMattiNiinEiMatti"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="valkoinenVoiTehdaLyhyenTornituksen"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="KuninkaanUhatuksiJattaminenEiTeeSiirtoa"/>
+  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="eiOlePatissa"/>
+  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="sotilaanKorotusTest"/>
+  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="pattiTestVainKunkut"/>
+  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="kaksiUhkaaMattiValkoinen"/>
+  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="pattiTestVainKunkkuJaLahettejaEriVarilla"/>
 </testsuite>

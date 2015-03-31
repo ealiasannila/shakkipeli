@@ -9,19 +9,20 @@ import java.util.ArrayList;
 import logiikka.peli.Ruutu;
 
 /**
- *Tässä luokassa on tornin ja kuningattaren sekä lähetin ja kuningattaren jakamia metodeja
- * 
+ * Tässä luokassa on tornin ja kuningattaren sekä lähetin ja kuningattaren
+ * jakamia metodeja
+ *
  */
 public class NappulaApumetodeja {
 
-    
     /**
      * Kertoo onko kohde ja oma sijainti samalla pysty tai vaakarivillä
+     *
      * @param x
      * @param y
      * @param omaX
      * @param omaY
-     * @return 
+     * @return
      */
     public static boolean onSamallaPystyTaiVaakaRivilla(int x, int y, int omaX, int omaY) {
         return !(omaX != x && omaY != y);
@@ -29,11 +30,12 @@ public class NappulaApumetodeja {
 
     /**
      * kertoo onko kohde ja oma sijainti samalla vinorivillä
+     *
      * @param x
      * @param y
      * @param omaX
      * @param omaY
-     * @return 
+     * @return
      */
     public static boolean onSamallaVinoRivilla(int x, int y, int omaX, int omaY) {
         return Math.abs(omaX - x) == Math.abs(omaY - y);
@@ -42,10 +44,11 @@ public class NappulaApumetodeja {
 
     /**
      * palauttaa vinottaisella uhkauslinjalla olevat ruudut
+     *
      * @param x
      * @param y
      * @param nappula
-     * @return 
+     * @return
      */
     public static ArrayList<Ruutu> uhkausLinjaVino(int x, int y, Nappula nappula) {
         if (!nappula.tarkistaReitti(x, y)) {
@@ -87,11 +90,12 @@ public class NappulaApumetodeja {
     }
 
     /**
-     * palauttaa pysty tai vaakasuuntaisella uhkauslinjalla olevat ruudut 
+     * palauttaa pysty tai vaakasuuntaisella uhkauslinjalla olevat ruudut
+     *
      * @param x
      * @param y
      * @param nappula
-     * @return 
+     * @return
      */
     public static ArrayList<Ruutu> uhkausLinjaPystyTaiVaaka(int x, int y, Nappula nappula) {
         if (!nappula.tarkistaReitti(x, y)) {
@@ -124,14 +128,18 @@ public class NappulaApumetodeja {
     }
 
     /**
-     * kertoo onko nappulan ja annetun vinosuuntaisen kohteen välillä muita nappuloita
+     * kertoo onko nappulan ja annetun vinosuuntaisen kohteen välillä muita
+     * nappuloita
+     *
      * @param x
      * @param y
      * @param nappula
-     * @return 
+     * @return
      */
-    
     public static boolean reitillaEiMuitaNappuloitaVino(int x, int y, Nappula nappula) {
+        if (!onSamallaVinoRivilla(x, y, nappula.getX(), nappula.getY())) {
+            return false;
+        }
 
         if (nappula.getX() < x && nappula.getY() < y) { //kohde yläoikealle
             int j = nappula.getY() + 1;
@@ -171,13 +179,19 @@ public class NappulaApumetodeja {
     }
 
     /**
-     * kertoo onko nappulan ja annetun pysty tai vaakasuuntaisen kohteen välillä muita nappuloita
+     * kertoo onko nappulan ja annetun pysty tai vaakasuuntaisen kohteen välillä
+     * muita nappuloita
+     *
      * @param x
      * @param y
      * @param nappula
-     * @return 
+     * @return
      */
     public static boolean reitillaEiMuitaNappuloitaPystyTaiVaaka(int x, int y, Nappula nappula) {
+        if(!onSamallaPystyTaiVaakaRivilla(x,y,nappula.getX(),nappula.getY())){
+            return false;
+        }
+        
         if (nappula.getX() < x) { //Tarkastetaan onko reitillä muita nappuloita
             for (int i = nappula.getX() + 1; i < x; i++) {
                 if (!nappula.tarkistaOnkoKohdeVapaa(i, y)) {
@@ -207,10 +221,12 @@ public class NappulaApumetodeja {
     }
 
     /**
-     * palauttaa listan ruuduista joiden x tai y koordinaatti on sama kuin parametrina annettu
+     * palauttaa listan ruuduista joiden x tai y koordinaatti on sama kuin
+     * parametrina annettu
+     *
      * @param x
      * @param y
-     * @return 
+     * @return
      */
     public static ArrayList<Ruutu> mahdollisetPystyTaiVaakaRuudut(int x, int y) {
         ArrayList<Ruutu> ruudut = new ArrayList<Ruutu>();
@@ -222,12 +238,13 @@ public class NappulaApumetodeja {
         return ruudut;
     }
 
-    
     /**
-     * palauttaa listan ruuduista jotka ovat vinottain samalla linjalla annetun ruudun kanssa
+     * palauttaa listan ruuduista jotka ovat vinottain samalla linjalla annetun
+     * ruudun kanssa
+     *
      * @param x
      * @param y
-     * @return 
+     * @return
      */
     public static ArrayList<Ruutu> mahdollisetVinoRuudut(int x, int y) {
         ArrayList<Ruutu> ruudut = new ArrayList<Ruutu>();

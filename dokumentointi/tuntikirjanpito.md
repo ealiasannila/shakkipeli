@@ -9,3 +9,4 @@
 26.3 3h kirjoitin lisää testejä
 27.3 4h toteutin ohestalyönnin ja tasapelin tunnistuksen, kirjoitin niille testejä
 30.3 6h toteutin sotilaan korotuksen, aktiivisen nappulan osoituksen ja virheellisen siirron flashin. Kirjoitin lisää testejä ja selkeytin ohjelmakoodia
+31.3 4h kirjoitin lisää testejä

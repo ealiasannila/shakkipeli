@@ -8,6 +8,8 @@ package logiikka.nappulat;
 import static logiikka.peli.Maa.VALKOINEN;
 import logiikka.peli.Pelilauta;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,52 +32,52 @@ public class LahettiTest {
 
     @Test
     public void liikuuVinottainEtuOikea() {
-        assert (this.lahetti.onSallittuSiirto(6, 6));
+        assertTrue (this.lahetti.onSallittuSiirto(6, 6));
     }
 
     @Test
     public void liikuuVinottainTakaVasen() {
-        assert (this.lahetti.onSallittuSiirto(2, 2));
+        assertTrue (this.lahetti.onSallittuSiirto(2, 2));
     }
 
     @Test
     public void liikuuVinottainTakaOikea() {
-        assert (this.lahetti.onSallittuSiirto(6, 2));
+        assertTrue (this.lahetti.onSallittuSiirto(6, 2));
     }
 
     @Test
     public void liikuuVinottainEtuVasen() {
-        assert (this.lahetti.onSallittuSiirto(2, 6));
+        assertTrue (this.lahetti.onSallittuSiirto(2, 6));
     }
     
      @Test
     public void liikuuEteen() {
-        assert(!this.lahetti.onSallittuSiirto(4, 7));
+        assertFalse(this.lahetti.onSallittuSiirto(4, 7));
     }
     @Test
     public void liikuuTaakse() {
-        assert(!this.lahetti.onSallittuSiirto(4, 0));
+        assertFalse(this.lahetti.onSallittuSiirto(4, 0));
     }
     @Test
     public void liikuuVasemmalle() {
-        assert(!this.lahetti.onSallittuSiirto(2, 4));
+        assertFalse(this.lahetti.onSallittuSiirto(2, 4));
     }
     @Test
     public void liikuuOikealle() {
-        assert(!this.lahetti.onSallittuSiirto(7, 4));
+        assertFalse(this.lahetti.onSallittuSiirto(7, 4));
     }
     
     
     
     @Test
     public void eiLiikuVaariin() {
-        assert(!this.lahetti.onSallittuSiirto(1, 2));
-        assert(!this.lahetti.onSallittuSiirto(2, 1));
-        assert(!this.lahetti.onSallittuSiirto(1, 5));
-        assert(!this.lahetti.onSallittuSiirto(0, 2));
-        assert(!this.lahetti.onSallittuSiirto(2, 1));
-        assert(!this.lahetti.onSallittuSiirto(4, 4));
-        assert(!this.lahetti.onSallittuSiirto(5, 0));
+        assertFalse(this.lahetti.onSallittuSiirto(1, 2));
+        assertFalse(this.lahetti.onSallittuSiirto(2, 1));
+        assertFalse(this.lahetti.onSallittuSiirto(1, 5));
+        assertFalse(this.lahetti.onSallittuSiirto(0, 2));
+        assertFalse(this.lahetti.onSallittuSiirto(2, 1));
+        assertFalse(this.lahetti.onSallittuSiirto(4, 4));
+        assertFalse(this.lahetti.onSallittuSiirto(5, 0));
     }
     
     @Test

@@ -90,7 +90,7 @@ public abstract class Nappula {
      * @param y
      * @return
      */
-    public boolean kohdeLaudanUlkopuolella(int x, int y) {
+    protected boolean kohdeLaudanUlkopuolella(int x, int y) {
         return x < 0 || y < 0 || x > this.getLauta().getSize() - 1 || y > this.getLauta().getSize() - 1;
     }
 
@@ -102,7 +102,7 @@ public abstract class Nappula {
      * @return
      */
 
-    public boolean kohdeSamaKuinOmaSijainti(int x, int y) {
+    protected boolean kohdeSamaKuinOmaSijainti(int x, int y) {
         return this.getX() == x && this.getY() == y;
     }
 

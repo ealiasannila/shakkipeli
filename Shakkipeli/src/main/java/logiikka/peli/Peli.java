@@ -41,23 +41,26 @@ public class Peli {
 
     /**
      * kertoo onko jokin ruutu uhattuna
+     *
      * @param x
      * @param y
-     * @return 
+     * @return
      */
-    public boolean onkoUhattuna(int x, int y) {
+    private boolean onkoUhattuna(int x, int y) {
         if (this.uhkaavaNappula(x, y) == null) {
             return false;
         }
         return true;
     }
+
     /**
      * kertoo mikä nappula jos mikään uhkaa tiettyä ruutua
+     *
      * @param x
      * @param y
-     * @return 
+     * @return
      */
-    public Nappula uhkaavaNappula(int x, int y) {
+    private Nappula uhkaavaNappula(int x, int y) {
         if (this.vuorossa.getMaa() == MUSTA) {
             return this.haeUhkaava(x, y, this.valkoinen.getNappulat());
         } else {
@@ -66,13 +69,16 @@ public class Peli {
     }
 
     /**
-     * käy kaikki vastustajan nappulat läpi ja tarkistaa onko niistä jollain reitti annettuun ruutuun. Palauttaa ensimmäisen nappulan jonka löytää tai null
+     * käy kaikki vastustajan nappulat läpi ja tarkistaa onko niistä jollain
+     * reitti annettuun ruutuun. Palauttaa ensimmäisen nappulan jonka löytää tai
+     * null
+     *
      * @param x
      * @param y
      * @param vastustajanNappulat
-     * @return 
+     * @return
      */
-    public Nappula haeUhkaava(int x, int y, ArrayList<Nappula> vastustajanNappulat) {
+    private Nappula haeUhkaava(int x, int y, ArrayList<Nappula> vastustajanNappulat) {
         for (Nappula nappula : vastustajanNappulat) {
             if (nappula.tarkistaReitti(x, y)) {
                 return nappula;
@@ -84,9 +90,10 @@ public class Peli {
 
     /**
      * kertoo uhkaako useampi nappula, käytetään matin tarkistuksessa
+     *
      * @param x
      * @param y
-     * @return 
+     * @return
      */
     private boolean uhkaakoUseampi(int x, int y) {
         if (this.vuorossa.getMaa() == MUSTA) {
@@ -98,7 +105,6 @@ public class Peli {
 
         }
     }
-    
 
     private boolean uhkaakoUseampi(int x, int y, ArrayList<Nappula> vastustajanNappulat) {
         int uhkaajat = 0;
@@ -138,31 +144,34 @@ public class Peli {
             } else {
                 teeSiirto = true;
             }
-            this.lauta.teeSiirtoIlmanTarkistusta(vanhaX, vanhaY, nappula); //palauta tilanne
-            this.lauta.asetaNappula(vastustajaTalteen, x, y);
-            this.paivitaPelaajienNappulat();
+            this.palautaTilanne(vanhaX, vanhaY, nappula, x, y, vastustajaTalteen);
+
         }
         return teeSiirto;
 
     }
 
+    private void palautaTilanne(int vanhaX, int vanhaY, Nappula nappula, int vastustajanX, int vastustajanY, Nappula vastustajaTalteen) {
+        this.lauta.teeSiirtoIlmanTarkistusta(vanhaX, vanhaY, nappula); //palauta tilanne
+        this.lauta.asetaNappula(vastustajaTalteen, vastustajanX, vastustajanY);
+        this.paivitaPelaajienNappulat();
+    }
+
     /**
-     * kertoo onko kuningas uhattuna, Pelin lisäksi käytetään väärästä siirrosta kertovan punaisen väläyksen tekemisessä
-     * @return 
+     * kertoo onko kuningas uhattuna, Pelin lisäksi käytetään väärästä siirrosta
+     * kertovan punaisen väläyksen tekemisessä
+     *
+     * @return
      */
     public boolean onShakissa() {
         return onkoUhattuna(this.vuorossa.getKunkku().getX(), this.vuorossa.getKunkku().getY());
     }
 
     /**
-     * kertoo onko peli tullut päätökseen
-     * On matti jos:
-     *  on shakki
-     *  kunkku ei voi liikkua
-     *  useampi uhkaa tai
-     *  ei voi syödä uhkaajaa ja
-     *  ei voi blokata shakkia
-     * @return 
+     * kertoo onko peli tullut päätökseen On matti jos: on shakki kunkku ei voi
+     * liikkua useampi uhkaa tai ei voi syödä uhkaajaa ja ei voi blokata shakkia
+     *
+     * @return
      */
     public boolean onMatissa() {
         if (!this.onShakissa()) {
@@ -184,14 +193,12 @@ public class Peli {
     }
 
     /**
-     * kertoo onko peli päättynyt tasapeliin
-     * peli on tasapeli jos:
-     *  kumpikaan ei voi tehdä mattia jäljellä olevilla nappuloilla tai
-     *  kumpikaan ei ole shakissa ja
-     *  kumpikaan ei voi liikuttaa mitään nappulaa
-     * @return 
+     * kertoo onko peli päättynyt tasapeliin peli on tasapeli jos: kumpikaan ei
+     * voi tehdä mattia jäljellä olevilla nappuloilla tai kumpikaan ei ole
+     * shakissa ja kumpikaan ei voi liikuttaa mitään nappulaa
+     *
+     * @return
      */
-    
     public boolean onPatissa() {
 
         if (this.eiVoiTehdaMattia()) {
@@ -384,8 +391,7 @@ public class Peli {
 
             if (this.lauta.haeNappula(this.vuorossa.getOhestaLyontiX(), this.vuorossa.getOhestaLyontiY()).getClass() != HaamuSotilas.class) {
 
-                this.lauta.asetaNappula(
-                        null, this.vuorossa.getOhestaLyontiX(), this.vuorossa.getLyotyY());
+                this.lauta.asetaNappula(null, this.vuorossa.getOhestaLyontiX(), this.vuorossa.getLyotyY());
             } else {
                 this.lauta.asetaNappula(null, this.vuorossa.getOhestaLyontiX(), this.vuorossa.getOhestaLyontiY());
             }
@@ -396,24 +402,23 @@ public class Peli {
     private void sotilasLiikkuiEkalla2(int x, int y) {
         if (this.aktiivinen.getClass().equals(Sotilas.class)) {
             if (this.aktiivinen.onEnsimmainenSiirto()) {
-                if (y == 3) {
-                    this.valkoinen.setOhestaLyontiX(x);
-                    new HaamuSotilas(this.vuorossa.getMaa(), x, y - 1, this.lauta);
-                } else if (y == 4) {
-                    this.musta.setOhestaLyontiX(x);
-                    new HaamuSotilas(this.vuorossa.getMaa(), x, y + 1, this.lauta);
+                if (y == this.vuorossa.getLyotyY()) {
+                    this.vuorossa.setOhestaLyontiX(x);
+                    new HaamuSotilas(this.vuorossa.getMaa(), x, this.vuorossa.getOhestaLyontiY(), this.lauta);
                 }
             }
         }
     }
 
     /**
-     * kokeilee siirtoa ja jos siirto ei jätä peliä ei sallittuun tilaan jää siirto voimaan. Jos kunkku jää uhatuksi ei siirto ole sallittu ja se perutaan.
+     * kokeilee siirtoa ja jos siirto ei jätä peliä ei sallittuun tilaan jää
+     * siirto voimaan. Jos kunkku jää uhatuksi ei siirto ole sallittu ja se
+     * perutaan.
+     *
      * @param x
      * @param y
-     * @return 
+     * @return
      */
-    
     public boolean siirto(int x, int y) {
         if (this.aktiivinen == null) {//pitää olla nappula valittuna
             return false;
@@ -434,9 +439,11 @@ public class Peli {
     }
 
     /**
-     * tarkistaa onko valittu nappula oma ja asettaa nappulan aktiiviseksi siirtoa varten
+     * tarkistaa onko valittu nappula oma ja asettaa nappulan aktiiviseksi
+     * siirtoa varten
+     *
      * @param x
-     * @param y 
+     * @param y
      */
     public void asetaAktiivinen(int x, int y) {
 
@@ -573,11 +580,12 @@ public class Peli {
         this.paivitaPelaajienNappulat();
     }
 
-/**
- * Lataa tiedostosta pelitilanteen
- * @param peli
- * @throws FileNotFoundException 
- */
+    /**
+     * Lataa tiedostosta pelitilanteen
+     *
+     * @param peli
+     * @throws FileNotFoundException
+     */
     public void lataaPeli(File peli) throws FileNotFoundException {
         Scanner lukija = new Scanner(peli);
         this.lauta = new Pelilauta();

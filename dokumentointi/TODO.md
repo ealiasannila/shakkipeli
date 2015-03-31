@@ -1,7 +1,5 @@
 * piirrä luokkakaavio (osa kayttoliittyman luokista puuttuu)
 * piirrä sekvenssikaavioita(esim. pelin lataus, nappulan syönti, ei sallittu siirto, matti)
 * fiksaa lataus/tallenus bugi? jostain syystä tuntuu toimivan taas...
-* kirjoita vitusti lisää testejä... rivikattavuus >90%
 * varaudu lataustiedostojen puuttumiseen.
-* kirjoita javadocsit
-* fiksaa haamusotilas ei blokkaa reittiä
+* kirjoita javadocsit kayttoliittymään

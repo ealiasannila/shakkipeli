@@ -81,7 +81,7 @@ public class nappulaTest {
 
     @Test
     public void eiSalliPaikallaanPysymista() {
-        assert(this.torni.kohdeSamaKuinOmaSijainti(1, 0));
+        assertTrue(this.torni.kohdeSamaKuinOmaSijainti(1, 0));
         assertEquals(false, torni.onSallittuSiirto(1, 0));
     }
 

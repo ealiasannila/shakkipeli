@@ -10,6 +10,9 @@ import static logiikka.peli.Maa.VALKOINEN;
 import logiikka.peli.Peli;
 import logiikka.peli.PeliHallinta;
 import logiikka.peli.Pelilauta;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +22,6 @@ import org.junit.Test;
  */
 public class SotilasTest {
 
-    
     private PeliHallinta testiPeli;
     Nappula mustaSotilas;
     Nappula valkoinenSotilas;
@@ -28,88 +30,105 @@ public class SotilasTest {
     public void setUp() {
         testiPeli = new PeliHallinta();
 
-        mustaSotilas = new Sotilas(MUSTA,4, 6,this.testiPeli.getPeli().getLauta() );
+        mustaSotilas = new Sotilas(MUSTA, 4, 6, this.testiPeli.getPeli().getLauta());
         valkoinenSotilas = new Sotilas(VALKOINEN, 4, 1, this.testiPeli.getPeli().getLauta());
 
     }
 
     @Test
     public void mustaLiikkuuEteenPain() {
-        assert (this.mustaSotilas.onSallittuSiirto(4, 5));
+        assertTrue (this.mustaSotilas.onSallittuSiirto(4, 5));
     }
 
     @Test
     public void valkoinenLiikkuuEteenPain() {
-        assert (this.valkoinenSotilas.onSallittuSiirto(4, 2));
+        assertTrue (this.valkoinenSotilas.onSallittuSiirto(4, 2));
     }
 
     @Test
     public void mustaEiLiikuTaaksePain() {
-        assert (!this.mustaSotilas.onSallittuSiirto(4, 7));
+        assertFalse (this.mustaSotilas.onSallittuSiirto(4, 7));
     }
 
     @Test
     public void valkoinenEiLiikuTaaksePain() {
-        assert (!this.valkoinenSotilas.onSallittuSiirto(4, 0));
+        assertFalse (this.valkoinenSotilas.onSallittuSiirto(4, 0));
     }
 
     @Test
     public void mustaEiLiikuVinoon() {
-        assert (!this.mustaSotilas.onSallittuSiirto(3, 5));
+        assertFalse (this.mustaSotilas.onSallittuSiirto(3, 5));
+        assertFalse (this.mustaSotilas.onSallittuSiirto(5, 5));
     }
 
     @Test
     public void valkoinenEiLiikuVinoon() {
-        assert (!this.valkoinenSotilas.onSallittuSiirto(5, 2));
+        assertFalse (this.valkoinenSotilas.onSallittuSiirto(5, 2));
+        assertFalse (this.valkoinenSotilas.onSallittuSiirto(3, 2));
     }
 
-    @Test 
-    public void valkoinenSyoVinoon(){
-        Sotilas mustaSotilas2 = new Sotilas(MUSTA, 3,2, this.testiPeli.getPeli().getLauta());
-        assert (this.valkoinenSotilas.onSallittuSiirto(3, 2));
-        
+    @Test
+    public void valkoinenSyoVinoon() {
+        Sotilas mustaSotilas2 = new Sotilas(MUSTA, 3, 2, this.testiPeli.getPeli().getLauta());
+        assertTrue (this.valkoinenSotilas.onSallittuSiirto(3, 2));
+
     }
-    
-    @Test 
-    public void mustaSyoVinoon(){
-        Sotilas valkoinenSotilas2 = new Sotilas(VALKOINEN, 5,5, this.testiPeli.getPeli().getLauta());
-        assert (this.mustaSotilas.onSallittuSiirto(5, 5));
-        
+
+    @Test
+    public void mustaSyoVinoon() {
+        Sotilas valkoinenSotilas2 = new Sotilas(VALKOINEN, 5, 5, this.testiPeli.getPeli().getLauta());
+        assertTrue (this.mustaSotilas.onSallittuSiirto(5, 5));
+
     }
-    
-    
-    @Test 
-    public void eiSyoSuoraan(){
-        Sotilas mustaSotilas2 = new Sotilas(MUSTA, 4,2, this.testiPeli.getPeli().getLauta());
-        assert (!this.valkoinenSotilas.onSallittuSiirto(4, 2));
-        
+
+    @Test
+    public void eiSyoSuoraan() {
+        Sotilas mustaSotilas2 = new Sotilas(MUSTA, 4, 2, this.testiPeli.getPeli().getLauta());
+        assertFalse (this.valkoinenSotilas.onSallittuSiirto(4, 2));
+        assertFalse (this.valkoinenSotilas.tarkistaReitti(4, 2));
+
     }
-    
-    
-    @Test 
-    public void eiSyoVaakaan(){
-        Sotilas mustaSotilas2 = new Sotilas(MUSTA, 3,1, this.testiPeli.getPeli().getLauta());
-        assert (!this.valkoinenSotilas.onSallittuSiirto(3, 1));
-        
+
+    @Test
+    public void eiSyoVaakaan() {
+        Sotilas mustaSotilas2 = new Sotilas(MUSTA, 3, 1, this.testiPeli.getPeli().getLauta());
+        assertFalse (this.valkoinenSotilas.onSallittuSiirto(3, 1));
+
     }
-    
-    
-    @Test 
-    public void voiLiikkua2EkallaSiirrolla(){
-        assert (this.valkoinenSotilas.onSallittuSiirto(4, 2));
+
+    @Test
+    public void voiLiikkua2EkallaSiirrolla() {
+        assertTrue (this.valkoinenSotilas.onSallittuSiirto(4, 3));
+        assertTrue (this.valkoinenSotilas.tarkistaReitti(4, 3));
     }
-    
-    @Test 
-    public void eiVoiLiikkua2TokallaSiirrolla(){
+
+    @Test
+    public void eiVoiLiikkuaVinottain2Siirtoa() {
+        assertFalse (this.valkoinenSotilas.onSallittuSiirto(3, 3));
+        assertFalse (this.valkoinenSotilas.onSallittuSiirto(2, 3));
+        assertFalse (this.valkoinenSotilas.onSallittuSiirto(5, 3));
+        assertFalse (this.valkoinenSotilas.onSallittuSiirto(6, 3));
+
+    }
+
+    @Test
+    public void eiVoiLiikkua2TokallaSiirrolla() {
         this.testiPeli.uusiPeli();
         this.testiPeli.getPeli().siirto(4, 2);
-        assert (!this.valkoinenSotilas.onSallittuSiirto(4, 4));
-        
+        assertFalse (this.valkoinenSotilas.onSallittuSiirto(4, 4));
+
     }
-    
+
     @Test
-    public void uhkausLinjaTyha(){
-        assert(this.mustaSotilas.uhkausLinja(1, 2).isEmpty());
+    public void uhkausLinjaTyha() {
+        assertTrue (this.mustaSotilas.uhkausLinja(1, 2) != null);
+        assertTrue (this.mustaSotilas.uhkausLinja(1, 2).isEmpty());
     }
-    
+
+    @Test
+    public void mahdollisetRuudutTest() {
+        assertEquals (this.mustaSotilas.mahdollisetRuudut().toString(),("[[4,5], [3,5], [5,5]]"));
+        assertEquals (this.valkoinenSotilas.mahdollisetRuudut().toString(),("[[4,2], [3,2], [5,2]]"));
+    }
+
 }
