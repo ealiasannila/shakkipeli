@@ -30,7 +30,7 @@ import kayttoliittyma.kuuntelijat.TiedostoListaKuuntelija;
 import kayttoliittyma.kuuntelijat.UusiPeliKuuntelija;
 
 /**
- *
+ *Tallennusikkuna
  * @author elias
  */
 public class TiedostoValitsinTallennus extends TiedostoValitsin implements Runnable {

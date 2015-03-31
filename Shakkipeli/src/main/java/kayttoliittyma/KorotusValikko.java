@@ -21,7 +21,7 @@ import logiikka.nappulat.Nappula;
 import logiikka.peli.Pelaaja;
 
 /**
- *
+ *Näyttää valikon, josta valitaan miksi nappulaksi korotetaan vastustajan perusriville päässyt sotilas
  * @author elias
  */
 public class KorotusValikko implements Runnable {
@@ -49,6 +49,10 @@ public class KorotusValikko implements Runnable {
         ruutu.setVisible(true);
     }
 
+    /**
+     * luo näytettävät valintanapit ja lisää niihin kuuntelijat
+     * @param container 
+     */
     private void luoKomponentit(Container container) {
 
         GridLayout layout = new GridLayout(1, 4);

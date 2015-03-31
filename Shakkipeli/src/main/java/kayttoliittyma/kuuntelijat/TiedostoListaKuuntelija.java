@@ -12,7 +12,7 @@ import kayttoliittyma.TiedostoValitsin;
 import kayttoliittyma.TiedostoValitsinTallennus;
 
 /**
- *
+ *Kuuntelee tallennus- ja lataus ikkunoiden tiedostolistoja, ja pyytää tiedostovalitsimia päivittämään valittua tekstiä
  * @author elias
  */
 public class TiedostoListaKuuntelija implements ListSelectionListener {

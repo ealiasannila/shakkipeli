@@ -14,7 +14,7 @@ import kayttoliittyma.TiedostoValitsinLataus;
 import kayttoliittyma.kuuntelijat.Kuuntelija;
 
 /**
- *
+ *Kuuntelee latausikkunassa olevaa lataa nappia
  * @author elias
  */
 public class LataaNappiKuuntelija extends Kuuntelija implements ActionListener {
@@ -28,6 +28,10 @@ public class LataaNappiKuuntelija extends Kuuntelija implements ActionListener {
         this.tekstiKentta = tiedostonNimi;
     }
 
+    /**
+     * pyytää pelihallintaa lataamaan pelin ja sulkee latausikkunan
+     * @param ae 
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
 

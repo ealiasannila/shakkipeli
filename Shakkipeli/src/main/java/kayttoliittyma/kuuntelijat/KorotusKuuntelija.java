@@ -13,6 +13,7 @@ import logiikka.nappulat.Nappula;
 import logiikka.peli.Pelaaja;
 
 /**
+ * Kuuntelee korotusvalikon nappeja
  *
  * @author elias
  */
@@ -29,6 +30,12 @@ public class KorotusKuuntelija extends Kuuntelija implements ActionListener {
         this.miksiKorotetaan = miksiKorotetaan;
     }
 
+    /**
+     * pyytää peliä korottamaan korotusta odottavan sotilaan valituksi
+     * upseeriksi, sulkee korotusikkunan
+     *
+     * @param ae
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
         this.kayttoliittyma.getPeliHallinta().getPeli().korotaSotilas(this.korotettava, miksiKorotetaan);

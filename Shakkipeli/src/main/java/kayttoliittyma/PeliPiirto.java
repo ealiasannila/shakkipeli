@@ -15,6 +15,7 @@ import javax.swing.SwingUtilities;
 import logiikka.nappulat.Nappula;
 
 /**
+ * Piirtää pelilaudan ja nappulat
  *
  * @author elias
  */
@@ -34,16 +35,19 @@ public class PeliPiirto extends JPanel {
         this.vaaraSiirtoY = -1;
     }
 
+    /**
+     * palauttaa ruudun sivunpituuden pikseleissä
+     *
+     * @return
+     */
     public int getSivunPituus() {
         return Math.min((this.getWidth()) / 8, (this.getHeight()) / 8);
 
     }
 
     private void piirraRuudut(Graphics graphics) {
-
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-
                 if (this.kayttoliittyma.getPeliHallinta().getPeli().getAktiivinen() != null && this.kayttoliittyma.getPeliHallinta().getPeli().getAktiivinen().getX() == j && this.kayttoliittyma.getPeliHallinta().getPeli().getAktiivinen().getY() == 7 - i) {
                     graphics.setColor(Color.orange);
                 } else {
@@ -58,7 +62,9 @@ public class PeliPiirto extends JPanel {
         }
     }
 
-    public void peliLoppu(Graphics graphics) {
+    
+    
+    private void peliLoppu(Graphics graphics) {
         graphics.setColor(Color.GRAY);
 
         if (this.kayttoliittyma.getPeliHallinta().getPeli().onPatissa()) {
@@ -110,19 +116,33 @@ public class PeliPiirto extends JPanel {
 
     }
 
+    /**
+     * kertoo onko sotilaan korotus kesken. Tarvitaan muiden siirtojen tekemisen estämiseen sillä aikaa kun valitaan miksi korotetaan
+     * @return 
+     */
     public boolean sotilaanKorotusOnKesken() {
         return sotilaanKorotusKesken;
     }
-
+    
     public void setSotilaanKorotusKesken(boolean sotilaanKorotusKesken) {
         this.sotilaanKorotusKesken = sotilaanKorotusKesken;
     }
 
+    /**
+     * Asettaa väärän siirron koordinaatit muistiin
+     * @param x
+     * @param y 
+     */
     public void asetaVaaraSiirto(int x, int y) {
         this.vaaraSiirtoX = x;
         this.vaaraSiirtoY = y;
     }
 
+    
+    /**
+     * väläyttää ei sallittua ruutua punaisella, ja kuningasta jos siirto ei ole sallittu siksi että kuningas jää uhatuksi
+     * @param graphics 
+     */
     private void vaaraSiirtoFlash(Graphics graphics) {
         if (this.vaaraSiirtoX != -1) {
             graphics.setColor(Color.RED);

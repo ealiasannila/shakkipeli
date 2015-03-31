@@ -16,7 +16,7 @@ import logiikka.peli.Peli;
 import logiikka.peli.PeliHallinta;
 
 /**
- *
+ *Kuuntelee pääikkunassa olevaa Tallenna peli nappia
  * @author elias
  */
 public class TallennaPeliKuuntelija extends Kuuntelija implements ActionListener {
@@ -28,7 +28,10 @@ public class TallennaPeliKuuntelija extends Kuuntelija implements ActionListener
 
 
 
-
+/**
+ * kun Tallenna Peli nappia painetaan pyydetään näyttämään TiedostValitsinTallennus ikkuna
+ * @param ae 
+ */
     @Override
     public void actionPerformed(ActionEvent ae) {
           if (this.kayttoliittyma.getPeliPiirto().sotilaanKorotusOnKesken()) {

@@ -12,15 +12,30 @@ import logiikka.peli.Maa;
  * and open the template in the editor.
  */
 /**
- *
+ *Palauttaa nappulan koordinaatit pikseleinä, ja nappulan kuvatiedoston
  * @author elias
  */
 public abstract class NappulaPiirto {
 
+    /**
+     * palauttaa x koordinaatin pikseleinä
+     * @param xRuutu
+     * @param alusta
+     * @param nappulanKoko
+     * @return 
+     */
+    
     public int piirtoX(int xRuutu, PeliPiirto alusta, int nappulanKoko) {
         return (xRuutu * (alusta.getSivunPituus()) + alusta.getSivunPituus() / 2 - nappulanKoko / 2);
     }
 
+    /**
+     * palauttaa y koordinaatin pikseleinä
+     * @param yRuutu
+     * @param alusta
+     * @param nappulanKoko
+     * @return 
+     */
     public int piirtoY(int yRuutu, PeliPiirto alusta, int nappulanKoko) {
         return ((7 - yRuutu) * (alusta.getSivunPituus()) + alusta.getSivunPituus() / 2 - nappulanKoko / 2);
 

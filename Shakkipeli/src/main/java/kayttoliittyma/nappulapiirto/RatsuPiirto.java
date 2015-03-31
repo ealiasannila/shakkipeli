@@ -14,7 +14,7 @@ import logiikka.peli.Maa;
 import static logiikka.peli.Maa.MUSTA;
 
 /**
- *
+ *Palauttaa ratsun kuvan
  * @author elias
  */
 public class RatsuPiirto extends NappulaPiirto {

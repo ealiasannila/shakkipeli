@@ -17,6 +17,12 @@ import kayttoliittyma.nappulapiirto.TorniPiirto;
 import logiikka.peli.Peli;
 import logiikka.peli.PeliHallinta;
 
+
+/**
+ * Kayttöliittymän ylin luokka, luo konstruktorissa peliHallinnan
+ * @author elias
+ */
+
 public class Kayttoliittyma implements Runnable {
 
     private JFrame ruutu;
@@ -56,6 +62,10 @@ public class Kayttoliittyma implements Runnable {
         ruutu.setVisible(true);
     }
 
+    /**
+     * luo peliPiirron ja pyytää luomaan valikkonapit
+     * @param container 
+     */
     private void luoPiirtoKomponentit(Container container) {
         container.add(luoValikkoNapit(), BorderLayout.NORTH);
         PeliPiirto peliPiirto = this.peliPiirto;
@@ -65,6 +75,10 @@ public class Kayttoliittyma implements Runnable {
         container.add(peliPiirto, BorderLayout.CENTER);
 
     }
+    /**
+     * luo yläreunan päävalikon
+     * @return 
+     */
 
     private JPanel luoValikkoNapit() {
         JPanel panel = new JPanel(new GridLayout(1, 3));

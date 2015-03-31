@@ -13,7 +13,7 @@ import kayttoliittyma.Kayttoliittyma;
 import kayttoliittyma.TiedostoValitsinTallennus;
 
 /**
- *
+ *Kuuntelee tallenna nappia tallennusikkunassa
  * @author elias
  */
 public class TallennaNappiKuuntelija extends Kuuntelija implements ActionListener {
@@ -28,10 +28,10 @@ public class TallennaNappiKuuntelija extends Kuuntelija implements ActionListene
        
     }
     
-    
-    
-    
-    
+/**
+ * pyytää pelihallintaa tallentamaan pelin ja sulkee tallennusikkunan
+ * @param ae 
+ */    
     @Override
     public void actionPerformed(ActionEvent ae) {
         

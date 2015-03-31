@@ -14,7 +14,7 @@ import logiikka.peli.Maa;
 import static logiikka.peli.Maa.MUSTA;
 
 /**
- *
+ *Hakee kuningattern kuvan
  * @author elias
  */
 public class KuningatarPiirto extends NappulaPiirto {

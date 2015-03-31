@@ -16,6 +16,7 @@ import logiikka.peli.Peli;
 import logiikka.peli.PeliHallinta;
 
 /**
+ * Kuuntelee pelilaudalla tapahtuneita klikkauksia
  *
  * @author elias
  */
@@ -25,6 +26,12 @@ public class LautaKuuntelija extends Kuuntelija implements MouseListener {
         super(kayttoliittyma);
     }
 
+    /**
+     * pyytää asettamaan nappulan aktiiviseksi, jos tämä ei onnistu pyydetään
+     * tekemään siirto
+     *
+     * @param me
+     */
     @Override
     public void mouseClicked(MouseEvent me) {
         if (this.kayttoliittyma.getPeliPiirto().sotilaanKorotusOnKesken()) {
@@ -38,8 +45,7 @@ public class LautaKuuntelija extends Kuuntelija implements MouseListener {
             return;
         }
         if (this.kayttoliittyma.getPeliHallinta().getPeli().getLauta().haeNappula(x, y) != null) {
-            if (this.kayttoliittyma.getPeliHallinta().getPeli().getLauta().haeNappula(x, y).getMaa() == this.kayttoliittyma.getPeliHallinta().getPeli().getVuorossa().getMaa()) {
-                this.kayttoliittyma.getPeliHallinta().getPeli().asetaAktiivinen(x, y);
+            if (this.kayttoliittyma.getPeliHallinta().getPeli().asetaAktiivinen(x, y)) {
                 this.kayttoliittyma.getPeliPiirto().repaint();
                 return;
             }
@@ -47,16 +53,10 @@ public class LautaKuuntelija extends Kuuntelija implements MouseListener {
         if (!this.kayttoliittyma.getPeliHallinta().getPeli().siirto(x, y)) {
             this.kayttoliittyma.getPeliPiirto().asetaVaaraSiirto(x, y);
         }
-
         this.kayttoliittyma.getPeliPiirto().repaint();
 
     }
 
-    public Point haeKoordinaatit(MouseEvent me) {
-
-        System.out.println(me.getPoint().toString());
-        return me.getPoint();
-    }
 
     @Override
     public void mousePressed(MouseEvent me) {

@@ -14,7 +14,7 @@ import logiikka.peli.Maa;
 import static logiikka.peli.Maa.MUSTA;
 
 /**
- *
+ * palauttaa sotilaan kuvan
  * @author elias
  */
 public class SotilasPiirto extends NappulaPiirto {

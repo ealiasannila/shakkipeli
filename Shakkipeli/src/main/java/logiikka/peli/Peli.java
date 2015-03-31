@@ -445,13 +445,15 @@ public class Peli {
      * @param x
      * @param y
      */
-    public void asetaAktiivinen(int x, int y) {
+    public boolean asetaAktiivinen(int x, int y) {
 
         if (this.lauta.haeNappula(x, y) != null) {
             if (this.lauta.haeNappula(x, y).getMaa() == this.vuorossa.getMaa()) {
                 this.aktiivinen = this.lauta.haeNappula(x, y);
+                return true;
             }
         }
+        return false;
     }
 
     private boolean tornitus(int x, int y) {

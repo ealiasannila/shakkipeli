@@ -16,7 +16,7 @@ import logiikka.peli.Maa;
 import static logiikka.peli.Maa.MUSTA;
 
 /**
- *
+ *Palauttaa tornin kuvan
  * @author elias
  */
 public class TorniPiirto extends NappulaPiirto {

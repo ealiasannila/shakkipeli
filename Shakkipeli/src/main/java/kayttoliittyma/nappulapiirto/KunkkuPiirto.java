@@ -14,7 +14,7 @@ import logiikka.peli.Maa;
 import static logiikka.peli.Maa.MUSTA;
 
 /**
- *
+ *Palauttaa kuninkaan kuvan
  * @author elias
  */
 public class KunkkuPiirto extends NappulaPiirto {

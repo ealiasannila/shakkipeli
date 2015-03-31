@@ -14,7 +14,7 @@ import logiikka.peli.Maa;
 import static logiikka.peli.Maa.MUSTA;
 
 /**
- *
+ *Hakee Lähetin kuvan
  * @author elias
  */
 public class LahettiPiirto extends NappulaPiirto {

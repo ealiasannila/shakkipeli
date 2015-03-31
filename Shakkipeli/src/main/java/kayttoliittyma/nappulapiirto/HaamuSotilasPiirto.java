@@ -14,7 +14,7 @@ import logiikka.peli.Maa;
 import static logiikka.peli.Maa.MUSTA;
 
 /**
- *
+ *Haamusotilasta ei piirretä joten palauttaa null
  * @author elias
  */
 public class HaamuSotilasPiirto extends NappulaPiirto {

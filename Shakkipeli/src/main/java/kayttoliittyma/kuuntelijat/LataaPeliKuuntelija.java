@@ -16,7 +16,7 @@ import logiikka.peli.Peli;
 import logiikka.peli.PeliHallinta;
 
 /**
- *
+ *Kuuntelee päävalikon Lataa peli nappia
  * @author elias
  */
 public class LataaPeliKuuntelija extends Kuuntelija implements ActionListener {
@@ -25,6 +25,10 @@ public class LataaPeliKuuntelija extends Kuuntelija implements ActionListener {
         super(kayttoliittyma);
     }
 
+    /**
+     * avaa uuden tiedostovalitsin lataus ikkunan
+     * @param ae 
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (this.kayttoliittyma.getPeliPiirto().sotilaanKorotusOnKesken()) {

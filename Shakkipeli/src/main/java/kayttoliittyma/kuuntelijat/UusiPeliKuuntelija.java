@@ -13,6 +13,7 @@ import logiikka.peli.Peli;
 import logiikka.peli.PeliHallinta;
 
 /**
+ * Kuuntelee päävalikossa olevaa Uusi peli nappia
  *
  * @author elias
  */
@@ -22,13 +23,14 @@ public class UusiPeliKuuntelija extends Kuuntelija implements ActionListener {
         super(kayttoliittyma);
     }
 
-
-
-
-
+    /**
+     * pyytää PeliHallintaa lataamaan uuden pelin
+     *
+     * @param ae
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
-          if (this.kayttoliittyma.getPeliPiirto().sotilaanKorotusOnKesken()) {
+        if (this.kayttoliittyma.getPeliPiirto().sotilaanKorotusOnKesken()) {
             return;
         }
         this.kayttoliittyma.getPeliHallinta().uusiPeli();
