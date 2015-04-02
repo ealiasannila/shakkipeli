@@ -23,9 +23,11 @@ public class KorotusKuuntelija extends Kuuntelija implements ActionListener {
     private KorotusValikko valikko;
     private char miksiKorotetaan;
 
-    public KorotusKuuntelija(Kayttoliittyma kayttoliittyma, Pelaaja korotettava, KorotusValikko valikko, char miksiKorotetaan) {
-        super(kayttoliittyma);
-        this.korotettava = korotettava;
+    public KorotusKuuntelija( KorotusValikko valikko, char miksiKorotetaan) {
+        super(valikko.getKayttoliittyma());
+
+        this.valikko = valikko;
+        this.korotettava = valikko.getKorotettavaPelaaja();
         this.valikko = valikko;
         this.miksiKorotetaan = miksiKorotetaan;
     }

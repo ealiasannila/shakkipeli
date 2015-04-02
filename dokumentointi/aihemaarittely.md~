@@ -18,7 +18,7 @@ Shakkipeli. Toteutetaan kaksinpelinä pelattava shakki.
 *Patti
 *Erikoissiirrot (tornitus, sotilaan liikkuminen ekalla vuorolla 2, ohestalyönti)
 
-##Mahdolliset lisätoiminnallisuudet
+##Mahdollisesti toteutettavat lisätoiminnallisuudet
 *Shakkikello
-*Loki pelin kulusta, ja tietyn asetelman palauttaminen
+*Loki pelin kulusta, ja tietyn asetelman palauttaminen (undo)
 

@@ -30,6 +30,14 @@ public class KorotusValikko implements Runnable {
     private JFrame ruutu;
     private Pelaaja korotettavaPelaaja;
 
+    public Pelaaja getKorotettavaPelaaja() {
+        return korotettavaPelaaja;
+    }
+
+    public Kayttoliittyma getKayttoliittyma() {
+        return kayttoliittyma;
+    }
+
     public KorotusValikko(Kayttoliittyma kayttoliittyma, Pelaaja korotettava) {
         this.kayttoliittyma = kayttoliittyma;
         this.korotettavaPelaaja = korotettava;
@@ -67,19 +75,19 @@ public class KorotusValikko implements Runnable {
         }
 
         JButton kuningatarNappi = new JButton(new ImageIcon(polku + "kuningatar.png"));
-        kuningatarNappi.addActionListener(new KorotusKuuntelija(this.kayttoliittyma, this.korotettavaPelaaja, this, 'q'));
+        kuningatarNappi.addActionListener(new KorotusKuuntelija( this, 'q'));
         container.add(kuningatarNappi);
 
         JButton torniNappi = new JButton(new ImageIcon(polku + "torni.png"));
-        torniNappi.addActionListener(new KorotusKuuntelija(this.kayttoliittyma, this.korotettavaPelaaja, this, 't'));
+        torniNappi.addActionListener(new KorotusKuuntelija(this, 't'));
         container.add(torniNappi);
 
         JButton lahettiNappi = new JButton( new ImageIcon(polku + "lahetti.png"));
-        lahettiNappi.addActionListener(new KorotusKuuntelija(this.kayttoliittyma, this.korotettavaPelaaja, this, 'l'));
+        lahettiNappi.addActionListener(new KorotusKuuntelija(this, 'l'));
         container.add(lahettiNappi);
 
         JButton ratsuNappi = new JButton(new ImageIcon(polku + "ratsu.png"));
-        ratsuNappi.addActionListener(new KorotusKuuntelija(this.kayttoliittyma, this.korotettavaPelaaja, this, 'r'));
+        ratsuNappi.addActionListener(new KorotusKuuntelija(this, 'r'));
         container.add(ratsuNappi);
 
     }

@@ -44,7 +44,7 @@ public class Sotilas extends Nappula {
         }
         if (this.onEnsimmainenSiirto()) {
             if (y == this.getY() - 2 && this.getX() == x) {
-                if (this.tarkistaOnkoKohdeVapaa(x, y)) {
+                if (this.getLauta().tarkistaOnkoKohdeVapaa(x, y)) {
                     return true;
                 }
             }
@@ -64,7 +64,7 @@ public class Sotilas extends Nappula {
         }
         if (this.onEnsimmainenSiirto()) {
             if (y == this.getY() + 2 && this.getX() == x) {
-                if (this.tarkistaOnkoKohdeVapaa(x, y)) {
+                if (this.getLauta().tarkistaOnkoKohdeVapaa(x, y)) {
                     return true;
                 }
 
@@ -95,9 +95,9 @@ public class Sotilas extends Nappula {
     protected boolean reitillaEiMuitaNappuloita(int x, int y) {
         if (x == this.getX()) {
             if (this.getMaa() == VALKOINEN) {
-                return this.tarkistaOnkoKohdeVapaa(x, this.getY() + 1);
+                return this.getLauta().tarkistaOnkoKohdeVapaa(x, this.getY() + 1);
             } else {
-                return this.tarkistaOnkoKohdeVapaa(x, this.getY() - 1);
+                return this.getLauta().tarkistaOnkoKohdeVapaa(x, this.getY() - 1);
             }
 
         }

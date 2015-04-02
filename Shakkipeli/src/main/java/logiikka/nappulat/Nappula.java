@@ -71,41 +71,6 @@ public abstract class Nappula {
      * @param y
      * @return
      */
-    protected abstract boolean sallittuLiikkumisTapa(int x, int y);
-
-    /**
-     * Tarkistaa onko nappulan ja ruudun x, y välillä muita nappuloita jotka
-     * estävät liikkumisen
-     *
-     * @param x
-     * @param y
-     * @return
-     */
-    protected abstract boolean reitillaEiMuitaNappuloita(int x, int y);
-
-    /**
-     * Kertoo onko kohderuutu laudalla
-     *
-     * @param x
-     * @param y
-     * @return
-     */
-    protected boolean kohdeLaudanUlkopuolella(int x, int y) {
-        return x < 0 || y < 0 || x > this.getLauta().getSize() - 1 || y > this.getLauta().getSize() - 1;
-    }
-
-    /**
-     * Kertoo onko kohde sama kuin oma sijainti
-     *
-     * @param x
-     * @param y
-     * @return
-     */
-
-    protected boolean kohdeSamaKuinOmaSijainti(int x, int y) {
-        return this.getX() == x && this.getY() == y;
-    }
-
     /**
      * Siirto on sallittu nappulan näkökulmasta jos kohde ei ole laudalla,
      * kohderuudussa ei ole omaa nappulaa, ja reitti kohteeseen on sallittu
@@ -155,8 +120,8 @@ public abstract class Nappula {
      * @param y
      * @return
      */
-    public boolean tarkistaOnkoKohdeOma(int x, int y) {
-        if (!this.tarkistaOnkoKohdeVapaa(x, y)) {
+    protected boolean tarkistaOnkoKohdeOma(int x, int y) {
+        if (!this.getLauta().tarkistaOnkoKohdeVapaa(x, y)) {
             if (this.getLauta().haeNappula(x, y).getMaa() == this.getMaa()) {
                 return true;
             }
@@ -171,8 +136,8 @@ public abstract class Nappula {
      * @param y
      * @return
      */
-    public boolean tarkistaOnkoKohdeVastustajan(int x, int y) {
-        if (!this.tarkistaOnkoKohdeOikeastiTyhja(x, y)) {
+    protected boolean tarkistaOnkoKohdeVastustajan(int x, int y) {
+        if (!this.getLauta().tarkistaOnkoKohdeOikeastiTyhja(x, y)) {
             if (this.getLauta().haeNappula(x, y).getMaa() != this.getMaa()) {
                 return true;
             }
@@ -187,30 +152,40 @@ public abstract class Nappula {
      * @param y
      * @return
      */
+    
 
-    public boolean tarkistaOnkoKohdeOikeastiTyhja(int x, int y) {
-        if (this.getLauta().haeNappula(x, y) == null) {
-            return true;
-        }
-        return false;
-    }
+    protected abstract boolean sallittuLiikkumisTapa(int x, int y);
 
     /**
-     * kertoo onko kohderuutu tyhjä tai onko siinä HaamuSotilas
+     * Tarkistaa onko nappulan ja ruudun x, y välillä muita nappuloita jotka
+     * estävät liikkumisen
      *
      * @param x
      * @param y
      * @return
      */
-    public boolean tarkistaOnkoKohdeVapaa(int x, int y) {
-        if (this.tarkistaOnkoKohdeOikeastiTyhja(x, y)) {
-            return true;
-        }
-        if (this.getLauta().haeNappula(x, y).getClass() == HaamuSotilas.class) {
-            return true;
-        }
-        return false;
+    protected abstract boolean reitillaEiMuitaNappuloita(int x, int y);
 
+    /**
+     * Kertoo onko kohderuutu laudalla
+     *
+     * @param x
+     * @param y
+     * @return
+     */
+    protected boolean kohdeLaudanUlkopuolella(int x, int y) {
+        return x < 0 || y < 0 || x > this.getLauta().getSize() - 1 || y > this.getLauta().getSize() - 1;
+    }
+
+    /**
+     * Kertoo onko kohde sama kuin oma sijainti
+     *
+     * @param x
+     * @param y
+     * @return
+     */
+    protected boolean kohdeSamaKuinOmaSijainti(int x, int y) {
+        return this.getX() == x && this.getY() == y;
     }
 
     public NappulaPiirto getPiirto() {

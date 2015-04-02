@@ -144,7 +144,7 @@ public class NappulaApumetodeja {
         if (nappula.getX() < x && nappula.getY() < y) { //kohde yläoikealle
             int j = nappula.getY() + 1;
             for (int i = nappula.getX() + 1; i < x; i++) {
-                if (!nappula.tarkistaOnkoKohdeVapaa(i, j)) {
+                if (!nappula.getLauta().tarkistaOnkoKohdeVapaa(i, j)) {
                     return false;
                 }
                 j++;
@@ -152,7 +152,7 @@ public class NappulaApumetodeja {
         } else if (nappula.getX() > x && nappula.getY() > y) {//kohde alavasemmalle
             int j = nappula.getY() - 1;
             for (int i = nappula.getX() - 1; i > x; i--) {
-                if (!nappula.tarkistaOnkoKohdeVapaa(i, j)) {
+                if (!nappula.getLauta().tarkistaOnkoKohdeVapaa(i, j)) {
                     return false;
                 }
                 j--;
@@ -160,7 +160,7 @@ public class NappulaApumetodeja {
         } else if (nappula.getY() < y && nappula.getX() > x) {//kohde ylävasemmalle
             int j = nappula.getX() - 1;
             for (int i = nappula.getY() + 1; i < y; i++) {
-                if (!nappula.tarkistaOnkoKohdeVapaa(j, i)) {
+                if (!nappula.getLauta().tarkistaOnkoKohdeVapaa(j, i)) {
                     return false;
                 }
                 j--;
@@ -168,7 +168,7 @@ public class NappulaApumetodeja {
         } else if (nappula.getY() > y && nappula.getX() < x) {//kohde alaoikealle
             int j = nappula.getX() + 1;
             for (int i = nappula.getY() - 1; i > y; i--) {
-                if (!nappula.tarkistaOnkoKohdeVapaa(j, i)) {
+                if (!nappula.getLauta().tarkistaOnkoKohdeVapaa(j, i)) {
                     return false;
                 }
                 j++;
@@ -194,25 +194,25 @@ public class NappulaApumetodeja {
         
         if (nappula.getX() < x) { //Tarkastetaan onko reitillä muita nappuloita
             for (int i = nappula.getX() + 1; i < x; i++) {
-                if (!nappula.tarkistaOnkoKohdeVapaa(i, y)) {
+                if (!nappula.getLauta().tarkistaOnkoKohdeVapaa(i, y)) {
                     return false;
                 }
             }
         } else if (nappula.getX() > x) {
             for (int i = nappula.getX() - 1; i > x; i--) {
-                if (!nappula.tarkistaOnkoKohdeVapaa(i, y)) {
+                if (!nappula.getLauta().tarkistaOnkoKohdeVapaa(i, y)) {
                     return false;
                 }
             }
         } else if (nappula.getY() < y) {
             for (int i = nappula.getY() + 1; i < y; i++) {
-                if (!nappula.tarkistaOnkoKohdeVapaa(x, i)) {
+                if (!nappula.getLauta().tarkistaOnkoKohdeVapaa(x, i)) {
                     return false;
                 }
             }
         } else if (nappula.getY() > y) {
             for (int i = nappula.getY() - 1; i > y; i--) {
-                if (!nappula.tarkistaOnkoKohdeVapaa(x, i)) {
+                if (!nappula.getLauta().tarkistaOnkoKohdeVapaa(x, i)) {
                     return false;
                 }
             }

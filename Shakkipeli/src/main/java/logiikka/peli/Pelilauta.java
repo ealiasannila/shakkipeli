@@ -54,6 +54,24 @@ public class Pelilauta {
      * @param y
      * @return
      */
+    public boolean tarkistaOnkoKohdeOikeastiTyhja(int x, int y) {
+        if (this.haeNappula(x, y) == null) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean tarkistaOnkoKohdeVapaa(int x, int y) {
+        if (this.tarkistaOnkoKohdeOikeastiTyhja(x, y)) {
+            return true;
+        }
+        if (this.haeNappula(x, y).getClass() == HaamuSotilas.class) {
+            return true;
+        }
+        return false;
+
+    }
+
     public Nappula haeNappula(int x, int y) {
         if (x > lauta.length - 1 || y > lauta.length - 1 || x < 0 || y < 0) {
             return null;
