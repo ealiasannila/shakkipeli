@@ -62,8 +62,6 @@ public class PeliPiirto extends JPanel {
         }
     }
 
-    
-    
     private void peliLoppu(Graphics graphics) {
         graphics.setColor(Color.GRAY);
 
@@ -73,7 +71,7 @@ public class PeliPiirto extends JPanel {
 
         }
 
-        if (this.kayttoliittyma.getPeliHallinta().getPeli().getPelitarkistus().onMatissa()||this.kayttoliittyma.getPeliHallinta().getPeli().aikaLoppu()) {
+        if (this.kayttoliittyma.getPeliHallinta().getPeli().getPelitarkistus().onMatissa() || this.kayttoliittyma.getPeliHallinta().getPeli().getPelitarkistus().aikaLoppu()) {
             graphics.setFont(new Font("TimesRoman", Font.PLAIN, this.getSivunPituus()));
             graphics.drawString("HÄVISIT ", this.getSivunPituus(), this.getSivunPituus() * 3);
             graphics.drawString("" + this.kayttoliittyma.getPeliHallinta().getPeli().getVuorossa().getMaa(), this.getSivunPituus(), (int) (this.getSivunPituus() * 4.5));
@@ -117,31 +115,35 @@ public class PeliPiirto extends JPanel {
     }
 
     /**
-     * kertoo onko sotilaan korotus kesken. Tarvitaan muiden siirtojen tekemisen estämiseen sillä aikaa kun valitaan miksi korotetaan
-     * @return 
+     * kertoo onko sotilaan korotus kesken. Tarvitaan muiden siirtojen tekemisen
+     * estämiseen sillä aikaa kun valitaan miksi korotetaan
+     *
+     * @return
      */
     public boolean sotilaanKorotusOnKesken() {
         return sotilaanKorotusKesken;
     }
-    
+
     public void setSotilaanKorotusKesken(boolean sotilaanKorotusKesken) {
         this.sotilaanKorotusKesken = sotilaanKorotusKesken;
     }
 
     /**
      * Asettaa väärän siirron koordinaatit muistiin
+     *
      * @param x
-     * @param y 
+     * @param y
      */
     public void asetaVaaraSiirto(int x, int y) {
         this.vaaraSiirtoX = x;
         this.vaaraSiirtoY = y;
     }
 
-    
     /**
-     * väläyttää ei sallittua ruutua punaisella, ja kuningasta jos siirto ei ole sallittu siksi että kuningas jää uhatuksi
-     * @param graphics 
+     * väläyttää ei sallittua ruutua punaisella, ja kuningasta jos siirto ei ole
+     * sallittu siksi että kuningas jää uhatuksi
+     *
+     * @param graphics
      */
     private void vaaraSiirtoFlash(Graphics graphics) {
         if (this.vaaraSiirtoX != -1) {
@@ -166,7 +168,9 @@ public class PeliPiirto extends JPanel {
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
-        this.kysyMiksiKorotetaan();
+        if (!this.sotilaanKorotusOnKesken()) {
+            this.kysyMiksiKorotetaan();
+        }
         this.piirraRuudut(graphics);
         this.vaaraSiirtoFlash(graphics);
 

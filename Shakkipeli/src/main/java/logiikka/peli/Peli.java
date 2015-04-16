@@ -44,9 +44,6 @@ public class Peli {
         this.pelitarkistus = new PeliTarkistus(this);
     }
 
-    public boolean aikaLoppu() {
-        return this.vuorossa.getKello().aikaLoppu();
-    }
 
    
     /**
@@ -143,7 +140,12 @@ public class Peli {
         this.asetaKellot(Integer.parseInt(lukija.nextLine()), Integer.parseInt(lukija.nextLine()));
 
     }
-
+    /**
+     * asettaa kelloihin tietyn ajan ja käynnistää ajastimen jos kello on käytössä
+     * public koska tarvitaan kellojen pysäyttämiseen kun avataan lataus tai tallennus ikkuna
+     * @param valkoisenAika
+     * @param mustanAika 
+     */
     public void asetaKellot(int valkoisenAika, int mustanAika) {
 
         this.valkoinen.getKello().aseta(valkoisenAika);
@@ -325,6 +327,7 @@ public class Peli {
             this.vuorossa = this.valkoinen;
             this.vastustaja = this.musta;
         }
+        this.aktiivinen=null;
     }
 
     private void lataaNappulat(Scanner lukija) {

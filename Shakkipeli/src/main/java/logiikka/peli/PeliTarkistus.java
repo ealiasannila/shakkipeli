@@ -24,6 +24,10 @@ public class PeliTarkistus {
         this.peli = peli;
     }
 
+    /**
+     * kertoo onko vuorossa olevan pelaajan aika loppu
+     * @return 
+     */
     public boolean aikaLoppu() {
         return this.peli.getVuorossa().getKello().aikaLoppu();
     }
@@ -87,6 +91,12 @@ public class PeliTarkistus {
 
     }
 
+    /**
+     * kertoo onko jokin ruutu uhattuna
+     * @param x
+     * @param y
+     * @return 
+     */
     public boolean onkoUhattuna(int x, int y) {
         if (this.uhkaavaNappula(x, y) == null) {
             return false;
