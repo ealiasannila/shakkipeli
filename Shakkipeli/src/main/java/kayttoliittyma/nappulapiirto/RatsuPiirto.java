@@ -14,31 +14,21 @@ import logiikka.peli.Maa;
 import static logiikka.peli.Maa.MUSTA;
 
 /**
- *Palauttaa ratsun kuvan
+ * Palauttaa ratsun kuvan
+ *
  * @author elias
  */
 public class RatsuPiirto extends NappulaPiirto {
 
     @Override
     public Image haeKuva(Maa maa) {
-        BufferedImage ratsuKuva = null;
-        File kuva = null;
+
         if (maa == MUSTA) {
-            kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/ratsu.png");
+            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/ratsu.png");
 
         } else {
-            kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/ratsu.png");
-
+            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/ratsu.png");
         }
-
-        try {
-            ratsuKuva = ImageIO.read(kuva);
-        } catch (IOException e) {
-            System.out.println("EI LÖYDY TORNIA");
-        }
-
-        return ratsuKuva;
-
     }
 
 }

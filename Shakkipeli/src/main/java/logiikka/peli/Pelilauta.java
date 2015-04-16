@@ -48,7 +48,7 @@ public class Pelilauta {
     }
 
     /**
-     * palauttaa tietyssä ruudussa olevan nappulan
+     * kertoo onko kohderuutu oikeasti tyhjä (eli ei haamusotilasta)
      *
      * @param x
      * @param y
@@ -60,6 +60,13 @@ public class Pelilauta {
         }
         return false;
     }
+     /**
+     * kertoo onko kohderuutu vapaa
+     *
+     * @param x
+     * @param y
+     * @return
+     */
 
     public boolean tarkistaOnkoKohdeVapaa(int x, int y) {
         if (this.tarkistaOnkoKohdeOikeastiTyhja(x, y)) {
@@ -72,6 +79,13 @@ public class Pelilauta {
 
     }
 
+    /**
+     * palauttaa tietyssä ruudussa olevan nappulan
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     public Nappula haeNappula(int x, int y) {
         if (x > lauta.length - 1 || y > lauta.length - 1 || x < 0 || y < 0) {
             return null;
@@ -134,4 +148,7 @@ public class Pelilauta {
         return tuloste.toString();
     }
 
+    public boolean kohdeLaudanUlkopuolella(int x, int y) {
+        return x < 0 || y < 0 || x > this.getSize() - 1 || y > this.getSize() - 1;
+    }
 }

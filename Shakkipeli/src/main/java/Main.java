@@ -1,5 +1,6 @@
 import javax.swing.SwingUtilities;
 import kayttoliittyma.Kayttoliittyma;
+import logiikka.peli.Kello;
 import logiikka.peli.Maa;
 import logiikka.peli.Peli;
 import logiikka.peli.Pelilauta;
@@ -15,9 +16,9 @@ import logiikka.peli.Pelilauta;
  */
 public class Main {
 
-    public static void main(String args[]) {
+    public static void main(String args[]) throws InterruptedException {
         SwingUtilities.invokeLater(new Kayttoliittyma());
-        
+
     }
 
 }

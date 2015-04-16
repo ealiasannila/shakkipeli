@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.017" errors="0" skipped="0" tests="25" name="logiikka.nappulat.nappulaTest">
+<testsuite failures="0" time="0.024" errors="0" skipped="0" tests="25" name="logiikka.nappulat.nappulaTest">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64"/>
@@ -62,26 +62,26 @@
   </properties>
   <testcase time="0.001" classname="logiikka.nappulat.nappulaTest" name="lautaTuleeKonstruktorissaOikein"/>
   <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="eiSalliLaudanOikealleLiikkumista"/>
-  <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="eiSalliiVastustajanLapiLiikkumista"/>
+  <testcase time="0.002" classname="logiikka.nappulat.nappulaTest" name="eiSalliiVastustajanLapiLiikkumista"/>
   <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="eiSalliLaudanVasemmallePuolelleLiikkumista"/>
   <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="xTuleeKonstruktorissaOikein"/>
-  <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="TunnistaOnkoKohdeVapaKohdeOnOma"/>
+  <testcase time="0.001" classname="logiikka.nappulat.nappulaTest" name="TunnistaOnkoKohdeVapaKohdeOnOma"/>
   <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="yTuleeKonstruktorissaOikein"/>
   <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="TunnistaVastustajanKohdeEiOleOma"/>
-  <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="salliiLaudanOikeaanReunaanLiikkumisen"/>
+  <testcase time="0.001" classname="logiikka.nappulat.nappulaTest" name="salliiLaudanOikeaanReunaanLiikkumisen"/>
   <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="eiSalliiOmanLapiLiikkumista"/>
   <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="eiSalliLaudanYlapuolelleLiikkumista"/>
-  <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="TunnistaOnkoKohdeVapaKohdeOnVastustajanKohteenViereen"/>
+  <testcase time="0.001" classname="logiikka.nappulat.nappulaTest" name="TunnistaOnkoKohdeVapaKohdeOnVastustajanKohteenViereen"/>
   <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="TunnistaVastustajanKohdeOnOma"/>
   <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="salliiLaudanVasempaanReunaanLiikkumisen"/>
   <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="SalliiVastustajanPaalleLiikkumisen"/>
-  <testcase time="0.001" classname="logiikka.nappulat.nappulaTest" name="salliiLaudanAlareunaanLiikkumisen"/>
-  <testcase time="0.004" classname="logiikka.nappulat.nappulaTest" name="eiSalliiOmanPaalleLiikkumista"/>
+  <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="salliiLaudanAlareunaanLiikkumisen"/>
+  <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="eiSalliiOmanPaalleLiikkumista"/>
   <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="TunnistaOmaKohdeEiOleOma"/>
   <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="eiSalliPaikallaanPysymista"/>
   <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="TunnistaOmaKohdeOnOma"/>
   <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="maaTuleeKonstruktorissaOikein"/>
-  <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="eiSalliLaudanAlapuolelleLiikkumista"/>
+  <testcase time="0.001" classname="logiikka.nappulat.nappulaTest" name="eiSalliLaudanAlapuolelleLiikkumista"/>
   <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="TunnistaOnkoKohdeVapaKohdeOnVastustajan"/>
   <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="salliiLaudanYlareunaanLiikkumisen"/>
   <testcase time="0" classname="logiikka.nappulat.nappulaTest" name="TunnistaOnkoKohdeVapaKohdeOnVapaa"/>

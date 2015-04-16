@@ -17,7 +17,7 @@ import logiikka.peli.Pelaaja;
  *
  * @author elias
  */
-public class KorotusKuuntelija extends Kuuntelija implements ActionListener {
+public class KorotusKuuntelija extends KayttoliittymanTuntevaLuokka implements ActionListener {
 
     private Pelaaja korotettava;
     private KorotusValikko valikko;

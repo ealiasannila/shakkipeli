@@ -19,7 +19,7 @@ import logiikka.peli.PeliHallinta;
  *Kuuntelee pääikkunassa olevaa Tallenna peli nappia
  * @author elias
  */
-public class TallennaPeliKuuntelija extends Kuuntelija implements ActionListener {
+public class TallennaPeliKuuntelija extends KayttoliittymanTuntevaLuokka implements ActionListener {
 
     
     public TallennaPeliKuuntelija(Kayttoliittyma kayttoliittyma) {

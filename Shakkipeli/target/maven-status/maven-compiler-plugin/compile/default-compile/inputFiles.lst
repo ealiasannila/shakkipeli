@@ -23,13 +23,16 @@
 /home/elias/shakkipeli/Shakkipeli/src/main/java/kayttoliittyma/nappulapiirto/SotilasPiirto.java
 /home/elias/shakkipeli/Shakkipeli/src/main/java/kayttoliittyma/nappulapiirto/KunkkuPiirto.java
 /home/elias/shakkipeli/Shakkipeli/src/main/java/kayttoliittyma/kuuntelijat/UusiPeliKuuntelija.java
+/home/elias/shakkipeli/Shakkipeli/src/main/java/logiikka/peli/Ajastin.java
 /home/elias/shakkipeli/Shakkipeli/src/main/java/logiikka/nappulat/Nappula.java
 /home/elias/shakkipeli/Shakkipeli/src/main/java/kayttoliittyma/kuuntelijat/TallennaPeliKuuntelija.java
 /home/elias/shakkipeli/Shakkipeli/src/main/java/logiikka/peli/Pelilauta.java
 /home/elias/shakkipeli/Shakkipeli/src/main/java/logiikka/nappulat/Lahetti.java
 /home/elias/shakkipeli/Shakkipeli/src/main/java/logiikka/peli/Ruutu.java
+/home/elias/shakkipeli/Shakkipeli/src/main/java/kayttoliittyma/KelloPiirto.java
 /home/elias/shakkipeli/Shakkipeli/src/main/java/logiikka/nappulat/HaamuSotilas.java
 /home/elias/shakkipeli/Shakkipeli/src/main/java/logiikka/nappulat/NappulaApumetodeja.java
+/home/elias/shakkipeli/Shakkipeli/src/main/java/logiikka/peli/Kello.java
 /home/elias/shakkipeli/Shakkipeli/src/main/java/kayttoliittyma/kuuntelijat/Kuuntelija.java
 /home/elias/shakkipeli/Shakkipeli/src/main/java/kayttoliittyma/PeliPiirto.java
 /home/elias/shakkipeli/Shakkipeli/src/main/java/kayttoliittyma/nappulapiirto/KuningatarPiirto.java

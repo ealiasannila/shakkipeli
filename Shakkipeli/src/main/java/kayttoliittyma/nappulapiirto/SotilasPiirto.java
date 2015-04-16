@@ -15,29 +15,19 @@ import static logiikka.peli.Maa.MUSTA;
 
 /**
  * palauttaa sotilaan kuvan
+ *
  * @author elias
  */
 public class SotilasPiirto extends NappulaPiirto {
 
     @Override
     public Image haeKuva(Maa maa) {
-        BufferedImage sotilaskuva = null;
-        File kuva = null;
         if (maa == MUSTA) {
-            kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/sotilas.png");
+            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/sotilas.png");
 
         } else {
-            kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/sotilas.png");
-
+            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/sotilas.png");
         }
-
-        try {
-            sotilaskuva = ImageIO.read(kuva);
-        } catch (IOException e) {
-            System.out.println("EI LÖYDY KUNINGATARTA");
-        }
-
-        return sotilaskuva;
     }
 
 }

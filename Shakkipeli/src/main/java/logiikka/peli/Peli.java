@@ -30,15 +30,28 @@ public class Peli {
     private Pelaaja musta;
     private Pelaaja valkoinen;
     private Pelaaja vuorossa;
+    private Pelaaja vastustaja;
     private Nappula aktiivinen;
+    private Ajastin ajastin;
 
     public Peli() {
 
         this.valkoinen = new Pelaaja(VALKOINEN);
         this.musta = new Pelaaja(MUSTA);
         this.lauta = new Pelilauta();
+        this.ajastin = new Ajastin(this);
     }
 
+    public boolean aikaLoppu() {
+        return this.vuorossa.getKello().aikaLoppu();
+    }
+
+    /**
+     * kertoo onko kuningas uhattuna, Pelin lisäksi käytetään väärästä siirrosta
+     * kertovan punaisen väläyksen tekemisessä
+     *
+     * @return
+     */
     public boolean onShakissa() {
         return onkoUhattuna(this.vuorossa.getKunkku().getX(), this.vuorossa.getKunkku().getY());
     }
@@ -92,6 +105,12 @@ public class Peli {
 
     }
 
+    /**
+     * korottaa sotilaan parametrina annetuksi upseeriksi
+     *
+     * @param korotettava
+     * @param miksiKorotetaan
+     */
     public void korotaSotilas(Pelaaja korotettava, char miksiKorotetaan) {
         switch (miksiKorotetaan) {
             case 'q':
@@ -112,6 +131,15 @@ public class Peli {
         korotettava.setKorotettava(null);
     }
 
+    /**
+     * kokeilee siirtoa ja jos siirto ei jätä peliä ei sallittuun tilaan jää
+     * siirto voimaan. Jos kunkku jää uhatuksi ei siirto ole sallittu ja se
+     * perutaan.
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     public boolean siirto(int x, int y) {
         if (this.aktiivinen == null) {//pitää olla nappula valittuna
             return false;
@@ -137,6 +165,7 @@ public class Peli {
      *
      * @param x
      * @param y
+     * @return
      */
     public boolean asetaAktiivinen(int x, int y) {
 
@@ -149,11 +178,31 @@ public class Peli {
         return false;
     }
 
-    public void lataaPeli(File peli) throws FileNotFoundException {
-        Scanner lukija = new Scanner(peli);
+    /**
+     * Lataa pelitilanteen
+     *
+     * @param lukija
+     * @param peli
+     * @throws FileNotFoundException
+     */
+    public void lataaPeli(Scanner lukija) {
+        this.ajastin.pysayta();
         this.lauta = new Pelilauta();
         this.lataaVuoro(lukija.nextLine());
         this.lataaNappulat(lukija);
+        this.asetaKellot(Integer.parseInt(lukija.nextLine()), Integer.parseInt(lukija.nextLine()));
+
+    }
+
+    private void asetaKellot(int valkoisenAika, int mustanAika) {
+
+        this.valkoinen.getKello().aseta(valkoisenAika);
+        this.musta.getKello().aseta(mustanAika);
+        if (valkoisenAika != -1) {
+            this.ajastin = new Ajastin(this);
+
+            this.ajastin.kaynnista();
+        }
     }
 
     /**
@@ -178,11 +227,8 @@ public class Peli {
      * @return
      */
     private Nappula uhkaavaNappula(int x, int y) {
-        if (this.vuorossa.getMaa() == MUSTA) {
-            return this.haeUhkaava(x, y, this.valkoinen.getNappulat());
-        } else {
-            return this.haeUhkaava(x, y, this.musta.getNappulat());
-        }
+        return this.haeUhkaava(x, y, this.vastustaja.getNappulat());
+
     }
 
     /**
@@ -213,14 +259,8 @@ public class Peli {
      * @return
      */
     private boolean uhkaakoUseampi(int x, int y) {
-        if (this.vuorossa.getMaa() == MUSTA) {
-            return this.uhkaakoUseampi(x, y, this.valkoinen.getNappulat());
+        return this.uhkaakoUseampi(x, y, this.vastustaja.getNappulat());
 
-        } else {
-
-            return this.uhkaakoUseampi(x, y, this.musta.getNappulat());
-
-        }
     }
 
     private boolean uhkaakoUseampi(int x, int y, ArrayList<Nappula> vastustajanNappulat) {
@@ -274,12 +314,6 @@ public class Peli {
         this.paivitaPelaajienNappulat();
     }
 
-    /**
-     * kertoo onko kuningas uhattuna, Pelin lisäksi käytetään väärästä siirrosta
-     * kertovan punaisen väläyksen tekemisessä
-     *
-     * @return
-     */
     private boolean eiVoiLiikkuaMillaanNappulalla() {
         for (Nappula nappula : this.vuorossa.getNappulat()) {
             for (Ruutu ruutu : nappula.mahdollisetRuudut()) {
@@ -397,29 +431,22 @@ public class Peli {
     }
 
     private void vaihdaVuoroa() {
-        if (this.vuorossa == this.valkoinen) {
-            this.vuorossa = this.musta;
-        } else {
-            this.vuorossa = this.valkoinen;
-        }
+        Pelaaja tmp = this.vuorossa;
+        this.vuorossa = this.vastustaja;
+        this.vastustaja = tmp;
+
         this.aktiivinen = null;
         this.ohestaLyonti();
         this.paivitaPelaajienNappulat();
-
     }
 
     private void sotilaanKorotus() {
         for (Nappula nappula : this.vuorossa.getNappulat()) {
             if (nappula.getClass() == Sotilas.class) {
-                if (this.vuorossa.getMaa() == VALKOINEN) {
-                    if (nappula.getY() == 7) {
-                        this.asetaKorotettavaksi(nappula);
-                    }
-                } else {
-                    if (nappula.getY() == 0) {
-                        this.asetaKorotettavaksi(nappula);
-                    }
+                if (nappula.getY() == this.vastustaja.getPerusRivi()) {
+                    this.asetaKorotettavaksi(nappula);
                 }
+
             }
         }
     }
@@ -433,11 +460,11 @@ public class Peli {
 
         if (this.getVuorossa().getOhestaLyontiX() != -1) {
 
-            if (this.lauta.haeNappula(this.vuorossa.getOhestaLyontiX(), this.vuorossa.getOhestaLyontiY()).getClass() != HaamuSotilas.class) {
+            if (this.lauta.haeNappula(this.vuorossa.getOhestaLyontiX(), this.vuorossa.getSotilaastaSeuraavaRivi()).getClass() != HaamuSotilas.class) {
 
-                this.lauta.asetaNappula(null, this.vuorossa.getOhestaLyontiX(), this.vuorossa.getLyotyY());
+                this.lauta.asetaNappula(null, this.vuorossa.getOhestaLyontiX(), this.vuorossa.getKaksiRiviaSotilaasta());
             } else {
-                this.lauta.asetaNappula(null, this.vuorossa.getOhestaLyontiX(), this.vuorossa.getOhestaLyontiY());
+                this.lauta.asetaNappula(null, this.vuorossa.getOhestaLyontiX(), this.vuorossa.getSotilaastaSeuraavaRivi());
             }
             this.vuorossa.setOhestaLyontiX(-1);
         }
@@ -446,23 +473,14 @@ public class Peli {
     private void sotilasLiikkuiEkalla2(int x, int y) {
         if (this.aktiivinen.getClass().equals(Sotilas.class)) {
             if (this.aktiivinen.onEnsimmainenSiirto()) {
-                if (y == this.vuorossa.getLyotyY()) {
+                if (y == this.vuorossa.getKaksiRiviaSotilaasta()) {
                     this.vuorossa.setOhestaLyontiX(x);
-                    new HaamuSotilas(this.vuorossa.getMaa(), x, this.vuorossa.getOhestaLyontiY(), this.lauta);
+                    new HaamuSotilas(this.vuorossa.getMaa(), x, this.vuorossa.getSotilaastaSeuraavaRivi(), this.lauta);
                 }
             }
         }
     }
 
-    /**
-     * kokeilee siirtoa ja jos siirto ei jätä peliä ei sallittuun tilaan jää
-     * siirto voimaan. Jos kunkku jää uhatuksi ei siirto ole sallittu ja se
-     * perutaan.
-     *
-     * @param x
-     * @param y
-     * @return
-     */
     private boolean tornitus(int x, int y) {
         if (this.aktiivinen.equals(this.getVuorossa().getKunkku())) {
             if (this.voiTehdaLyhyenTornituksen(x, y) || this.voiTehdaPitkanTornituksen(x, y)) {
@@ -527,8 +545,10 @@ public class Peli {
     private void lataaVuoro(String maa) {
         if (this.musta.getMaa().toString().equals(maa)) {
             this.vuorossa = this.musta;
+            this.vastustaja = this.valkoinen;
         } else {
             this.vuorossa = this.valkoinen;
+            this.vastustaja = this.musta;
         }
     }
 
@@ -589,12 +609,6 @@ public class Peli {
         this.paivitaPelaajienNappulat();
     }
 
-    /**
-     * Lataa tiedostosta pelitilanteen
-     *
-     * @param peli
-     * @throws FileNotFoundException
-     */
     public Pelaaja getMusta() {
         return musta;
     }
@@ -617,7 +631,10 @@ public class Peli {
 
     @Override
     public String toString() {
-        return this.vuorossa.getMaa() + "\n" + this.lauta.toString();
+        return this.vuorossa.getMaa() + "\n"
+                + this.lauta.toString()
+                + this.valkoinen.getKello().getAika() + "\n"
+                + this.musta.getKello().getAika();
 
     }
 

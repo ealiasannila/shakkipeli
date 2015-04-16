@@ -6,6 +6,7 @@
 package logiikka.peli;
 
 import java.util.ArrayList;
+import kayttoliittyma.KelloPiirto;
 import logiikka.nappulat.Kunkku;
 import static logiikka.peli.Maa.VALKOINEN;
 import logiikka.nappulat.Nappula;
@@ -17,11 +18,13 @@ import logiikka.nappulat.Nappula;
  */
 public class Pelaaja {
 
+    private Kello kello;
+
     private ArrayList<Nappula> nappulat;
     private Kunkku kunkku;
     private int ohestaLyontiX;
-    private int ohestaLyontiY;
-    private int lyotyY;
+    private int sotilaastaSeuraavaRivi;
+    private int kaksiRiviaSotilaasta;
     private Maa maa;
     private Nappula korotettava;
     private int perusRivi;
@@ -36,17 +39,22 @@ public class Pelaaja {
         this.maa = maa;
         this.nappulat = new ArrayList<Nappula>();
         this.ohestaLyontiX = -1;
+        this.kello = new Kello(5);
         if (maa == VALKOINEN) {
-            this.ohestaLyontiY = 2;
-            this.lyotyY = 3;
+            this.sotilaastaSeuraavaRivi = 2;
+            this.kaksiRiviaSotilaasta = 3;
             this.perusRivi = 0;
             this.sotilasRivi = 1;
         } else {
-            this.ohestaLyontiY = 5;
-            this.lyotyY = 4;
+            this.sotilaastaSeuraavaRivi = 5;
+            this.kaksiRiviaSotilaasta = 4;
             this.perusRivi = 7;
             this.sotilasRivi = 6;
         }
+    }
+
+    public Kello getKello() {
+        return kello;
     }
 
     /**
@@ -91,8 +99,8 @@ public class Pelaaja {
      *
      * @return
      */
-    public int getLyotyY() {
-        return lyotyY;
+    public int getKaksiRiviaSotilaasta() {
+        return kaksiRiviaSotilaasta;
     }
 
     /**
@@ -101,8 +109,8 @@ public class Pelaaja {
      *
      * @return
      */
-    public int getOhestaLyontiY() {
-        return ohestaLyontiY;
+    public int getSotilaastaSeuraavaRivi() {
+        return sotilaastaSeuraavaRivi;
     }
 
     /**

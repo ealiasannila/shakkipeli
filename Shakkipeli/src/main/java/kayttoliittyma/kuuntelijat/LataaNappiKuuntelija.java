@@ -11,13 +11,13 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import kayttoliittyma.Kayttoliittyma;
 import kayttoliittyma.TiedostoValitsinLataus;
-import kayttoliittyma.kuuntelijat.Kuuntelija;
+import kayttoliittyma.kuuntelijat.KayttoliittymanTuntevaLuokka;
 
 /**
  *Kuuntelee latausikkunassa olevaa lataa nappia
  * @author elias
  */
-public class LataaNappiKuuntelija extends Kuuntelija implements ActionListener {
+public class LataaNappiKuuntelija extends KayttoliittymanTuntevaLuokka implements ActionListener {
 
     private JTextField tekstiKentta;
     private TiedostoValitsinLataus tiedostoValitsin;
@@ -38,7 +38,6 @@ public class LataaNappiKuuntelija extends Kuuntelija implements ActionListener {
         String polku = "tallennetutPelit/omat/" + this.tekstiKentta.getText();
 
         this.kayttoliittyma.getPeliHallinta().lataaPeli(polku);
-        this.tiedostoValitsin.getRuutu().setVisible(false);
         this.tiedostoValitsin.getRuutu().dispose();
         this.kayttoliittyma.getPeliPiirto().repaint();
 

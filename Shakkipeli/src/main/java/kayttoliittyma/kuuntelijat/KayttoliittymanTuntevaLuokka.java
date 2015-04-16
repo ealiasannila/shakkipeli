@@ -14,12 +14,12 @@ import logiikka.peli.PeliHallinta;
  * Lisää kuuntelijan periviin luokkiin käyttöliittymän oliomuuttujaksi
  * @author elias
  */
-public abstract class Kuuntelija {
+public abstract class KayttoliittymanTuntevaLuokka {
 
     protected Kayttoliittyma kayttoliittyma;
     //protected PeliPiirto peliPiirto;
 
-    public Kuuntelija(Kayttoliittyma kayttoliittyma) {
+    public KayttoliittymanTuntevaLuokka(Kayttoliittyma kayttoliittyma) {
         this.kayttoliittyma = kayttoliittyma;
     }
 }

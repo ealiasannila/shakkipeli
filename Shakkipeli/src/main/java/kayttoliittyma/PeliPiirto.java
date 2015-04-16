@@ -73,7 +73,7 @@ public class PeliPiirto extends JPanel {
 
         }
 
-        if (this.kayttoliittyma.getPeliHallinta().getPeli().onMatissa()) {
+        if (this.kayttoliittyma.getPeliHallinta().getPeli().onMatissa()||this.kayttoliittyma.getPeliHallinta().getPeli().aikaLoppu()) {
             graphics.setFont(new Font("TimesRoman", Font.PLAIN, this.getSivunPituus()));
             graphics.drawString("HÄVISIT ", this.getSivunPituus(), this.getSivunPituus() * 3);
             graphics.drawString("" + this.kayttoliittyma.getPeliHallinta().getPeli().getVuorossa().getMaa(), this.getSivunPituus(), (int) (this.getSivunPituus() * 4.5));

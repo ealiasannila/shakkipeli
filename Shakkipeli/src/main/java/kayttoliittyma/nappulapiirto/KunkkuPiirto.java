@@ -14,30 +14,20 @@ import logiikka.peli.Maa;
 import static logiikka.peli.Maa.MUSTA;
 
 /**
- *Palauttaa kuninkaan kuvan
+ * Palauttaa kuninkaan kuvan
+ *
  * @author elias
  */
 public class KunkkuPiirto extends NappulaPiirto {
 
     @Override
     public Image haeKuva(Maa maa) {
-        BufferedImage kunkkuKuva = null;
-        File kuva = null;
         if (maa == MUSTA) {
-            kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/kunkku.png");
+            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/kunkku.png");
 
         } else {
-            kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/kunkku.png");
-
+            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/kunkku.png");
         }
-
-        try {
-            kunkkuKuva = ImageIO.read(kuva);
-        } catch (IOException e) {
-            System.out.println("EI LÖYDY KUNKKUA");
-        }
-
-        return kunkkuKuva;
 
     }
 }

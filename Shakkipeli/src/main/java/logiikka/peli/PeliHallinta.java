@@ -10,6 +10,8 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Logiikan ylin elementti. Vastaa uuden pelin käynnistämisestä, sekä
@@ -22,14 +24,26 @@ public class PeliHallinta {
 
     public PeliHallinta() {
         this.peli = new Peli();
-        this.uusiPeli();
+        this.uusiPeli(-1, -1);
     }
 
     /**
      * lataa tiedostoon tallennetun uuden pelin pohjan
      */
-    public void uusiPeli() {
-        this.lataaPeli("tallennetutPelit/uusi.txt");
+    public void uusiPeli(int valkoisenAika, int mustanAika) {
+        this.peli.lataaPeli(new Scanner(
+                "VALKOINEN\n"
+                + "TRLQKLRT\n"
+                + "SSSSSSSS\n"
+                + "oooooooo\n"
+                + "oooooooo\n"
+                + "oooooooo\n"
+                + "oooooooo\n"
+                + "ssssssss\n"
+                + "trlqklrt\n"
+                + valkoisenAika+"\n"
+                + mustanAika));
+
     }
 
     /**
@@ -39,32 +53,40 @@ public class PeliHallinta {
      */
     public void lataaPeli(String tiedostonNimi) {
         File peli = new File(tiedostonNimi);
+        Scanner lukija = null;
         try {
-            this.peli.lataaPeli(peli);
+            lukija = new Scanner(peli);
         } catch (FileNotFoundException ex) {
-            System.out.println("Tiedostoa ei löytynyt: " + tiedostonNimi);
+            this.uusiPeli(-1,-1);
+            return;
         }
+        StringBuilder peliString = new StringBuilder();
+        while (lukija.hasNext()) {
+            peliString.append(lukija.nextLine() + "\n");
+        }
+        this.peli.lataaPeli(new Scanner(peliString.toString()));
 
     }
 
     /**
-     * Tallentaa pelin annetun nimiseen tiedostoon
-     * peli esitetään ascii lautana
-     * @param tiedostonNimi 
+     * Tallentaa pelin annetun nimiseen tiedostoon peli esitetään ascii lautana
+     *
+     * @param tiedostonNimi
      */
-
-    public void tallennaPeli(String tiedostonNimi) {
-        PrintWriter writer;
+    public boolean tallennaPeli(String tiedostonNimi) {
         try {
+            PrintWriter writer;
             writer = new PrintWriter(tiedostonNimi, "UTF-8");
-        } catch (FileNotFoundException ex) {
-            return;
-        } catch (UnsupportedEncodingException ex) {
-            return;
-        }
-        writer.print(this.peli.toString());
 
-        writer.close();
+            writer.print(this.peli.toString());
+
+            writer.close();
+            return true;
+        } catch (FileNotFoundException ex) {
+            return false;
+        } catch (UnsupportedEncodingException ex) {
+            return false;
+        }
     }
 
     public Peli getPeli() {

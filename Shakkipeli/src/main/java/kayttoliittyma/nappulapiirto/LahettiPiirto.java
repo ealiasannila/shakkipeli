@@ -14,7 +14,8 @@ import logiikka.peli.Maa;
 import static logiikka.peli.Maa.MUSTA;
 
 /**
- *Hakee Lähetin kuvan
+ * Hakee Lähetin kuvan
+ *
  * @author elias
  */
 public class LahettiPiirto extends NappulaPiirto {
@@ -22,24 +23,12 @@ public class LahettiPiirto extends NappulaPiirto {
     @Override
 
     public Image haeKuva(Maa maa) {
-        BufferedImage lahettiKuva = null;
-        File kuva = null;
         if (maa == MUSTA) {
-            kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/lahetti.png");
+            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/lahetti.png");
 
         } else {
-            kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/lahetti.png");
-
+            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/lahetti.png");
         }
-
-        try {
-            lahettiKuva = ImageIO.read(kuva);
-        } catch (IOException e) {
-            System.out.println("EI LÖYDY LÄHETTIÄ");
-        }
-
-        return lahettiKuva;
-
     }
 
 }

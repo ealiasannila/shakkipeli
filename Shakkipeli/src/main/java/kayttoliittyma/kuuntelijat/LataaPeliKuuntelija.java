@@ -19,7 +19,7 @@ import logiikka.peli.PeliHallinta;
  *Kuuntelee päävalikon Lataa peli nappia
  * @author elias
  */
-public class LataaPeliKuuntelija extends Kuuntelija implements ActionListener {
+public class LataaPeliKuuntelija extends KayttoliittymanTuntevaLuokka implements ActionListener {
 
     public LataaPeliKuuntelija(Kayttoliittyma kayttoliittyma) {
         super(kayttoliittyma);

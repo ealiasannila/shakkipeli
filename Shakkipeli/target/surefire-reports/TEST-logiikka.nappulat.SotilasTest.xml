@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.037" errors="0" skipped="0" tests="15" name="logiikka.nappulat.SotilasTest">
+<testsuite failures="0" time="0.022" errors="0" skipped="0" tests="15" name="logiikka.nappulat.SotilasTest">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64"/>
@@ -60,19 +60,19 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.001" classname="logiikka.nappulat.SotilasTest" name="eiVoiLiikkuaVinottain2Siirtoa"/>
-  <testcase time="0.002" classname="logiikka.nappulat.SotilasTest" name="eiVoiLiikkua2TokallaSiirrolla"/>
+  <testcase time="0.002" classname="logiikka.nappulat.SotilasTest" name="eiVoiLiikkuaVinottain2Siirtoa"/>
+  <testcase time="0.001" classname="logiikka.nappulat.SotilasTest" name="eiVoiLiikkua2TokallaSiirrolla"/>
   <testcase time="0.001" classname="logiikka.nappulat.SotilasTest" name="valkoinenLiikkuuEteenPain"/>
   <testcase time="0.001" classname="logiikka.nappulat.SotilasTest" name="mahdollisetRuudutTest"/>
   <testcase time="0.001" classname="logiikka.nappulat.SotilasTest" name="eiSyoVaakaan"/>
-  <testcase time="0.001" classname="logiikka.nappulat.SotilasTest" name="voiLiikkua2EkallaSiirrolla"/>
+  <testcase time="0.003" classname="logiikka.nappulat.SotilasTest" name="voiLiikkua2EkallaSiirrolla"/>
   <testcase time="0.001" classname="logiikka.nappulat.SotilasTest" name="mustaLiikkuuEteenPain"/>
-  <testcase time="0.001" classname="logiikka.nappulat.SotilasTest" name="mustaEiLiikuTaaksePain"/>
-  <testcase time="0.004" classname="logiikka.nappulat.SotilasTest" name="mustaEiLiikuVinoon"/>
-  <testcase time="0.001" classname="logiikka.nappulat.SotilasTest" name="valkoinenEiLiikuVinoon"/>
+  <testcase time="0" classname="logiikka.nappulat.SotilasTest" name="mustaEiLiikuTaaksePain"/>
+  <testcase time="0.001" classname="logiikka.nappulat.SotilasTest" name="mustaEiLiikuVinoon"/>
+  <testcase time="0" classname="logiikka.nappulat.SotilasTest" name="valkoinenEiLiikuVinoon"/>
   <testcase time="0" classname="logiikka.nappulat.SotilasTest" name="valkoinenEiLiikuTaaksePain"/>
-  <testcase time="0" classname="logiikka.nappulat.SotilasTest" name="uhkausLinjaTyha"/>
-  <testcase time="0.01" classname="logiikka.nappulat.SotilasTest" name="mustaSyoVinoon"/>
-  <testcase time="0" classname="logiikka.nappulat.SotilasTest" name="valkoinenSyoVinoon"/>
+  <testcase time="0.001" classname="logiikka.nappulat.SotilasTest" name="uhkausLinjaTyha"/>
+  <testcase time="0" classname="logiikka.nappulat.SotilasTest" name="mustaSyoVinoon"/>
+  <testcase time="0.001" classname="logiikka.nappulat.SotilasTest" name="valkoinenSyoVinoon"/>
   <testcase time="0" classname="logiikka.nappulat.SotilasTest" name="eiSyoSuoraan"/>
 </testsuite>

@@ -7,8 +7,11 @@ package kayttoliittyma.kuuntelijat;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.SwingUtilities;
 import kayttoliittyma.Kayttoliittyma;
 import kayttoliittyma.PeliPiirto;
+import kayttoliittyma.TiedostoValitsinLataus;
+import kayttoliittyma.UusiPeliValikko;
 import logiikka.peli.Peli;
 import logiikka.peli.PeliHallinta;
 
@@ -17,7 +20,7 @@ import logiikka.peli.PeliHallinta;
  *
  * @author elias
  */
-public class UusiPeliKuuntelija extends Kuuntelija implements ActionListener {
+public class UusiPeliKuuntelija extends KayttoliittymanTuntevaLuokka implements ActionListener {
 
     public UusiPeliKuuntelija(Kayttoliittyma kayttoliittyma) {
         super(kayttoliittyma);
@@ -33,8 +36,8 @@ public class UusiPeliKuuntelija extends Kuuntelija implements ActionListener {
         if (this.kayttoliittyma.getPeliPiirto().sotilaanKorotusOnKesken()) {
             return;
         }
-        this.kayttoliittyma.getPeliHallinta().uusiPeli();
-        this.kayttoliittyma.getPeliPiirto().repaint();
+        SwingUtilities.invokeLater(new UusiPeliValikko(this.kayttoliittyma));
+
     }
 
 }

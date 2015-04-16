@@ -28,16 +28,16 @@ public class PelaajaTest {
     public void mustanRivitTulevatOikein(){
         assertEquals(7, this.peliHallinta.getPeli().getMusta().getPerusRivi());
         assertEquals(6, this.peliHallinta.getPeli().getMusta().getSotilasRivi());
-        assertEquals(5, this.peliHallinta.getPeli().getMusta().getOhestaLyontiY());
-        assertEquals(4, this.peliHallinta.getPeli().getMusta().getLyotyY());
+        assertEquals(5, this.peliHallinta.getPeli().getMusta().getSotilaastaSeuraavaRivi());
+        assertEquals(4, this.peliHallinta.getPeli().getMusta().getKaksiRiviaSotilaasta());
         assertEquals(-1, this.peliHallinta.getPeli().getMusta().getOhestaLyontiX());
     }
     @Test
     public void valkoisenRivitTulevatOikein(){
         assertEquals(0, this.peliHallinta.getPeli().getValkoinen().getPerusRivi());
         assertEquals(1, this.peliHallinta.getPeli().getValkoinen().getSotilasRivi());
-        assertEquals(2, this.peliHallinta.getPeli().getValkoinen().getOhestaLyontiY());
-        assertEquals(3, this.peliHallinta.getPeli().getValkoinen().getLyotyY());
+        assertEquals(2, this.peliHallinta.getPeli().getValkoinen().getSotilaastaSeuraavaRivi());
+        assertEquals(3, this.peliHallinta.getPeli().getValkoinen().getKaksiRiviaSotilaasta());
         assertEquals(-1, this.peliHallinta.getPeli().getValkoinen().getOhestaLyontiX());
     }
     

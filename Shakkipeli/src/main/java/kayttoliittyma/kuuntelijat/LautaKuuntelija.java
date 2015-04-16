@@ -20,7 +20,7 @@ import logiikka.peli.PeliHallinta;
  *
  * @author elias
  */
-public class LautaKuuntelija extends Kuuntelija implements MouseListener {
+public class LautaKuuntelija extends KayttoliittymanTuntevaLuokka implements MouseListener {
 
     public LautaKuuntelija(Kayttoliittyma kayttoliittyma) {
         super(kayttoliittyma);
@@ -34,6 +34,12 @@ public class LautaKuuntelija extends Kuuntelija implements MouseListener {
      */
     @Override
     public void mouseClicked(MouseEvent me) {
+        if (this.kayttoliittyma.getPeliHallinta().getPeli().onMatissa()
+                || this.kayttoliittyma.getPeliHallinta().getPeli().onPatissa()
+                || this.kayttoliittyma.getPeliHallinta().getPeli().aikaLoppu()) {
+            return;
+        }
+
         if (this.kayttoliittyma.getPeliPiirto().sotilaanKorotusOnKesken()) {
             return;
         }
@@ -56,7 +62,6 @@ public class LautaKuuntelija extends Kuuntelija implements MouseListener {
         this.kayttoliittyma.getPeliPiirto().repaint();
 
     }
-
 
     @Override
     public void mousePressed(MouseEvent me) {

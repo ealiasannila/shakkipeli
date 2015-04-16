@@ -16,7 +16,8 @@ import logiikka.peli.Maa;
 import static logiikka.peli.Maa.MUSTA;
 
 /**
- *Palauttaa tornin kuvan
+ * Palauttaa tornin kuvan
+ *
  * @author elias
  */
 public class TorniPiirto extends NappulaPiirto {
@@ -26,23 +27,12 @@ public class TorniPiirto extends NappulaPiirto {
 
     @Override
     public Image haeKuva(Maa maa) {
-        BufferedImage torniKuva = null;
-        File kuva = null;
         if (maa == MUSTA) {
-            kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/torni.png");
+            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/torni.png");
 
         } else {
-            kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/torni.png");
-
+            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/torni.png");
         }
-
-        try {
-            torniKuva = ImageIO.read(kuva);
-        } catch (IOException e) {
-            System.out.println("EI LÖYDY TORNIA");
-        }
-
-        return torniKuva;
 
     }
 

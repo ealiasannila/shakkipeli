@@ -15,19 +15,24 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+import kayttoliittyma.kuuntelijat.KayttoliittymanTuntevaLuokka;
 import kayttoliittyma.kuuntelijat.TiedostoListaKuuntelija;
 
 /**
  *Tallennus ja latausikkunoissa käytettävä tiedostovalitsin.
  * @author elias
  */
-public abstract class TiedostoValitsin implements Runnable {
+public abstract class TiedostoValitsin extends KayttoliittymanTuntevaLuokka implements Runnable  {
 
-    protected Kayttoliittyma kayttoliittyma;
+
     protected JFrame ruutu;
     protected JButton nappi;
-    JList tiedostoLista;
-    JTextField tiedostonNimi;
+    private JList tiedostoLista;
+    protected JTextField tiedostonNimi;
+
+    public TiedostoValitsin(Kayttoliittyma kayttoliittyma) {
+        super(kayttoliittyma);
+    }
 
     @Override
     public void run() {
@@ -78,9 +83,5 @@ public abstract class TiedostoValitsin implements Runnable {
         return ruutu;
     }
 
-    public TiedostoValitsin(Kayttoliittyma kayttolittyma) {
-        this.kayttoliittyma = kayttolittyma;
-
-    }
-
+  
 }

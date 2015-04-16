@@ -47,7 +47,7 @@ public class PeliTest {
         Pelaaja eka = this.peliHallinta.getPeli().getVuorossa();
         this.peliHallinta.getPeli().asetaAktiivinen(0, 0);
         this.peliHallinta.getPeli().siirto(1, 0);
-        assertFalse (eka.equals(peliHallinta.getPeli().getVuorossa()));
+        assertFalse(eka.equals(peliHallinta.getPeli().getVuorossa()));
     }
 
     @Test
@@ -55,7 +55,7 @@ public class PeliTest {
         Pelaaja eka = this.peliHallinta.getPeli().getVuorossa();
         this.peliHallinta.getPeli().asetaAktiivinen(0, 0);
         this.peliHallinta.getPeli().siirto(-1, 0);
-        assertEquals(eka,(peliHallinta.getPeli().getVuorossa()));
+        assertEquals(eka, (peliHallinta.getPeli().getVuorossa()));
     }
 
     @Test
@@ -107,7 +107,9 @@ public class PeliTest {
                 + "oooooooo\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
-                + "oooooooo\n", this.peliHallinta.getPeli().toString());
+                + "oooooooo\n" 
+                + "-1\n"
+                + "-1", this.peliHallinta.getPeli().toString());
     }
 
     @Test
@@ -130,7 +132,9 @@ public class PeliTest {
                 + "oooooooo\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
-                + "oootkoot\n", this.peliHallinta.getPeli().toString());
+                + "oootkoot\n" 
+                + "-1\n"
+                + "-1", this.peliHallinta.getPeli().toString());
         assertEquals(3, this.peliHallinta.getPeli().getAktiivinen().getX());
         assertEquals(7, this.peliHallinta.getPeli().getAktiivinen().getY());
     }
@@ -145,7 +149,7 @@ public class PeliTest {
     @Test
     public void onShakissaTest() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/kunkkuMatissa.txt");
-        assertTrue (this.peliHallinta.getPeli().onShakissa());
+        assertTrue(this.peliHallinta.getPeli().onShakissa());
     }
 
     @Test
@@ -167,8 +171,8 @@ public class PeliTest {
     @Test
     public void kunKunkkuVoiLiikkuaEiMatti() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/kunkkuUhattunaVoiLiikkua.txt");
-        assertFalse (this.peliHallinta.getPeli().onMatissa());
-        assertTrue (this.peliHallinta.getPeli().onShakissa());
+        assertFalse(this.peliHallinta.getPeli().onMatissa());
+        assertTrue(this.peliHallinta.getPeli().onShakissa());
     }
 
     @Test
@@ -198,26 +202,26 @@ public class PeliTest {
     @Test
     public void kunkkuEiVoiSyodaSuojattua() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/mattiKunkkuEiVoiSyodaSuojattua.txt");
-        assertTrue (this.peliHallinta.getPeli().onMatissa());
+        assertTrue(this.peliHallinta.getPeli().onMatissa());
     }
 
     @Test
     public void kaksiUhkaaMattiMusta() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/mattiKaksiUhkaaMusta.txt");
-        assertTrue (this.peliHallinta.getPeli().onMatissa());
+        assertTrue(this.peliHallinta.getPeli().onMatissa());
     }
 
     @Test
     public void kaksiUhkaaMattiValkoinen() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/mattiKaksiUhkaaValkoinen.txt");
-        assertTrue (this.peliHallinta.getPeli().onMatissa());
+        assertTrue(this.peliHallinta.getPeli().onMatissa());
     }
 
     @Test
     public void kaksiUhkaaEiMatti() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/shakkiKaksiUhkaa.txt");
-        assertFalse (this.peliHallinta.getPeli().onMatissa());
-        assertTrue (this.peliHallinta.getPeli().onShakissa());
+        assertFalse(this.peliHallinta.getPeli().onMatissa());
+        assertTrue(this.peliHallinta.getPeli().onShakissa());
     }
 
     //TORNITUKSEN TESTAUS:
@@ -225,9 +229,9 @@ public class PeliTest {
     public void voiTehdaLyhyenTornituksenValkoinen() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/valkoinenTornitus.txt");
         this.peliHallinta.getPeli().asetaAktiivinen(4, 0);
-        assertTrue (this.peliHallinta.getPeli().siirto(6, 0));
-        assertTrue (this.peliHallinta.getPeli().getLauta().haeNappula(6, 0)==(this.peliHallinta.getPeli().getValkoinen().getKunkku()));
-        assertTrue (this.peliHallinta.getPeli().getLauta().haeNappula(5, 0).getClass()==(Torni.class));
+        assertTrue(this.peliHallinta.getPeli().siirto(6, 0));
+        assertTrue(this.peliHallinta.getPeli().getLauta().haeNappula(6, 0) == (this.peliHallinta.getPeli().getValkoinen().getKunkku()));
+        assertTrue(this.peliHallinta.getPeli().getLauta().haeNappula(5, 0).getClass() == (Torni.class));
 
     }
 
@@ -235,9 +239,9 @@ public class PeliTest {
     public void voiTehdaPitkanTornituksenValkoinen() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/valkoinenTornitus.txt");
         this.peliHallinta.getPeli().asetaAktiivinen(4, 0);
-        assertTrue (this.peliHallinta.getPeli().siirto(2, 0));
-        assertTrue (this.peliHallinta.getPeli().getLauta().haeNappula(2, 0)==(this.peliHallinta.getPeli().getValkoinen().getKunkku()));
-        assertTrue (this.peliHallinta.getPeli().getLauta().haeNappula(3, 0).getClass()==(Torni.class));
+        assertTrue(this.peliHallinta.getPeli().siirto(2, 0));
+        assertTrue(this.peliHallinta.getPeli().getLauta().haeNappula(2, 0) == (this.peliHallinta.getPeli().getValkoinen().getKunkku()));
+        assertTrue(this.peliHallinta.getPeli().getLauta().haeNappula(3, 0).getClass() == (Torni.class));
 
     }
 
@@ -245,9 +249,9 @@ public class PeliTest {
     public void voiTehdaLyhyenTornituksenMusta() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/mustaTornitus.txt");
         this.peliHallinta.getPeli().asetaAktiivinen(4, 7);
-        assertTrue (this.peliHallinta.getPeli().siirto(6, 7));
-        assertTrue (this.peliHallinta.getPeli().getLauta().haeNappula(6, 7)==this.peliHallinta.getPeli().getMusta().getKunkku());
-        assertTrue (this.peliHallinta.getPeli().getLauta().haeNappula(5, 7).getClass()==Torni.class);
+        assertTrue(this.peliHallinta.getPeli().siirto(6, 7));
+        assertTrue(this.peliHallinta.getPeli().getLauta().haeNappula(6, 7) == this.peliHallinta.getPeli().getMusta().getKunkku());
+        assertTrue(this.peliHallinta.getPeli().getLauta().haeNappula(5, 7).getClass() == Torni.class);
 
     }
 
@@ -255,9 +259,9 @@ public class PeliTest {
     public void voiTehdaPitkanTornituksenMusta() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/mustaTornitus.txt");
         this.peliHallinta.getPeli().asetaAktiivinen(4, 7);
-        assertTrue (this.peliHallinta.getPeli().siirto(2, 7));
-        assertTrue (this.peliHallinta.getPeli().getLauta().haeNappula(2, 7)==(this.peliHallinta.getPeli().getMusta().getKunkku()));
-        assertTrue (this.peliHallinta.getPeli().getLauta().haeNappula(3, 7).getClass()==(Torni.class));
+        assertTrue(this.peliHallinta.getPeli().siirto(2, 7));
+        assertTrue(this.peliHallinta.getPeli().getLauta().haeNappula(2, 7) == (this.peliHallinta.getPeli().getMusta().getKunkku()));
+        assertTrue(this.peliHallinta.getPeli().getLauta().haeNappula(3, 7).getClass() == (Torni.class));
 
     }
 
@@ -266,7 +270,7 @@ public class PeliTest {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/ohestaLyonti.txt");
         this.peliHallinta.getPeli().asetaAktiivinen(1, 1);
         this.peliHallinta.getPeli().siirto(1, 3);
-        assertEquals (this.peliHallinta.getPeli().toString(),("MUSTA\n"
+        assertEquals(this.peliHallinta.getPeli().toString(), ("MUSTA\n"
                 + "ooooKooo\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
@@ -274,10 +278,12 @@ public class PeliTest {
                 + "osoooooo\n"
                 + "ohoooooo\n"
                 + "sossssss\n"
-                + "toookoot\n"));
+                + "toookoot\n"
+                + "-1\n"
+                + "-1"));
         this.peliHallinta.getPeli().asetaAktiivinen(3, 4);
         this.peliHallinta.getPeli().siirto(1, 2);
-        assertEquals (this.peliHallinta.getPeli().toString(),("VALKOINEN\n"
+        assertEquals(this.peliHallinta.getPeli().toString(), ("VALKOINEN\n"
                 + "ooooKooo\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
@@ -285,7 +291,9 @@ public class PeliTest {
                 + "oooooooo\n"
                 + "oQoooooo\n"
                 + "sossssss\n"
-                + "toookoot\n"));
+                + "toookoot\n" 
+                + "-1\n"
+                + "-1"));
     }
 
     @Test
@@ -293,7 +301,7 @@ public class PeliTest {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/ohestaLyonti.txt");
         this.peliHallinta.getPeli().asetaAktiivinen(1, 1);
         this.peliHallinta.getPeli().siirto(1, 3);
-        assertEquals (this.peliHallinta.getPeli().toString(),("MUSTA\n"
+        assertEquals(this.peliHallinta.getPeli().toString(), ("MUSTA\n"
                 + "ooooKooo\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
@@ -301,10 +309,12 @@ public class PeliTest {
                 + "osoooooo\n"
                 + "ohoooooo\n"
                 + "sossssss\n"
-                + "toookoot\n"));
+                + "toookoot\n" 
+                + "-1\n"
+                + "-1"));
         this.peliHallinta.getPeli().asetaAktiivinen(3, 4);
         this.peliHallinta.getPeli().siirto(3, 5);
-        assertEquals (this.peliHallinta.getPeli().toString(),("VALKOINEN\n"
+        assertEquals(this.peliHallinta.getPeli().toString(), ("VALKOINEN\n"
                 + "ooooKooo\n"
                 + "oooooooo\n"
                 + "oooQoooo\n"
@@ -312,66 +322,68 @@ public class PeliTest {
                 + "osoooooo\n"
                 + "oooooooo\n"
                 + "sossssss\n"
-                + "toookoot\n"));
+                + "toookoot\n" 
+                + "-1\n"
+                + "-1"));
     }
 
     @Test
     public void eiOlePatissa() {
-        assertFalse (this.peliHallinta.getPeli().onPatissa());
+        assertFalse(this.peliHallinta.getPeli().onPatissa());
 
     }
 
     @Test
     public void eiOlePattiToinenVoiTehdaMatinKaksiRatsua() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/eiPattiOnKuningatar.txt");
-        assertFalse (this.peliHallinta.getPeli().onPatissa());
+        assertFalse(this.peliHallinta.getPeli().onPatissa());
     }
 
     @Test
     public void eiOlePattiToinenVoiTehdaMatinKaksiLahettiaSamallaVarilla() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/eiPattiOnKuningatarLahetitSamallaVarilla.txt");
-        assertFalse (this.peliHallinta.getPeli().onPatissa());
+        assertFalse(this.peliHallinta.getPeli().onPatissa());
     }
 
     @Test
     public void pattiTestEiVoiLiikkua() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/pattiEiVoiLiikkua.txt");
-        assertTrue (this.peliHallinta.getPeli().onPatissa());
+        assertTrue(this.peliHallinta.getPeli().onPatissa());
 
     }
 
     @Test
     public void pattiTestVainKunkut() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/pattiVainKunkut.txt");
-        assertTrue (this.peliHallinta.getPeli().onPatissa());
+        assertTrue(this.peliHallinta.getPeli().onPatissa());
 
     }
 
     @Test
     public void pattiTestVainKunkkuJaRatsu() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/pattiKunkkuJaRatsu.txt");
-        assertTrue (this.peliHallinta.getPeli().onPatissa());
+        assertTrue(this.peliHallinta.getPeli().onPatissa());
 
     }
 
     @Test
     public void pattiTestVainKunkkuJaLahettejaSamallaVarilla() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/pattiKunkkuJaLahettejaSamallaVarilla.txt");
-        assertTrue (this.peliHallinta.getPeli().onPatissa());
+        assertTrue(this.peliHallinta.getPeli().onPatissa());
 
     }
 
     @Test
     public void pattiTestVainKunkkuJaLahettejaEriVarilla() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/pattiKunkkuJaLahettejaEriVarilla.txt");
-        assertFalse (this.peliHallinta.getPeli().onPatissa());
+        assertFalse(this.peliHallinta.getPeli().onPatissa());
 
     }
 
     @Test
     public void pattiTestVainKunkkuJa2Ratsua() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/pattiKunkkuJa2Ratsua.txt");
-        assertFalse (this.peliHallinta.getPeli().onPatissa());
+        assertFalse(this.peliHallinta.getPeli().onPatissa());
 
     }
 
@@ -380,7 +392,7 @@ public class PeliTest {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/korotus.txt");
         this.peliHallinta.getPeli().asetaAktiivinen(0, 6);
         this.peliHallinta.getPeli().siirto(0, 7);
-        assertEquals (this.peliHallinta.getPeli().getValkoinen().getKorotettava(),(this.peliHallinta.getPeli().getLauta().haeNappula(0, 7)));
+        assertEquals(this.peliHallinta.getPeli().getValkoinen().getKorotettava(), (this.peliHallinta.getPeli().getLauta().haeNappula(0, 7)));
     }
 
     @Test
@@ -397,11 +409,12 @@ public class PeliTest {
                 + "oookoooo\n"
                 + "oooooooo\n"
                 + "SSSSSSSS\n"
-                + "oooooooo\n", this.peliHallinta.getPeli().toString());
-        
+                + "oooooooo\n" 
+                + "-1\n"
+                + "-1", this.peliHallinta.getPeli().toString());
+
     }
-    
-    
+
     @Test
     public void korottaaTorniksi() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/korotus.txt");
@@ -416,11 +429,12 @@ public class PeliTest {
                 + "oookoooo\n"
                 + "oooooooo\n"
                 + "SSSSSSSS\n"
-                + "oooooooo\n", this.peliHallinta.getPeli().toString());
-        
+                + "oooooooo\n" 
+                + "-1\n"
+                + "-1", this.peliHallinta.getPeli().toString());
+
     }
-    
-    
+
     @Test
     public void korottaaRatsuksi() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/korotus.txt");
@@ -435,11 +449,12 @@ public class PeliTest {
                 + "oookoooo\n"
                 + "oooooooo\n"
                 + "SSSSSSSS\n"
-                + "oooooooo\n", this.peliHallinta.getPeli().toString());
-        
+                + "oooooooo\n" 
+                + "-1\n"
+                + "-1", this.peliHallinta.getPeli().toString());
+
     }
-    
-    
+
     @Test
     public void korottaaKuningattareksi() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/korotus.txt");
@@ -454,8 +469,10 @@ public class PeliTest {
                 + "oookoooo\n"
                 + "oooooooo\n"
                 + "SSSSSSSS\n"
-                + "oooooooo\n", this.peliHallinta.getPeli().toString());
-        
+                + "oooooooo\n" 
+                + "-1\n"
+                + "-1", this.peliHallinta.getPeli().toString());
+
     }
 
 }

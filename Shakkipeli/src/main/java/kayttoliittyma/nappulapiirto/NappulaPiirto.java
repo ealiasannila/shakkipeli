@@ -2,6 +2,10 @@ package kayttoliittyma.nappulapiirto;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import kayttoliittyma.PeliPiirto;
 import logiikka.peli.Maa;
@@ -12,29 +16,31 @@ import logiikka.peli.Maa;
  * and open the template in the editor.
  */
 /**
- *Palauttaa nappulan koordinaatit pikseleinä, ja nappulan kuvatiedoston
+ * Palauttaa nappulan koordinaatit pikseleinä, ja nappulan kuvatiedoston
+ *
  * @author elias
  */
 public abstract class NappulaPiirto {
 
     /**
      * palauttaa x koordinaatin pikseleinä
+     *
      * @param xRuutu
      * @param alusta
      * @param nappulanKoko
-     * @return 
+     * @return
      */
-    
     public int piirtoX(int xRuutu, PeliPiirto alusta, int nappulanKoko) {
         return (xRuutu * (alusta.getSivunPituus()) + alusta.getSivunPituus() / 2 - nappulanKoko / 2);
     }
 
     /**
      * palauttaa y koordinaatin pikseleinä
+     *
      * @param yRuutu
      * @param alusta
      * @param nappulanKoko
-     * @return 
+     * @return
      */
     public int piirtoY(int yRuutu, PeliPiirto alusta, int nappulanKoko) {
         return ((7 - yRuutu) * (alusta.getSivunPituus()) + alusta.getSivunPituus() / 2 - nappulanKoko / 2);
@@ -42,5 +48,19 @@ public abstract class NappulaPiirto {
     }
 
     public abstract Image haeKuva(Maa maa);
+
+    protected Image haeKuva(String polku) {
+        File tiedosto = new File(polku);
+
+        BufferedImage kuva = null;
+        try {
+            kuva = ImageIO.read(tiedosto);
+        } catch (IOException e) {
+            System.out.println("Nappulan kuvatiedosto puuttuu");
+            System.exit(1);
+        }
+
+        return kuva;
+    }
 
 }

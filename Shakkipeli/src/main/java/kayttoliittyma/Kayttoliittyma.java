@@ -8,12 +8,14 @@ import java.awt.GridLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import kayttoliittyma.kuuntelijat.LataaPeliKuuntelija;
 import kayttoliittyma.kuuntelijat.TallennaPeliKuuntelija;
 import kayttoliittyma.kuuntelijat.UusiPeliKuuntelija;
 import kayttoliittyma.nappulapiirto.TorniPiirto;
+import logiikka.peli.Maa;
 import logiikka.peli.Peli;
 import logiikka.peli.PeliHallinta;
 
@@ -52,7 +54,7 @@ public class Kayttoliittyma implements Runnable {
     public void run() {
 
         ruutu = new JFrame("Shakkipeli");
-        ruutu.setPreferredSize(new Dimension(650,700));
+        ruutu.setPreferredSize(new Dimension(650,750));
 
         ruutu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,6 +70,7 @@ public class Kayttoliittyma implements Runnable {
      */
     private void luoPiirtoKomponentit(Container container) {
         container.add(luoValikkoNapit(), BorderLayout.NORTH);
+        container.add(luoKello(), BorderLayout.SOUTH);
         PeliPiirto peliPiirto = this.peliPiirto;
 
         peliPiirto.addMouseListener(new LautaKuuntelija(this));
@@ -80,6 +83,23 @@ public class Kayttoliittyma implements Runnable {
      * @return 
      */
 
+    private JPanel luoKello(){
+        JPanel kello = new JPanel(new GridLayout(1,2));
+      
+        KelloPiirto valkoisenAika = new KelloPiirto( this,this.peliHallinta.getPeli().getValkoinen().getKello().getAika(),"Valkoisen aika: ");
+        KelloPiirto mustanAika = new KelloPiirto(this,this.peliHallinta.getPeli().getMusta().getKello().getAika(), "Mustan aika: ");
+        this.peliHallinta.getPeli().getValkoinen().getKello().setKellonPiirto(valkoisenAika);
+        this.peliHallinta.getPeli().getMusta().getKello().setKellonPiirto(mustanAika);
+        
+        valkoisenAika.setPreferredSize(new Dimension(50,50));
+        mustanAika.setPreferredSize(new Dimension(50,50));
+       
+        
+        kello.add(valkoisenAika);
+        kello.add(mustanAika);
+        return kello;
+    }
+    
     private JPanel luoValikkoNapit() {
         JPanel panel = new JPanel(new GridLayout(1, 3));
 

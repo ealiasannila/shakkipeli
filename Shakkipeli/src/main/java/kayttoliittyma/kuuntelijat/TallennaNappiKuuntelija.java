@@ -13,10 +13,11 @@ import kayttoliittyma.Kayttoliittyma;
 import kayttoliittyma.TiedostoValitsinTallennus;
 
 /**
- *Kuuntelee tallenna nappia tallennusikkunassa
+ * Kuuntelee tallenna nappia tallennusikkunassa
+ *
  * @author elias
  */
-public class TallennaNappiKuuntelija extends Kuuntelija implements ActionListener {
+public class TallennaNappiKuuntelija extends KayttoliittymanTuntevaLuokka implements ActionListener {
 
     private JTextField tekstiKentta;
     TiedostoValitsinTallennus tiedostoValitsin;
@@ -24,26 +25,25 @@ public class TallennaNappiKuuntelija extends Kuuntelija implements ActionListene
     public TallennaNappiKuuntelija(Kayttoliittyma kayttoliittyma, JTextField tekstiKentta, TiedostoValitsinTallennus tiedostoValitsin) {
         super(kayttoliittyma);
         this.tekstiKentta = tekstiKentta;
-        this.tiedostoValitsin = tiedostoValitsin; 
-       
+        this.tiedostoValitsin = tiedostoValitsin;
+
     }
-    
-/**
- * pyytää pelihallintaa tallentamaan pelin ja sulkee tallennusikkunan
- * @param ae 
- */    
+
+    /**
+     * pyytää pelihallintaa tallentamaan pelin ja sulkee tallennusikkunan
+     *
+     * @param ae
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
-        
-        
-        String polku = "tallennetutPelit/omat/"+this.tekstiKentta.getText();
-        
-        this.kayttoliittyma.getPeliHallinta().tallennaPeli(polku);
-        this.tiedostoValitsin.getRuutu().setVisible(false);
-        this.tiedostoValitsin.getRuutu().dispose();
-        this.kayttoliittyma.getPeliPiirto().repaint();
 
-        
+        String polku = "tallennetutPelit/omat/" + this.tekstiKentta.getText();
+
+        if (this.kayttoliittyma.getPeliHallinta().tallennaPeli(polku)) {
+            this.tiedostoValitsin.getRuutu().dispose();
+            this.kayttoliittyma.getPeliPiirto().repaint();
+        }
+
     }
-    
+
 }

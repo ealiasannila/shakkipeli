@@ -20,23 +20,12 @@ import static logiikka.peli.Maa.MUSTA;
 public class KuningatarPiirto extends NappulaPiirto {
 
     public Image haeKuva(Maa maa) {
-        BufferedImage kuningatarKuva = null;
-        File kuva = null;
         if (maa == MUSTA) {
-            kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/kuningatar.png");
+            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/kuningatar.png");
 
         } else {
-            kuva = new File("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/kuningatar.png");
-
+            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/kuningatar.png");
         }
-
-        try {
-            kuningatarKuva = ImageIO.read(kuva);
-        } catch (IOException e) {
-            System.out.println("EI LÖYDY KUNINGATARTA");
-        }
-
-        return kuningatarKuva;
     }
 
 }

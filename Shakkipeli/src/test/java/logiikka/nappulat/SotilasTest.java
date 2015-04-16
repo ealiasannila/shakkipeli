@@ -22,16 +22,16 @@ import org.junit.Test;
  */
 public class SotilasTest {
 
-    private PeliHallinta testiPeli;
+    private PeliHallinta testiPeliHallinta;
     Nappula mustaSotilas;
     Nappula valkoinenSotilas;
 
     @Before
     public void setUp() {
-        testiPeli = new PeliHallinta();
+        testiPeliHallinta = new PeliHallinta();
 
-        mustaSotilas = new Sotilas(MUSTA, 4, 6, this.testiPeli.getPeli().getLauta());
-        valkoinenSotilas = new Sotilas(VALKOINEN, 4, 1, this.testiPeli.getPeli().getLauta());
+        mustaSotilas = new Sotilas(MUSTA, 4, 6, this.testiPeliHallinta.getPeli().getLauta());
+        valkoinenSotilas = new Sotilas(VALKOINEN, 4, 1, this.testiPeliHallinta.getPeli().getLauta());
 
     }
 
@@ -69,21 +69,21 @@ public class SotilasTest {
 
     @Test
     public void valkoinenSyoVinoon() {
-        Sotilas mustaSotilas2 = new Sotilas(MUSTA, 3, 2, this.testiPeli.getPeli().getLauta());
+        Sotilas mustaSotilas2 = new Sotilas(MUSTA, 3, 2, this.testiPeliHallinta.getPeli().getLauta());
         assertTrue (this.valkoinenSotilas.onSallittuSiirto(3, 2));
 
     }
 
     @Test
     public void mustaSyoVinoon() {
-        Sotilas valkoinenSotilas2 = new Sotilas(VALKOINEN, 5, 5, this.testiPeli.getPeli().getLauta());
+        Sotilas valkoinenSotilas2 = new Sotilas(VALKOINEN, 5, 5, this.testiPeliHallinta.getPeli().getLauta());
         assertTrue (this.mustaSotilas.onSallittuSiirto(5, 5));
 
     }
 
     @Test
     public void eiSyoSuoraan() {
-        Sotilas mustaSotilas2 = new Sotilas(MUSTA, 4, 2, this.testiPeli.getPeli().getLauta());
+        Sotilas mustaSotilas2 = new Sotilas(MUSTA, 4, 2, this.testiPeliHallinta.getPeli().getLauta());
         assertFalse (this.valkoinenSotilas.onSallittuSiirto(4, 2));
         assertFalse (this.valkoinenSotilas.tarkistaReitti(4, 2));
 
@@ -91,7 +91,7 @@ public class SotilasTest {
 
     @Test
     public void eiSyoVaakaan() {
-        Sotilas mustaSotilas2 = new Sotilas(MUSTA, 3, 1, this.testiPeli.getPeli().getLauta());
+        Sotilas mustaSotilas2 = new Sotilas(MUSTA, 3, 1, this.testiPeliHallinta.getPeli().getLauta());
         assertFalse (this.valkoinenSotilas.onSallittuSiirto(3, 1));
 
     }
@@ -113,8 +113,8 @@ public class SotilasTest {
 
     @Test
     public void eiVoiLiikkua2TokallaSiirrolla() {
-        this.testiPeli.uusiPeli();
-        this.testiPeli.getPeli().siirto(4, 2);
+        this.testiPeliHallinta.uusiPeli(-1,-1);
+        this.testiPeliHallinta.getPeli().siirto(4, 2);
         assertFalse (this.valkoinenSotilas.onSallittuSiirto(4, 4));
 
     }

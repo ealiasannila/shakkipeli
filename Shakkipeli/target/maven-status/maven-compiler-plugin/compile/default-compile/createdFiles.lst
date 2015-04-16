@@ -1,7 +1,6 @@
 kayttoliittyma/PeliPiirto.class
 kayttoliittyma/nappulapiirto/KuningatarPiirto.class
 logiikka/peli/Maa.class
-Main.class
 kayttoliittyma/TiedostoValitsinTallennus.class
 logiikka/peli/PeliHallinta.class
 kayttoliittyma/kuuntelijat/LataaPeliKuuntelija.class

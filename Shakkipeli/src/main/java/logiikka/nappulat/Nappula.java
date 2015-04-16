@@ -80,7 +80,7 @@ public abstract class Nappula {
      * @return
      */
     public boolean onSallittuSiirto(int x, int y) {
-        if (this.kohdeLaudanUlkopuolella(x, y)) {
+        if (this.getLauta().kohdeLaudanUlkopuolella(x, y)) {
             return false;
         } else if (this.tarkistaOnkoKohdeOma(x, y)) { //Kohde ruudussa oma nappula
             return false;
@@ -145,14 +145,7 @@ public abstract class Nappula {
         return false;
     }
 
-    /**
-     * kertoo onko kohderuutu oikeasti tyhjä (eli ei haamusotilasta)
-     *
-     * @param x
-     * @param y
-     * @return
-     */
-    
+  
 
     protected abstract boolean sallittuLiikkumisTapa(int x, int y);
 
@@ -173,9 +166,7 @@ public abstract class Nappula {
      * @param y
      * @return
      */
-    protected boolean kohdeLaudanUlkopuolella(int x, int y) {
-        return x < 0 || y < 0 || x > this.getLauta().getSize() - 1 || y > this.getLauta().getSize() - 1;
-    }
+    
 
     /**
      * Kertoo onko kohde sama kuin oma sijainti
