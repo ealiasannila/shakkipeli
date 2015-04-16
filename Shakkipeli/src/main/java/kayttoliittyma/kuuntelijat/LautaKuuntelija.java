@@ -32,6 +32,14 @@ public class LautaKuuntelija extends KayttoliittymanTuntevaLuokka implements Mou
      *
      * @param me
      */
+    private int muutaX(int x) {
+        return x / this.kayttoliittyma.getPeliPiirto().getSivunPituus();
+    }
+
+    private int muutaY(int y) {
+        return 7 - (y / this.kayttoliittyma.getPeliPiirto().getSivunPituus());
+    }
+
     @Override
     public void mouseClicked(MouseEvent me) {
         if (this.kayttoliittyma.getPeliHallinta().getPeli().onMatissa()
@@ -43,22 +51,24 @@ public class LautaKuuntelija extends KayttoliittymanTuntevaLuokka implements Mou
         if (this.kayttoliittyma.getPeliPiirto().sotilaanKorotusOnKesken()) {
             return;
         }
-        int x = me.getX() / this.kayttoliittyma.getPeliPiirto().getSivunPituus();
-        int y = 7 - (me.getY() / this.kayttoliittyma.getPeliPiirto().getSivunPituus());
 
-        if (x < 0 || x > 7 || y < 0 || y > 7) {
-            System.out.println("Laudan ulkopuolelta");
+        int x = muutaX(me.getX());
+        int y = muutaY(me.getY());
+
+        if (this.kayttoliittyma.getPeliHallinta().getPeli().getLauta().kohdeLaudanUlkopuolella(x, y)) {
             return;
         }
-        if (this.kayttoliittyma.getPeliHallinta().getPeli().getLauta().haeNappula(x, y) != null) {
-            if (this.kayttoliittyma.getPeliHallinta().getPeli().asetaAktiivinen(x, y)) {
-                this.kayttoliittyma.getPeliPiirto().repaint();
-                return;
-            }
+
+        if (this.kayttoliittyma.getPeliHallinta().getPeli().asetaAktiivinen(x, y)) {
+            this.kayttoliittyma.getPeliPiirto().repaint();
+            return;
+
         }
+
         if (!this.kayttoliittyma.getPeliHallinta().getPeli().siirto(x, y)) {
             this.kayttoliittyma.getPeliPiirto().asetaVaaraSiirto(x, y);
         }
+
         this.kayttoliittyma.getPeliPiirto().repaint();
 
     }

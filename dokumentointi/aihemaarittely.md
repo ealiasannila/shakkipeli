@@ -17,8 +17,4 @@
 * Matti (pelin loppuminen)
 * Patti
 * Erikoissiirrot (tornitus, sotilaan liikkuminen ekalla vuorolla 2, ohestalyönti)
-
-## Mahdollisesti toteutettavat lisätoiminnallisuudet
-* Shakkikello
-* Loki pelin kulusta, ja tietyn asetelman palauttaminen (undo)
-* Pelaajaprofiilit ja statistiikat
+* Valinnainen shakkikello(kun toisen aika loppuu häviää tämä, kun avataan jokin valikko (paitsi korotusvalikko) aika pysähtyy)

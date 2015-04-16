@@ -141,6 +141,9 @@ public class Peli {
      * @return
      */
     public boolean siirto(int x, int y) {
+        if (this.lauta.kohdeLaudanUlkopuolella(x, y)) {
+            return false;
+        }
         if (this.aktiivinen == null) {//pitää olla nappula valittuna
             return false;
         }
@@ -168,6 +171,9 @@ public class Peli {
      * @return
      */
     public boolean asetaAktiivinen(int x, int y) {
+        if (this.lauta.kohdeLaudanUlkopuolella(x, y)) {
+            return false;
+        }
 
         if (this.lauta.haeNappula(x, y) != null) {
             if (this.lauta.haeNappula(x, y).getMaa() == this.vuorossa.getMaa()) {
@@ -194,7 +200,7 @@ public class Peli {
 
     }
 
-    private void asetaKellot(int valkoisenAika, int mustanAika) {
+    public void asetaKellot(int valkoisenAika, int mustanAika) {
 
         this.valkoinen.getKello().aseta(valkoisenAika);
         this.musta.getKello().aseta(mustanAika);
@@ -607,6 +613,10 @@ public class Peli {
             riviNro--;
         }
         this.paivitaPelaajienNappulat();
+    }
+
+    public Ajastin getAjastin() {
+        return ajastin;
     }
 
     public Pelaaja getMusta() {

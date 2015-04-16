@@ -37,7 +37,10 @@ public class Kello {
 
     public void aseta(int alkuaika) {
         this.aika = alkuaika;
-        this.paivita();
+        if (this.kellonPiirto != null) {
+            this.kellonPiirto.paivita(aika);
+
+        }
 
     }
 
@@ -46,7 +49,6 @@ public class Kello {
             return false;
         }
         if (this.aika > 0) {
-
             this.aika--;
         }
         this.kellonPiirto.paivita(aika);

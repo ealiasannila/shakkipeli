@@ -40,6 +40,7 @@ public class TallennaNappiKuuntelija extends KayttoliittymanTuntevaLuokka implem
         String polku = "tallennetutPelit/omat/" + this.tekstiKentta.getText();
 
         if (this.kayttoliittyma.getPeliHallinta().tallennaPeli(polku)) {
+            this.kayttoliittyma.getPeliHallinta().lataaPeli(polku);
             this.tiedostoValitsin.getRuutu().dispose();
             this.kayttoliittyma.getPeliPiirto().repaint();
         }

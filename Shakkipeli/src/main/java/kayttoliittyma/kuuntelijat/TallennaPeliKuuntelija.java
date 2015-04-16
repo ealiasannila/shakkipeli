@@ -37,6 +37,8 @@ public class TallennaPeliKuuntelija extends KayttoliittymanTuntevaLuokka impleme
           if (this.kayttoliittyma.getPeliPiirto().sotilaanKorotusOnKesken()) {
             return;
         }
+          
+        this.kayttoliittyma.getPeliHallinta().getPeli().getAjastin().pysayta();
         SwingUtilities.invokeLater(new TiedostoValitsinTallennus(this.kayttoliittyma));
         
         this.kayttoliittyma.getFrame().repaint();

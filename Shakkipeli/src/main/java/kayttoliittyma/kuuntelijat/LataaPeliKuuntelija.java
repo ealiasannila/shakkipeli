@@ -36,6 +36,7 @@ public class LataaPeliKuuntelija extends KayttoliittymanTuntevaLuokka implements
         }
 
         SwingUtilities.invokeLater(new TiedostoValitsinLataus(this.kayttoliittyma));
+        this.kayttoliittyma.getPeliHallinta().getPeli().getAjastin().pysayta();
         this.kayttoliittyma.getFrame().repaint();
 
     }

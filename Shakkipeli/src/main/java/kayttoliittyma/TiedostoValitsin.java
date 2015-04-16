@@ -7,6 +7,9 @@ package kayttoliittyma;
 
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.File;
 import java.util.Date;
 import javax.swing.DefaultListModel;
@@ -19,11 +22,11 @@ import kayttoliittyma.kuuntelijat.KayttoliittymanTuntevaLuokka;
 import kayttoliittyma.kuuntelijat.TiedostoListaKuuntelija;
 
 /**
- *Tallennus ja latausikkunoissa käytettävä tiedostovalitsin.
+ * Tallennus ja latausikkunoissa käytettävä tiedostovalitsin.
+ *
  * @author elias
  */
-public abstract class TiedostoValitsin extends KayttoliittymanTuntevaLuokka implements Runnable  {
-
+public abstract class TiedostoValitsin extends KayttoliittymanTuntevaLuokka implements Runnable {
 
     protected JFrame ruutu;
     protected JButton nappi;
@@ -38,8 +41,18 @@ public abstract class TiedostoValitsin extends KayttoliittymanTuntevaLuokka impl
     public void run() {
         ruutu = new JFrame("TiedostoValitisin");
         ruutu.setPreferredSize(new Dimension(900, 250));
-        
-        ruutu.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+
+        WindowListener exitKuuntelija = new WindowAdapter() {
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                kayttoliittyma.getPeliHallinta().getPeli().asetaKellot(
+                        kayttoliittyma.getPeliHallinta().getPeli().getValkoinen().getKello().getAika(),
+                        kayttoliittyma.getPeliHallinta().getPeli().getMusta().getKello().getAika());
+                        ruutu.dispose();
+            }
+        };
+        ruutu.addWindowListener(exitKuuntelija);
 
         luoKomponentit(ruutu.getContentPane());
 
@@ -83,5 +96,4 @@ public abstract class TiedostoValitsin extends KayttoliittymanTuntevaLuokka impl
         return ruutu;
     }
 
-  
 }
