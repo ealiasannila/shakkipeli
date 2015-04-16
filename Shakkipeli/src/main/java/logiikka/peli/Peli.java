@@ -22,7 +22,7 @@ import logiikka.nappulat.Torni;
 
 /**
  *
- * @author elias
+ * Peli tarkistaa onko siirrot sallittuja, ja pyytää sitten lautaa tekemään ne.
  */
 public class Peli {
 
@@ -33,6 +33,7 @@ public class Peli {
     private Pelaaja vastustaja;
     private Nappula aktiivinen;
     private Ajastin ajastin;
+    private PeliTarkistus pelitarkistus;
 
     public Peli() {
 
@@ -40,71 +41,14 @@ public class Peli {
         this.musta = new Pelaaja(MUSTA);
         this.lauta = new Pelilauta();
         this.ajastin = new Ajastin(this);
+        this.pelitarkistus = new PeliTarkistus(this);
     }
 
     public boolean aikaLoppu() {
         return this.vuorossa.getKello().aikaLoppu();
     }
 
-    /**
-     * kertoo onko kuningas uhattuna, Pelin lisäksi käytetään väärästä siirrosta
-     * kertovan punaisen väläyksen tekemisessä
-     *
-     * @return
-     */
-    public boolean onShakissa() {
-        return onkoUhattuna(this.vuorossa.getKunkku().getX(), this.vuorossa.getKunkku().getY());
-    }
-
-    /**
-     * kertoo onko peli tullut päätökseen On matti jos: on shakki kunkku ei voi
-     * liikkua useampi uhkaa tai ei voi syödä uhkaajaa ja ei voi blokata shakkia
-     *
-     * @return
-     */
-    public boolean onMatissa() {
-        if (!this.onShakissa()) {
-            return false;
-        }
-        if (!this.kunkkuEiVoiLiikkua()) {
-            return false;
-        }
-        if (this.uhkaakoUseampi(this.vuorossa.getKunkku().getX(), this.vuorossa.getKunkku().getY())) { //Onko tästä metodista mitään iloa kellekkään??
-            return true;
-        }
-        if (voiSyodaNappulan(this.uhkaavaNappula(this.vuorossa.getKunkku().getX(), this.vuorossa.getKunkku().getY()))) {
-            return false;
-        }
-        if (this.voiBlokata()) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * kertoo onko peli päättynyt tasapeliin peli on tasapeli jos: kumpikaan ei
-     * voi tehdä mattia jäljellä olevilla nappuloilla tai kumpikaan ei ole
-     * shakissa ja kumpikaan ei voi liikuttaa mitään nappulaa
-     *
-     * @return
-     */
-    public boolean onPatissa() {
-
-        if (this.eiVoiTehdaMattia()) {
-            return true;
-        }
-        if (this.onShakissa()) {
-            return false;
-        }
-
-        if (this.eiVoiLiikkuaMillaanNappulalla()) {
-            return true;
-        }
-
-        return false;
-
-    }
-
+   
     /**
      * korottaa sotilaan parametrina annetuksi upseeriksi
      *
@@ -211,90 +155,7 @@ public class Peli {
         }
     }
 
-    /**
-     * kertoo onko jokin ruutu uhattuna
-     *
-     * @param x
-     * @param y
-     * @return
-     */
-    private boolean onkoUhattuna(int x, int y) {
-        if (this.uhkaavaNappula(x, y) == null) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * kertoo mikä nappula jos mikään uhkaa tiettyä ruutua
-     *
-     * @param x
-     * @param y
-     * @return
-     */
-    private Nappula uhkaavaNappula(int x, int y) {
-        return this.haeUhkaava(x, y, this.vastustaja.getNappulat());
-
-    }
-
-    /**
-     * käy kaikki vastustajan nappulat läpi ja tarkistaa onko niistä jollain
-     * reitti annettuun ruutuun. Palauttaa ensimmäisen nappulan jonka löytää tai
-     * null
-     *
-     * @param x
-     * @param y
-     * @param vastustajanNappulat
-     * @return
-     */
-    private Nappula haeUhkaava(int x, int y, ArrayList<Nappula> vastustajanNappulat) {
-        for (Nappula nappula : vastustajanNappulat) {
-            if (nappula.tarkistaReitti(x, y)) {
-                return nappula;
-            }
-        }
-        return null;
-
-    }
-
-    /**
-     * kertoo uhkaako useampi nappula, käytetään matin tarkistuksessa
-     *
-     * @param x
-     * @param y
-     * @return
-     */
-    private boolean uhkaakoUseampi(int x, int y) {
-        return this.uhkaakoUseampi(x, y, this.vastustaja.getNappulat());
-
-    }
-
-    private boolean uhkaakoUseampi(int x, int y, ArrayList<Nappula> vastustajanNappulat) {
-        int uhkaajat = 0;
-        for (Nappula nappula : vastustajanNappulat) {
-            if (nappula.tarkistaReitti(x, y)) {
-                uhkaajat++;
-            }
-        }
-        if (uhkaajat > 1) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean kunkkuEiVoiLiikkua() {
-        for (int y = Math.max(0, this.vuorossa.getKunkku().getY() - 1); y <= Math.min(lauta.getSize() - 1, this.vuorossa.getKunkku().getY() + 1); y++) {
-            for (int x = Math.max(0, this.vuorossa.getKunkku().getX() - 1); x <= Math.min(lauta.getSize() - 1, this.vuorossa.getKunkku().getX() + 1); x++) {
-                if (kokeileSiirtoa(x, y, this.vuorossa.getKunkku())) {
-                    return false;
-                }
-
-            }
-        }
-        return true;
-    }
-
-    private boolean kokeileSiirtoa(int x, int y, Nappula nappula) {
+    boolean kokeileSiirtoa(int x, int y, Nappula nappula) {
         int vanhaX = nappula.getX();
         int vanhaY = nappula.getY();
         Nappula vastustajaTalteen = this.lauta.haeNappula(x, y);
@@ -302,7 +163,7 @@ public class Peli {
         boolean teeSiirto = this.lauta.teeSiirto(x, y, nappula); //tee siirto
         if (teeSiirto) {
             this.paivitaPelaajienNappulat();
-            if (this.onkoUhattuna(this.vuorossa.getKunkku().getX(), this.vuorossa.getKunkku().getY())) { //jos on edelleen uhattuna, palautetaan tilanne
+            if (this.pelitarkistus.onkoUhattuna(this.vuorossa.getKunkku().getX(), this.vuorossa.getKunkku().getY())) { //jos on edelleen uhattuna, palautetaan tilanne
                 teeSiirto = false;
             } else {
                 teeSiirto = true;
@@ -319,107 +180,6 @@ public class Peli {
         this.lauta.asetaNappula(vastustajaTalteen, vastustajanX, vastustajanY);
         this.paivitaPelaajienNappulat();
     }
-
-    private boolean eiVoiLiikkuaMillaanNappulalla() {
-        for (Nappula nappula : this.vuorossa.getNappulat()) {
-            for (Ruutu ruutu : nappula.mahdollisetRuudut()) {
-                if (this.kokeileSiirtoa(ruutu.getX(), ruutu.getY(), nappula)) {
-                    return false;
-                }
-            }
-        }
-        return true;
-
-    }
-
-    private boolean eiVoiTehdaMattia() {
-        return this.eiVoiTehdaMattia(this.getMusta()) && this.eiVoiTehdaMattia(this.getValkoinen());
-    }
-
-    private boolean eiVoiTehdaMattia(Pelaaja pelaaja) {
-        if (this.vainKunkku(pelaaja)) {
-            return true;
-        }
-        if (this.vainKunkkuJaRatsu(pelaaja)) {
-            return true;
-        }
-        if (this.vainKunkkuJaYhdellaVarillaLahetteja(pelaaja)) {
-            return true;
-        }
-        return false;
-
-    }
-
-    private boolean vainKunkku(Pelaaja pelaaja) {
-        return pelaaja.getNappulat().size() == 1;
-    }
-
-    private boolean vainKunkkuJaRatsu(Pelaaja pelaaja) {
-        if (pelaaja.getNappulat().size() != 2) {
-            return false;
-        }
-        for (Nappula nappula : pelaaja.getNappulat()) {
-            if (nappula.getClass() != Kunkku.class && nappula.getClass() != Ratsu.class) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean vainKunkkuJaYhdellaVarillaLahetteja(Pelaaja pelaaja) {
-        boolean onMustaLahetti = false;
-        boolean onVaaleaLahetti = false;
-
-        for (int i = 0; i < pelaaja.getNappulat().size(); i++) {
-            Nappula nappula = pelaaja.getNappulat().get(i);
-            if (nappula.equals(pelaaja.getKunkku())) {
-                continue;
-            } else if (nappula.getClass() == Lahetti.class) {
-                if ((nappula.getX() + nappula.getY()) % 2 == 0) {
-                    onVaaleaLahetti = true;
-                } else {
-                    onMustaLahetti = true;
-                }
-            } else {
-                return false;
-            }
-
-        }
-
-        return !(onVaaleaLahetti && onMustaLahetti);
-
-    }
-
-    private boolean voiSyodaNappulan(Nappula nappula) {
-        for (Nappula oma : vuorossa.getNappulat()) {
-            if (oma.onSallittuSiirto(nappula.getX(), nappula.getY())) {
-                if (oma.equals(vuorossa.getKunkku())) {
-                    if (this.onkoUhattuna(nappula.getX(), nappula.getY())) {
-                        continue;
-                    }
-                }
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private boolean voiBlokata() {
-        Nappula uhkaava = this.uhkaavaNappula(this.vuorossa.getKunkku().getX(), this.vuorossa.getKunkku().getY());
-        ArrayList<Ruutu> uhatutRuudut = uhkaava.uhkausLinja(this.vuorossa.getKunkku().getX(), this.vuorossa.getKunkku().getY());
-        for (Nappula oma : vuorossa.getNappulat()) {
-            if (oma.equals(vuorossa.getKunkku())) {
-                continue;
-            }
-            for (Ruutu ruutu : uhatutRuudut) {
-                if (oma.onSallittuSiirto(ruutu.getX(), ruutu.getY())) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
     private void paivitaPelaajienNappulat() {
         this.musta.getNappulat().clear();
         this.valkoinen.getNappulat().clear();
@@ -466,8 +226,9 @@ public class Peli {
 
         if (this.getVuorossa().getOhestaLyontiX() != -1) {
 
-            if (this.lauta.haeNappula(this.vuorossa.getOhestaLyontiX(), this.vuorossa.getSotilaastaSeuraavaRivi()).getClass() != HaamuSotilas.class) {
-
+            
+            if (!this.lauta.tarkistaOnkoKohdeOikeastiTyhja(this.vuorossa.getOhestaLyontiX(), this.vuorossa.getSotilaastaSeuraavaRivi()) 
+                    && this.lauta.haeNappula(this.vuorossa.getOhestaLyontiX(), this.vuorossa.getSotilaastaSeuraavaRivi()).getClass() != HaamuSotilas.class) {
                 this.lauta.asetaNappula(null, this.vuorossa.getOhestaLyontiX(), this.vuorossa.getKaksiRiviaSotilaasta());
             } else {
                 this.lauta.asetaNappula(null, this.vuorossa.getOhestaLyontiX(), this.vuorossa.getSotilaastaSeuraavaRivi());
@@ -523,7 +284,7 @@ public class Peli {
             return false;
         }
 
-        if (this.onkoUhattuna(5, this.getVuorossa().getPerusRivi()) || this.onkoUhattuna(6, this.getVuorossa().getPerusRivi()) || this.onkoUhattuna(4, this.getVuorossa().getPerusRivi())) {
+        if (this.pelitarkistus.onkoUhattuna(5, this.getVuorossa().getPerusRivi()) || this.pelitarkistus.onkoUhattuna(6, this.getVuorossa().getPerusRivi()) || this.pelitarkistus.onkoUhattuna(4, this.getVuorossa().getPerusRivi())) {
             return false;
         }
         return true;
@@ -542,10 +303,18 @@ public class Peli {
         if (!(this.getLauta().tarkistaOnkoKohdeVapaa(1, this.vuorossa.getPerusRivi()) && this.getLauta().tarkistaOnkoKohdeVapaa(2, this.vuorossa.getPerusRivi()) && this.getLauta().tarkistaOnkoKohdeVapaa(3, this.vuorossa.getPerusRivi()))) {
             return false;
         }
-        if (this.onkoUhattuna(2, this.vuorossa.getPerusRivi()) || this.onkoUhattuna(3, this.vuorossa.getPerusRivi()) || this.onkoUhattuna(4, this.vuorossa.getPerusRivi())) {
+        if (this.pelitarkistus.onkoUhattuna(2, this.vuorossa.getPerusRivi()) || this.pelitarkistus.onkoUhattuna(3, this.vuorossa.getPerusRivi()) || this.pelitarkistus.onkoUhattuna(4, this.vuorossa.getPerusRivi())) {
             return false;
         }
         return true;
+    }
+
+    public Pelaaja getVastustaja() {
+        return vastustaja;
+    }
+
+    public PeliTarkistus getPelitarkistus() {
+        return pelitarkistus;
     }
 
     private void lataaVuoro(String maa) {

@@ -67,13 +67,13 @@ public class PeliPiirto extends JPanel {
     private void peliLoppu(Graphics graphics) {
         graphics.setColor(Color.GRAY);
 
-        if (this.kayttoliittyma.getPeliHallinta().getPeli().onPatissa()) {
+        if (this.kayttoliittyma.getPeliHallinta().getPeli().getPelitarkistus().onPatissa()) {
             graphics.setFont(new Font("TimesRoman", Font.PLAIN, this.getSivunPituus()));
             graphics.drawString("PATTITILANNE ", this.getSivunPituus(), this.getSivunPituus() * 3);
 
         }
 
-        if (this.kayttoliittyma.getPeliHallinta().getPeli().onMatissa()||this.kayttoliittyma.getPeliHallinta().getPeli().aikaLoppu()) {
+        if (this.kayttoliittyma.getPeliHallinta().getPeli().getPelitarkistus().onMatissa()||this.kayttoliittyma.getPeliHallinta().getPeli().aikaLoppu()) {
             graphics.setFont(new Font("TimesRoman", Font.PLAIN, this.getSivunPituus()));
             graphics.drawString("HÄVISIT ", this.getSivunPituus(), this.getSivunPituus() * 3);
             graphics.drawString("" + this.kayttoliittyma.getPeliHallinta().getPeli().getVuorossa().getMaa(), this.getSivunPituus(), (int) (this.getSivunPituus() * 4.5));
@@ -147,7 +147,7 @@ public class PeliPiirto extends JPanel {
         if (this.vaaraSiirtoX != -1) {
             graphics.setColor(Color.RED);
             graphics.fillRect((this.vaaraSiirtoX) * this.getSivunPituus(), (7 - this.vaaraSiirtoY) * this.getSivunPituus(), this.getSivunPituus(), this.getSivunPituus());
-            if (this.kayttoliittyma.getPeliHallinta().getPeli().onShakissa()) {
+            if (this.kayttoliittyma.getPeliHallinta().getPeli().getPelitarkistus().onShakissa()) {
                 graphics.fillRect((this.kayttoliittyma.getPeliHallinta().getPeli().getVuorossa().getKunkku().getX()) * this.getSivunPituus(), (7 - this.kayttoliittyma.getPeliHallinta().getPeli().getVuorossa().getKunkku().getY()) * this.getSivunPituus(), this.getSivunPituus(), this.getSivunPituus());
 
             }

@@ -3,7 +3,7 @@
 #Perustoiminnot:
 * Ohjelman käynnistyessä peli on valmis pelattavaksi, ja valkoinen voi aloittaa pelin.
 * Yläreunan päävalikossa kolme toimintoa:
-- Uusi peli: käynnistää uuden pelin.
+- Uusi peli: avaa uuden pelin käynnistystä varten valikon.
 - Lataa peli: avaa latausikkunan
 - Tallenna peli: avaa tallennusikkunan
 
@@ -11,17 +11,28 @@
 * Pelin lataus ikkunan yläreunassa näkyy kullakin hetkellä valittuna oleva tallennettu peli.
 * Ikkunan keskiosassa näkyy lista tallennetuista peleistä, joista voidaan hiirellä valita ladattava peli.
 * Alaosan Lataa nappi lataa pelin ja sulkee latausikkunan. Tämän jälkeen vuorossa oleva pelaaja voi valita nappulan ja jatkaa peliä
+* jos ladattavassa pelissä oli kello käytössä, alkaa aika kulumaan välittömästi Lataa napin painalluksen jälkeen.
 
 #Pelin tallennus:
 * Tallennus ikkuna toimii hyvin samaan tapaan kuin latausikkuna. Yläreunassa näkyy tallennettavan pelin nimi. Toisin kuin latausikkunassa tallennettaessa, voidaan tähän kirjoittaa vapaavalintainen nimi. Jos nimellä on jo tallennettu peli se ylikirjoitetaan.
 * Jos halutaan tallentaa olemassa olevan pelin päälle voidaan keskiosan listasta valita peli jonka päälle tallennetaan.
 * Tallenna nappi tallentaa pelitilanteen valittuun tiedostoon, minkä jälkeen peli voi jatkua.
+* jos tallenettavassa pelissä on kello käytössä, alkaa aika jälleen kulumaan välittömästi Tallenna napin painalluksen jälkeen.
 
 #Pelin kulku:
 * Pelaaja valitsee ensin vuorollaan nappulan hiirellä, minkä jälkeen valitun nappulan ruutu muuttu keltaiseksi.
 * Kun jokin nappula on aktiivinen voi pelaaja tehdä siirron valitsemalla kohderuudun hiirellä.
 * Mikäli siirto on sallittu siirtyy nappula valittuun ruutuun ja vaihtuu vuoro toiselle pelaajalle.
 * Mikäli siirto ei ole sallittu välähtää valitussa kohderuudussa punainen merkkivalo, joka kertoo siirron olevan sääntöjen vastainen.
+
+#Pelin päättyminen:
+* Peli voi päättyä joko shakkimattiin, ajan päättymiseen tai tasapeliin.
+- kun toinen pelaaja joutuu shakkimattiin tai häneltä loppuu aika näytetään pelin päättymisestä kertova "hävisit musta/valkoinen" teksti.
+- kun peli päättyy tasapeliin näytetään tasapelistä kertova "tasapeli" teksti.
+
+* Tasapeliin päädytään seuraavissa tilanteissa:
+- Kumpikaan pelaaja ei voi jäljellä olevalla kalustolla saavuttaa shakkimattia
+- Vuorossa oleva pelaaja ei voi liikuttaa mitään nappulaansa.
 
 #Tuetut erikoissiirrot ja säännöt:
 * Sotilaan korotus:

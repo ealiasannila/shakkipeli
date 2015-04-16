@@ -42,9 +42,9 @@ public class LautaKuuntelija extends KayttoliittymanTuntevaLuokka implements Mou
 
     @Override
     public void mouseClicked(MouseEvent me) {
-        if (this.kayttoliittyma.getPeliHallinta().getPeli().onMatissa()
-                || this.kayttoliittyma.getPeliHallinta().getPeli().onPatissa()
-                || this.kayttoliittyma.getPeliHallinta().getPeli().aikaLoppu()) {
+        if (this.kayttoliittyma.getPeliHallinta().getPeli().getPelitarkistus().onMatissa()
+                || this.kayttoliittyma.getPeliHallinta().getPeli().getPelitarkistus().onPatissa()
+                || this.kayttoliittyma.getPeliHallinta().getPeli().getPelitarkistus().aikaLoppu()) {
             return;
         }
 
