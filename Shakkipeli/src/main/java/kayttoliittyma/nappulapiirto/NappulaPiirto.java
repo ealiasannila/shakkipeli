@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import kayttoliittyma.PeliPiirto;
 import logiikka.peli.Maa;
+import static logiikka.peli.Maa.MUSTA;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -49,7 +50,13 @@ public abstract class NappulaPiirto {
 
     public abstract Image haeKuva(Maa maa);
 
-    protected Image haeKuva(String polku) {
+    protected Image haeKuva(Maa maa, String tiedostonNimi) {
+        String polku =  "nappulakuvat/";
+        if (maa == MUSTA) {
+            polku += "musta/" + tiedostonNimi;
+        } else {
+            polku += "valkoinen/" + tiedostonNimi;
+        }
         File tiedosto = new File(polku);
 
         BufferedImage kuva = null;

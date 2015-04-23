@@ -12,3 +12,4 @@
 31.3 4h kirjoitin lisää testejä
 15.4 4h siistin nappulanpiirtoa, selkeytin pelin, pelihallinan, nappulan, laudan ja pelaajan työnjakoa. Varauduin puuttuviin tiedostoihin.
 16.4 8h lisäsin kellon, piirsin sekvenssikaavioita, päivitin luokkakaavion, jaoin Pelin Peliin ja PeliTarkistukseen
+23.4 3h piirsin lisää sekvenssikaavioita, päivitin testejä.

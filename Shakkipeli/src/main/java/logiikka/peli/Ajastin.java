@@ -9,6 +9,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
+ * Kutsuu vuorossa olevan pelaajan kelloa kerran sekunnissa, ja pyytää tätä
+ * päivittämään aikansa.
  *
  * @author elias
  */
@@ -24,8 +26,12 @@ public class Ajastin {
         this.ajastinTehtava = new TimerTask() {
             @Override
             public void run() {
+                if (peli.getVastustaja().getKorotettava() != null) {
+                    if (!peli.getVastustaja().getKello().paivita()) {
+                        this.cancel();
 
-                if (!peli.getVuorossa().getKello().paivita()) {
+                    }
+                } else if (!peli.getVuorossa().getKello().paivita()) {
                     this.cancel();
 
                 }
@@ -35,10 +41,16 @@ public class Ajastin {
 
     }
 
+    /**
+     * käynnistää ajastimen
+     */
     public void kaynnista() {
         this.ajastin.schedule(ajastinTehtava, 1000, 1000);
     }
 
+    /**
+     * pysäyttää ajastimen
+     */
     public void pysayta() {
         this.ajastin.cancel();
         this.ajastin.purge();

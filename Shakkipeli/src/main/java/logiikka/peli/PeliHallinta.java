@@ -76,7 +76,7 @@ public class PeliHallinta {
     public boolean tallennaPeli(String tiedostonNimi) {
         try {
             PrintWriter writer;
-            writer = new PrintWriter(tiedostonNimi, "UTF-8");
+            writer = new PrintWriter(tiedostonNimi.trim(), "UTF-8");
 
             writer.print(this.peli.toString());
 

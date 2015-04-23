@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import kayttoliittyma.KelloPiirto;
 
 /**
- *
+ * Kello pitää kirjaa pelaajan jäljellä olevasta ajasta, ja vähentää sitä ajastimen kutsuessa paivita metodia
  * @author elias
  */
 public class Kello {
@@ -27,14 +27,18 @@ public class Kello {
         //this.paivita();
     }
 
-    public KelloPiirto getKellonPiirto() {
-        return kellonPiirto;
-    }
-
+    /**
+     * asettaa kellolle sen piirtoelementin. Kello pyytää paivita() metodissa myös kellon piirtoa paivittamaan itsensa
+     * @param kellonPiirto 
+     */
     public void setKellonPiirto(KelloPiirto kellonPiirto) {
         this.kellonPiirto = kellonPiirto;
     }
 
+    /**
+     * asettaa kellolle ajan. Jos kellolla on piirtoelementii, päivitetään sen aika
+     * @param alkuaika 
+     */
     public void aseta(int alkuaika) {
         this.aika = alkuaika;
         if (this.kellonPiirto != null) {
@@ -44,6 +48,10 @@ public class Kello {
 
     }
 
+    /**
+     * vähentää kellossa jäljellä olevia sekunteja yhdellä, kunnes aika on nolla
+     * @return 
+     */
     public boolean paivita() {
         if (this.kellonPiirto == null) {
             return false;

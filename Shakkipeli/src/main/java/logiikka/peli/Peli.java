@@ -44,8 +44,6 @@ public class Peli {
         this.pelitarkistus = new PeliTarkistus(this);
     }
 
-
-   
     /**
      * korottaa sotilaan parametrina annetuksi upseeriksi
      *
@@ -73,16 +71,14 @@ public class Peli {
     }
 
     /**
-     * kokeilee siirtoa ja jos siirto ei jätä peliä ei sallittuun tilaan jää
-     * siirto voimaan. Jos kunkku jää uhatuksi ei siirto ole sallittu ja se
-     * perutaan.
+     * tekee aktiivisena olevalla nappulalla ruutuun x,y
      *
      * @param x
      * @param y
      * @return
      */
     public boolean siirto(int x, int y) {
-        if (this.lauta.kohdeLaudanUlkopuolella(x, y)) {
+        if (this.lauta.ruutuLaudanUlkopuolella(x, y)) {
             return false;
         }
         if (this.aktiivinen == null) {//pitää olla nappula valittuna
@@ -112,7 +108,7 @@ public class Peli {
      * @return
      */
     public boolean asetaAktiivinen(int x, int y) {
-        if (this.lauta.kohdeLaudanUlkopuolella(x, y)) {
+        if (this.lauta.ruutuLaudanUlkopuolella(x, y)) {
             return false;
         }
 
@@ -140,11 +136,14 @@ public class Peli {
         this.asetaKellot(Integer.parseInt(lukija.nextLine()), Integer.parseInt(lukija.nextLine()));
 
     }
+
     /**
-     * asettaa kelloihin tietyn ajan ja käynnistää ajastimen jos kello on käytössä
-     * public koska tarvitaan kellojen pysäyttämiseen kun avataan lataus tai tallennus ikkuna
+     * asettaa kelloihin tietyn ajan ja käynnistää ajastimen jos kello on
+     * käytössä public koska tarvitaan kellojen pysäyttämiseen kun avataan
+     * lataus tai tallennus ikkuna
+     *
      * @param valkoisenAika
-     * @param mustanAika 
+     * @param mustanAika
      */
     public void asetaKellot(int valkoisenAika, int mustanAika) {
 
@@ -157,6 +156,16 @@ public class Peli {
         }
     }
 
+    /**
+     * kokeilee siirtoa ja jos siirto ei jätä peliä ei sallittuun tilaan jää
+     * siirto voimaan. Jos kunkku jää uhatuksi ei siirto ole sallittu ja se
+     * perutaan.
+     *
+     * @param x
+     * @param y
+     * @param nappula
+     * @return
+     */
     boolean kokeileSiirtoa(int x, int y, Nappula nappula) {
         int vanhaX = nappula.getX();
         int vanhaY = nappula.getY();
@@ -182,6 +191,7 @@ public class Peli {
         this.lauta.asetaNappula(vastustajaTalteen, vastustajanX, vastustajanY);
         this.paivitaPelaajienNappulat();
     }
+
     private void paivitaPelaajienNappulat() {
         this.musta.getNappulat().clear();
         this.valkoinen.getNappulat().clear();
@@ -228,8 +238,7 @@ public class Peli {
 
         if (this.getVuorossa().getOhestaLyontiX() != -1) {
 
-            
-            if (!this.lauta.tarkistaOnkoKohdeOikeastiTyhja(this.vuorossa.getOhestaLyontiX(), this.vuorossa.getSotilaastaSeuraavaRivi()) 
+            if (!this.lauta.tarkistaOnkoKohdeOikeastiTyhja(this.vuorossa.getOhestaLyontiX(), this.vuorossa.getSotilaastaSeuraavaRivi())
                     && this.lauta.haeNappula(this.vuorossa.getOhestaLyontiX(), this.vuorossa.getSotilaastaSeuraavaRivi()).getClass() != HaamuSotilas.class) {
                 this.lauta.asetaNappula(null, this.vuorossa.getOhestaLyontiX(), this.vuorossa.getKaksiRiviaSotilaasta());
             } else {
@@ -315,10 +324,6 @@ public class Peli {
         return vastustaja;
     }
 
-    public PeliTarkistus getPelitarkistus() {
-        return pelitarkistus;
-    }
-
     private void lataaVuoro(String maa) {
         if (this.musta.getMaa().toString().equals(maa)) {
             this.vuorossa = this.musta;
@@ -327,7 +332,7 @@ public class Peli {
             this.vuorossa = this.valkoinen;
             this.vastustaja = this.musta;
         }
-        this.aktiivinen=null;
+        this.aktiivinen = null;
     }
 
     private void lataaNappulat(Scanner lukija) {
@@ -385,6 +390,10 @@ public class Peli {
             riviNro--;
         }
         this.paivitaPelaajienNappulat();
+    }
+
+    public PeliTarkistus getPelitarkistus() {
+        return pelitarkistus;
     }
 
     public Ajastin getAjastin() {

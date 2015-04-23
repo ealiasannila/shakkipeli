@@ -32,77 +32,77 @@ public class RatsuTest {
 
     @Test
     public void liikkuuEtuOikea1() {
-        assertTrue (this.ratsu.onSallittuSiirto(5, 6));
+        assertTrue(this.ratsu.onSallittuSiirto(5, 6));
     }
 
     @Test
     public void liikkuuEtuOikea2() {
-        assertTrue (this.ratsu.onSallittuSiirto(6, 5));
+        assertTrue(this.ratsu.onSallittuSiirto(6, 5));
     }
 
     @Test
     public void liikkuuTakaOikea1() {
-        assertTrue (this.ratsu.onSallittuSiirto(5, 2));
+        assertTrue(this.ratsu.onSallittuSiirto(5, 2));
     }
 
     @Test
     public void liikkuuTakaOikea2() {
-        assertTrue (this.ratsu.onSallittuSiirto(6, 3));
+        assertTrue(this.ratsu.onSallittuSiirto(6, 3));
     }
 
     @Test
     public void liikkuuEtuVasen1() {
-        assertTrue (this.ratsu.onSallittuSiirto(3, 6));
+        assertTrue(this.ratsu.onSallittuSiirto(3, 6));
     }
 
     @Test
     public void liikkuuEtuVasen2() {
-        assertTrue (this.ratsu.onSallittuSiirto(2, 5));
+        assertTrue(this.ratsu.onSallittuSiirto(2, 5));
     }
 
     @Test
     public void liikkuuTakaVasen1() {
-        assertTrue (this.ratsu.onSallittuSiirto(3, 2));
+        assertTrue(this.ratsu.onSallittuSiirto(3, 2));
     }
 
     @Test
     public void liikkuuTakaVasen2() {
-        assertTrue (this.ratsu.onSallittuSiirto(2, 3));
+        assertTrue(this.ratsu.onSallittuSiirto(2, 3));
     }
 
     @Test
     public void eiLiikuVaarin() {
-        assertFalse (this.ratsu.onSallittuSiirto(4, 5));
-        assertFalse (this.ratsu.onSallittuSiirto(5, 5));
-        assertFalse (this.ratsu.onSallittuSiirto(6, 6));
-        assertFalse (this.ratsu.onSallittuSiirto(2, 4));
+        assertFalse(this.ratsu.onSallittuSiirto(4, 5));
+        assertFalse(this.ratsu.onSallittuSiirto(5, 5));
+        assertFalse(this.ratsu.onSallittuSiirto(6, 6));
+        assertFalse(this.ratsu.onSallittuSiirto(2, 4));
 
     }
 
     @Test
     public void sallittuLiikkumisTapa() {
         for (int i = 0; i < 8; i++) {
-            assertFalse (this.ratsu.sallittuLiikkumisTapa(i, 4));
+            assertFalse(this.ratsu.sallittuLiikkumisTapa(i, 4));
         }
         for (int i = 0; i < 8; i++) {
-            assertFalse (this.ratsu.sallittuLiikkumisTapa(4, i));
+            assertFalse(this.ratsu.sallittuLiikkumisTapa(4, i));
         }
         for (int i = 0; i < 8; i++) {
-            assertFalse (this.ratsu.sallittuLiikkumisTapa(i, i));
+            assertFalse(this.ratsu.sallittuLiikkumisTapa(i, i));
         }
     }
 
     @Test
     public void reitillaEiMuitaNappuloitaTest() {
-        assertTrue (this.ratsu.reitillaEiMuitaNappuloita(2, 3));
+        assertTrue(this.ratsu.reitillaEiMuitaNappuloita(2, 3));
     }
 
     @Test
     public void uhkausLinjaTyhjaTest() {
-        assertTrue (this.ratsu.uhkausLinja(4, 3) != null);
-        assertTrue (this.ratsu.uhkausLinja(2, 3).isEmpty());
-        assertTrue (this.ratsu.uhkausLinja(4, 5).isEmpty());
-        assertTrue (this.ratsu.uhkausLinja(4, 5).getClass() == ArrayList.class);
+        assertTrue(this.ratsu.uhkausLinja(4, 3) != null);
+        assertTrue(this.ratsu.uhkausLinja(2, 3).isEmpty());
+        assertTrue(this.ratsu.uhkausLinja(4, 5).isEmpty());
+        assertTrue(this.ratsu.uhkausLinja(4, 5).getClass() == ArrayList.class);
     }
 
     @Test
@@ -115,7 +115,6 @@ public class RatsuTest {
 
     @Test
     public void mahdollisetRuudutTest() {
-        System.out.println(this.ratsu.mahdollisetRuudut().toString());
         assertEquals(this.ratsu.mahdollisetRuudut().toString(), ("[[6,5], [2,5], [5,6], [3,6], [6,3], [2,3], [5,2], [3,2]]"));
     }
 

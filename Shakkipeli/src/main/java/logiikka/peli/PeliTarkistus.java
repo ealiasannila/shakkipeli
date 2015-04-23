@@ -13,7 +13,7 @@ import logiikka.nappulat.Ratsu;
 
 /**
  * PeliTarkistus tarjoaa metodeja erilaisiin pelitilanteeseen liittyviin tarkistuksiin.
- *
+ * Luokka toimii käytännössä Peli luokan apuluokkana
  * 
  */
 public class PeliTarkistus {

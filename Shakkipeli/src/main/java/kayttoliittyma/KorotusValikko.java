@@ -68,9 +68,9 @@ public class KorotusValikko implements Runnable {
 
         String polku;
         if (this.korotettavaPelaaja.getMaa() == MUSTA) {
-            polku = "src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/";
+            polku = "nappulakuvat/musta/";
         } else {
-            polku = "src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/";
+            polku = "nappulakuvat/valkoinen/";
 
         }
 

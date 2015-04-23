@@ -27,7 +27,7 @@ public class PeliHallintaTest {
 
     @Test
     public void uusiPeliTest() {
-        this.peliHallinta.uusiPeli(-1,-1);
+        this.peliHallinta.uusiPeli(-1, -1);
         assertEquals(this.peliHallinta.getPeli().toString(), ("VALKOINEN\n"
                 + "TRLQKLRT\n"
                 + "SSSSSSSS\n"
@@ -60,7 +60,7 @@ public class PeliHallintaTest {
     @Test
     public void tallennaPeliTest() {
 
-        this.peliHallinta.uusiPeli(-1,-1);
+        this.peliHallinta.uusiPeli(-1, -1);
         this.peliHallinta.tallennaPeli("tallennetutPelit/testiTilanteet/tallennusTesti.txt");
         assertEquals(this.peliHallinta.getPeli().toString(), ("VALKOINEN\n"
                 + "TRLQKLRT\n"
@@ -75,7 +75,7 @@ public class PeliHallintaTest {
                 + "-1"));
         this.peliHallinta.getPeli().asetaAktiivinen(0, 1);
         this.peliHallinta.getPeli().siirto(0, 3);
-        this.peliHallinta.tallennaPeli("tallennetutPelit/testiTilanteet/tallennusTesti.txt");
+        assertTrue(this.peliHallinta.tallennaPeli("tallennetutPelit/testiTilanteet/tallennusTesti.txt"));
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/tallennusTesti.txt");
         assertEquals(this.peliHallinta.getPeli().toString(), ("MUSTA\n"
                 + "TRLQKLRT\n"
@@ -88,6 +88,35 @@ public class PeliHallintaTest {
                 + "trlqklrt\n"
                 + "-1\n"
                 + "-1"));
+
+    }
+
+    @Test
+    public void tallennusTestTyhjaNimi() {
+        assertFalse(this.peliHallinta.tallennaPeli(""));
+    }
+
+    @Test
+    public void eiSallittuNimi() {
+        assertFalse(this.peliHallinta.tallennaPeli("\n"));
+    }
+
+    @Test
+    public void tiedostoaEiLoydyLatausTest() {
+        this.peliHallinta.uusiPeli(10, 10);
+        this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/tataTiedostoaEiOleOlemassa.txt");
+        assertEquals(this.peliHallinta.getPeli().toString(), ("VALKOINEN\n"
+                + "TRLQKLRT\n"
+                + "SSSSSSSS\n"
+                + "oooooooo\n"
+                + "oooooooo\n"
+                + "oooooooo\n"
+                + "oooooooo\n"
+                + "ssssssss\n"
+                + "trlqklrt\n"
+                + "-1\n"
+                + "-1"));
+
     }
 
     // TODO add test methods here.

@@ -22,13 +22,8 @@ public class RatsuPiirto extends NappulaPiirto {
 
     @Override
     public Image haeKuva(Maa maa) {
+        return this.haeKuva(maa, "ratsu.png");
 
-        if (maa == MUSTA) {
-            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/ratsu.png");
-
-        } else {
-            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/ratsu.png");
-        }
     }
 
 }

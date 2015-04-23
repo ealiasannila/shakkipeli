@@ -60,14 +60,14 @@ public class Pelilauta {
         }
         return false;
     }
-     /**
+
+    /**
      * kertoo onko kohderuutu vapaa
      *
      * @param x
      * @param y
      * @return
      */
-
     public boolean tarkistaOnkoKohdeVapaa(int x, int y) {
         if (this.tarkistaOnkoKohdeOikeastiTyhja(x, y)) {
             return true;
@@ -133,6 +133,7 @@ public class Pelilauta {
      *
      * @return
      */
+    @Override
     public String toString() {
         StringBuilder tuloste = new StringBuilder();
         for (int y = this.getSize() - 1; y >= 0; y--) {
@@ -148,7 +149,14 @@ public class Pelilauta {
         return tuloste.toString();
     }
 
-    public boolean kohdeLaudanUlkopuolella(int x, int y) {
+    /**
+     * tarkistaa onko ruutu x,y laudan ulkopuolella
+     *
+     * @param x
+     * @param y
+     * @return
+     */
+    public boolean ruutuLaudanUlkopuolella(int x, int y) {
         return x < 0 || y < 0 || x > this.getSize() - 1 || y > this.getSize() - 1;
     }
 }

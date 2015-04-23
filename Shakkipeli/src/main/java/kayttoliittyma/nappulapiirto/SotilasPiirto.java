@@ -22,12 +22,7 @@ public class SotilasPiirto extends NappulaPiirto {
 
     @Override
     public Image haeKuva(Maa maa) {
-        if (maa == MUSTA) {
-            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/sotilas.png");
-
-        } else {
-            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/sotilas.png");
-        }
+        return this.haeKuva(maa, "sotilas.png");
     }
 
 }

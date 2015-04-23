@@ -23,12 +23,8 @@ public class LahettiPiirto extends NappulaPiirto {
     @Override
 
     public Image haeKuva(Maa maa) {
-        if (maa == MUSTA) {
-            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/lahetti.png");
+        return this.haeKuva(maa, "lahetti.png");
 
-        } else {
-            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/lahetti.png");
-        }
     }
 
 }

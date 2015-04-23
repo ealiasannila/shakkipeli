@@ -27,12 +27,7 @@ public class TorniPiirto extends NappulaPiirto {
 
     @Override
     public Image haeKuva(Maa maa) {
-        if (maa == MUSTA) {
-            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/torni.png");
-
-        } else {
-            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/torni.png");
-        }
+        return this.haeKuva(maa, "torni.png");
 
     }
 

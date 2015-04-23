@@ -157,28 +157,7 @@ public class nappulaTest {
         assertEquals(true, torni.tarkistaOnkoKohdeVastustajan(1, 5));
     }
 
-    @Test
-    public void TunnistaOnkoKohdeVapaKohdeOnOma() {
-        Nappula omaTorni = new Torni(VALKOINEN, 1, 5, this.testiLauta);
-        assertEquals(false, this.testiLauta.tarkistaOnkoKohdeVapaa(1, 5));
-    }
-
-    @Test
-    public void TunnistaOnkoKohdeVapaKohdeOnVastustajan() {
-        Nappula vastustajanTorni = new Torni(MUSTA, 1, 5, this.testiLauta);
-        assertEquals(false, this.testiLauta.tarkistaOnkoKohdeVapaa(1, 5));
-    }
-
-    @Test
-    public void TunnistaOnkoKohdeVapaKohdeOnVapaa() {
-        assertEquals(true, this.testiLauta.tarkistaOnkoKohdeVapaa(1, 5));
-    }
-
-    @Test
-    public void TunnistaOnkoKohdeVapaKohdeOnVastustajanKohteenViereen() {
-        Nappula vastustajanTorni = new Torni(MUSTA, 1, 5, this.testiLauta);
-        assertEquals(true, this.testiLauta.tarkistaOnkoKohdeVapaa(1, 6));
-    }
+    
 
    
 }

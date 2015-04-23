@@ -15,6 +15,6 @@
 * Toisen nappulan syönti
 * Shakki (pakko liikuttaa kuningasta/tai blokata)
 * Matti (pelin loppuminen)
-* Patti
-* Erikoissiirrot (tornitus, sotilaan liikkuminen ekalla vuorolla 2, ohestalyönti)
-* Valinnainen shakkikelll(kun toisen aika loppuu häviää tämä, kun avataan jokin valikko (paitsi korotusvalikko) aika pysähtyy)
+* Patti (vuorossa oleva pelaaja ei voi tehdä siirtoa, tai kumpikaan ei voi enää saavuttaa mattia)
+* Erikoissiirrot (tornitus, sotilaan liikkuminen ekalla vuorolla 2, ohestalyönti, sotilaan korotus)
+* Valinnainen shakkikello(kun toisen aika loppuu häviää tämä. Kun avataan jokin valikko (paitsi korotusvalikko) aika pysähtyy)

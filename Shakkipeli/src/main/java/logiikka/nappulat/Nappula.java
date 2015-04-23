@@ -80,7 +80,7 @@ public abstract class Nappula {
      * @return
      */
     public boolean onSallittuSiirto(int x, int y) {
-        if (this.getLauta().kohdeLaudanUlkopuolella(x, y)) {
+        if (this.getLauta().ruutuLaudanUlkopuolella(x, y)) {
             return false;
         } else if (this.tarkistaOnkoKohdeOma(x, y)) { //Kohde ruudussa oma nappula
             return false;

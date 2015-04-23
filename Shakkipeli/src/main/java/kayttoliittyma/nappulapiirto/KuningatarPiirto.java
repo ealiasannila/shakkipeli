@@ -14,18 +14,14 @@ import logiikka.peli.Maa;
 import static logiikka.peli.Maa.MUSTA;
 
 /**
- *Hakee kuningattern kuvan
+ * Hakee kuningattern kuvan
+ *
  * @author elias
  */
 public class KuningatarPiirto extends NappulaPiirto {
 
     public Image haeKuva(Maa maa) {
-        if (maa == MUSTA) {
-            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/kuningatar.png");
-
-        } else {
-            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/kuningatar.png");
-        }
+        return this.haeKuva(maa, "kuningatar.png");
     }
 
 }

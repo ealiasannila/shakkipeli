@@ -55,7 +55,7 @@ public class LautaKuuntelija extends KayttoliittymanTuntevaLuokka implements Mou
         int x = muutaX(me.getX());
         int y = muutaY(me.getY());
 
-        if (this.kayttoliittyma.getPeliHallinta().getPeli().getLauta().kohdeLaudanUlkopuolella(x, y)) {
+        if (this.kayttoliittyma.getPeliHallinta().getPeli().getLauta().ruutuLaudanUlkopuolella(x, y)) {
             return;
         }
 

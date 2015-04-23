@@ -32,10 +32,14 @@ public class AloitaPeliKuuntelija extends KayttoliittymanTuntevaLuokka implement
             if (this.valikko.getAikaKentta().getValue() == null) {
                 return;
             }
-            int aika = Integer.parseInt(this.valikko.getAikaKentta().getValue().toString().trim()) * 60;
-
+            int aika;
+            try {
+                aika = Integer.parseInt(this.valikko.getAikaKentta().getValue().toString().trim()) * 60;
+            }catch(NumberFormatException e) {
+                return;
+            }
             this.kayttoliittyma.getPeliHallinta().uusiPeli(aika, aika);
-                    
+
         } else {
             this.kayttoliittyma.getPeliHallinta().uusiPeli(-1, -1);
 

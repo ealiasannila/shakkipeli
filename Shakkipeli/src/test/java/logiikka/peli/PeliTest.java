@@ -5,6 +5,8 @@ package logiikka.peli;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import kayttoliittyma.Kayttoliittyma;
+import kayttoliittyma.KelloPiirto;
 import logiikka.nappulat.Torni;
 import logiikka.peli.Pelaaja;
 import logiikka.peli.Peli;
@@ -473,6 +475,22 @@ public class PeliTest {
                 + "-1\n"
                 + "-1", this.peliHallinta.getPeli().toString());
 
+    }
+    
+    @Test(timeout = 3000)
+    public void asetaKellotTest() throws InterruptedException{
+        this.peliHallinta.getPeli().asetaKellot(10, 9);
+        this.peliHallinta.getPeli().getValkoinen().getKello().setKellonPiirto(new KelloPiirto( new Kayttoliittyma(), 1, "perusosa"));
+        Thread.sleep(1000);
+        assertEquals(9,this.peliHallinta.getPeli().getValkoinen().getKello().getAika());
+        assertEquals(9,this.peliHallinta.getPeli().getMusta().getKello().getAika());
+    }
+    @Test(timeout = 3000)
+    public void asetaKellotEiAikaaTest() throws InterruptedException{
+        this.peliHallinta.getPeli().asetaKellot(-1, -1);
+        Thread.sleep(1000);
+        assertEquals(-1,this.peliHallinta.getPeli().getValkoinen().getKello().getAika());
+        assertEquals(-1,this.peliHallinta.getPeli().getMusta().getKello().getAika());
     }
 
 }

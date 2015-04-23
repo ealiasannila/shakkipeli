@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.146" errors="0" skipped="0" tests="41" name="logiikka.peli.PeliTest">
+<testsuite failures="0" time="2.188" errors="0" skipped="0" tests="43" name="logiikka.peli.PeliTest">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64"/>
@@ -42,7 +42,7 @@
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/usr/lib/jvm/java-7-openjdk-amd64/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/home/elias/tmcbeans/java/maven-nblib/netbeans-eventspy.jar test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/home/elias/tmcbeans/java/maven-nblib/netbeans-eventspy.jar clean install"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -60,45 +60,47 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.004" classname="logiikka.peli.PeliTest" name="eiOlePattiToinenVoiTehdaMatinKaksiLahettiaSamallaVarilla"/>
-  <testcase time="0.01" classname="logiikka.peli.PeliTest" name="kunVoiSyodaNiinEiMatti"/>
-  <testcase time="0.004" classname="logiikka.peli.PeliTest" name="voiTehdaOhestaLyonnin"/>
+  <testcase time="0.006" classname="logiikka.peli.PeliTest" name="eiOlePattiToinenVoiTehdaMatinKaksiLahettiaSamallaVarilla"/>
+  <testcase time="0.005" classname="logiikka.peli.PeliTest" name="kunVoiSyodaNiinEiMatti"/>
+  <testcase time="0.005" classname="logiikka.peli.PeliTest" name="voiTehdaOhestaLyonnin"/>
   <testcase time="0.003" classname="logiikka.peli.PeliTest" name="josEiAktiivinenEpaonnistunutSiirtoPalauttaaFalse"/>
   <testcase time="0.003" classname="logiikka.peli.PeliTest" name="epaonnistunutSiirtoPalauttaaFalse"/>
-  <testcase time="0.003" classname="logiikka.peli.PeliTest" name="eiOlePattiToinenVoiTehdaMatinKaksiRatsua"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="onnistunutSiirtoPalauttaaTrue"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="onnistuneenSiirronJalkeenAktiivinenOnNull"/>
+  <testcase time="0.005" classname="logiikka.peli.PeliTest" name="eiOlePattiToinenVoiTehdaMatinKaksiRatsua"/>
+  <testcase time="0.003" classname="logiikka.peli.PeliTest" name="onnistunutSiirtoPalauttaaTrue"/>
+  <testcase time="0.003" classname="logiikka.peli.PeliTest" name="onnistuneenSiirronJalkeenAktiivinenOnNull"/>
   <testcase time="0.004" classname="logiikka.peli.PeliTest" name="korottaaLahetiksi"/>
-  <testcase time="0.003" classname="logiikka.peli.PeliTest" name="voiTehdaPitkanTornituksenValkoinen"/>
+  <testcase time="0.004" classname="logiikka.peli.PeliTest" name="voiTehdaPitkanTornituksenValkoinen"/>
   <testcase time="0.003" classname="logiikka.peli.PeliTest" name="kuninkaanUhatuksiJattaminenEiTeeSiirtoa"/>
-  <testcase time="0.005" classname="logiikka.peli.PeliTest" name="voiTehdaPitkanTornituksenMusta"/>
+  <testcase time="0.003" classname="logiikka.peli.PeliTest" name="voiTehdaPitkanTornituksenMusta"/>
   <testcase time="0.002" classname="logiikka.peli.PeliTest" name="kuninkaanUhatuksiSiirtaminenPalauttaaFalse"/>
-  <testcase time="0.009" classname="logiikka.peli.PeliTest" name="kunEiVoiBlokatNiinMatti"/>
+  <testcase time="0.004" classname="logiikka.peli.PeliTest" name="kunEiVoiBlokatNiinMatti"/>
   <testcase time="0.003" classname="logiikka.peli.PeliTest" name="kaksiUhkaaMattiMusta"/>
-  <testcase time="0.006" classname="logiikka.peli.PeliTest" name="kunVoiBlokatNiinEiMatti"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="kaksiUhkaaEiMatti"/>
-  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="kunkkuEiVoiSyodaSuojattua"/>
-  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="pattiTestVainKunkkuJaLahettejaSamallaVarilla"/>
+  <testcase time="0.005" classname="logiikka.peli.PeliTest" name="kunVoiBlokatNiinEiMatti"/>
+  <testcase time="0.003" classname="logiikka.peli.PeliTest" name="kaksiUhkaaEiMatti"/>
+  <testcase time="0.003" classname="logiikka.peli.PeliTest" name="kunkkuEiVoiSyodaSuojattua"/>
+  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="pattiTestVainKunkkuJaLahettejaSamallaVarilla"/>
   <testcase time="0.001" classname="logiikka.peli.PeliTest" name="siirronJalkeenVuorossaOlevaVaihtuu"/>
-  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="korottaaTorniksi"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="voiTehdaLyhyenTornituksenMusta"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="poistaaHaamuSotilaan"/>
-  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="syonninJalkeenSyotyNappulaEiPelaajanNappuloissa"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="kunKunkkuVoiLiikkuaEiMatti"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="kuninkaanUhatuksiPaljastaminenEiTeeSiirtoa"/>
-  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="epaOnnistuneenSiirronJalkeenVuorossaOlevaEiVaihdu"/>
-  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="kunEiMattiNiinEiMatti"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="korottaaKuningattareksi"/>
+  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="korottaaTorniksi"/>
+  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="voiTehdaLyhyenTornituksenMusta"/>
+  <testcase time="1.003" classname="logiikka.peli.PeliTest" name="asetaKellotEiAikaaTest"/>
+  <testcase time="0.006" classname="logiikka.peli.PeliTest" name="poistaaHaamuSotilaan"/>
+  <testcase time="0.003" classname="logiikka.peli.PeliTest" name="syonninJalkeenSyotyNappulaEiPelaajanNappuloissa"/>
+  <testcase time="0.005" classname="logiikka.peli.PeliTest" name="kunKunkkuVoiLiikkuaEiMatti"/>
+  <testcase time="0.022" classname="logiikka.peli.PeliTest" name="kuninkaanUhatuksiPaljastaminenEiTeeSiirtoa"/>
+  <testcase time="0.005" classname="logiikka.peli.PeliTest" name="epaOnnistuneenSiirronJalkeenVuorossaOlevaEiVaihdu"/>
+  <testcase time="0.003" classname="logiikka.peli.PeliTest" name="kunEiMattiNiinEiMatti"/>
+  <testcase time="0.003" classname="logiikka.peli.PeliTest" name="korottaaKuningattareksi"/>
   <testcase time="0.003" classname="logiikka.peli.PeliTest" name="pattiTestVainKunkkuJa2Ratsua"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="korottaaRatsuksi"/>
-  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="onShakissaTest"/>
+  <testcase time="0.003" classname="logiikka.peli.PeliTest" name="korottaaRatsuksi"/>
+  <testcase time="0.003" classname="logiikka.peli.PeliTest" name="onShakissaTest"/>
   <testcase time="0.003" classname="logiikka.peli.PeliTest" name="kunMattiNiinMatti"/>
   <testcase time="0.003" classname="logiikka.peli.PeliTest" name="pattiTestEiVoiLiikkua"/>
   <testcase time="0.003" classname="logiikka.peli.PeliTest" name="voiTehdaLyhyenTornituksenValkoinen"/>
   <testcase time="0.002" classname="logiikka.peli.PeliTest" name="pattiTestVainKunkkuJaRatsu"/>
-  <testcase time="0.001" classname="logiikka.peli.PeliTest" name="eiOlePatissa"/>
+  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="eiOlePatissa"/>
   <testcase time="0.002" classname="logiikka.peli.PeliTest" name="sotilaanKorotusTest"/>
-  <testcase time="0.004" classname="logiikka.peli.PeliTest" name="pattiTestVainKunkut"/>
-  <testcase time="0.004" classname="logiikka.peli.PeliTest" name="kaksiUhkaaMattiValkoinen"/>
-  <testcase time="0.011" classname="logiikka.peli.PeliTest" name="pattiTestVainKunkkuJaLahettejaEriVarilla"/>
+  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="pattiTestVainKunkut"/>
+  <testcase time="0.002" classname="logiikka.peli.PeliTest" name="kaksiUhkaaMattiValkoinen"/>
+  <testcase time="0.003" classname="logiikka.peli.PeliTest" name="pattiTestVainKunkkuJaLahettejaEriVarilla"/>
+  <testcase time="1.003" classname="logiikka.peli.PeliTest" name="asetaKellotTest"/>
 </testsuite>

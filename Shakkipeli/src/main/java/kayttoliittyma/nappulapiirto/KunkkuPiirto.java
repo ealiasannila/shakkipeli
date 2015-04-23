@@ -22,12 +22,7 @@ public class KunkkuPiirto extends NappulaPiirto {
 
     @Override
     public Image haeKuva(Maa maa) {
-        if (maa == MUSTA) {
-            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/musta/kunkku.png");
-
-        } else {
-            return this.haeKuva("src/main/java/kayttoliittyma/nappulapiirto/nappulakuvat/valkoinen/kunkku.png");
-        }
+        return this.haeKuva(maa, "kunkku.png");
 
     }
 }

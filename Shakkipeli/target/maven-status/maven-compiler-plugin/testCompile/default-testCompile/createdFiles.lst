@@ -6,7 +6,9 @@ logiikka/peli/PeliHallintaTest.class
 logiikka/peli/PeliTest.class
 logiikka/nappulat/SotilasTest.class
 logiikka/nappulat/nappulaTest.class
+logiikka/peli/AjastinTest.class
 logiikka/nappulat/HaamuSotilasTest.class
+logiikka/peli/KelloTest.class
 logiikka/nappulat/NappulaApuMetodejaTest.class
 logiikka/peli/PelaajaTest.class
 logiikka/nappulat/KunkkuTest.class

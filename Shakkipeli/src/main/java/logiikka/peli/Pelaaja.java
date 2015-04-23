@@ -53,10 +53,6 @@ public class Pelaaja {
         }
     }
 
-    public Kello getKello() {
-        return kello;
-    }
-
     /**
      * palauttaa pelaajan korotettavana olevan sotilaan
      *
@@ -132,10 +128,6 @@ public class Pelaaja {
         return maa;
     }
 
-    public void setMaa(Maa maa) {
-        this.maa = maa;
-    }
-
     public Kunkku getKunkku() {
         return kunkku;
     }
@@ -153,8 +145,9 @@ public class Pelaaja {
         return nappulat;
     }
 
-    public void setNappulat(ArrayList<Nappula> nappulat) {
-        this.nappulat = nappulat;
+
+    public Kello getKello() {
+        return kello;
     }
 
     public String toString() {

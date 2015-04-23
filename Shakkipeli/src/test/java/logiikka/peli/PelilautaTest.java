@@ -96,6 +96,29 @@ public class PelilautaTest {
         this.lauta.teeSiirto(3, 3, mustaTorni);
         assertEquals(null, this.lauta.haeNappula(3, 2));
     }
+    
+    @Test
+    public void TunnistaOnkoKohdeVapaKohdeOnOma() {
+        Nappula omaTorni = new Torni(VALKOINEN, 1, 5, this.lauta);
+        assertEquals(false, this.lauta.tarkistaOnkoKohdeVapaa(1, 5));
+    }
+
+    @Test
+    public void TunnistaOnkoKohdeVapaKohdeOnVastustajan() {
+        Nappula vastustajanTorni = new Torni(MUSTA, 1, 5, this.lauta);
+        assertEquals(false, this.lauta.tarkistaOnkoKohdeVapaa(1, 5));
+    }
+
+    @Test
+    public void TunnistaOnkoKohdeVapaKohdeOnVapaa() {
+        assertEquals(true, this.lauta.tarkistaOnkoKohdeVapaa(1, 5));
+    }
+
+    @Test
+    public void TunnistaOnkoKohdeVapaKohdeOnVastustajanKohteenVieressa() {
+        Nappula vastustajanTorni = new Torni(MUSTA, 1, 5, this.lauta);
+        assertEquals(true, this.lauta.tarkistaOnkoKohdeVapaa(1, 6));
+    }
 
   
     // TODO add test methods here.

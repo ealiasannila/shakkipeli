@@ -7,6 +7,9 @@
 - Lataa peli: avaa latausikkunan
 - Tallenna peli: avaa tallennusikkunan
 
+#Uusi pelin
+* Uusi Peli valikosta voidaan valita onko kello käytössä, ja kuinka paljon siinä on aikaa.
+
 #Pelin lataaminen:
 * Pelin lataus ikkunan yläreunassa näkyy kullakin hetkellä valittuna oleva tallennettu peli.
 * Ikkunan keskiosassa näkyy lista tallennetuista peleistä, joista voidaan hiirellä valita ladattava peli.
@@ -24,6 +27,7 @@
 * Kun jokin nappula on aktiivinen voi pelaaja tehdä siirron valitsemalla kohderuudun hiirellä.
 * Mikäli siirto on sallittu siirtyy nappula valittuun ruutuun ja vaihtuu vuoro toiselle pelaajalle.
 * Mikäli siirto ei ole sallittu välähtää valitussa kohderuudussa punainen merkkivalo, joka kertoo siirron olevan sääntöjen vastainen.
+* Mikäli pelissä on kello käytössä, alkaa vuorossa olevan pelaajan aika vähentymään välittömästi toisen pelaajan tehtyä siirtonsa.
 
 #Pelin päättyminen:
 * Peli voi päättyä joko shakkimattiin, ajan päättymiseen tai tasapeliin.

@@ -7,6 +7,9 @@
 - Lataa peli: avaa latausikkunan
 - Tallenna peli: avaa tallennusikkunan
 
+#Uusi pelin
+* Uusi Peli valikosta voidaan valita onko kello käytössä, ja kuinka paljon siinä on aikaa per pelaaja.
+
 #Pelin lataaminen:
 * Pelin lataus ikkunan yläreunassa näkyy kullakin hetkellä valittuna oleva tallennettu peli.
 * Ikkunan keskiosassa näkyy lista tallennetuista peleistä, joista voidaan hiirellä valita ladattava peli.
