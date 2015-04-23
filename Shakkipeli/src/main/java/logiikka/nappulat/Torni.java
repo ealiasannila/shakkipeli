@@ -13,7 +13,8 @@ import logiikka.peli.Pelilauta;
 import logiikka.peli.Ruutu;
 
 /**
- *Torni liikkuu pysty tai vaakariveillä
+ * Torni liikkuu pysty tai vaakariveillä
+ *
  * @author elias
  */
 public class Torni extends Nappula {
@@ -34,7 +35,7 @@ public class Torni extends Nappula {
 
     @Override
     protected boolean sallittuLiikkumisTapa(int x, int y) {
-       return NappulaApumetodeja.onSamallaPystyTaiVaakaRivilla(x, y, this.getX(), this.getY());
+        return NappulaApumetodeja.onSamallaPystyTaiVaakaRivilla(x, y, this.getX(), this.getY());
     }
 
     @Override
@@ -44,7 +45,7 @@ public class Torni extends Nappula {
 
     @Override
     public ArrayList<Ruutu> uhkausLinja(int x, int y) { //palauttaa ne ruudut joista uhkauksen voi blokata
-       return NappulaApumetodeja.uhkausLinjaPystyTaiVaaka(x, y, this);
+        return NappulaApumetodeja.uhkausLinjaPystyTaiVaaka(x, y, this);
     }
 
     @Override

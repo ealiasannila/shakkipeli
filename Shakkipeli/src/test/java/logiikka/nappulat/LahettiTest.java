@@ -32,43 +32,44 @@ public class LahettiTest {
 
     @Test
     public void liikuuVinottainEtuOikea() {
-        assertTrue (this.lahetti.onSallittuSiirto(6, 6));
+        assertTrue(this.lahetti.onSallittuSiirto(6, 6));
     }
 
     @Test
     public void liikuuVinottainTakaVasen() {
-        assertTrue (this.lahetti.onSallittuSiirto(2, 2));
+        assertTrue(this.lahetti.onSallittuSiirto(2, 2));
     }
 
     @Test
     public void liikuuVinottainTakaOikea() {
-        assertTrue (this.lahetti.onSallittuSiirto(6, 2));
+        assertTrue(this.lahetti.onSallittuSiirto(6, 2));
     }
 
     @Test
     public void liikuuVinottainEtuVasen() {
-        assertTrue (this.lahetti.onSallittuSiirto(2, 6));
+        assertTrue(this.lahetti.onSallittuSiirto(2, 6));
     }
-    
-     @Test
+
+    @Test
     public void liikuuEteen() {
         assertFalse(this.lahetti.onSallittuSiirto(4, 7));
     }
+
     @Test
     public void liikuuTaakse() {
         assertFalse(this.lahetti.onSallittuSiirto(4, 0));
     }
+
     @Test
     public void liikuuVasemmalle() {
         assertFalse(this.lahetti.onSallittuSiirto(2, 4));
     }
+
     @Test
     public void liikuuOikealle() {
         assertFalse(this.lahetti.onSallittuSiirto(7, 4));
     }
-    
-    
-    
+
     @Test
     public void eiLiikuVaariin() {
         assertFalse(this.lahetti.onSallittuSiirto(1, 2));
@@ -79,11 +80,11 @@ public class LahettiTest {
         assertFalse(this.lahetti.onSallittuSiirto(4, 4));
         assertFalse(this.lahetti.onSallittuSiirto(5, 0));
     }
-    
+
     @Test
-    public void uhkaaOikeitaRuutuja(){
-        assertEquals(3,this.lahetti.uhkausLinja(1, 7).size());
-        assertEquals(2,this.lahetti.uhkausLinja(2, 2).size());
+    public void uhkaaOikeitaRuutuja() {
+        assertEquals(3, this.lahetti.uhkausLinja(1, 7).size());
+        assertEquals(2, this.lahetti.uhkausLinja(2, 2).size());
     }
-    
+
 }

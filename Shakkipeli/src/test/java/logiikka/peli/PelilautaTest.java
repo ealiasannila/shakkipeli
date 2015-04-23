@@ -9,10 +9,7 @@ import static logiikka.peli.Maa.MUSTA;
 import static logiikka.peli.Maa.VALKOINEN;
 import logiikka.nappulat.Nappula;
 import logiikka.nappulat.Torni;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -96,7 +93,7 @@ public class PelilautaTest {
         this.lauta.teeSiirto(3, 3, mustaTorni);
         assertEquals(null, this.lauta.haeNappula(3, 2));
     }
-    
+
     @Test
     public void TunnistaOnkoKohdeVapaKohdeOnOma() {
         Nappula omaTorni = new Torni(VALKOINEN, 1, 5, this.lauta);
@@ -120,7 +117,6 @@ public class PelilautaTest {
         assertEquals(true, this.lauta.tarkistaOnkoKohdeVapaa(1, 6));
     }
 
-  
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //

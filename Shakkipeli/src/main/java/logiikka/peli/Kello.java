@@ -5,16 +5,12 @@
  */
 package logiikka.peli;
 
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JLabel;
 import kayttoliittyma.KelloPiirto;
 
 /**
- * Kello pitää kirjaa pelaajan jäljellä olevasta ajasta, ja vähentää sitä ajastimen kutsuessa paivita metodia
+ * Kello pitää kirjaa pelaajan jäljellä olevasta ajasta, ja vähentää sitä
+ * ajastimen kutsuessa paivita metodia
+ *
  * @author elias
  */
 public class Kello {
@@ -28,16 +24,20 @@ public class Kello {
     }
 
     /**
-     * asettaa kellolle sen piirtoelementin. Kello pyytää paivita() metodissa myös kellon piirtoa paivittamaan itsensa
-     * @param kellonPiirto 
+     * asettaa kellolle sen piirtoelementin. Kello pyytää paivita() metodissa
+     * myös kellon piirtoa paivittamaan itsensa
+     *
+     * @param kellonPiirto
      */
     public void setKellonPiirto(KelloPiirto kellonPiirto) {
         this.kellonPiirto = kellonPiirto;
     }
 
     /**
-     * asettaa kellolle ajan. Jos kellolla on piirtoelementii, päivitetään sen aika
-     * @param alkuaika 
+     * asettaa kellolle ajan. Jos kellolla on piirtoelementii, päivitetään sen
+     * aika
+     *
+     * @param alkuaika
      */
     public void aseta(int alkuaika) {
         this.aika = alkuaika;
@@ -50,7 +50,8 @@ public class Kello {
 
     /**
      * vähentää kellossa jäljellä olevia sekunteja yhdellä, kunnes aika on nolla
-     * @return 
+     *
+     * @return
      */
     public boolean paivita() {
         if (this.kellonPiirto == null) {

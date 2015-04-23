@@ -1,12 +1,10 @@
 package kayttoliittyma.nappulapiirto;
 
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.JPanel;
 import kayttoliittyma.PeliPiirto;
 import logiikka.peli.Maa;
 import static logiikka.peli.Maa.MUSTA;
@@ -51,7 +49,7 @@ public abstract class NappulaPiirto {
     public abstract Image haeKuva(Maa maa);
 
     protected Image haeKuva(Maa maa, String tiedostonNimi) {
-        String polku =  "nappulakuvat/";
+        String polku = "nappulakuvat/";
         if (maa == MUSTA) {
             polku += "musta/" + tiedostonNimi;
         } else {

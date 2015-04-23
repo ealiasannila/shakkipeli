@@ -13,7 +13,8 @@ import logiikka.peli.Pelilauta;
 import logiikka.peli.Ruutu;
 
 /**
- *Lähetti liikkuu vinottain
+ * Lähetti liikkuu vinottain
+ *
  * @author elias
  */
 public class Lahetti extends Nappula {

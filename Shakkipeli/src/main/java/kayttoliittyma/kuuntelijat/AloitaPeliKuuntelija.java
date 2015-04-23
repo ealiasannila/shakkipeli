@@ -35,7 +35,7 @@ public class AloitaPeliKuuntelija extends KayttoliittymanTuntevaLuokka implement
             int aika;
             try {
                 aika = Integer.parseInt(this.valikko.getAikaKentta().getValue().toString().trim()) * 60;
-            }catch(NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 return;
             }
             this.kayttoliittyma.getPeliHallinta().uusiPeli(aika, aika);

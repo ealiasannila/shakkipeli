@@ -12,9 +12,9 @@ import logiikka.nappulat.Nappula;
 import logiikka.nappulat.Ratsu;
 
 /**
- * PeliTarkistus tarjoaa metodeja erilaisiin pelitilanteeseen liittyviin tarkistuksiin.
- * Luokka toimii käytännössä Peli luokan apuluokkana
- * 
+ * PeliTarkistus tarjoaa metodeja erilaisiin pelitilanteeseen liittyviin
+ * tarkistuksiin. Luokka toimii käytännössä Peli luokan apuluokkana
+ *
  */
 public class PeliTarkistus {
 
@@ -26,7 +26,8 @@ public class PeliTarkistus {
 
     /**
      * kertoo onko vuorossa olevan pelaajan aika loppu
-     * @return 
+     *
+     * @return
      */
     public boolean aikaLoppu() {
         return this.peli.getVuorossa().getKello().aikaLoppu();
@@ -93,9 +94,10 @@ public class PeliTarkistus {
 
     /**
      * kertoo onko jokin ruutu uhattuna
+     *
      * @param x
      * @param y
-     * @return 
+     * @return
      */
     public boolean onkoUhattuna(int x, int y) {
         if (this.uhkaavaNappula(x, y) == null) {

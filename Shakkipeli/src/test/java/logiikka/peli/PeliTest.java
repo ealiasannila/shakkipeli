@@ -9,12 +9,8 @@ import kayttoliittyma.Kayttoliittyma;
 import kayttoliittyma.KelloPiirto;
 import logiikka.nappulat.Torni;
 import logiikka.peli.Pelaaja;
-import logiikka.peli.Peli;
 import logiikka.peli.PeliHallinta;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -109,7 +105,7 @@ public class PeliTest {
                 + "oooooooo\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
-                + "oooooooo\n" 
+                + "oooooooo\n"
                 + "-1\n"
                 + "-1", this.peliHallinta.getPeli().toString());
     }
@@ -134,7 +130,7 @@ public class PeliTest {
                 + "oooooooo\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
-                + "oootkoot\n" 
+                + "oootkoot\n"
                 + "-1\n"
                 + "-1", this.peliHallinta.getPeli().toString());
         assertEquals(3, this.peliHallinta.getPeli().getAktiivinen().getX());
@@ -293,7 +289,7 @@ public class PeliTest {
                 + "oooooooo\n"
                 + "oQoooooo\n"
                 + "sossssss\n"
-                + "toookoot\n" 
+                + "toookoot\n"
                 + "-1\n"
                 + "-1"));
     }
@@ -311,7 +307,7 @@ public class PeliTest {
                 + "osoooooo\n"
                 + "ohoooooo\n"
                 + "sossssss\n"
-                + "toookoot\n" 
+                + "toookoot\n"
                 + "-1\n"
                 + "-1"));
         this.peliHallinta.getPeli().asetaAktiivinen(3, 4);
@@ -324,7 +320,7 @@ public class PeliTest {
                 + "osoooooo\n"
                 + "oooooooo\n"
                 + "sossssss\n"
-                + "toookoot\n" 
+                + "toookoot\n"
                 + "-1\n"
                 + "-1"));
     }
@@ -411,7 +407,7 @@ public class PeliTest {
                 + "oookoooo\n"
                 + "oooooooo\n"
                 + "SSSSSSSS\n"
-                + "oooooooo\n" 
+                + "oooooooo\n"
                 + "-1\n"
                 + "-1", this.peliHallinta.getPeli().toString());
 
@@ -431,7 +427,7 @@ public class PeliTest {
                 + "oookoooo\n"
                 + "oooooooo\n"
                 + "SSSSSSSS\n"
-                + "oooooooo\n" 
+                + "oooooooo\n"
                 + "-1\n"
                 + "-1", this.peliHallinta.getPeli().toString());
 
@@ -451,7 +447,7 @@ public class PeliTest {
                 + "oookoooo\n"
                 + "oooooooo\n"
                 + "SSSSSSSS\n"
-                + "oooooooo\n" 
+                + "oooooooo\n"
                 + "-1\n"
                 + "-1", this.peliHallinta.getPeli().toString());
 
@@ -471,26 +467,27 @@ public class PeliTest {
                 + "oookoooo\n"
                 + "oooooooo\n"
                 + "SSSSSSSS\n"
-                + "oooooooo\n" 
+                + "oooooooo\n"
                 + "-1\n"
                 + "-1", this.peliHallinta.getPeli().toString());
 
     }
-    
+
     @Test(timeout = 3000)
-    public void asetaKellotTest() throws InterruptedException{
+    public void asetaKellotTest() throws InterruptedException {
         this.peliHallinta.getPeli().asetaKellot(10, 9);
-        this.peliHallinta.getPeli().getValkoinen().getKello().setKellonPiirto(new KelloPiirto( new Kayttoliittyma(), 1, "perusosa"));
+        this.peliHallinta.getPeli().getValkoinen().getKello().setKellonPiirto(new KelloPiirto(new Kayttoliittyma(), 1, "perusosa"));
         Thread.sleep(1000);
-        assertEquals(9,this.peliHallinta.getPeli().getValkoinen().getKello().getAika());
-        assertEquals(9,this.peliHallinta.getPeli().getMusta().getKello().getAika());
+        assertEquals(9, this.peliHallinta.getPeli().getValkoinen().getKello().getAika());
+        assertEquals(9, this.peliHallinta.getPeli().getMusta().getKello().getAika());
     }
+
     @Test(timeout = 3000)
-    public void asetaKellotEiAikaaTest() throws InterruptedException{
+    public void asetaKellotEiAikaaTest() throws InterruptedException {
         this.peliHallinta.getPeli().asetaKellot(-1, -1);
         Thread.sleep(1000);
-        assertEquals(-1,this.peliHallinta.getPeli().getValkoinen().getKello().getAika());
-        assertEquals(-1,this.peliHallinta.getPeli().getMusta().getKello().getAika());
+        assertEquals(-1, this.peliHallinta.getPeli().getValkoinen().getKello().getAika());
+        assertEquals(-1, this.peliHallinta.getPeli().getMusta().getKello().getAika());
     }
 
 }

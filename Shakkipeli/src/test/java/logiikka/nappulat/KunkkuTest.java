@@ -9,10 +9,7 @@ import java.util.ArrayList;
 import static logiikka.peli.Maa.VALKOINEN;
 import logiikka.peli.Pelilauta;
 import logiikka.peli.Ruutu;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -39,7 +36,7 @@ public class KunkkuTest {
     @Test
     public void kunkkuUhkaaOikeaaRuutua() {
         ArrayList<Ruutu> uhatutRuudut = kunkku.uhkausLinja(1, 5);
-        assertTrue (uhatutRuudut.isEmpty());
+        assertTrue(uhatutRuudut.isEmpty());
     }
 
     @Test

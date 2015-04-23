@@ -6,12 +6,10 @@
 package kayttoliittyma.kuuntelijat;
 
 import kayttoliittyma.Kayttoliittyma;
-import kayttoliittyma.PeliPiirto;
-import logiikka.peli.Peli;
-import logiikka.peli.PeliHallinta;
 
 /**
  * Lisää kuuntelijan periviin luokkiin käyttöliittymän oliomuuttujaksi
+ *
  * @author elias
  */
 public abstract class KayttoliittymanTuntevaLuokka {

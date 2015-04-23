@@ -1,11 +1,7 @@
 package kayttoliittyma.kuuntelijat;
 
-
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import javax.swing.JFormattedTextField;
 import kayttoliittyma.UusiPeliValikko;
 
 /*
@@ -18,19 +14,20 @@ import kayttoliittyma.UusiPeliValikko;
  * @author elias
  */
 public class KelloKuuntelija implements ItemListener {
+
     private UusiPeliValikko valikko;
-   
+
     public KelloKuuntelija(UusiPeliValikko valikko) {
         this.valikko = valikko;
     }
-    
+
     @Override
     public void itemStateChanged(ItemEvent ie) {
-        if(ie.getStateChange()==ItemEvent.DESELECTED){
+        if (ie.getStateChange() == ItemEvent.DESELECTED) {
             this.valikko.setOnkoKello(false);
-        }else{
+        } else {
             this.valikko.setOnkoKello(true);
         }
     }
-    
+
 }

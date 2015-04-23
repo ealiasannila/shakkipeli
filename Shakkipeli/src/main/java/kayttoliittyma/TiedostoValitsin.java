@@ -17,7 +17,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JTextField;
-import javax.swing.WindowConstants;
 import kayttoliittyma.kuuntelijat.KayttoliittymanTuntevaLuokka;
 import kayttoliittyma.kuuntelijat.TiedostoListaKuuntelija;
 
@@ -49,7 +48,7 @@ public abstract class TiedostoValitsin extends KayttoliittymanTuntevaLuokka impl
                 kayttoliittyma.getPeliHallinta().getPeli().asetaKellot(
                         kayttoliittyma.getPeliHallinta().getPeli().getValkoinen().getKello().getAika(),
                         kayttoliittyma.getPeliHallinta().getPeli().getMusta().getKello().getAika());
-                        ruutu.dispose();
+                ruutu.dispose();
             }
         };
         ruutu.addWindowListener(exitKuuntelija);

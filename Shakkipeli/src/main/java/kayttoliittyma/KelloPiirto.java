@@ -6,9 +6,6 @@
 package kayttoliittyma;
 
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import logiikka.peli.Kello;
-import logiikka.peli.Maa;
 
 /**
  *
@@ -27,8 +24,8 @@ public class KelloPiirto extends JLabel {
 
     private void asetaAika(int aika) {
         if (aika != -1) {
-            this.setText(this.perusOsa + (aika/60) +"min " + (aika%60) +"s");
-        }else{
+            this.setText(this.perusOsa + (aika / 60) + "min " + (aika % 60) + "s");
+        } else {
             this.setText("Kello ei käytössä");
         }
         this.repaint();

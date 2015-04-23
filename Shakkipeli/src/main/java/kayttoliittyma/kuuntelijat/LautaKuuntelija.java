@@ -5,15 +5,9 @@
  */
 package kayttoliittyma.kuuntelijat;
 
-import java.awt.Component;
-import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import kayttoliittyma.Kayttoliittyma;
-import kayttoliittyma.PeliPiirto;
-import kayttoliittyma.PeliPiirto;
-import logiikka.peli.Peli;
-import logiikka.peli.PeliHallinta;
 
 /**
  * Kuuntelee pelilaudalla tapahtuneita klikkauksia

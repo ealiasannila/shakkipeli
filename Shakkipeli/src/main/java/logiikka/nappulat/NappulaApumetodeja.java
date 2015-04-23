@@ -55,7 +55,7 @@ public class NappulaApumetodeja {
             return new ArrayList<Ruutu>();
         }
 
-        if (!onSamallaVinoRivilla(x, y, nappula.getX(), nappula.getY())) {//jos ei voi ylipäätänsä uhata ruutua ei silloin linjalla ole ruutuja
+        if (!onSamallaVinoRivilla(x, y, nappula.getX(), nappula.getY())) { //jos ei voi ylipäätänsä uhata ruutua ei silloin linjalla ole ruutuja
             return new ArrayList<Ruutu>();
         }
         ArrayList<Ruutu> uhatutRuudut = new ArrayList<>();
@@ -66,19 +66,19 @@ public class NappulaApumetodeja {
                 uhatutRuudut.add(new Ruutu(i, j));
                 j++;
             }
-        } else if (nappula.getX() > x && nappula.getY() > y) {//kohde alavasemmalle
+        } else if (nappula.getX() > x && nappula.getY() > y) { //kohde alavasemmalle
             int j = nappula.getY() - 1;
             for (int i = nappula.getX() - 1; i >= x; i--) {
                 uhatutRuudut.add(new Ruutu(i, j));
                 j--;
             }
-        } else if (nappula.getY() < y && nappula.getX() > x) {//kohde ylävasemmalle
+        } else if (nappula.getY() < y && nappula.getX() > x) { //kohde ylävasemmalle
             int j = nappula.getX() - 1;
             for (int i = nappula.getY() + 1; i <= y; i++) {
                 uhatutRuudut.add(new Ruutu(j, i));
                 j--;
             }
-        } else if (nappula.getY() > y && nappula.getX() < x) {//kohde alaoikealle
+        } else if (nappula.getY() > y && nappula.getX() < x) { //kohde alaoikealle
             int j = nappula.getX() + 1;
             for (int i = nappula.getY() - 1; i >= y; i--) {
                 uhatutRuudut.add(new Ruutu(j, i));
@@ -103,7 +103,7 @@ public class NappulaApumetodeja {
 
         }
 
-        if (!onSamallaPystyTaiVaakaRivilla(x, y, nappula.getX(), nappula.getY())) {//jos ei voi ylipäätänsä uhata ruutua ei silloin linjalla ole ruutuja
+        if (!onSamallaPystyTaiVaakaRivilla(x, y, nappula.getX(), nappula.getY())) { //jos ei voi ylipäätänsä uhata ruutua ei silloin linjalla ole ruutuja
             return new ArrayList<Ruutu>();
         }
         ArrayList<Ruutu> uhatutRuudut = new ArrayList<>();
@@ -149,7 +149,7 @@ public class NappulaApumetodeja {
                 }
                 j++;
             }
-        } else if (nappula.getX() > x && nappula.getY() > y) {//kohde alavasemmalle
+        } else if (nappula.getX() > x && nappula.getY() > y) { //kohde alavasemmalle
             int j = nappula.getY() - 1;
             for (int i = nappula.getX() - 1; i > x; i--) {
                 if (!nappula.getLauta().tarkistaOnkoKohdeVapaa(i, j)) {
@@ -157,7 +157,7 @@ public class NappulaApumetodeja {
                 }
                 j--;
             }
-        } else if (nappula.getY() < y && nappula.getX() > x) {//kohde ylävasemmalle
+        } else if (nappula.getY() < y && nappula.getX() > x) { //kohde ylävasemmalle
             int j = nappula.getX() - 1;
             for (int i = nappula.getY() + 1; i < y; i++) {
                 if (!nappula.getLauta().tarkistaOnkoKohdeVapaa(j, i)) {
@@ -165,7 +165,7 @@ public class NappulaApumetodeja {
                 }
                 j--;
             }
-        } else if (nappula.getY() > y && nappula.getX() < x) {//kohde alaoikealle
+        } else if (nappula.getY() > y && nappula.getX() < x) { //kohde alaoikealle
             int j = nappula.getX() + 1;
             for (int i = nappula.getY() - 1; i > y; i--) {
                 if (!nappula.getLauta().tarkistaOnkoKohdeVapaa(j, i)) {
@@ -188,10 +188,10 @@ public class NappulaApumetodeja {
      * @return
      */
     public static boolean reitillaEiMuitaNappuloitaPystyTaiVaaka(int x, int y, Nappula nappula) {
-        if(!onSamallaPystyTaiVaakaRivilla(x,y,nappula.getX(),nappula.getY())){
+        if (!onSamallaPystyTaiVaakaRivilla(x, y, nappula.getX(), nappula.getY())) {
             return false;
         }
-        
+
         if (nappula.getX() < x) { //Tarkastetaan onko reitillä muita nappuloita
             for (int i = nappula.getX() + 1; i < x; i++) {
                 if (!nappula.getLauta().tarkistaOnkoKohdeVapaa(i, y)) {

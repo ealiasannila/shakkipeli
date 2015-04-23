@@ -84,8 +84,9 @@ public class Sotilas extends Nappula {
     }
 
     /**
-     * tarkistaa onko sotilaan edessä seuraavassa ruudussa nappulaa. 
-     *Olennainen vain jos liikutaan 2 ensimmäisellä siirrolla. Jos sotilas liikkuu vain yhden ei reittia ole ja päätepiste tarkistetaan erikseen.
+     * tarkistaa onko sotilaan edessä seuraavassa ruudussa nappulaa. Olennainen
+     * vain jos liikutaan 2 ensimmäisellä siirrolla. Jos sotilas liikkuu vain
+     * yhden ei reittia ole ja päätepiste tarkistetaan erikseen.
      *
      * @param x
      * @param y

@@ -7,7 +7,6 @@ package kayttoliittyma.kuuntelijat;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import kayttoliittyma.Kayttoliittyma;
 import kayttoliittyma.TiedostoValitsinTallennus;

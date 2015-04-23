@@ -1,6 +1,5 @@
 package logiikka.peli;
 
-
 import kayttoliittyma.Kayttoliittyma;
 import kayttoliittyma.KelloPiirto;
 import logiikka.nappulat.Sotilas;
@@ -23,12 +22,13 @@ import org.junit.Test;
  * @author elias
  */
 public class AjastinTest {
+
     private Kello kello;
     private Ajastin ajastin;
     private Peli peli;
-    
+
     @Before
-    public void setUp(){
+    public void setUp() {
         Kayttoliittyma kayttoliittyma = new Kayttoliittyma();
         PeliHallinta pelihallinta = kayttoliittyma.getPeliHallinta();
         peli = pelihallinta.getPeli();
@@ -38,15 +38,15 @@ public class AjastinTest {
         this.peli.getVastustaja().getKello().setKellonPiirto(new KelloPiirto(kayttoliittyma, 10, "perusosa"));
         this.ajastin = peli.getAjastin();
     }
-    
+
     @Test(timeout = 3000)
-    public void paivittaaKellon() throws InterruptedException{
+    public void paivittaaKellon() throws InterruptedException {
         Thread.sleep(2000);
-        assertEquals(8,kello.getAika());
+        assertEquals(8, kello.getAika());
     }
 
     @Test(timeout = 3000)
-    public void pysayttaa() throws InterruptedException{
+    public void pysayttaa() throws InterruptedException {
         Thread.sleep(1000);
         ajastin.pysayta();
         Thread.sleep(1000);
@@ -54,12 +54,11 @@ public class AjastinTest {
     }
 
     @Test(timeout = 3000)
-    public void paivitaaKunKorotusOnKesken() throws InterruptedException{
-        peli.getVastustaja().setKorotettava(new Sotilas(MUSTA, 0,0, this.peli.getLauta()));
+    public void paivitaaKunKorotusOnKesken() throws InterruptedException {
+        peli.getVastustaja().setKorotettava(new Sotilas(MUSTA, 0, 0, this.peli.getLauta()));
         Thread.sleep(2000);
         assertEquals(8, this.peli.getVastustaja().getKello().getAika());
         assertEquals(10, this.kello.getAika());
     }
-    
-}
 
+}

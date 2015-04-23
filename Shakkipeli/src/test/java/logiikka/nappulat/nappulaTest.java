@@ -5,17 +5,12 @@ package logiikka.nappulat;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import java.util.ArrayList;
 import static logiikka.peli.Maa.MUSTA;
 import static logiikka.peli.Maa.VALKOINEN;
 import logiikka.nappulat.Nappula;
 import logiikka.nappulat.Torni;
 import logiikka.peli.Pelilauta;
-import logiikka.peli.Ruutu;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -24,11 +19,10 @@ import static org.junit.Assert.*;
  * @author elias
  */
 public class nappulaTest {
-    
-     private Pelilauta testiLauta;
+
+    private Pelilauta testiLauta;
     Nappula torni;
 
-   
     @Before
     public void setUp() {
         testiLauta = new Pelilauta();
@@ -157,7 +151,4 @@ public class nappulaTest {
         assertEquals(true, torni.tarkistaOnkoKohdeVastustajan(1, 5));
     }
 
-    
-
-   
 }

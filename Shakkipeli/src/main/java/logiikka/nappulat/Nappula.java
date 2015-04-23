@@ -145,8 +145,6 @@ public abstract class Nappula {
         return false;
     }
 
-  
-
     protected abstract boolean sallittuLiikkumisTapa(int x, int y);
 
     /**
@@ -166,8 +164,6 @@ public abstract class Nappula {
      * @param y
      * @return
      */
-    
-
     /**
      * Kertoo onko kohde sama kuin oma sijainti
      *

@@ -7,14 +7,14 @@ package kayttoliittyma.kuuntelijat;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import kayttoliittyma.Kayttoliittyma;
 import kayttoliittyma.TiedostoValitsinLataus;
 import kayttoliittyma.kuuntelijat.KayttoliittymanTuntevaLuokka;
 
 /**
- *Kuuntelee latausikkunassa olevaa lataa nappia
+ * Kuuntelee latausikkunassa olevaa lataa nappia
+ *
  * @author elias
  */
 public class LataaNappiKuuntelija extends KayttoliittymanTuntevaLuokka implements ActionListener {
@@ -30,7 +30,8 @@ public class LataaNappiKuuntelija extends KayttoliittymanTuntevaLuokka implement
 
     /**
      * pyytää pelihallintaa lataamaan pelin ja sulkee latausikkunan
-     * @param ae 
+     *
+     * @param ae
      */
     @Override
     public void actionPerformed(ActionEvent ae) {

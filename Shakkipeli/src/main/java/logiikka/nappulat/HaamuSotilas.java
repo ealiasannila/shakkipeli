@@ -21,7 +21,6 @@ import logiikka.peli.Ruutu;
  */
 public class HaamuSotilas extends Nappula {
 
-
     public HaamuSotilas(Maa maa, int x, int y, Pelilauta lauta) {
         super(maa, x, y, lauta);
         this.piirto = new HaamuSotilasPiirto();
@@ -67,7 +66,7 @@ public class HaamuSotilas extends Nappula {
     public String toString() {
         if (this.getMaa() == VALKOINEN) {
             return "h";
-        }else{
+        } else {
             return "H";
         }
 

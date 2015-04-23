@@ -6,7 +6,7 @@
 package logiikka.peli;
 
 /**
- *Maan määritelmät. 
+ * Maan määritelmät.
  *
  */
 public enum Maa {

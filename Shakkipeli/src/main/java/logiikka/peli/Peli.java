@@ -5,9 +5,7 @@
  */
 package logiikka.peli;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Scanner;
 import logiikka.nappulat.HaamuSotilas;
 import logiikka.nappulat.Kuningatar;
@@ -81,12 +79,12 @@ public class Peli {
         if (this.lauta.ruutuLaudanUlkopuolella(x, y)) {
             return false;
         }
-        if (this.aktiivinen == null) {//pitää olla nappula valittuna
+        if (this.aktiivinen == null) { //pitää olla nappula valittuna
             return false;
         }
 
         if (!this.tornitus(x, y)) {        //TORNITUS kokeile tehdä tornitus, jos ei onnistu yritä muuta siirtoa
-            if (!this.kokeileSiirtoa(x, y, this.aktiivinen)) {//Jos siirto jättää kunkun uhatuksi ei sitä voi tehdä
+            if (!this.kokeileSiirtoa(x, y, this.aktiivinen)) { //Jos siirto jättää kunkun uhatuksi ei sitä voi tehdä
                 return false;
             }
             this.lauta.teeSiirto(x, y, aktiivinen);
@@ -271,9 +269,9 @@ public class Peli {
 
     private void teeTornitus(int x, int y) {
         this.lauta.teeSiirtoIlmanTarkistusta(x, y, aktiivinen);
-        if (x == 6) {//lyhyt tornitus
+        if (x == 6) { //lyhyt tornitus
             this.lauta.teeSiirtoIlmanTarkistusta(5, y, this.lauta.haeNappula(7, y));
-        } else {//pitkä tornitus
+        } else { //pitkä tornitus
             this.lauta.teeSiirtoIlmanTarkistusta(3, y, this.lauta.haeNappula(0, y));
         }
     }

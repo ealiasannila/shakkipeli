@@ -6,7 +6,6 @@
 package logiikka.peli;
 
 import java.util.ArrayList;
-import kayttoliittyma.KelloPiirto;
 import logiikka.nappulat.Kunkku;
 import static logiikka.peli.Maa.VALKOINEN;
 import logiikka.nappulat.Nappula;
@@ -144,7 +143,6 @@ public class Pelaaja {
     public ArrayList<Nappula> getNappulat() {
         return nappulat;
     }
-
 
     public Kello getKello() {
         return kello;

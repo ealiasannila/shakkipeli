@@ -6,22 +6,17 @@
 package kayttoliittyma.nappulapiirto;
 
 import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import logiikka.peli.Maa;
-import static logiikka.peli.Maa.MUSTA;
 
 /**
- *Haamusotilasta ei piirretä joten palauttaa null
+ * Haamusotilasta ei piirretä joten palauttaa null
+ *
  * @author elias
  */
 public class HaamuSotilasPiirto extends NappulaPiirto {
 
     @Override
     public Image haeKuva(Maa maa) {
-
 
         return null;
     }

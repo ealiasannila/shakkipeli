@@ -5,26 +5,20 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import kayttoliittyma.kuuntelijat.LataaPeliKuuntelija;
 import kayttoliittyma.kuuntelijat.TallennaPeliKuuntelija;
 import kayttoliittyma.kuuntelijat.UusiPeliKuuntelija;
-import kayttoliittyma.nappulapiirto.TorniPiirto;
-import logiikka.peli.Maa;
-import logiikka.peli.Peli;
 import logiikka.peli.PeliHallinta;
-
 
 /**
  * Kayttöliittymän ylin luokka, luo konstruktorissa peliHallinnan
+ *
  * @author elias
  */
-
 public class Kayttoliittyma implements Runnable {
 
     private JFrame ruutu;
@@ -54,7 +48,7 @@ public class Kayttoliittyma implements Runnable {
     public void run() {
 
         ruutu = new JFrame("Shakkipeli");
-        ruutu.setPreferredSize(new Dimension(650,750));
+        ruutu.setPreferredSize(new Dimension(650, 750));
 
         ruutu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,7 +60,8 @@ public class Kayttoliittyma implements Runnable {
 
     /**
      * luo peliPiirron ja pyytää luomaan valikkonapit
-     * @param container 
+     *
+     * @param container
      */
     private void luoPiirtoKomponentit(Container container) {
         container.add(luoValikkoNapit(), BorderLayout.NORTH);
@@ -78,28 +73,29 @@ public class Kayttoliittyma implements Runnable {
         container.add(peliPiirto, BorderLayout.CENTER);
 
     }
+
     /**
      * luo yläreunan päävalikon
-     * @return 
+     *
+     * @return
      */
 
-    private JPanel luoKello(){
-        JPanel kello = new JPanel(new GridLayout(1,2));
-      
-        KelloPiirto valkoisenAika = new KelloPiirto( this,this.peliHallinta.getPeli().getValkoinen().getKello().getAika(),"Valkoisen aika: ");
-        KelloPiirto mustanAika = new KelloPiirto(this,this.peliHallinta.getPeli().getMusta().getKello().getAika(), "Mustan aika: ");
+    private JPanel luoKello() {
+        JPanel kello = new JPanel(new GridLayout(1, 2));
+
+        KelloPiirto valkoisenAika = new KelloPiirto(this, this.peliHallinta.getPeli().getValkoinen().getKello().getAika(), "Valkoisen aika: ");
+        KelloPiirto mustanAika = new KelloPiirto(this, this.peliHallinta.getPeli().getMusta().getKello().getAika(), "Mustan aika: ");
         this.peliHallinta.getPeli().getValkoinen().getKello().setKellonPiirto(valkoisenAika);
         this.peliHallinta.getPeli().getMusta().getKello().setKellonPiirto(mustanAika);
-        
-        valkoisenAika.setPreferredSize(new Dimension(50,50));
-        mustanAika.setPreferredSize(new Dimension(50,50));
-       
-        
+
+        valkoisenAika.setPreferredSize(new Dimension(50, 50));
+        mustanAika.setPreferredSize(new Dimension(50, 50));
+
         kello.add(valkoisenAika);
         kello.add(mustanAika);
         return kello;
     }
-    
+
     private JPanel luoValikkoNapit() {
         JPanel panel = new JPanel(new GridLayout(1, 3));
 

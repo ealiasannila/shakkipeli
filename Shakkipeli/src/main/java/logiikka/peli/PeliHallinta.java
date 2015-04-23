@@ -10,8 +10,6 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Logiikan ylin elementti. Vastaa uuden pelin käynnistämisestä, sekä
@@ -41,7 +39,7 @@ public class PeliHallinta {
                 + "oooooooo\n"
                 + "ssssssss\n"
                 + "trlqklrt\n"
-                + valkoisenAika+"\n"
+                + valkoisenAika + "\n"
                 + mustanAika));
 
     }
@@ -57,7 +55,7 @@ public class PeliHallinta {
         try {
             lukija = new Scanner(peli);
         } catch (FileNotFoundException ex) {
-            this.uusiPeli(-1,-1);
+            this.uusiPeli(-1, -1);
             return;
         }
         StringBuilder peliString = new StringBuilder();

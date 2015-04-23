@@ -9,11 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.SwingUtilities;
 import kayttoliittyma.Kayttoliittyma;
-import kayttoliittyma.PeliPiirto;
-import kayttoliittyma.TiedostoValitsinLataus;
 import kayttoliittyma.UusiPeliValikko;
-import logiikka.peli.Peli;
-import logiikka.peli.PeliHallinta;
 
 /**
  * Kuuntelee päävalikossa olevaa Uusi peli nappia

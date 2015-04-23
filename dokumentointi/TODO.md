@@ -1,2 +1,3 @@
-* paketoi lopullinen paketti
 * testaa toimivuus koulussa
+* jos toimii lopullinen release
+

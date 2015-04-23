@@ -10,7 +10,8 @@ import java.awt.Container;
 import kayttoliittyma.kuuntelijat.LataaNappiKuuntelija;
 
 /**
- *Lautauksen tiedoston valitsin ikkuna
+ * Lautauksen tiedoston valitsin ikkuna
+ *
  * @author elias
  */
 public class TiedostoValitsinLataus extends TiedostoValitsin implements Runnable {

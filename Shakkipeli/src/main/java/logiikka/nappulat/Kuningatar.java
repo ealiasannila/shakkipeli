@@ -13,7 +13,9 @@ import logiikka.peli.Pelilauta;
 import logiikka.peli.Ruutu;
 
 /**
- *Liikkuu kuin torni tai lähetti, käyttää samoja apumetodeja NappulaApumetodeja luokasta
+ * Liikkuu kuin torni tai lähetti, käyttää samoja apumetodeja NappulaApumetodeja
+ * luokasta
+ *
  * @author elias
  */
 public class Kuningatar extends Nappula {
@@ -39,7 +41,7 @@ public class Kuningatar extends Nappula {
 
     @Override
     public ArrayList<Ruutu> uhkausLinja(int x, int y) {
-        if (!this.tarkistaReitti(x, y)) {//jos ei voi ylipäätänsä uhata ruutua ei silloin linjalla ole ruutuja
+        if (!this.tarkistaReitti(x, y)) { //jos ei voi ylipäätänsä uhata ruutua ei silloin linjalla ole ruutuja
             return null;
         }
         ArrayList<Ruutu> uhatutRuudut = new ArrayList<>();

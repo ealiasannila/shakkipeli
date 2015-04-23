@@ -5,8 +5,6 @@
  */
 package logiikka.peli;
 
-import java.util.ArrayList;
-import static logiikka.peli.Maa.*;
 import logiikka.nappulat.*;
 
 /**
@@ -102,7 +100,7 @@ public class Pelilauta {
      * @return
      */
     public boolean teeSiirto(int x, int y, Nappula aktiivinen) {
-        if (!aktiivinen.onSallittuSiirto(x, y)) {//tarkistetaan onko siirto sallittu
+        if (!aktiivinen.onSallittuSiirto(x, y)) { //tarkistetaan onko siirto sallittu
             return false;
         }
         this.asetaNappula(null, aktiivinen.getX(), aktiivinen.getY());

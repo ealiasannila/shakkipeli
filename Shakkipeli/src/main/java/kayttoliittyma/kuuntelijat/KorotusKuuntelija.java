@@ -7,9 +7,7 @@ package kayttoliittyma.kuuntelijat;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import kayttoliittyma.Kayttoliittyma;
 import kayttoliittyma.KorotusValikko;
-import logiikka.nappulat.Nappula;
 import logiikka.peli.Pelaaja;
 
 /**
@@ -23,7 +21,7 @@ public class KorotusKuuntelija extends KayttoliittymanTuntevaLuokka implements A
     private KorotusValikko valikko;
     private char miksiKorotetaan;
 
-    public KorotusKuuntelija( KorotusValikko valikko, char miksiKorotetaan) {
+    public KorotusKuuntelija(KorotusValikko valikko, char miksiKorotetaan) {
         super(valikko.getKayttoliittyma());
 
         this.valikko = valikko;

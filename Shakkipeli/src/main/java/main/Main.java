@@ -2,18 +2,10 @@ package main;
 
 import javax.swing.SwingUtilities;
 import kayttoliittyma.Kayttoliittyma;
-import logiikka.peli.Kello;
-import logiikka.peli.Maa;
-import logiikka.peli.Peli;
-import logiikka.peli.Pelilauta;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 /**
- *
+ * Käynnistää shakkipelin
  * @author elias
  */
 public class Main {

@@ -5,23 +5,20 @@
  */
 package kayttoliittyma;
 
-import java.awt.Color;
 import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 import kayttoliittyma.kuuntelijat.KorotusKuuntelija;
-import kayttoliittyma.kuuntelijat.LataaNappiKuuntelija;
 import static logiikka.peli.Maa.MUSTA;
-import logiikka.nappulat.Nappula;
 import logiikka.peli.Pelaaja;
 
 /**
- *Näyttää valikon, josta valitaan miksi nappulaksi korotetaan vastustajan perusriville päässyt sotilas
+ * Näyttää valikon, josta valitaan miksi nappulaksi korotetaan vastustajan
+ * perusriville päässyt sotilas
+ *
  * @author elias
  */
 public class KorotusValikko implements Runnable {
@@ -47,7 +44,7 @@ public class KorotusValikko implements Runnable {
     public void run() {
         ruutu = new JFrame("Miksi korotat?");
         ruutu.setBounds(this.kayttoliittyma.getFrame().getBounds());
-        
+
         ruutu.setAlwaysOnTop(true);
         ruutu.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -59,7 +56,8 @@ public class KorotusValikko implements Runnable {
 
     /**
      * luo näytettävät valintanapit ja lisää niihin kuuntelijat
-     * @param container 
+     *
+     * @param container
      */
     private void luoKomponentit(Container container) {
 
@@ -75,14 +73,14 @@ public class KorotusValikko implements Runnable {
         }
 
         JButton kuningatarNappi = new JButton(new ImageIcon(polku + "kuningatar.png"));
-        kuningatarNappi.addActionListener(new KorotusKuuntelija( this, 'q'));
+        kuningatarNappi.addActionListener(new KorotusKuuntelija(this, 'q'));
         container.add(kuningatarNappi);
 
         JButton torniNappi = new JButton(new ImageIcon(polku + "torni.png"));
         torniNappi.addActionListener(new KorotusKuuntelija(this, 't'));
         container.add(torniNappi);
 
-        JButton lahettiNappi = new JButton( new ImageIcon(polku + "lahetti.png"));
+        JButton lahettiNappi = new JButton(new ImageIcon(polku + "lahetti.png"));
         lahettiNappi.addActionListener(new KorotusKuuntelija(this, 'l'));
         container.add(lahettiNappi);
 

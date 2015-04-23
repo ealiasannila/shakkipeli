@@ -9,10 +9,7 @@ import java.util.ArrayList;
 import static logiikka.peli.Maa.*;
 import logiikka.peli.Pelilauta;
 import logiikka.peli.Ruutu;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -59,11 +56,11 @@ public class TorniTest {
     @Test
     public void UhkaaOikeitaRuutujaTyhjaRuutu() {
         ArrayList<Ruutu> uhatutRuudut = torni.uhkausLinja(1, 5);
-        assertTrue (uhatutRuudut.contains(new Ruutu(1, 5)));
-        assertTrue (uhatutRuudut.contains(new Ruutu(1, 4)));
-        assertTrue (uhatutRuudut.contains(new Ruutu(1, 3)));
-        assertTrue (uhatutRuudut.contains(new Ruutu(1, 2)));
-        assertTrue (uhatutRuudut.contains(new Ruutu(1, 1)));
+        assertTrue(uhatutRuudut.contains(new Ruutu(1, 5)));
+        assertTrue(uhatutRuudut.contains(new Ruutu(1, 4)));
+        assertTrue(uhatutRuudut.contains(new Ruutu(1, 3)));
+        assertTrue(uhatutRuudut.contains(new Ruutu(1, 2)));
+        assertTrue(uhatutRuudut.contains(new Ruutu(1, 1)));
         assertEquals(5, uhatutRuudut.size());
     }
 
@@ -71,10 +68,10 @@ public class TorniTest {
     public void UhkaaOikeitaRuutujaVastustajanNappula() {
         Nappula vastustajanTorni = new Torni(MUSTA, 1, 5, this.testiLauta);
         ArrayList<Ruutu> uhatutRuudut = torni.uhkausLinja(1, 5);
-        assertTrue (uhatutRuudut.contains(new Ruutu(1, 4)));
-        assertTrue (uhatutRuudut.contains(new Ruutu(1, 3)));
-        assertTrue (uhatutRuudut.contains(new Ruutu(1, 2)));
-        assertTrue (uhatutRuudut.contains(new Ruutu(1, 1)));
+        assertTrue(uhatutRuudut.contains(new Ruutu(1, 4)));
+        assertTrue(uhatutRuudut.contains(new Ruutu(1, 3)));
+        assertTrue(uhatutRuudut.contains(new Ruutu(1, 2)));
+        assertTrue(uhatutRuudut.contains(new Ruutu(1, 1)));
         assertEquals(5, uhatutRuudut.size());
     }
 
@@ -82,11 +79,11 @@ public class TorniTest {
     public void UhkaaOikeitaRuutujaOmaNappula() {
         Nappula omaTorni = new Torni(VALKOINEN, 1, 5, this.testiLauta);
         ArrayList<Ruutu> uhatutRuudut = torni.uhkausLinja(1, 5);
-        assertTrue (uhatutRuudut.contains(new Ruutu(1, 5)));
-        assertTrue (uhatutRuudut.contains(new Ruutu(1, 4)));
-        assertTrue (uhatutRuudut.contains(new Ruutu(1, 3)));
-        assertTrue (uhatutRuudut.contains(new Ruutu(1, 2)));
-        assertTrue (uhatutRuudut.contains(new Ruutu(1, 1)));
+        assertTrue(uhatutRuudut.contains(new Ruutu(1, 5)));
+        assertTrue(uhatutRuudut.contains(new Ruutu(1, 4)));
+        assertTrue(uhatutRuudut.contains(new Ruutu(1, 3)));
+        assertTrue(uhatutRuudut.contains(new Ruutu(1, 2)));
+        assertTrue(uhatutRuudut.contains(new Ruutu(1, 1)));
         assertEquals(5, uhatutRuudut.size());
     }
 

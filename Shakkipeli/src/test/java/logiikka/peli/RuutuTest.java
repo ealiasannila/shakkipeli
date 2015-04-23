@@ -5,10 +5,7 @@
  */
 package logiikka.peli;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -29,24 +26,23 @@ public class RuutuTest {
 
         this.ruutu3 = new Ruutu(0, 1);
     }
-    
+
     @Test
-    public void ruudutJoillaSamaSijaintiSamaRuutu(){
+    public void ruudutJoillaSamaSijaintiSamaRuutu() {
         assertEquals(this.ruutu1, ruutu2);
-        
+
     }
-    
+
     @Test
-    public void ruudutJoillaEriSijaintiEriRuutu(){
+    public void ruudutJoillaEriSijaintiEriRuutu() {
         assertFalse(this.ruutu1.equals(ruutu3));
-        
+
     }
-    
-    
+
     @Test
-    public void toStringTest(){ //käytetään muussa testauksessa niin testaan
-        assertEquals(this.ruutu1.toString(),("[0,0]"));
-        
+    public void toStringTest() { //käytetään muussa testauksessa niin testaan
+        assertEquals(this.ruutu1.toString(), ("[0,0]"));
+
     }
 
     // TODO add test methods here.

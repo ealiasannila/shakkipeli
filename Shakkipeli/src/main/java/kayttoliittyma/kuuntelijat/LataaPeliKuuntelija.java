@@ -9,14 +9,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.SwingUtilities;
 import kayttoliittyma.Kayttoliittyma;
-import kayttoliittyma.PeliPiirto;
 import kayttoliittyma.TiedostoValitsinLataus;
-import kayttoliittyma.TiedostoValitsinTallennus;
-import logiikka.peli.Peli;
-import logiikka.peli.PeliHallinta;
 
 /**
- *Kuuntelee päävalikon Lataa peli nappia
+ * Kuuntelee päävalikon Lataa peli nappia
+ *
  * @author elias
  */
 public class LataaPeliKuuntelija extends KayttoliittymanTuntevaLuokka implements ActionListener {
@@ -27,7 +24,8 @@ public class LataaPeliKuuntelija extends KayttoliittymanTuntevaLuokka implements
 
     /**
      * avaa uuden tiedostovalitsin lataus ikkunan
-     * @param ae 
+     *
+     * @param ae
      */
     @Override
     public void actionPerformed(ActionEvent ae) {
