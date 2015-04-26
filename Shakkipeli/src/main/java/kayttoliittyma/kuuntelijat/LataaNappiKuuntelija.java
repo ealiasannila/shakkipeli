@@ -39,6 +39,7 @@ public class LataaNappiKuuntelija extends KayttoliittymanTuntevaLuokka implement
         String polku = "tallennetutPelit/omat/" + this.tekstiKentta.getText();
 
         this.kayttoliittyma.getPeliHallinta().lataaPeli(polku);
+        this.kayttoliittyma.setValikkoAuki(false);
         this.tiedostoValitsin.getRuutu().dispose();
         this.kayttoliittyma.getPeliPiirto().repaint();
 

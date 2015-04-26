@@ -25,9 +25,8 @@ import kayttoliittyma.kuuntelijat.TiedostoListaKuuntelija;
  *
  * @author elias
  */
-public abstract class TiedostoValitsin extends KayttoliittymanTuntevaLuokka implements Runnable {
+public abstract class TiedostoValitsin extends Valikko implements Runnable {
 
-    protected JFrame ruutu;
     protected JButton nappi;
     private JList tiedostoLista;
     protected JTextField tiedostonNimi;
@@ -40,19 +39,7 @@ public abstract class TiedostoValitsin extends KayttoliittymanTuntevaLuokka impl
     public void run() {
         ruutu = new JFrame("TiedostoValitisin");
         ruutu.setPreferredSize(new Dimension(900, 250));
-
-        WindowListener exitKuuntelija = new WindowAdapter() {
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-                kayttoliittyma.getPeliHallinta().getPeli().asetaKellot(
-                        kayttoliittyma.getPeliHallinta().getPeli().getValkoinen().getKello().getAika(),
-                        kayttoliittyma.getPeliHallinta().getPeli().getMusta().getKello().getAika());
-                ruutu.dispose();
-            }
-        };
-        ruutu.addWindowListener(exitKuuntelija);
-
+        super.run();
         luoKomponentit(ruutu.getContentPane());
 
     }

@@ -42,7 +42,7 @@ public class LautaKuuntelija extends KayttoliittymanTuntevaLuokka implements Mou
             return;
         }
 
-        if (this.kayttoliittyma.getPeliPiirto().sotilaanKorotusOnKesken()) {
+        if (this.kayttoliittyma.valikkoAuki()) {
             return;
         }
 

@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
+import kayttoliittyma.kuuntelijat.KayttoliittymanTuntevaLuokka;
 import kayttoliittyma.kuuntelijat.KorotusKuuntelija;
 import static logiikka.peli.Maa.MUSTA;
 import logiikka.peli.Pelaaja;
@@ -21,9 +22,8 @@ import logiikka.peli.Pelaaja;
  *
  * @author elias
  */
-public class KorotusValikko implements Runnable {
+public class KorotusValikko extends KayttoliittymanTuntevaLuokka implements Runnable {
 
-    private Kayttoliittyma kayttoliittyma;
     private JFrame ruutu;
     private Pelaaja korotettavaPelaaja;
 
@@ -36,19 +36,23 @@ public class KorotusValikko implements Runnable {
     }
 
     public KorotusValikko(Kayttoliittyma kayttoliittyma, Pelaaja korotettava) {
-        this.kayttoliittyma = kayttoliittyma;
+        super(kayttoliittyma);
         this.korotettavaPelaaja = korotettava;
     }
 
     @Override
     public void run() {
         ruutu = new JFrame("Miksi korotat?");
+        this.kayttoliittyma.getPeliHallinta().getPeli().asetaKellot(this.kayttoliittyma.getPeliHallinta().getPeli().getValkoinen().getKello().getAika(), this.kayttoliittyma.getPeliHallinta().getPeli().getMusta().getKello().getAika());
         ruutu.setBounds(this.kayttoliittyma.getFrame().getBounds());
 
         ruutu.setAlwaysOnTop(true);
         ruutu.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
         luoKomponentit(ruutu.getContentPane());
+
+        this.kayttoliittyma.getPeliHallinta().getPeli().getAjastin().pysayta();
+        this.kayttoliittyma.setValikkoAuki(true);
 
         ruutu.pack();
         ruutu.setVisible(true);

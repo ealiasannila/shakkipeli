@@ -30,11 +30,10 @@ public class TallennaPeliKuuntelija extends KayttoliittymanTuntevaLuokka impleme
      */
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (this.kayttoliittyma.getPeliPiirto().sotilaanKorotusOnKesken()) {
+        if (this.kayttoliittyma.valikkoAuki()) {
             return;
         }
 
-        this.kayttoliittyma.getPeliHallinta().getPeli().getAjastin().pysayta();
         SwingUtilities.invokeLater(new TiedostoValitsinTallennus(this.kayttoliittyma));
 
         this.kayttoliittyma.getFrame().repaint();

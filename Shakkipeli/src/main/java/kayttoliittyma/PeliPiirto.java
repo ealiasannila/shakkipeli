@@ -22,7 +22,6 @@ import logiikka.nappulat.Nappula;
 public class PeliPiirto extends JPanel {
 
     private Kayttoliittyma kayttoliittyma;
-    private boolean sotilaanKorotusKesken;
     private int vaaraSiirtoY;
     private int vaaraSiirtoX;
 
@@ -30,7 +29,6 @@ public class PeliPiirto extends JPanel {
         super.setBackground(Color.lightGray);
 
         this.kayttoliittyma = kayttoliittyma;
-        this.sotilaanKorotusKesken = false;
         this.vaaraSiirtoX = -1;
         this.vaaraSiirtoY = -1;
     }
@@ -102,12 +100,12 @@ public class PeliPiirto extends JPanel {
     private void kysyMiksiKorotetaan() {
 
         if (this.kayttoliittyma.getPeliHallinta().getPeli().getValkoinen().getKorotettava() != null) {
-            this.sotilaanKorotusKesken = true;
+            this.kayttoliittyma.setValikkoAuki(true);
             SwingUtilities.invokeLater(new KorotusValikko(this.kayttoliittyma, this.kayttoliittyma.getPeliHallinta().getPeli().getValkoinen()));
 
         }
         if (this.kayttoliittyma.getPeliHallinta().getPeli().getMusta().getKorotettava() != null) {
-            this.sotilaanKorotusKesken = true;
+            this.kayttoliittyma.setValikkoAuki(true);
             SwingUtilities.invokeLater(new KorotusValikko(this.kayttoliittyma, this.kayttoliittyma.getPeliHallinta().getPeli().getMusta()));
 
         }
@@ -120,13 +118,7 @@ public class PeliPiirto extends JPanel {
      *
      * @return
      */
-    public boolean sotilaanKorotusOnKesken() {
-        return sotilaanKorotusKesken;
-    }
 
-    public void setSotilaanKorotusKesken(boolean sotilaanKorotusKesken) {
-        this.sotilaanKorotusKesken = sotilaanKorotusKesken;
-    }
 
     /**
      * Asettaa väärän siirron koordinaatit muistiin
@@ -168,7 +160,7 @@ public class PeliPiirto extends JPanel {
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
-        if (!this.sotilaanKorotusOnKesken()) {
+        if (!this.kayttoliittyma.valikkoAuki()) {
             this.kysyMiksiKorotetaan();
         }
         this.piirraRuudut(graphics);

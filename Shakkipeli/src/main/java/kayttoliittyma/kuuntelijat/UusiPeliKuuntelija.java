@@ -29,10 +29,11 @@ public class UusiPeliKuuntelija extends KayttoliittymanTuntevaLuokka implements 
      */
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (this.kayttoliittyma.getPeliPiirto().sotilaanKorotusOnKesken()) {
+        if (this.kayttoliittyma.valikkoAuki()) {
             return;
         }
         SwingUtilities.invokeLater(new UusiPeliValikko(this.kayttoliittyma));
+        
 
     }
 

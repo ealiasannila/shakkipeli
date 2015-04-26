@@ -26,9 +26,8 @@ import kayttoliittyma.kuuntelijat.KelloKuuntelija;
  *
  * @author elias
  */
-public class UusiPeliValikko extends KayttoliittymanTuntevaLuokka implements Runnable {
+public class UusiPeliValikko extends Valikko implements Runnable {
 
-    private JFrame ruutu;
     private JButton aloitaNappi;
     private JCheckBox kelloCheckBox;
     private JFormattedTextField aikaKentta;
@@ -87,8 +86,8 @@ public class UusiPeliValikko extends KayttoliittymanTuntevaLuokka implements Run
         this.ruutu = new JFrame("Uusi peli");
         ruutu.setPreferredSize(new Dimension(250, 170));
 
-        ruutu.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-
+        super.run();
+        
         luoKomponentit(ruutu.getContentPane());
 
         ruutu.pack();

@@ -24,11 +24,21 @@ public class Kayttoliittyma implements Runnable {
     private JFrame ruutu;
     private PeliHallinta peliHallinta;
     private int ikkunanKoko;
+    private boolean valikkoAuki;
 
     public Kayttoliittyma() {
         this.peliHallinta = new PeliHallinta();
         this.peliPiirto = new PeliPiirto(this);
+        this.valikkoAuki = false;
 
+    }
+
+    public boolean valikkoAuki() {
+        return valikkoAuki;
+    }
+
+    public void setValikkoAuki(boolean valikkoAuki) {
+        this.valikkoAuki = valikkoAuki;
     }
 
     public JFrame getRuutu() {

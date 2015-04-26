@@ -40,6 +40,7 @@ public class TallennaNappiKuuntelija extends KayttoliittymanTuntevaLuokka implem
 
         if (this.kayttoliittyma.getPeliHallinta().tallennaPeli(polku)) {
             this.kayttoliittyma.getPeliHallinta().lataaPeli(polku);
+            this.kayttoliittyma.setValikkoAuki(false);
             this.tiedostoValitsin.getRuutu().dispose();
             this.kayttoliittyma.getPeliPiirto().repaint();
         }

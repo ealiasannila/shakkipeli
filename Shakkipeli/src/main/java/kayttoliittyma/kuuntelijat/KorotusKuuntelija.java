@@ -39,8 +39,8 @@ public class KorotusKuuntelija extends KayttoliittymanTuntevaLuokka implements A
     @Override
     public void actionPerformed(ActionEvent ae) {
         this.kayttoliittyma.getPeliHallinta().getPeli().korotaSotilas(this.korotettava, miksiKorotetaan);
-
-        this.kayttoliittyma.getPeliPiirto().setSotilaanKorotusKesken(false);
+        this.kayttoliittyma.setValikkoAuki(false);
+        
         this.kayttoliittyma.getPeliPiirto().repaint();
 
         this.valikko.getRuutu().dispose();

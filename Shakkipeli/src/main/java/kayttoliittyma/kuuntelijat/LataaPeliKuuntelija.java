@@ -29,12 +29,11 @@ public class LataaPeliKuuntelija extends KayttoliittymanTuntevaLuokka implements
      */
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (this.kayttoliittyma.getPeliPiirto().sotilaanKorotusOnKesken()) {
+        if (this.kayttoliittyma.valikkoAuki()) {
             return;
         }
 
         SwingUtilities.invokeLater(new TiedostoValitsinLataus(this.kayttoliittyma));
-        this.kayttoliittyma.getPeliHallinta().getPeli().getAjastin().pysayta();
         this.kayttoliittyma.getFrame().repaint();
 
     }

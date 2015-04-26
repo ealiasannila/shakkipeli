@@ -25,9 +25,7 @@ public class AloitaPeliKuuntelija extends KayttoliittymanTuntevaLuokka implement
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (this.kayttoliittyma.getPeliPiirto().sotilaanKorotusOnKesken()) {
-            return;
-        }
+        
         if (this.valikko.getOnkoKello()) {
             if (this.valikko.getAikaKentta().getValue() == null) {
                 return;
@@ -44,6 +42,7 @@ public class AloitaPeliKuuntelija extends KayttoliittymanTuntevaLuokka implement
             this.kayttoliittyma.getPeliHallinta().uusiPeli(-1, -1);
 
         }
+        this.kayttoliittyma.setValikkoAuki(false);
         this.kayttoliittyma.getPeliPiirto().repaint();
         this.valikko.getRuutu().dispose();
 
