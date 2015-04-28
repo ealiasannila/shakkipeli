@@ -25,7 +25,7 @@ import kayttoliittyma.kuuntelijat.TiedostoListaKuuntelija;
  *
  * @author elias
  */
-public abstract class TiedostoValitsin extends Valikko implements Runnable {
+public abstract class TiedostoValitsin extends Valikko {
 
     protected JButton nappi;
     private JList tiedostoLista;

@@ -31,14 +31,14 @@ public class PeliHallinta {
     public void uusiPeli(int valkoisenAika, int mustanAika) {
         this.peli.lataaPeli(new Scanner(
                 "VALKOINEN\n"
-                + "TRLQKLRT\n"
+                + "YRLQJLRY\n"
                 + "SSSSSSSS\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
                 + "ssssssss\n"
-                + "trlqklrt\n"
+                + "yrlqjlry\n"
                 + valkoisenAika + "\n"
                 + mustanAika));
 

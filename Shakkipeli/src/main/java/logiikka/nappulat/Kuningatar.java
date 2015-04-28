@@ -40,7 +40,7 @@ public class Kuningatar extends Nappula {
     }
 
     @Override
-    public ArrayList<Ruutu> uhkausLinja(int x, int y) {
+    public ArrayList<Ruutu> nappulanReitti(int x, int y) {
         if (!this.tarkistaReitti(x, y)) { //jos ei voi ylipäätänsä uhata ruutua ei silloin linjalla ole ruutuja
             return null;
         }

@@ -119,8 +119,8 @@ public class SotilasTest {
 
     @Test
     public void uhkausLinjaTyha() {
-        assertTrue(this.mustaSotilas.uhkausLinja(1, 2) != null);
-        assertTrue(this.mustaSotilas.uhkausLinja(1, 2).isEmpty());
+        assertTrue(this.mustaSotilas.nappulanReitti(1, 2) != null);
+        assertTrue(this.mustaSotilas.nappulanReitti(1, 2).isEmpty());
     }
 
     @Test

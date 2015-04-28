@@ -54,7 +54,7 @@ public class Peli {
                 new Kuningatar(korotettava.getMaa(), korotettava.getKorotettava().getX(), korotettava.getKorotettava().getY(), this.getLauta());
                 break;
             case 't':
-                new Torni(korotettava.getMaa(), korotettava.getKorotettava().getX(), korotettava.getKorotettava().getY(), this.getLauta());
+                new Torni(korotettava.getMaa(), korotettava.getKorotettava().getX(), korotettava.getKorotettava().getY(), this.getLauta(), false);
                 break;
             case 'l':
                 new Lahetti(korotettava.getMaa(), korotettava.getKorotettava().getX(), korotettava.getKorotettava().getY(), this.getLauta());
@@ -340,6 +340,9 @@ public class Peli {
             for (int i = 0; i < rivi.length(); i++) {
                 switch (rivi.charAt(i)) {
                     case 'K':
+                        this.musta.setKunkku(new Kunkku(MUSTA, i, riviNro, this.lauta, false));
+                        break;
+                    case 'J':
                         this.musta.setKunkku(new Kunkku(MUSTA, i, riviNro, this.lauta));
                         break;
                     case 'Q':
@@ -352,13 +355,24 @@ public class Peli {
                         new Ratsu(MUSTA, i, riviNro, this.lauta);
                         break;
                     case 'T':
+                        new Torni(MUSTA, i, riviNro, this.lauta, false);
+                        break;
+                    case 'Y':
                         new Torni(MUSTA, i, riviNro, this.lauta);
                         break;
                     case 'S':
-                        new Sotilas(MUSTA, i, riviNro, this.lauta);
+                        if (riviNro == this.getMusta().getSotilasRivi()) {
+                            new Sotilas(MUSTA, i, riviNro, this.lauta);
+                        } else {
+                            new Sotilas(MUSTA, i, riviNro, this.lauta, false);
+                        }
                         break;
 
                     case 'k':
+                        this.valkoinen.setKunkku(new Kunkku(VALKOINEN, i, riviNro, this.lauta, false));
+                        break;
+
+                    case 'j':
                         this.valkoinen.setKunkku(new Kunkku(VALKOINEN, i, riviNro, this.lauta));
                         break;
                     case 'q':
@@ -371,10 +385,17 @@ public class Peli {
                         new Ratsu(VALKOINEN, i, riviNro, this.lauta);
                         break;
                     case 't':
+                        new Torni(VALKOINEN, i, riviNro, this.lauta, false);
+                        break;
+                    case 'y':
                         new Torni(VALKOINEN, i, riviNro, this.lauta);
                         break;
                     case 's':
-                        new Sotilas(VALKOINEN, i, riviNro, this.lauta);
+                        if (riviNro == this.getValkoinen().getSotilasRivi()) {
+                            new Sotilas(VALKOINEN, i, riviNro, this.lauta);
+                        } else {
+                            new Sotilas(VALKOINEN, i, riviNro, this.lauta, false);
+                        }
                         break;
 
                     case 'h':

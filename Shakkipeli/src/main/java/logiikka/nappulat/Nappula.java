@@ -104,14 +104,14 @@ public abstract class Nappula {
     }
 
     /**
-     * Palauttaa ruudut, joita nappula uhkaa oman sijaintinsa ja toisen ruudun
-     * välillä. Nappula ei uhkaa omaa ruutuaan
+     * Palauttaa ruudut, joita pitkin nappulaliikkuu oman sijaintinsa ja toisen ruudun
+     * välillä. Nappulan oma ruutu ei kuulu tälle reitille
      *
      * @param x
      * @param y
      * @return
      */
-    public abstract ArrayList<Ruutu> uhkausLinja(int x, int y);
+    public abstract ArrayList<Ruutu> nappulanReitti(int x, int y);
 
     /**
      * kertoo onko kohderuudussa oma nappula

@@ -261,7 +261,7 @@ public class PeliTarkistus {
 
     private boolean voiBlokata() {
         Nappula uhkaava = this.uhkaavaNappula(this.peli.getVuorossa().getKunkku().getX(), this.peli.getVuorossa().getKunkku().getY());
-        ArrayList<Ruutu> uhatutRuudut = uhkaava.uhkausLinja(this.peli.getVuorossa().getKunkku().getX(), this.peli.getVuorossa().getKunkku().getY());
+        ArrayList<Ruutu> uhatutRuudut = uhkaava.nappulanReitti(this.peli.getVuorossa().getKunkku().getX(), this.peli.getVuorossa().getKunkku().getY());
         for (Nappula oma : this.peli.getVuorossa().getNappulat()) {
             if (oma.equals(this.peli.getVuorossa().getKunkku())) {
                 continue;

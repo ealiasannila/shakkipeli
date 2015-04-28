@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.031" errors="0" skipped="0" tests="6" name="logiikka.peli.PeliHallintaTest">
+<testsuite failures="0" time="0.035" errors="0" skipped="0" tests="6" name="logiikka.peli.PeliHallintaTest">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64"/>
@@ -42,7 +42,7 @@
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/usr/lib/jvm/java-7-openjdk-amd64/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/home/elias/tmcbeans/java/maven-nblib/netbeans-eventspy.jar install"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/home/elias/tmcbeans/java/maven-nblib/netbeans-eventspy.jar clean install"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -61,9 +61,9 @@
     <property name="sun.cpu.isalist" value=""/>
   </properties>
   <testcase time="0.006" classname="logiikka.peli.PeliHallintaTest" name="tiedostoaEiLoydyLatausTest"/>
-  <testcase time="0.004" classname="logiikka.peli.PeliHallintaTest" name="tallennusTestTyhjaNimi"/>
+  <testcase time="0.003" classname="logiikka.peli.PeliHallintaTest" name="tallennusTestTyhjaNimi"/>
   <testcase time="0.004" classname="logiikka.peli.PeliHallintaTest" name="lataaPeliTest"/>
   <testcase time="0.002" classname="logiikka.peli.PeliHallintaTest" name="eiSallittuNimi"/>
-  <testcase time="0.003" classname="logiikka.peli.PeliHallintaTest" name="uusiPeliTest"/>
-  <testcase time="0.006" classname="logiikka.peli.PeliHallintaTest" name="tallennaPeliTest"/>
+  <testcase time="0.004" classname="logiikka.peli.PeliHallintaTest" name="uusiPeliTest"/>
+  <testcase time="0.01" classname="logiikka.peli.PeliHallintaTest" name="tallennaPeliTest"/>
 </testsuite>

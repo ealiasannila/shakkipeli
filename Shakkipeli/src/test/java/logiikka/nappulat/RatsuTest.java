@@ -99,10 +99,10 @@ public class RatsuTest {
 
     @Test
     public void uhkausLinjaTyhjaTest() {
-        assertTrue(this.ratsu.uhkausLinja(4, 3) != null);
-        assertTrue(this.ratsu.uhkausLinja(2, 3).isEmpty());
-        assertTrue(this.ratsu.uhkausLinja(4, 5).isEmpty());
-        assertTrue(this.ratsu.uhkausLinja(4, 5).getClass() == ArrayList.class);
+        assertTrue(this.ratsu.nappulanReitti(4, 3) != null);
+        assertTrue(this.ratsu.nappulanReitti(2, 3).isEmpty());
+        assertTrue(this.ratsu.nappulanReitti(4, 5).isEmpty());
+        assertTrue(this.ratsu.nappulanReitti(4, 5).getClass() == ArrayList.class);
     }
 
     @Test

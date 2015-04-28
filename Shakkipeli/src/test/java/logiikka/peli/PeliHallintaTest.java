@@ -26,14 +26,14 @@ public class PeliHallintaTest {
     public void uusiPeliTest() {
         this.peliHallinta.uusiPeli(-1, -1);
         assertEquals(this.peliHallinta.getPeli().toString(), ("VALKOINEN\n"
-                + "TRLQKLRT\n"
+                + "YRLQJLRY\n"
                 + "SSSSSSSS\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
                 + "ssssssss\n"
-                + "trlqklrt\n"
+                + "yrlqjlry\n"
                 + "-1\n"
                 + "-1"));
     }
@@ -42,14 +42,14 @@ public class PeliHallintaTest {
     public void lataaPeliTest() {
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/mustaTornitus.txt");
         assertEquals(this.peliHallinta.getPeli().toString(), ("MUSTA\n"
-                + "ToooKooT\n"
+                + "YoooJooY\n"
                 + "SSSSSSSS\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
                 + "ssssssss\n"
-                + "toookoot\n"
+                + "yooojooy\n"
                 + "-1\n"
                 + "-1"));
     }
@@ -60,14 +60,14 @@ public class PeliHallintaTest {
         this.peliHallinta.uusiPeli(-1, -1);
         this.peliHallinta.tallennaPeli("tallennetutPelit/testiTilanteet/tallennusTesti.txt");
         assertEquals(this.peliHallinta.getPeli().toString(), ("VALKOINEN\n"
-                + "TRLQKLRT\n"
+                + "YRLQJLRY\n"
                 + "SSSSSSSS\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
                 + "ssssssss\n"
-                + "trlqklrt\n"
+                + "yrlqjlry\n"
                 + "-1\n"
                 + "-1"));
         this.peliHallinta.getPeli().asetaAktiivinen(0, 1);
@@ -75,14 +75,14 @@ public class PeliHallintaTest {
         assertTrue(this.peliHallinta.tallennaPeli("tallennetutPelit/testiTilanteet/tallennusTesti.txt"));
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/tallennusTesti.txt");
         assertEquals(this.peliHallinta.getPeli().toString(), ("MUSTA\n"
-                + "TRLQKLRT\n"
+                + "YRLQJLRY\n"
                 + "SSSSSSSS\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
                 + "sooooooo\n"
                 + "hooooooo\n"
                 + "osssssss\n"
-                + "trlqklrt\n"
+                + "yrlqjlry\n"
                 + "-1\n"
                 + "-1"));
 
@@ -103,14 +103,14 @@ public class PeliHallintaTest {
         this.peliHallinta.uusiPeli(10, 10);
         this.peliHallinta.lataaPeli("tallennetutPelit/testiTilanteet/tataTiedostoaEiOleOlemassa.txt");
         assertEquals(this.peliHallinta.getPeli().toString(), ("VALKOINEN\n"
-                + "TRLQKLRT\n"
+                + "YRLQJLRY\n"
                 + "SSSSSSSS\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
                 + "oooooooo\n"
                 + "ssssssss\n"
-                + "trlqklrt\n"
+                + "yrlqjlry\n"
                 + "-1\n"
                 + "-1"));
 

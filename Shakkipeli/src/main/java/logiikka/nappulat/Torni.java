@@ -24,12 +24,25 @@ public class Torni extends Nappula {
         this.piirto = new TorniPiirto();
     }
 
+    public Torni(Maa maa, int x, int y, Pelilauta pelilauta, boolean ekaSiirto) {
+        super(maa, x, y, pelilauta);
+        this.piirto = new TorniPiirto();
+        this.setEnsimmainenSiirto(ekaSiirto);
+    }
+
     @Override
     public String toString() {
-        if (this.getMaa() == VALKOINEN) {
-            return "t";
+        String teksti;
+        if (this.onEnsimmainenSiirto()) {
+            teksti = "Y";
         } else {
-            return "T";
+            teksti = "T";
+        }
+
+        if (this.getMaa() == VALKOINEN) {
+            return teksti.toLowerCase();
+        } else {
+            return teksti;
         }
     }
 
@@ -44,7 +57,7 @@ public class Torni extends Nappula {
     }
 
     @Override
-    public ArrayList<Ruutu> uhkausLinja(int x, int y) { //palauttaa ne ruudut joista uhkauksen voi blokata
+    public ArrayList<Ruutu> nappulanReitti(int x, int y) { //palauttaa ne ruudut joista uhkauksen voi blokata
         return NappulaApumetodeja.uhkausLinjaPystyTaiVaaka(x, y, this);
     }
 

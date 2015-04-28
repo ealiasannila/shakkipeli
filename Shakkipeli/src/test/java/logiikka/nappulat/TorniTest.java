@@ -55,7 +55,7 @@ public class TorniTest {
 
     @Test
     public void UhkaaOikeitaRuutujaTyhjaRuutu() {
-        ArrayList<Ruutu> uhatutRuudut = torni.uhkausLinja(1, 5);
+        ArrayList<Ruutu> uhatutRuudut = torni.nappulanReitti(1, 5);
         assertTrue(uhatutRuudut.contains(new Ruutu(1, 5)));
         assertTrue(uhatutRuudut.contains(new Ruutu(1, 4)));
         assertTrue(uhatutRuudut.contains(new Ruutu(1, 3)));
@@ -67,7 +67,7 @@ public class TorniTest {
     @Test
     public void UhkaaOikeitaRuutujaVastustajanNappula() {
         Nappula vastustajanTorni = new Torni(MUSTA, 1, 5, this.testiLauta);
-        ArrayList<Ruutu> uhatutRuudut = torni.uhkausLinja(1, 5);
+        ArrayList<Ruutu> uhatutRuudut = torni.nappulanReitti(1, 5);
         assertTrue(uhatutRuudut.contains(new Ruutu(1, 4)));
         assertTrue(uhatutRuudut.contains(new Ruutu(1, 3)));
         assertTrue(uhatutRuudut.contains(new Ruutu(1, 2)));
@@ -78,7 +78,7 @@ public class TorniTest {
     @Test
     public void UhkaaOikeitaRuutujaOmaNappula() {
         Nappula omaTorni = new Torni(VALKOINEN, 1, 5, this.testiLauta);
-        ArrayList<Ruutu> uhatutRuudut = torni.uhkausLinja(1, 5);
+        ArrayList<Ruutu> uhatutRuudut = torni.nappulanReitti(1, 5);
         assertTrue(uhatutRuudut.contains(new Ruutu(1, 5)));
         assertTrue(uhatutRuudut.contains(new Ruutu(1, 4)));
         assertTrue(uhatutRuudut.contains(new Ruutu(1, 3)));

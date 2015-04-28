@@ -26,7 +26,7 @@ import kayttoliittyma.kuuntelijat.KelloKuuntelija;
  *
  * @author elias
  */
-public class UusiPeliValikko extends Valikko implements Runnable {
+public class UusiPeliValikko extends Valikko {
 
     private JButton aloitaNappi;
     private JCheckBox kelloCheckBox;

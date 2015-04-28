@@ -23,6 +23,13 @@ public class Sotilas extends Nappula {
     public Sotilas(Maa maa, int x, int y, Pelilauta lauta) {
         super(maa, x, y, lauta);
         this.piirto = new SotilasPiirto();
+        
+    }
+    public Sotilas(Maa maa, int x, int y, Pelilauta lauta, boolean ekaSiirto) {
+        super(maa, x, y, lauta);
+        this.piirto = new SotilasPiirto();
+        this.setEnsimmainenSiirto(ekaSiirto);
+        
     }
 
     /**
@@ -114,7 +121,7 @@ public class Sotilas extends Nappula {
      * @return
      */
     @Override
-    public ArrayList<Ruutu> uhkausLinja(int x, int y) {
+    public ArrayList<Ruutu> nappulanReitti(int x, int y) {
         return new ArrayList<Ruutu>();
     }
 

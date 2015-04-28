@@ -35,7 +35,7 @@ public class KunkkuTest {
 
     @Test
     public void kunkkuUhkaaOikeaaRuutua() {
-        ArrayList<Ruutu> uhatutRuudut = kunkku.uhkausLinja(1, 5);
+        ArrayList<Ruutu> uhatutRuudut = kunkku.nappulanReitti(1, 5);
         assertTrue(uhatutRuudut.isEmpty());
     }
 

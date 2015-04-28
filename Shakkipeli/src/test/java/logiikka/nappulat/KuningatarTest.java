@@ -81,8 +81,8 @@ public class KuningatarTest {
 
     @Test
     public void uhkaaOikeitaRuutuja() {
-        assertEquals(4, this.kuningatar.uhkausLinja(0, 4).size());
-        assertEquals(2, this.kuningatar.uhkausLinja(2, 2).size());
+        assertEquals(4, this.kuningatar.nappulanReitti(0, 4).size());
+        assertEquals(2, this.kuningatar.nappulanReitti(2, 2).size());
     }
 
 }

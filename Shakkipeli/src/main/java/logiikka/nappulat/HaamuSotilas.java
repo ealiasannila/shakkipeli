@@ -59,7 +59,7 @@ public class HaamuSotilas extends Nappula {
      * @return
      */
     @Override
-    public ArrayList<Ruutu> uhkausLinja(int x, int y) {
+    public ArrayList<Ruutu> nappulanReitti(int x, int y) {
         return new ArrayList<Ruutu>();
     }
 

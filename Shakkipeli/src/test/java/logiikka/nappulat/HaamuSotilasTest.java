@@ -35,7 +35,7 @@ public class HaamuSotilasTest {
 
     @Test
     public void eiUhkaaTest() {
-        assertTrue(this.haamuSotilas.uhkausLinja(1, 3).isEmpty());
+        assertTrue(this.haamuSotilas.nappulanReitti(1, 3).isEmpty());
     }
 
     @Test

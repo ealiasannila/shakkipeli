@@ -25,6 +25,13 @@ public class Kunkku extends Nappula {
 
     }
 
+    public Kunkku(Maa maa, int x, int y, Pelilauta pelilauta, boolean ekaSiirto) {
+        super(maa, x, y, pelilauta);
+        this.piirto = new KunkkuPiirto();
+        this.setEnsimmainenSiirto(ekaSiirto);
+
+    }
+
     @Override
     public boolean tarkistaReitti(int x, int y) {
 
@@ -40,7 +47,7 @@ public class Kunkku extends Nappula {
      * @return
      */
     @Override
-    public ArrayList<Ruutu> uhkausLinja(int x, int y) {
+    public ArrayList<Ruutu> nappulanReitti(int x, int y) {
         return new ArrayList<Ruutu>();
     }
 
@@ -73,11 +80,19 @@ public class Kunkku extends Nappula {
         return ruudut;
     }
 
+    @Override
     public String toString() {
-        if (this.getMaa() == VALKOINEN) {
-            return "k";
+        String teksti;
+        if (this.onEnsimmainenSiirto()) {
+            teksti = "J";
         } else {
-            return "K";
+            teksti = "K";
+        }
+
+        if (this.getMaa() == VALKOINEN) {
+            return teksti.toLowerCase();
+        } else {
+            return teksti;
         }
     }
 }

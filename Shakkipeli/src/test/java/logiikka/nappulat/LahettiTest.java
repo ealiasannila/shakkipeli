@@ -83,8 +83,8 @@ public class LahettiTest {
 
     @Test
     public void uhkaaOikeitaRuutuja() {
-        assertEquals(3, this.lahetti.uhkausLinja(1, 7).size());
-        assertEquals(2, this.lahetti.uhkausLinja(2, 2).size());
+        assertEquals(3, this.lahetti.nappulanReitti(1, 7).size());
+        assertEquals(2, this.lahetti.nappulanReitti(2, 2).size());
     }
 
 }
